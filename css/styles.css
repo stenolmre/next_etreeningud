@@ -1,0 +1,252 @@
+/* =======COLORS===================================== */
+:root {
+  --whitesmoke: rgba(241, 245, 248, 1);
+  --dodgerblue: rgba(0, 112, 243, 1);
+  --graysmoke: rgba(33, 33, 33, .05);
+}
+
+/* =======SCROLLBAR================================== */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #212121;
+}
+
+/* =======STYLES===================================== */
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .875rem;
+  background: var(--whitesmoke);
+}
+
+a {
+  font-size: .875rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--whitesmoke);
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .875rem;
+}
+
+button:focus {
+  border: 1px solid var(--dodgerblue);
+}
+
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .875rem;
+}
+
+.form_error,
+.form_required {
+  color: red;
+  font-size: .825rem;
+}
+
+.form_success {
+  color: var(--dodgerblue);
+  font-size: .825rem;
+}
+
+.neumorphism {
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+}
+
+.inset_neumorphism {
+  background: rgba(255, 255, 255, .2);
+  box-shadow: inset 1px 1px 3px rgba(33, 33, 33, .2);
+}
+
+/* =======NAVBAR===================================== */
+nav {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  align-items: center;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+}
+
+nav div {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav img {
+  height: 55px;
+  margin-right: 75px;
+  object-fit: cover;
+  object-position: center;
+}
+
+nav a {
+  margin: 0;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: .875rem;
+  text-transform: uppercase;
+}
+
+nav a:hover {
+  color: var(--dodgerblue);
+  transition-duration: .2s;
+}
+
+nav div:nth-of-type(3) i {
+  font-size: 1.2rem;
+}
+
+.active_nav {
+  color: var(--dodgerblue);
+  position: relative;
+}
+
+.active_nav::before {
+  content: '_';
+  display: inline-block;
+  position: absolute;
+  bottom: -0.3em;
+  left: 0;
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  nav {
+    width: calc(100% - 60px);
+    height: 75px;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  nav div {
+    height: 75px;
+  }
+
+  nav div:nth-of-type(2) {
+    display: none;
+  }
+
+  nav img {
+    height: 35px;
+    margin-left: -25px;
+  }
+}
+
+/* =======FOOTER====================================== */
+footer {
+  width: calc(100% - 200px);
+  height: 125px;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+}
+
+footer div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p {
+  color: rgba(33, 33, 33, .5);
+  font-size: .7rem;
+}
+
+footer div a {
+  margin: 0 10px;
+  color: rgba(33, 33, 33);
+  font-size: 1.2rem;
+}
+
+footer div a:hover {
+  color: var(--dodgerblue);
+  transition-duration: .2s;
+}
+
+@media (max-width: 768px) {
+  footer {
+    width: calc(100% - 50px);
+    min-height: 75px;
+    padding: 0 25px 75px 25px;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  footer a {
+    padding: 0 0 0 0;
+  }
+
+  footer div {
+    padding: 5px 0 5px 0;
+  }
+}
+
+/* =======FOOTBAR===================================== */
+.footbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .footbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 75px;
+    background: #f1f5f8;
+    box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+
+  .footbar a {
+    width: 55px;
+    height: 55px;
+    margin: 0 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, .2);
+    box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+    border-radius: 10px;
+    font-size: 1.5rem;
+    color: black;
+  }
+}

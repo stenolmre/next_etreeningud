@@ -13,3 +13,7 @@ export const GET_POST = 'GET_POST'
 export const GET_POSTS = 'GET_POSTS'
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const POST_ERROR = 'POST_ERROR'
+
+export const ADD_SETTINGS = 'ADD_SETTINGS'
+export const GET_SETTINGS = 'GET_SETTINGS'
+export const SETTINGS_ERROR = 'SETTINGS_ERROR'
