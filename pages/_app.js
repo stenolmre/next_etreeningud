@@ -1,13 +1,17 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+
+import GlobalState from './../context/state'
+
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './../css/styles.css'
-// import GlobalState from './../context/context'
 
-export default function App({ Component, pageProps }) {
-  return <Fragment>
+const App = ({ Component, pageProps }) => {
+  return <GlobalState>
     <Component { ...pageProps } />
     <style jsx>{`
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
     `}</style>
-  </Fragment>
+  </GlobalState>
 }
+
+export default App
