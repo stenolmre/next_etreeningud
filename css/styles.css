@@ -65,6 +65,17 @@ select:focus {
   border: 1px solid var(--dodgerblue);
 }
 
+@media (max-width: 768px) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    font-size: 1rem;
+  }
+}
+
 .form_error,
 .form_required {
   color: red;
@@ -324,6 +335,7 @@ footer div a:hover {
   }
 
   .searchbar button {
+    margin-left: -50px;
     padding: 7px 15px;
   }
 
