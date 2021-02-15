@@ -21,7 +21,7 @@ const Navbar = () => {
         ? <div className="index_loader"><Loader /></div>
         : <nav>
             <div>
-              <img src="https://etreeningud.ee/media/images/logo.png" alt="logo"/>
+              <img src="https://res.cloudinary.com/etreeningud/image/upload/c_scale,h_113/v1613366877/utils/logo.png" alt="logo"/>
             </div>
             <div>
               <Link href="/">
