@@ -1,0 +1,139 @@
+.landing {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.landing h1 {
+  margin: 0;
+  font-size: 6rem;
+  font-weight: 900;
+}
+
+.landing p {
+  width: 70%;
+  margin: 50px 0;
+  font-size: 1rem;
+}
+
+.landing a {
+  padding: 10px 45px;
+  border-radius: 7px;
+  background: var(--dodgerblue);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .landing h1 {
+    font-size: 2rem;
+  }
+
+  .landing p {
+    width: 90%;
+  }
+}
+
+.features_container {
+  width: 100%;
+  min-height: 70vh;
+  padding-bottom: 50px;
+  border-top: 1px solid var(--graysmoke);
+  border-bottom: 1px solid var(--graysmoke);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.features {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature {
+  width: 250px;
+  height: 100px;
+  margin: 0 15px;
+  padding: 25px;
+  text-align: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: inset 1px 1px 3px rgba(33, 33, 33, .2);
+}
+
+.feature:nth-of-type(2) {
+  height: 120px;
+}
+
+.feature:hover {
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+}
+
+.feature h3 {
+  text-transform: capitalize;
+  color: var(--dodgerblue);
+}
+
+@media (max-width: 768px) {
+  .features_container {
+    padding: 50px 0;
+  }
+
+  .feature {
+    width: 70%;
+    height: 120px;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature:hover {
+    background: rgba(255, 255, 255, .2);
+    box-shadow: inset 1px 1px 3px rgba(33, 33, 33, .2);
+  }
+
+  .feature:nth-of-type(2) {
+    width: 80%;
+  }
+
+  .featrue h3,
+  .feature p {
+    margin: 0;
+  }
+}
+
+.landing_fitness_container {
+  width: 100%;
+  min-height: 70vh;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing_fitness {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing_section_loader {
+  width: 100%;
+  height: 50vh;
+  display: grid;
+  place-items: center;
+}

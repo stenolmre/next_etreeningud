@@ -6,6 +6,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './../css/styles.css'
 import './../css/posts.css'
 import './../css/fitness.css'
+import './../css/landing.css'
 
 const App = ({ Component, pageProps }) => {
   return <GlobalState>

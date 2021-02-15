@@ -1,20 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Head from './../components/utils/head'
 
 import Layout from './../components/layout'
+import Landing from './../components/landing/landing'
 
 const Index = () => {
-  return <Layout>
-    <div style={style}>
-      Hello World! We are gonna change it!
-    </div>
-  </Layout>
+  return <Fragment>
+    <Head title="eTreeningud" />
+    <Layout>
+      <Landing />
+    </Layout>
+  </Fragment>
 }
 
 export default Index
-
-const style = {
-  width: '100%',
-  height: 'calc(100vh - 225px)',
-  display: 'grid',
-  placeItems: 'center',
-}

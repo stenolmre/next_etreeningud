@@ -6,6 +6,7 @@ export const initialState = {
   fit_equipment: [],
   social: [],
   blog_writers: [],
+  features: [],
   loading: true,
   error: null
 }
@@ -23,6 +24,7 @@ export const SettingsReducer = (state = initialState, action) => {
         fit_equipment: payload[0].fit_equipment,
         social: payload[0].social,
         blog_writers: payload[0].blog_writers,
+        features: payload[0].features,
         loading: false,
         error: null
       }
