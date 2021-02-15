@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { ShowRating } from './rating'
 
-export default function Card({ post }) {
+const Card = ({ post }) => {
   return <Link href={`/posts/${post._id}?name=${post.name.replaceAll(' ', '-')}`}><a className="blog_card">
     <div className="blog_card_img neumorphism">
       <img src={post.image} alt={post.name}/>
@@ -32,3 +32,5 @@ export default function Card({ post }) {
     </div>
   </a></Link>
 }
+
+export default Card

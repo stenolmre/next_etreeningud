@@ -16,9 +16,9 @@ const Searchbar = ({ onChange, placeholder, href, fitness }) => {
       fitness && <div className="searchbar_categories">
         <Category all name="Kõik" icon="fas fa-grip-horizontal" href="/fitness"/>
         <Category name="HIIT" icon="fas fa-heartbeat" category="hiit"/>
-        <Category name="Jõud" icon="fas fa-dumbbell" category="strength"/>
+        <Category name="Jõud" icon="fas fa-dumbbell" category="jõud"/>
         <Category name="Mobility" icon="fas fa-spa" category="mobility"/>
-        <Category name="Jooga" icon="fas fa-peace" category="yoga"/>
+        <Category name="Jooga" icon="fas fa-peace" category="jooga"/>
       </div>
     }
   </div>
