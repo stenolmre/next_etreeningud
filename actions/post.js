@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, LOAD_POSTS, POST_ERROR } from './types'
+import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR } from './types'
 
 export const addPost = async (dispatch, data, success, error) => {
   const config = { headers: { 'Content-Type': 'application/json' } }
@@ -101,5 +101,51 @@ export const removePost = async (dispatch, id) => {
       type: POST_ERROR,
       payload: err.response.data
     })
+  }
+}
+
+export const ratePost = async (dispatch, id, data, success, error) => {
+  const config = { headers: { 'Content-Type': 'application/json' } }
+  const body = JSON.stringify(data)
+
+  try {
+    const { data } = await axios.put(`/api/posts/rate?id=${id}`, body, config)
+
+    dispatch({
+      type: RATE_POST,
+      payload: data
+    })
+
+    success()
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: err.response.data
+    })
+
+    error()
+  }
+}
+
+export const commentPost = async (dispatch, id, data, success, error) => {
+  const config = { headers: { 'Content-Type': 'application/json' } }
+  const body = JSON.stringify(data)
+
+  try {
+    const { data } = await axios.put(`/api/posts/comment?id=${id}`, body, config)
+
+    dispatch({
+      type: COMMENT_POST,
+      payload: data
+    })
+
+    success()
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: err.response.data
+    })
+
+    error()
   }
 }

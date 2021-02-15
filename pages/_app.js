@@ -4,6 +4,7 @@ import GlobalState from './../context/state'
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './../css/styles.css'
+import './../css/posts.css'
 
 const App = ({ Component, pageProps }) => {
   return <GlobalState>

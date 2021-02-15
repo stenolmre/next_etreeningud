@@ -13,7 +13,7 @@ export default async function (req, res) {
 
     await post.save()
 
-    const posts = await Posts.find().sort({ createdAt: -1 })
+    const posts = await Post.find().sort({ createdAt: -1 })
 
     res.send(posts)
   } catch (err) {

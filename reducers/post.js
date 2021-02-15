@@ -1,4 +1,4 @@
-import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, LOAD_POSTS, POST_ERROR } from './../actions/types'
+import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR } from './../actions/types'
 
 export const initialState = {
   post: null,
@@ -32,6 +32,20 @@ export const PostReducer = (state = initialState, action) => {
         ...state,
         post: payload.post,
         posts: payload.posts,
+        loading: false,
+        error: null
+      }
+    case RATE_POST:
+      return {
+        ...state,
+        post: { ...state.post, ratings: payload },
+        loading: false,
+        error: null
+      }
+    case COMMENT_POST:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
         loading: false,
         error: null
       }
