@@ -23,9 +23,9 @@ const Fitness = () => {
               {
                 fitness && fitness.map(el => <Card key={el._id} fit={el}/>).slice(0, 3)
               }
-              <div className="mobile_see_more_btn">
+              <Link href="/fitness"><a className="mobile_see_more_btn">
                 <i className="fas fa-plus neumorphism"/>
-              </div>
+              </a></Link>
             </div>
             <Link href="/fitness"><a className="landing_button">Treeningud</a></Link>
           </Fragment>

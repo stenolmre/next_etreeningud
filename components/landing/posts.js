@@ -23,9 +23,9 @@ const Fitness = () => {
               {
                 posts && posts.map(el => <Card key={el._id} post={el}/>).slice(0, 3)
               }
-              <div className="mobile_see_more_btn">
+              <Link href="/posts"><a className="mobile_see_more_btn">
                 <i className="fas fa-plus neumorphism"/>
-              </div>
+              </a></Link>
             </div>
             <Link href="/posts"><a className="landing_button">Postitused</a></Link>
           </Fragment>
