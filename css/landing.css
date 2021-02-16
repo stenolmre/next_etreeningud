@@ -141,10 +141,10 @@
     display: grid;
     grid-template-columns: 325px 325px 325px 100px;
     grid-gap: 10px;
+    align-items: flex-start;
     justify-content: normal;
     overflow-x: scroll;
     overflow-y: hidden;
-    padding: 20px 0;
   }
 
   .landing_fitness::-webkit-scrollbar {
