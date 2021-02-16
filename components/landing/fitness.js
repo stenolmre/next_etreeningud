@@ -20,8 +20,11 @@ const Fitness = () => {
             <h2>Viimased treeningud</h2>
             <div className="landing_fitness">
               {
-                fitness && fitness.map(el => <Card key={el._id} fit={el}/>).slice(0, 4)
+                fitness && fitness.map(el => <Card key={el._id} fit={el}/>).slice(0, 3)
               }
+              <div className="mobile_see_more_btn">
+                <i className="fas fa-plus neumorphism"/>
+              </div>
             </div>
           </Fragment>
     }

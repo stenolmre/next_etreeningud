@@ -410,3 +410,49 @@ footer div a:hover {
     margin-right: 0;
   }
 }
+
+/* =======CONTACT===================================== */
+.contact {
+  width: calc(100% - 200px);
+  min-height: calc(100vh - 325px);
+  padding: 50px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact_form {
+  width: 375px;
+}
+
+.contact_form input,
+.contact_form textarea {
+  width: 100%;
+  margin: 2px 0 10px 0;
+  border-radius: 4px;
+  padding: 7px;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: inset 1px 1px 3px rgba(33, 33, 33, .2);
+}
+
+.contact_form textarea {
+  width: 110%;
+  min-height: 75px;
+  resize: vertical;
+}
+
+.contact_form .form_error {
+  font-size: .775rem;
+  margin: -8px 0 15px 0;
+}
+
+.contact_form button {
+  padding: 7px 25px;
+  background: var(--dodgerblue);
+  color: white;
+  border-radius: 4px;
+}
+
+.contact_form button:disabled {
+  opacity: .7;
+}

@@ -26,15 +26,16 @@ const Posts = () => {
 
   return <Fragment>
     <Searchbar onChange={e => setSearch(e.target.value)} placeholder="Otsi postitust" href={`/posts?search=${search}`}/>
-    <div className="posts">
+    <div className="posts_container">
       {
         loading
           ? <div className="page_loader"><Loader /></div>
           : posts && <Fragment>
-              {
-                posts.filter(el => query.category ? el.category === query.category : el.category).filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).map(post => <Card key={post._id} post={post}/>).slice(indexOfFirstPost, indexOfLastPost)
-              }
-
+              <div className="posts">
+                {
+                  posts.filter(el => query.category ? el.category === query.category : el.category).filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).map(post => <Card key={post._id} post={post}/>).slice(indexOfFirstPost, indexOfLastPost)
+                }
+              </div>
               <Pagination totalPosts={posts.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={Math.ceil(posts.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).length / postsPerPage)} />
             </Fragment>
       }
