@@ -142,7 +142,9 @@
     grid-template-columns: 325px 325px 325px 100px;
     grid-gap: 10px;
     justify-content: normal;
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 20px 0;
   }
 
   .landing_fitness::-webkit-scrollbar {
