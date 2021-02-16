@@ -1,4 +1,5 @@
 import React, { useEffect, Fragment } from 'react'
+import Link from 'next/link'
 
 import { usePostState, usePostDispatch } from './../../context/post'
 import { getPosts } from './../../actions/post'
@@ -26,6 +27,7 @@ const Fitness = () => {
                 <i className="fas fa-plus neumorphism"/>
               </div>
             </div>
+            <Link href="/posts"><a className="landing_button">Postitused</a></Link>
           </Fragment>
     }
   </div>

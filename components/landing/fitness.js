@@ -1,4 +1,5 @@
 import React, { useEffect, Fragment } from 'react'
+import Link from 'next/link'
 
 import { useFitState, useFitDispatch } from './../../context/fitness'
 import { getWorkouts } from './../../actions/fitness'
@@ -26,6 +27,7 @@ const Fitness = () => {
                 <i className="fas fa-plus neumorphism"/>
               </div>
             </div>
+            <Link href="/fitness"><a className="landing_button">Treeningud</a></Link>
           </Fragment>
     }
   </div>

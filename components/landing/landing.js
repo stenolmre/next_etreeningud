@@ -12,7 +12,7 @@ const Landing = () => {
     <div className="landing">
       <h1>Keskkond Iseseisvale Treenijale</h1>
       <p>Vii oma eesmärgid ellu eTreeningutega. Tasuta treeningkavad koos õpetustega, huvitavad teadmised blogis ja võimalus küsida abi Coach Keisylt.</p>
-      <Link href="/fitness"><a>Treeningud</a></Link>
+      <Link href="/fitness"><a className="landing_button">Treeningud</a></Link>
     </div>
     <Features />
     <Fitness />
