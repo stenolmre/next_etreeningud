@@ -72,7 +72,6 @@
   width: 100%;
   height: 150px;
   margin: 10px 0 0 0;
-  text-transform: capitalize;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,7 +84,6 @@
 .blog_card_content p {
   margin: 0;
   font-size: .75rem;
-  text-transform: none;
 }
 
 .blog_card_info {

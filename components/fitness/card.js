@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 const Card = ({ fit }) => {
-  return <Link href={`/fitness/${fit._id}?name=${fit.name.replaceAll(' ', '-')}`}><a className="blog_card">
+  return <Link href={fit.category !== 'jooga' ? `/fitness/${fit._id}?name=${fit.name.replaceAll(' ', '-')}` : `/yoga/${fit._id}?name=${fit.name.replaceAll(' ', '-')}`}><a className="blog_card">
     <div className="blog_card_img neumorphism">
       <img src={fit.image} alt={fit.name}/>
     </div>

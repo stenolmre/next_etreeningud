@@ -27,7 +27,7 @@ const Fitness = () => {
                 <i className="fas fa-plus neumorphism"/>
               </a></Link>
             </div>
-            <Link href="/posts"><a className="landing_button">Postitused</a></Link>
+            <Link href="/posts"><a className="landing_fitness_btn neumorphism"><i className="fas fa-plus"/></a></Link>
           </Fragment>
     }
   </div>

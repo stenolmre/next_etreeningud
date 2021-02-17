@@ -4,9 +4,11 @@ import Navbar from './navbar'
 import Footer from './footer'
 import Footbar from './footbar'
 
-function Layout({ children }) {
+function Layout({ children, landing }) {
   return <Fragment>
-    <Navbar/>
+    {
+      !landing && <Navbar/>
+    }
     { children }
     <Footbar />
     <Footer/>
