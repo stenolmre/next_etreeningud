@@ -16,7 +16,7 @@ export const COMMENT_POST = 'COMMENT_POST'
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const POST_ERROR = 'POST_ERROR'
 
-export const ADD_SETTINGS = 'ADD_SETTINGS'
+export const UPDATE_SETTINGS = 'UPDATE_SETTINGS'
 export const GET_SETTINGS = 'GET_SETTINGS'
 export const SETTINGS_ERROR = 'SETTINGS_ERROR'
 

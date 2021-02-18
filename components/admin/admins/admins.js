@@ -31,17 +31,19 @@ export default function Admins({ isOwner }) {
               <p style={{ textTransform: 'lowercase' }}>{el.email}</p>
               <p>{el.isOwner ? 'Omanik' : el.isAdmin ? 'Administraator' : 'Kasutaja'}</p>
               {
-                admin && admin.isOwner && <div>
+                admin && <div>
                   {
                     admin._id === el._id && <Link href={`/private/admin/editadmin?id=${el._id}`}><a>
                       <i className="fas fa-pen"/>
                     </a></Link>
                   }
-                  <i className="fas fa-times" onClick={async () => {
-                    if (confirm('Kas sa oled kindel, et soovid administraatori kustutada?')) {
-                      await removeAdmin(dispatchAdmin, el._id)
-                    }
-                  }}/>
+                  {
+                    admin.isOwner && <i className="fas fa-times" onClick={async () => {
+                      if (confirm('Kas sa oled kindel, et soovid administraatori kustutada?')) {
+                        await removeAdmin(dispatchAdmin, el._id)
+                      }
+                    }}/>
+                  }
               </div>
               }
             </div>)

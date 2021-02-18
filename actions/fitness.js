@@ -16,12 +16,12 @@ export const addWorkout = async (dispatch, data, success, error) => {
 
     success()
   } catch (err) {
-    error()
-
     dispatch({
       type: FITNESS_ERROR,
       payload: err.response.data
     })
+
+    error()
   }
 }
 

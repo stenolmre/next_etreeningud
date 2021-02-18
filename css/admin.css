@@ -104,6 +104,32 @@
   }
 }
 
+/* =======DASHBOARD=================================== */
+.admin_dashboard {
+  width: calc(100% - 0px);
+  height: calc(100vh - 150px);
+  padding-bottom: 25px;
+  display: grid;
+  grid-template-columns: calc(100% - 325px) 325px;
+  grid-auto-rows: 50% 50%;
+  grid-gap: 25px;
+}
+
+.admin_dashboard_row {
+  display: grid;
+  grid-template-columns: 35px calc(100% - 125px) 60px;
+  grid-gap: 15px;
+  align-items: center;
+}
+
+.admin_dashboard_posts_row {
+  grid-template-columns: 35px calc(100% - 50px);
+}
+
+.admin_dashboard_row p:nth-of-type(1) {
+  width: 70%;
+}
+
 /* =======LAYOUT====================================== */
 .admin_layout_container {
   width: 100%;
@@ -367,4 +393,167 @@
 
 .admin_list_admins .fa-pen {
   margin: 0 15px 0 0;
+}
+
+/* =======ADMIN=SETTINGS=NAVBAR======================= */
+.admin_settings_navbar {
+  margin-bottom: 50px;
+  min-width: 900px;
+}
+
+.admin_settings_navbar a {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 14px;
+}
+
+.admin_settings_page {
+  width: 350px;
+  padding-bottom: 100px;
+}
+
+.admin_settings_page input,
+.admin_settings_page textarea,
+.admin_settings_page select {
+  width: calc(100% - 14px);
+  padding: 7px;
+  border-radius: 4px;
+}
+
+.admin_settings_page select {
+  width: 350px;
+}
+
+.admin_settings_page textarea {
+  min-height: 75px;
+  resize: vertical;
+}
+
+.admin_settings_page button {
+  margin: 10px 0 0 0;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 4px;
+  background: var(--dodgerblue);
+  color: white;
+}
+
+.admin_settings_page button:disabled {
+  opacity: .7;
+}
+
+.admin_settings_page .admin_feature_add_new_btn {
+  margin-right: 10px;
+  padding: 7px 15px;
+  background: none;
+  border: 1px solid var(--dodgerblue);
+  color: var(--dodgerblue);
+}
+
+.admin_settings_page hr {
+  width: 45px;
+  height: 2px;
+  margin: 15px 0;
+  border: none;
+  background: var(--graysmoke);
+}
+
+.admin_settings_page .fa-trash {
+  color: red;
+  cursor: pointer;
+}
+
+.admin_settings_workout input {
+  width: 80%;
+  margin: 2px 10px 2px 0;
+}
+
+.admin_settings_page .admin_settings_workout_add_btn button {
+  width: 30px;
+  height: 30px;
+  margin: 10px 0 25px 0;
+  padding: 0;
+  border: 1px solid #1c1c1c;
+  background: #1c1c1c;
+  color: white;
+  display: grid;
+  place-items: center;
+}
+
+.admin_settings_exercises_row {
+  width: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.admin_settings_exercises_row input,
+.admin_settings_exercises_row select {
+  margin: 2px 0;
+}
+
+.admin_settings_exercises_row .middle_input {
+  margin: 2px 10px 2px 5px;
+}
+
+.admin_settings_exercises_row .fa-times,
+.admin_settings_workout .fa-times {
+  color: red;
+  cursor: pointer;
+}
+
+.admin_settings_writer_page {
+  margin-bottom: 100px;
+}
+
+.admin_settings_writers textarea {
+  width: 550px;
+  min-height: 150px;
+}
+
+.admin_settings_writer_row_header,
+.admin_settings_writer_row {
+  grid-template-columns: 50px 200px calc(100% - 550px) 200px 100px;
+}
+
+.admin_settings_writer_row .fa-facebook {
+  color: #4267B2;
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.admin_settings_writer_row .fa-twitter {
+  color: #1DA1F2;
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.admin_settings_writer_row .fa-instagram {
+  color: #C13584;
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.admin_settings_writer_row .fa-youtube {
+  color: #FF0000;
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.admin_settings_writer_row .fa-spotify {
+  color: #1DB954;
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.admin_settings_writer_row .fa-linkedin {
+  color: #2867B2;
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.admin_settings_page .admin_settings_add_writer_btn {
+  background: black;
+  width: 25px;
+  height: 25px;
+  padding: 0;
 }

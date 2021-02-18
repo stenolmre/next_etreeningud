@@ -91,7 +91,19 @@ const SettingsSchema = mongoose.Schema({
         required: true
       }
     }
-  ]
+  ],
+  landing: {
+    landing_title: String,
+    landing_subtitle: String,
+    landing_watermark: String,
+    landing_button_text: String,
+    landing_button_link: String,
+    landing_image: String,
+    landing_video_heading: String,
+    landing_video_subheading: String,
+    landing_contact_heading: String,
+    landing_contact_subheading: String
+  }
 })
 
 const Settings = mongoose.models.Settings || mongoose.model('Settings', SettingsSchema)

@@ -27,7 +27,7 @@ const Sidebar = () => {
       <Anchor name="lisa postitus" href="lisapostitus" />
       <br/>
       <Anchor name="administraatorid" href="admins" />
-      <Anchor name="seaded" href="seaded" />
+      <Anchor name="seaded" href="settings?page=landing" path="settings" />
     </div>
     <p style={{ cursor: 'pointer' }}
       onClick={async () => await logoutAdmin(dispatchAdmin, () => router.push('/'))}
@@ -35,10 +35,10 @@ const Sidebar = () => {
   </div>
 }
 
-const Anchor = ({ href, name }) => {
+const Anchor = ({ href, name, path }) => {
   const { pathname } = useRouter()
 
-  return <p className={pathname.slice(15) === href ? 'admin_sidebar_active' : ''}><Link href={`/private/admin/${href}`}><a>
+  return <p className={path ? pathname.slice(15) === path ? 'admin_sidebar_active' : '' : pathname.slice(15) === href ? 'admin_sidebar_active' : ''}><Link href={`/private/admin/${href}`}><a>
     { name }
   </a></Link></p>
 }
