@@ -40,42 +40,6 @@ const SettingsSchema = mongoose.Schema({
       }
     }
   ],
-  blog_writers: [
-    {
-      _id: {
-        type: String,
-        default: () => nanoid(5)
-      },
-      image: {
-        type: String,
-        required: true
-      },
-      name: {
-        type: String,
-        required: true
-      },
-      bio: {
-        type: String,
-        required: true
-      },
-      social_links: [
-        {
-          _id: {
-            type: String,
-            default: () => nanoid(5)
-          },
-          social_link: {
-            type: String,
-            required: true
-          },
-          social_icon: {
-            type: String,
-            required: true
-          }
-        }
-      ]
-    }
-  ],
   features: [
     {
       _id: {

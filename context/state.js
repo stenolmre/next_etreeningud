@@ -3,13 +3,16 @@ import FitnessProvider from './fitness'
 import PostProvider from './post'
 import SettingsProvider from './settings'
 import AdminProvider from './admin'
+import WriterProvider from './writer'
 
 const GlobalState = ({ children }) => {
   return <FitnessProvider>
     <PostProvider>
       <SettingsProvider>
         <AdminProvider>
-          { children}
+          <WriterProvider>
+            { children}
+          </WriterProvider>
         </AdminProvider>
       </SettingsProvider>
     </PostProvider>

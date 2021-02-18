@@ -448,6 +448,7 @@
   background: none;
   border: 1px solid var(--dodgerblue);
   color: var(--dodgerblue);
+  border-radius: 4px;
 }
 
 .admin_settings_page hr {

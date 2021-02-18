@@ -61,8 +61,8 @@ const WorkoutSettings = () => {
             }}/>
           </Fragment>)
         }
-        <div className="admin_settings_workout_add_btn">
-          <button className="admin_feature_add_new_btn" onClick={addNewCategory}><i className="fas fa-plus"/></button>
+        <div>
+          <button className="admin_settings_add_writer_btn" onClick={addNewEquipment}><i className="fas fa-plus"/></button>
         </div>
         <h3>Treeningvahendid</h3>
         {
@@ -78,8 +78,8 @@ const WorkoutSettings = () => {
             }}/>
           </Fragment>)
         }
-        <div className="admin_settings_workout_add_btn">
-          <button className="admin_feature_add_new_btn" onClick={addNewEquipment}><i className="fas fa-plus"/></button>
+        <div>
+          <button className="admin_settings_add_writer_btn" onClick={addNewEquipment}><i className="fas fa-plus"/></button>
         </div>
         <div style={{ marginTop: '25px' }}>
           <button onClick={saveUpdatedWorkoututils} disabled={processing}>{processing ? 'Salvestan..' : 'Salvesta'}</button>

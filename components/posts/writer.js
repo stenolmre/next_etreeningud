@@ -9,8 +9,8 @@ export default function Writer({ writer }) {
       <h4>{writer.name}</h4>
       <div>
         {
-          writer.social_links.map(x => <a key={x.social_link} rel="noreferrer" target="_blank" href={x.social_link}>
-            <i className={x.social_icon}/>
+          writer.social_links.map(x => <a key={x._id} rel="noreferrer" target="_blank" href={x.link}>
+            <i className={x.icon}/>
           </a>)
         }
       </div>

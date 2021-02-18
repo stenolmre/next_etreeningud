@@ -1,33 +1,54 @@
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
-const EditWriter = ({ error, addWriter, dispatchSettings }) => {
-  const [newWriter, setNewWriter] = useState({
-    name: '', image: '', bio: '', social_links: []
-  })
+import { useWriterState, useWriterDispatch } from './../../../../context/writer'
+import { getWriter, updateWriter } from './../../../../actions/writer'
+
+const EditWriter = () => {
+  const { query } = useRouter()
+
+  const dispatchWriter = useWriterDispatch()
+  const { error, writer } = useWriterState()
+
+  useEffect(() => { getWriter(dispatchWriter, query.id) }, [dispatchWriter, query.id])
+
+  const [newWriter, setNewWriter] = useState({ name: '', image: '', bio: '', social_links: [] })
 
   const [processing, setProcessing] = useState(false)
   const [success, setSuccess] = useState(false)
   const [err, setErr] = useState(false)
 
+  const onChange = e => setNewWriter({ ...newWriter, [e.target.name]: e.target.value })
+
   const addNewSocialLink = () => {
-    newWriter.social_links.push({ social_link: '', social_icon: '' })
+    newWriter.social_links.push({ link: '', icon: '' })
     setNewWriter({ ...newWriter })
   }
 
   const saveWriter = async () => {
     setProcessing(true)
-    await addWriter(dispatchSettings, newWriter, id, () => setSuccess(true), () => setErr(true))
+    await updateWriter(dispatchWriter, query.id, newWriter, () => setSuccess(true), () => setErr(true))
     setProcessing(false)
   }
+
+  useEffect(() => {
+    setNewWriter(newWriter => ({ ...newWriter,
+      name: !writer || !writer.name ? '' : writer.name,
+      image: !writer || !writer.image ? '' : writer.image,
+      bio: !writer || !writer.bio ? '' : writer.bio,
+      social_links: !writer || !writer.social_links ? [] : writer.social_links
+    }))
+  }, [writer])
 
   return <div className="admin_settings_page admin_settings_writers">
     <h3>Muuda Autori infot</h3>
     <label>Nimi <span className="form_required">*</span></label>
-    <input />
+    <input name="name" value={newWriter.name} onChange={onChange}/>
     <label>Pildi URL <span className="form_required">*</span></label>
-    <input />
+    <input name="image" value={newWriter.image} onChange={onChange}/>
     <label>Kirjeldus <span className="form_required">*</span></label>
-    <textarea />
+    <textarea name="bio" value={newWriter.bio} onChange={onChange}/>
     <label>Sotsiaalmeedia <span className="form_required">*</span></label>
     {
       newWriter.social_links.map((el, i) => <div key={i} className="admin_settings_exercises_row">
@@ -35,12 +56,12 @@ const EditWriter = ({ error, addWriter, dispatchSettings }) => {
           name="icon"
           id="icon"
           onChange={e => {
-            newWriter.social_links[i].social_icon = e.target.value
+            newWriter.social_links[i].icon = e.target.value
             setNewWriter({ ...newWriter })
           }}
-          value={newWriter.social_links[i].social_icon}
+          value={newWriter.social_links[i].icon}
         >
-          <option value="" disabled={newWriter.social_links[i].social_icon !== ''}>..</option>
+          <option value="" disabled={newWriter.social_links[i].icon !== ''}>..</option>
           {
             social_icons_list.map((el, i) => <option key={i} value={el.icon}>{el.name}</option>)
           }
@@ -48,9 +69,9 @@ const EditWriter = ({ error, addWriter, dispatchSettings }) => {
         <input
           className="middle_input"
           name="fit_exercises_name"
-          value={newWriter.social_links[i].social_link}
+          value={newWriter.social_links[i].link}
           onChange={e => {
-            newWriter.social_links[i].social_link = e.target.value
+            newWriter.social_links[i].link = e.target.value
             setNewWriter({ ...newWriter })
           }}
         />
@@ -63,6 +84,7 @@ const EditWriter = ({ error, addWriter, dispatchSettings }) => {
     <div style={{ margin: '10px 0 25px 0' }}>
       <button onClick={addNewSocialLink} className="admin_settings_add_writer_btn"><i className="fas fa-plus"/></button>
     </div>
+    <Link href="/private/admin/settings?page=writers"><a className="admin_feature_add_new_btn">Tagasi</a></Link>
     <button onClick={saveWriter} disabled={processing}>{processing ? 'Salvestan..' : 'Salvesta'}</button>
     {success && <p className="form_success">Salvestatud</p>}
     {err && <p>{error && error.msg}</p>}

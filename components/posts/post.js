@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 
 import { usePostDispatch } from './../../context/post'
-import { useSettingsState } from './../../context/settings'
+import { useWriterState, useWriterDispatch } from './../../context/writer'
+import { getWriters } from './../../actions/writer'
 
 import Loader from './../utils/loader'
 import Feedback from './feedback'
@@ -9,8 +10,12 @@ import Writer from './writer'
 import Ad from './ad'
 
 const Post = ({ post }) => {
+  const dispatchWriter = useWriterDispatch()
+  const { writers } = useWriterState()
   const dispatchPost = usePostDispatch()
-  const { loading, blog_writers } = useSettingsState()
+  const { loading, blog_writers } = useWriterState()
+
+  useEffect(() => { getWriters(dispatchWriter) }, [dispatchWriter])
 
   const content = () => {
     return {__html: `${post.content}`};
@@ -28,7 +33,7 @@ const Post = ({ post }) => {
         {
           loading
             ? <div><Loader /></div>
-            : blog_writers && blog_writers.filter(el => el.name.toLowerCase() === post.author.toLowerCase()).map(writer => <Writer key={writer._id} writer={writer} />)
+            : writers && writers.filter(el => el.name.toLowerCase() === post.author.toLowerCase()).map(writer => <Writer key={writer._id} writer={writer} />)
         }
         <Ad id={post._id}/>
       </Fragment>

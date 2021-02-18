@@ -39,7 +39,7 @@ export default function Posts() {
 }
 
 const Anchor = ({ id, name, style }) => {
-  return <Link href={`/fitness/${id}`}><a style={style}>
+  return <Link href={`/posts/${id}?name=${post.name.replaceAll(' ', '-')}`}><a style={style}>
     {name}
   </a></Link>
 }

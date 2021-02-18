@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import { useSettingsState, useSettingsDispatch } from './../../../../context/settings'
-import { updateExercises } from './../../../../actions/settings'
+import { useWriterState, useWriterDispatch } from './../../../../context/writer'
+import { updateWriter, removeWriter, addWriter, getWriters } from './../../../../actions/writer'
 
 import Loader from './../../../utils/loader'
 import EditWriter from './editwriter'
@@ -12,8 +12,10 @@ import AddWriter from './addwriter'
 const Writers = () => {
   const { query } = useRouter()
 
-  const dispatchSettings = useSettingsDispatch()
-  const { id, blog_writers, loading, error } = useSettingsState()
+  const dispatchWriter = useWriterDispatch()
+  const { writers, loading, error } = useWriterState()
+
+  useEffect(() => { getWriters(dispatchWriter) }, [dispatchWriter])
 
   const [showWriters, setShowWriters] = useState(true)
 
@@ -22,11 +24,11 @@ const Writers = () => {
   return <Fragment>
     {
       showWriters
-        ? loading ? <div><Loader/></div> : blog_writers && <Fragment>
-            <WritersList writers={blog_writers}/>
-            <AddWriter error={error}/>
+        ? loading ? <div><Loader/></div> : writers && <Fragment>
+            <WritersList writers={writers} removeWriter={removeWriter} dispatchWriter={dispatchWriter}/>
+            <AddWriter error={error} addWriter={addWriter} dispatchWriter={dispatchWriter}/>
           </Fragment>
-        : loading ? <div><Loader/></div> : blog_writers && <EditWriter error={error}/>
+        : loading ? <div><Loader/></div> : writers && <EditWriter />
     }
   </Fragment>
 }

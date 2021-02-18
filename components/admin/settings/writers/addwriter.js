@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const AddWriter = ({ error, addWriter, dispatchSettings }) => {
+const AddWriter = ({ error, addWriter, dispatchWriter }) => {
   const [newWriter, setNewWriter] = useState({
     name: '', image: '', bio: '', social_links: []
   })
@@ -9,25 +9,30 @@ const AddWriter = ({ error, addWriter, dispatchSettings }) => {
   const [success, setSuccess] = useState(false)
   const [err, setErr] = useState(false)
 
+  const onChange = e => setNewWriter({ ...newWriter, [e.target.name]: e.target.value })
+
   const addNewSocialLink = () => {
-    newWriter.social_links.push({ social_link: '', social_icon: '' })
+    newWriter.social_links.push({ link: '', icon: '' })
     setNewWriter({ ...newWriter })
   }
 
   const saveWriter = async () => {
     setProcessing(true)
-    await addWriter(dispatchSettings, newWriter, id, () => setSuccess(true), () => setErr(true))
+    await addWriter(dispatchWriter, newWriter, () => {
+      setSuccess(true)
+      setNewWriter({ name: '', image: '', bio: '', social_links: [] })
+    }, () => setErr(true))
     setProcessing(false)
   }
 
   return <div className="admin_settings_page admin_settings_writers">
     <h3>Lisa Autor</h3>
     <label>Nimi <span className="form_required">*</span></label>
-    <input />
+    <input name="name" value={newWriter.name} onChange={onChange}/>
     <label>Pildi URL <span className="form_required">*</span></label>
-    <input />
+    <input name="image" value={newWriter.image} onChange={onChange}/>
     <label>Kirjeldus <span className="form_required">*</span></label>
-    <textarea />
+    <textarea name="bio" value={newWriter.bio} onChange={onChange}/>
     <label>Sotsiaalmeedia <span className="form_required">*</span></label>
     {
       newWriter.social_links.map((el, i) => <div key={i} className="admin_settings_exercises_row">
@@ -35,12 +40,12 @@ const AddWriter = ({ error, addWriter, dispatchSettings }) => {
           name="icon"
           id="icon"
           onChange={e => {
-            newWriter.social_links[i].social_icon = e.target.value
+            newWriter.social_links[i].icon = e.target.value
             setNewWriter({ ...newWriter })
           }}
-          value={newWriter.social_links[i].social_icon}
+          value={newWriter.social_links[i].icon}
         >
-          <option value="" disabled={newWriter.social_links[i].social_icon !== ''}>..</option>
+          <option value="" disabled={newWriter.social_links[i].icon !== ''}>..</option>
           {
             social_icons_list.map((el, i) => <option key={i} value={el.icon}>{el.name}</option>)
           }
@@ -48,9 +53,9 @@ const AddWriter = ({ error, addWriter, dispatchSettings }) => {
         <input
           className="middle_input"
           name="fit_exercises_name"
-          value={newWriter.social_links[i].social_link}
+          value={newWriter.social_links[i].link}
           onChange={e => {
-            newWriter.social_links[i].social_link = e.target.value
+            newWriter.social_links[i].link = e.target.value
             setNewWriter({ ...newWriter })
           }}
         />
