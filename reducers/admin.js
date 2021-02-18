@@ -1,4 +1,4 @@
-import { LOGIN_ADMIN, ADD_ADMIN, UPDATE_ADMIN, REMOVE_ADMIN, GET_ADMIN, GET_ADMINS, ADMIN_ERROR } from './../actions/types'
+import { LOGIN_ADMIN, ADD_ADMIN, UPDATE_ADMIN, REMOVE_ADMIN, GET_ADMIN, GET_ADMINS, ADMIN_LOGOUT, ADMIN_ERROR } from './../actions/types'
 
 export const initialState = {
   admin: null,
@@ -36,11 +36,17 @@ export const AdminReducer = (state = initialState, action) => {
         loading: false,
         error: null
       }
-    case ADMIN_ERROR:
+    case ADMIN_LOGOUT:
       return {
         ...state,
         admin: null,
         admins: [],
+        loading: false,
+        error: null
+      }
+    case ADMIN_ERROR:
+      return {
+        ...state,
         loading: false,
         error: payload
       }

@@ -11,7 +11,7 @@ export default async function (req, res) {
   const { id } = req.query
 
   try {
-    const admin = await Admin.findByd(id)
+    const admin = await Admin.findById(id)
 
     if (!admin) return res.status(401).json({ msg: 'Admin not found.' })
 

@@ -1,0 +1,370 @@
+/* =======UNIVERSAL================================== */
+.admin_loader {
+  margin-top: 25px;
+}
+
+.admin_page {
+  padding-bottom: 100px;
+}
+
+.admin_row {
+  margin: 7px 0 7px -5px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+  text-transform: capitalize;
+}
+
+.admin_row img {
+  width: 35px;
+  height: 35px;
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.admin_row i {
+  cursor: pointer;
+}
+
+.admin_row .fa-times {
+  margin-left: 15px;
+  color: red;
+}
+
+.admin_list {
+  width: 100%;
+  min-width: 900px;
+  margin-left: -10px;
+  display: grid;
+  grid-template-columns: 50px calc(100% - 550px) 150px 100px 200px 50px;
+  align-items: center;
+}
+
+.admin_posts_list {
+  grid-template-columns: 50px calc(100% - 550px) 150px 200px 100px 50px;
+}
+
+.admin_row_header {
+  width: 100%;
+  min-width: 900px;
+  margin-left: -10px;
+  padding: 5px 10px;
+  display: grid;
+  grid-template-columns: 50px calc(100% - 550px) 150px 100px 200px 50px;
+  align-items: center;
+  border-bottom: 3px solid #fff;
+  font-weight: 600;
+}
+
+.admin_row_posts_header {
+  grid-template-columns: 50px calc(100% - 550px) 150px 200px 100px 50px;
+}
+
+/* =======ADMIN=LOGIN================================ */
+.admin_login_container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.admin_login {
+  width: 300px;
+  padding: 50px 100px 50px 50px;
+  border-radius: 24px;
+}
+
+.admin_login h2 {
+  margin: 0 0 25px 0;
+}
+
+.admin_login input {
+  width: calc(100% - 14px);
+  padding: 7px;
+  border-radius: 4px;
+}
+
+.admin_login button {
+  padding: 7px 35px;
+  border-radius: 4px;
+  background: var(--dodgerblue);
+  color: white;
+}
+
+.admin_login button:disabled {
+  opacity: .7;
+}
+
+@media (max-width: 768px) {
+  .admin_login {
+    width: calc(90% - 50px);
+    padding: 50px 25px 50px 25px;
+  }
+}
+
+/* =======LAYOUT====================================== */
+.admin_layout_container {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--whitesmoke);
+}
+
+.admin_layout {
+  width: calc(100% - 375px);
+  min-height: 100%;
+  margin-left: 275px;
+  padding: 0 50px;
+}
+
+/* =======SIDEBAR==================================== */
+.admin_sidebar {
+  width: 205px;
+  height: calc(100vh - 125px);
+  padding: 75px 35px 50px 35px;
+  background: white;
+  box-shadow: 2px 2px 7px rgba(33, 33, 33, .1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.admin_sidebar_img {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.admin_sidebar_img img {
+  width: 75px;
+}
+
+.admin_sidebar p {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: .875rem;
+}
+
+.admin_sidebar_active {
+  color: var(--dodgerblue);
+}
+
+/* =======TOOLBAR===================================== */
+.admin_toolbar {
+  width: 100%;
+  min-width: 900px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin_toolbar_right {
+  display: flex;
+  align-items: center;
+  font-size: .875rem;
+}
+
+.admin_toolbar_right input {
+  width: 200px;
+  margin: 0;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid rgba(33, 33, 33, .1);
+  border-radius: 25px;
+}
+
+.admin_toolbar_right input:focus {
+  border: 1px solid var(--dodgerblue);
+}
+
+.admin_toolbar_right i {
+  margin-left: -30px;
+  color: var(--dodgerblue);
+}
+
+.admin_toolbar_icon {
+  width: 35px;
+  height: 35px;
+  margin: 0 10px 0 35px;
+  border-radius: 100%;
+  display: grid;
+  place-items: center;
+  background: var(--dodgerblue);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* =======ADD=WORKOUT================================= */
+.admin_add_workout {
+  width: 250px;
+}
+
+.admin_add_workout label {
+  font-size: .75rem;
+}
+
+.admin_add_workout input,
+.admin_add_workout select,
+.admin_add_workout textarea {
+  width: 100%;
+  margin: 2px 0 10px 0;
+  padding: 7px;
+  border: 1px solid rgba(33, 33, 33, .1);
+  border-radius: 4px;
+  outline: none;
+}
+
+.admin_add_workout textarea {
+  width: 200%;
+  min-height: 75px;
+  resize: vertical;
+}
+
+.admin_add_workout select {
+  width: 266px;
+  -webkit-appearance: none;
+}
+
+.admin_add_workout input:focus,
+.admin_add_workout select:focus,
+.admin_add_workout textarea:focus {
+  border: 1px solid var(--dodgerblue);
+}
+
+.admin_add_workout_add_exercise_header {
+  width: 710px;
+  min-width: 670px;
+  grid-template-columns: 250px 200px 156px 40px;
+  grid-gap: 25px;
+  color: rgba(33, 33, 33, .4);
+}
+
+.admin_add_workout_add_exercise_header p {
+  margin: 0;
+}
+
+.admin_add_workout_add_exercise {
+  width: 710px;
+  margin-left: -10px;
+  display: grid;
+  grid-template-columns: 250px 200px 156px 40px;
+  grid-gap: 25px;
+  align-items: center;
+}
+
+.admin_add_workout_add_exercise p {
+  margin: 0;
+  padding: 0;
+}
+
+.admin_add_workout_add_exercise p:nth-of-type(2) {
+  text-transform: lowercase;
+}
+
+.admin_add_workout_add_exercise input {
+  margin: 0;
+}
+
+.admin_add_workout_exercises_list {
+  margin: 10px 0 10px -10px;
+  display: flex;
+  align-items: center;
+}
+
+.admin_add_workout_exercises_list button {
+  min-width: 30px;
+  height: 30px;
+  margin: 2px 0 10px 5px;
+  border: 1px solid #1c1c1c;
+  border-radius: 4px;
+  outline: none;
+  background: #1c1c1c;
+  color: white;
+}
+
+.admin_add_workout_save_btn {
+  margin: 10px 0 0 -10px;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 4px;
+  background: var(--dodgerblue);
+  color: white;
+}
+
+.admin_add_workout_save_btn:disabled {
+  opacity: .7;
+}
+
+.admin_edit_workout_go_back {
+  margin: 10px 0 0 10px;
+  padding: 6px 25px;
+  border: 1px solid #1c1c1c;
+  border-radius: 4px;
+  background: none;
+  color: #1c1c1c;
+}
+
+/* =======ADMINS====================================== */
+.admin_row_header_admins {
+  grid-template-columns: 50px 250px calc(100% - 500px) 150px 50px;
+}
+
+.admin_list_admins {
+  grid-template-columns: 50px 250px calc(100% - 500px) 150px 50px;
+}
+
+.admin_add_admin .admin_page {
+  margin-top: 100px;
+}
+
+.admin_update_admin .admin_page {
+  width: 300px;
+  margin-top: 0;
+}
+
+.admin_add_admin_radio_btns_holder {
+  margin: 2px 0 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.admin_add_admin_radio_btn {
+  margin-right: 10px;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+  cursor: pointer;
+}
+
+.admin_active_btn {
+  background: var(--dodgerblue);
+  color: white;
+}
+
+.admin_add_admin button {
+  margin: 10px 0 0 0;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 4px;
+  background: var(--dodgerblue);
+  color: white;
+}
+
+.admin_add_admin button:disabled {
+  opacity: .7;
+}
+
+.admin_list_admins .fa-times {
+  margin: 0;
+}
+
+.admin_list_admins .fa-pen {
+  margin: 0 15px 0 0;
+}

@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 
 import connectDB from './../../../utils/connectDB'
@@ -12,7 +13,6 @@ export default async function (req, res) {
 
   if (!jwtToken) return res.status(500).json({ msg: 'No token. Authorization denied.' })
 
-  const { id } = req.query
   const { name, email, password, isAdmin, isOwner } = req.body
 
   if (!name || !validateEmail(email) || !password || password.length < 6) return res.status(401).json({ msg: 'All fields are required.' })
@@ -27,11 +27,14 @@ export default async function (req, res) {
   if (isOwner) fields.isOwner = isOwner
 
   try {
-    let update_admin = await Admin.findById(id)
+    const decoded = jwt.verify(jwtToken, process.env.JWT_KEY)
+    req.admin = decoded.id
+
+    let update_admin = await Admin.findById(req.admin)
 
     if (update_admin) {
       update_admin = await Admin.findOneAndUpdate({
-        _id: id
+        _id: req.admin
       },{
         $set: fields
       }, {

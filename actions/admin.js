@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 import setAuthToken from './../utils/setAuthToken'
 
-import { LOGIN_ADMIN, ADD_ADMIN, UPDATE_ADMIN, REMOVE_ADMIN, GET_ADMIN, GET_ADMINS, ADMIN_ERROR } from './types'
+import { LOGIN_ADMIN, ADD_ADMIN, UPDATE_ADMIN, REMOVE_ADMIN, GET_ADMIN, GET_ADMINS, ADMIN_LOGOUT, ADMIN_ERROR } from './types'
 
 const user_token = Cookies.get('user_token') ? Cookies.get('user_token') : ''
 
@@ -88,7 +88,7 @@ export const updateAdmin = async (dispatch, data, success, error) => {
   }
 }
 
-export const removeAdmin = async (dispatch, id, error) => {
+export const removeAdmin = async (dispatch, id) => {
   setAuthToken(user_token)
 
   try {
@@ -103,12 +103,10 @@ export const removeAdmin = async (dispatch, id, error) => {
       type: ADMIN_ERROR,
       payload: err.response.data
     })
-
-    error()
   }
 }
 
-export const getAdmin = async (dispatch, id, error) => {
+export const getAdmin = async (dispatch, id) => {
   setAuthToken(user_token)
 
   try {
@@ -123,12 +121,10 @@ export const getAdmin = async (dispatch, id, error) => {
       type: ADMIN_ERROR,
       payload: err.response.data
     })
-
-    error()
   }
 }
 
-export const getAdmins = async (dispatch, id, error) => {
+export const getAdmins = async (dispatch, id) => {
   setAuthToken(user_token)
 
   try {
@@ -143,7 +139,15 @@ export const getAdmins = async (dispatch, id, error) => {
       type: ADMIN_ERROR,
       payload: err.response.data
     })
-
-    error()
   }
+}
+
+export const logoutAdmin = async (dispatch, redirect) => {
+  Cookies.remove('user_token')
+
+  dispatch({
+    type: ADMIN_LOGOUT
+  })
+
+  redirect()
 }

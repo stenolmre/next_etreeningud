@@ -72,7 +72,7 @@ export const getWorkouts = async (dispatch) => {
   dispatch({
     type: LOAD_FITNESS
   })
-  
+
   try {
     const { data } = await axios.get('/api/fitness/_get')
 
@@ -90,7 +90,7 @@ export const getWorkouts = async (dispatch) => {
 
 export const removeWorkout = async (dispatch, id) => {
   try {
-    const { data } = await axios.delete(`/api/fitness/get?id=${id}`)
+    const { data } = await axios.delete(`/api/fitness/delete?id=${id}`)
 
     dispatch({
       type: REMOVE_WORKOUT,
