@@ -90,7 +90,7 @@ export const getPosts = async (dispatch) => {
 
 export const removePost = async (dispatch, id) => {
   try {
-    const { data } = await axios.delete(`/api/posts/get?id=${id}`)
+    const { data } = await axios.delete(`/api/posts/delete?id=${id}`)
 
     dispatch({
       type: REMOVE_POST,

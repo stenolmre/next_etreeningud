@@ -10,7 +10,7 @@ export default async function (req, res) {
 
   if (!image || !name || !content || !category || !excerpt || !author) return res.status(401).json({ msg: 'Please fill all fields with correct information.' })
 
-  let fields
+  let fields = {}
   if (image) fields.image = image
   if (name) fields.name = name
   if (content) fields.content = content

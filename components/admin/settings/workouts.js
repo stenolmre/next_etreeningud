@@ -62,7 +62,7 @@ const WorkoutSettings = () => {
           </Fragment>)
         }
         <div>
-          <button className="admin_settings_add_writer_btn" onClick={addNewEquipment}><i className="fas fa-plus"/></button>
+          <button className="admin_settings_add_writer_btn" onClick={addNewCategory}><i className="fas fa-plus"/></button>
         </div>
         <h3>Treeningvahendid</h3>
         {
