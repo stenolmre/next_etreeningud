@@ -13,6 +13,7 @@ import Writers from './writers/writers'
 import BlogCategories from './blogcategories'
 import Exercises from './exercises'
 import Workouts from './workouts'
+import WorkoutImages from './workoutimages'
 
 const SettingsContent = () => {
   const { query } = useRouter()
@@ -32,6 +33,8 @@ const SettingsContent = () => {
       return <Exercises />
     case 'treeningud':
       return <Workouts />
+    case 'treeningutepildid':
+      return <WorkoutImages />
     default:
       return null
   }

@@ -235,6 +235,22 @@
   width: 250px;
 }
 
+.admin_add_workout_select_img {
+  width: 710px;
+  margin: 2px 0 10px -2px;
+}
+
+.admin_add_workout_select_img img {
+  width: 35px;
+  height: 35px;
+  margin: 2px;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+  border: 2px solid var(--whitesmoke);
+  border-radius: 4px;
+}
+
 .admin_add_workout label {
   font-size: .75rem;
 }

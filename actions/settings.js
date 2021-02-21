@@ -155,3 +155,26 @@ export const updateBlogCategories = async (dispatch, data, id, success, error) =
     error()
   }
 }
+
+export const updateFitImages = async (dispatch, data, id, success, error) => {
+  const config = { headers: { 'Content-Type': 'application/json' } }
+  const body = JSON.stringify(data)
+
+  try {
+    const { data } = await axios.put(`/api/settings/updatefitimages?id=${id}`, body, config)
+
+    dispatch({
+      type: UPDATE_SETTINGS,
+      payload: data
+    })
+
+    success()
+  } catch (err) {
+    dispatch({
+      type: SETTINGS_ERROR,
+      payload: err.response.data
+    })
+
+    error()
+  }
+}

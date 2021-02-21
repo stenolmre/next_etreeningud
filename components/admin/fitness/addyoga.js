@@ -10,7 +10,7 @@ import Layout from './../utils/layout'
 export default function AddYoga() {
   const dispatchFit = useFitDispatch()
   const dispatchSettings = useSettingsDispatch()
-  const { fit_exercises, fit_categories, fit_equipment, loading } = useSettingsState()
+  const { fit_exercises, fit_categories, fit_equipment, fit_images, loading } = useSettingsState()
 
   useEffect(() => { getSettings(dispatchSettings) }, [dispatchSettings])
 
@@ -36,7 +36,11 @@ export default function AddYoga() {
   return <Layout name="Muuda Joogatundi">
     <div className="admin_add_workout admin_page">
       <label>Pilt <span className="form_required">*</span></label>
-      <input name="image" value={yogaData.image} onChange={onChange}/>
+      <div className="admin_add_workout_select_img">
+        {
+          fit_images && fit_images.map(el => <img key={el} src={el} alt={el} onClick={() => setYogaData({ ...yogaData, image: el })} style={yogaData.image === el ? { border: '2px solid var(--dodgerblue)' } : null}/>)
+        }
+      </div>
       <label>Nimi <span className="form_required">*</span></label>
       <input name="name" value={yogaData.name} onChange={onChange}/>
       <label>Kategooria <span className="form_required">*</span></label>

@@ -31,7 +31,7 @@ const Post = ({ post }) => {
   }
 
   useEffect(() => {
-    if (!isAnalyized && !process.env.NODE_ENV === 'development') {
+    if (!isAnalyized && process.env.NODE_ENV !== 'development') {
       analyize()
     }
   }, [isAnalyized, dispatchAnalytic])

@@ -15,7 +15,7 @@ export default function EditWorkout() {
   const dispatchFit = useFitDispatch()
   const { workout } = useFitState()
   const dispatchSettings = useSettingsDispatch()
-  const { fit_exercises, fit_categories, fit_equipment, loading } = useSettingsState()
+  const { fit_exercises, fit_categories, fit_equipment, fit_images, loading } = useSettingsState()
 
   useEffect(() => {
     getSettings(dispatchSettings)
@@ -73,7 +73,11 @@ export default function EditWorkout() {
     <div className="admin_add_workout admin_page">
       <h3>Treeningu Info</h3>
       <label>Pilt <span className="form_required">*</span></label>
-      <input name="image" value={workoutData.image} onChange={onChange}/>
+      <div className="admin_add_workout_select_img">
+        {
+          fit_images && fit_images.map(el => <img key={el} src={el} alt={el} onClick={() => setWorkoutData({ ...workoutData, image: el })} style={workoutData.image === el ? { border: '2px solid var(--dodgerblue)' } : null}/>)
+        }
+      </div>
       <label>Nimi <span className="form_required">*</span></label>
       <input name="name" value={workoutData.name} onChange={onChange}/>
       <label>Kategooria <span className="form_required">*</span></label>
