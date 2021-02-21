@@ -6,7 +6,7 @@ import PostsContent from './../../components/posts/posts'
 
 const Posts = () => {
   return <Fragment>
-    <Head title="Blog" url="https://etreeningud.ee/posts"/>
+    <Head title="Blogi" url="https://etreeningud.ee/posts"/>
     <Layout>
       <PostsContent />
     </Layout>

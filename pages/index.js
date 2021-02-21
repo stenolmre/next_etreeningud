@@ -6,7 +6,7 @@ import Landing from './../components/landing/landing'
 
 const Index = () => {
   return <Fragment>
-    <Head title="eTreeningud" />
+    <Head title="eTreeningud" url="https://etreeningud.ee"/>
     <Layout landing>
       <Landing />
     </Layout>

@@ -6,7 +6,7 @@ import YogaContent from './../../components/fitness/yoga'
 
 const Yoga = ({ yoga }) => {
   return <Fragment>
-    <Head title={yoga.name} url={`https://etreeningud.ee/yoga/${yoga._id}?name=${yoga.name}`} image={yoga.image} description={yoga.excerpt}/>
+    <Head title={yoga.name} url={`https://etreeningud.ee/yoga/${yoga._id}?name=${yoga.name}`} image={yoga.image} description={yoga.intro}/>
     <YogaContent yoga={yoga}/>
   </Fragment>
 }

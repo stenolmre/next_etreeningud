@@ -6,7 +6,7 @@ import MobilityContent from './../../components/fitness/mobility'
 
 const Mobility = ({ mobility }) => {
   return <Fragment>
-    <Head title={mobility.name} url={`https://etreeningud.ee/mobility/${mobility._id}?name=${mobility.name}`} image={mobility.image} description={mobility.excerpt}/>
+    <Head title={mobility.name} url={`https://etreeningud.ee/mobility/${mobility._id}?name=${mobility.name}`} image={mobility.image} description={mobility.intro}/>
     <MobilityContent mobility={mobility}/>
   </Fragment>
 }
