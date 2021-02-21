@@ -72,8 +72,8 @@ export default function EditYoga() {
       </select>
       <label>Kestvus (min) <span className="form_required">*</span></label>
       <input type="number" name="length" value={yogaData.length} onChange={onChange}/>
-      <label>Lühikirjeldus <span className="form_required">*</span></label>
-      <textarea name="intro" value={yogaData.intro} onChange={onChange}/>
+      <label>Lühikirjeldus (105 tähemärki) <span className="form_required">*</span></label>
+      <textarea name="intro" value={yogaData.intro} onChange={onChange} maxLength="105"/>
       <label>Youtube Video ID <span className="form_required">*</span></label>
       <input name="video" value={yogaData.video} onChange={onChange}/>
       <button disabled={processing} style={{ marginLeft: '0' }} className="admin_add_workout_save_btn" onClick={addNewWorkout}>{processing ? 'Salvestan..' : 'Salvesta'}</button>

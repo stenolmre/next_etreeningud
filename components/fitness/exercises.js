@@ -45,7 +45,7 @@ const Exercise = ({ color, heading, state, setState, type, open, close, id }) =>
           <h4>{x.name}</h4>
           <p>{x.reps}</p>
         </div>
-        <img src={`https://etreeningud.ee/media/videos/training/${x.gif}`} alt={x.name}/>
+        <img src={`https://res.cloudinary.com/etreeningud/image/upload/v1613132726/Harjutuste_Videod/${x.gif}`} alt={x.name}/>
       </div> )
     }
   </Fragment>

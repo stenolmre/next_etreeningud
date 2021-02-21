@@ -73,7 +73,7 @@ export default function EditMobility() {
       <label>Kestvus (min) <span className="form_required">*</span></label>
       <input type="number" name="length" value={mobilityData.length} onChange={onChange}/>
       <label>Lühikirjeldus <span className="form_required">*</span></label>
-      <textarea name="intro" value={mobilityData.intro} onChange={onChange}/>
+      <textarea name="intro" (105 tähemärki) value={mobilityData.intro} onChange={onChange} maxLength="105"/>
       <label>Youtube Video ID <span className="form_required">*</span></label>
       <input name="video" value={mobilityData.video} onChange={onChange}/>
       <button disabled={processing} style={{ marginLeft: '0' }} className="admin_add_workout_save_btn" onClick={updateCurrentWorkout}>{processing ? 'Salvestan..' : 'Salvesta'}</button>

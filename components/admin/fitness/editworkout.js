@@ -96,8 +96,8 @@ export default function EditWorkout() {
       </select>
       <label>Kestvus (min) <span className="form_required">*</span></label>
       <input type="number" name="length" value={workoutData.length} onChange={onChange}/>
-      <label>Lühikirjeldus <span className="form_required">*</span></label>
-      <textarea name="intro" value={workoutData.intro} onChange={onChange}/>
+      <label>Lühikirjeldus (105 tähemärki) <span className="form_required">*</span></label>
+      <textarea name="intro" value={workoutData.intro} onChange={onChange} maxLength="105"/>
       <h3>Soojendus</h3>
       <Header />
       {

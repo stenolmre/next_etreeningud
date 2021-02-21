@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import Layout from './../layout'
 
-const Yoga = ({ mobility }) => {
+const Mobility = ({ mobility }) => {
   return <Layout>
     <div className="yoga_page">
       <div className="blog_card">
@@ -30,4 +30,4 @@ const Yoga = ({ mobility }) => {
   </Layout>
 }
 
-export default Yoga
+export default Mobility

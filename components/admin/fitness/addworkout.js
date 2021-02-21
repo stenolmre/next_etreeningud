@@ -41,7 +41,7 @@ export default function AddWorkout() {
     if (state.gif !== '') {
       const exercise_name = fit_exercises && fit_exercises.filter(el => state.gif === el.fit_exercises_gif)[0].fit_exercises_name
 
-      arr.push({ name: exercise_name, gif: state.gif, reps: '' })
+      arr.push({ name: exercise_name, gif: state.gif, reps: '30 sek' })
 
       setWorkoutData({ ...workoutData })
     }
@@ -74,8 +74,8 @@ export default function AddWorkout() {
       </select>
       <label>Kestvus (min) <span className="form_required">*</span></label>
       <input type="number" name="length" value={workoutData.length} onChange={onChange}/>
-      <label>Lühikirjeldus <span className="form_required">*</span></label>
-      <textarea name="intro" value={workoutData.intro} onChange={onChange}/>
+      <label>Lühikirjeldus (105 tähemärki) <span className="form_required">*</span></label>
+      <textarea name="intro" value={workoutData.intro} onChange={onChange} maxLength="105"/>
       <h3>Soojendus</h3>
       <Header />
       {
