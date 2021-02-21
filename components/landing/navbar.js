@@ -16,11 +16,11 @@ const Navbar = () => {
     {
       loading
         ? <div className="index_loader"><Loader /></div>
-        : <div className="box_navbar">
+        : <div className="landing_navbar">
             <div>
               <img src="https://res.cloudinary.com/etreeningud/image/upload/c_scale,h_113/v1613366877/utils/logo.png" alt="logo"/>
             </div>
-            <div className="box_navbar_navs">
+            <div className="landing_navbar_navs">
               <Link href="/">
                 <a>Esileht</a>
               </Link>
@@ -34,7 +34,7 @@ const Navbar = () => {
                 <a>Kontakt</a>
               </Link>
             </div>
-            <div className="box_social">
+            <div className="landing_social">
               {
                 social && social.map(el => <a target="_blank" rel="noreferrer" key={el._id} href={el.link}>
                   <i className={el.icon}/>

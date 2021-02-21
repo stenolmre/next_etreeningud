@@ -31,7 +31,7 @@ const Navbar = () => {
                 <a className={pathname.includes('fitness') ? 'active_nav' : null}>Treeningud</a>
               </Link>
               <Link href="/posts">
-                <a className={pathname.includes('posts') ? 'active_nav' : null}>Blog</a>
+                <a className={pathname.includes('posts') ? 'active_nav' : null}>Blogi</a>
               </Link>
               <Link href="/#contact">
                 <a>Kontakt</a>

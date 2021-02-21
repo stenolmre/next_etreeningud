@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Video = () => {
+const Video = ({ heading, subheading }) => {
   return <div className="landing_video_container">
     <div>
-      <h2>Treeni jõusaalis. Treeni kodus.</h2>
+      <h2>{heading}</h2>
+      <p>{subheading}</p>
     </div>
     <div className="landing_video">
       <video autoPlay muted controls loop>

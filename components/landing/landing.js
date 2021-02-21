@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
 
+import { useSettingsState, useSettingsDispatch } from './../../context/settings'
+// import { getSettings } from './../../actions/settings'
+
+import Loader from './../utils/loader'
 import Features from './features'
 import Fitness from './fitness'
 import Video from './video'
@@ -10,30 +14,53 @@ import Form from './../contact/form'
 import Navbar from './navbar'
 
 const Landing = () => {
-  return <Fragment>
-    <div className="demo">
-      <div className="box"/>
-      <div className="box_img">
-        <img src="https://etreeningud.ee/media/images/training/e14.jpg" alt=""/>
-      </div>
-      <h1 className="box_watermark">SMILE</h1>
-      <Navbar />
-      <h1 className="box_heading">Great smile skyrockets your confidence!</h1>
-      <p className="box_subheading">Vii oma eesmärgid ellu eTreeningutega. Tasuta treeningkavad koos õpetustega, huvitavad teadmised blogis ja võimalus küsida abi Coach Keisylt.</p>
-      <Link href="/fitnesss"><a className="box_btn">Treeningud</a></Link>
-    </div>
+  const { landing, loading } = useSettingsState()
 
-    <Fitness />
-    <Video />
-    <Posts />
-    <div className="landing_contact" id="contact">
-      <div>
-        <h2>Kirjuta meile!</h2>
-        <p>Meie kõige olulisem väärtus ja eesmärk on kliendisõbralikkus. Kui me saame Sind millegagi aidata, siis palun ära kõhkle meie poole pöördumast. Me anname endast parima, et Sinu ootused saaksid täidetud.</p>
-      </div>
-      <Form />
-    </div>
+  return <Fragment>
+    {
+      loading ? <div className="index_loader"><Loader /></div> : landing && <Fragment>
+
+        <div className="landing">
+          <Navbar />
+          <div className="landing_box"/>
+          <div className="landing_watermark">
+            <h1>{landing.landing_watermark}</h1>
+          </div>
+          <div className="landing_img neumorphism">
+            <img src={landing.landing_image} alt="illustration"/>
+          </div>
+          <div className="landing_content">
+            <h1 className="landing_heading">{landing.landing_title}</h1>
+            <p className="landing_subheading">{landing.landing_subtitle}</p>
+            <Link href={`/${landing.landing_button_link}`}><a className="landing_btn">{landing.landing_button_text}</a></Link>
+          </div>
+        </div>
+
+        <Fitness />
+        <Video heading={landing.landing_video_heading} subheading={landing.landing_video_subheading}/>
+        <Posts />
+        <div className="landing_contact" id="contact">
+          <div>
+            <h2>{landing.landing_contact_heading}</h2>
+            <p>{landing.landing_contact_subheading}</p>
+          </div>
+          <Form />
+        </div>
+      </Fragment>
+    }
   </Fragment>
 }
 
 export default Landing
+
+// <div className="demo">
+//   <div className="box"/>
+//   <div className="box_img">
+//     <img src={landing.landing_image} alt="illustration"/>
+//   </div>
+//   <h1 className="box_watermark">{landing.landing_watermark}</h1>
+//   <Navbar />
+//   <h1 className="box_heading">{landing.landing_title}</h1>
+//   <p className="box_subheading">{landing.landing_subtitle}</p>
+//   <Link href={`/${landing.landing_button_link}`}><a className="box_btn">{landing.landing_button_text}</a></Link>
+// </div>
