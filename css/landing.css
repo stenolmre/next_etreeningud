@@ -3,6 +3,7 @@
   height: 100vh;
   min-height: 600px;
   position: relative;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -114,7 +115,7 @@
   place-items: center;
   position: absolute;
   right: 10vw;
-  bottom: 0;
+  bottom: 5px;
   border-radius: 4px;
 }
 
