@@ -10,6 +10,7 @@ import Landing from './landing'
 import Features from './features'
 import Social from './social'
 import Writers from './writers/writers'
+import BlogCategories from './blogcategories'
 import Exercises from './exercises'
 import Workouts from './workouts'
 
@@ -25,6 +26,8 @@ const SettingsContent = () => {
       return <Social />
     case 'writers':
       return <Writers />
+    case 'blogikategooriad':
+      return <BlogCategories />
     case 'harjutused':
       return <Exercises />
     case 'treeningud':

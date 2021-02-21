@@ -16,15 +16,15 @@ const Sidebar = () => {
     </div>
     <div>
       <Anchor name="töölaud" href="dashboard" />
-      <Anchor name="tehtud treeningud" href="completedworkouts" />
+      <Anchor name="statistika" href="analytics?page=fitness&num=10" path="analytics"/>
       <br/>
       <Anchor name="treeningud" href="fitness" />
       <Anchor name="lisa treening" href="addworkout" />
       <Anchor name="lisa liikuvustreening" href="addmobility" />
       <Anchor name="joogatunnid" href="yoga" />
       <Anchor name="lisa joogatund" href="addyoga" />
-      <Anchor name="postitused" href="posts" />
-      <Anchor name="lisa postitus" href="lisapostitus" />
+      <Anchor name="postitused" href="posts?num=10" path="posts" />
+      <Anchor name="lisa postitus" href="addpost" />
       <br/>
       <Anchor name="administraatorid" href="admins" />
       <Anchor name="seaded" href="settings?page=landing" path="settings" />

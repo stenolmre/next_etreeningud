@@ -1,8 +1,10 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 
 import { usePostDispatch } from './../../context/post'
 import { useWriterState, useWriterDispatch } from './../../context/writer'
 import { getWriters } from './../../actions/writer'
+import { useAnalyticDispatch } from './../../context/analytic'
+import { addAnalytic } from './../../actions/analytic'
 
 import Loader from './../utils/loader'
 import Feedback from './feedback'
@@ -14,12 +16,25 @@ const Post = ({ post }) => {
   const { writers } = useWriterState()
   const dispatchPost = usePostDispatch()
   const { loading, blog_writers } = useWriterState()
+  const dispatchAnalytic = useAnalyticDispatch()
 
   useEffect(() => { getWriters(dispatchWriter) }, [dispatchWriter])
 
   const content = () => {
     return {__html: `${post.content}`};
   }
+
+  const [isAnalyized, setIsAnalyized] = useState(false)
+
+  const analyize = async () => {
+    await addAnalytic(dispatchAnalytic, { id: post._id, category: 'blog' }, () => setIsAnalyized(true))
+  }
+
+  useEffect(() => {
+    if (!isAnalyized && !process.env.NODE_ENV === 'development') {
+      analyize()
+    }
+  }, [isAnalyized, dispatchAnalytic])
 
   return <div className="post">
     {

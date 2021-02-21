@@ -21,7 +21,7 @@ export default async function (req, res) {
   try {
     let edit_post = await Post.findById(id)
 
-    if (edit_workout) {
+    if (edit_post) {
       edit_post = await Post.findOneAndUpdate({
         _id: id
       },{

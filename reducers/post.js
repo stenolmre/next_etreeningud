@@ -57,8 +57,6 @@ export const PostReducer = (state = initialState, action) => {
     case POST_ERROR:
       return {
         ...state,
-        post: null,
-        posts: [],
         loading: false,
         error: payload
       }

@@ -5,23 +5,16 @@ connectDB()
 
 export default async function (req, res) {
   const { id } = req.query
+  const { blog_categories } = req.body
+
+  let fields = {}
+  if (blog_categories) fields.blog_categories = blog_categories
 
   try {
-    const settings = await Settings.find()
+    let edit_blog_settings = await Settings.findById(id)
 
-    if(!settings) return res.status(404).json({ msg: 'Settings not found.' })
-
-    let writers = settings[0].blog_writers
-
-    await writers.push(req.body)
-
-    let fields = {}
-    if (writers) fields.blog_writers = writers
-
-    let add_writer = await Settings.findById(id)
-
-    if (add_writer) {
-      add_writer = await Settings.findOneAndUpdate({
+    if (edit_blog_settings) {
+      edit_blog_settings = await Settings.findOneAndUpdate({
         _id: id
       },{
         $set: fields

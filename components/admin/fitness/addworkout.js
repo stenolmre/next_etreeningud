@@ -133,7 +133,7 @@ export default function AddWorkout() {
       }
       <AddExercise set={setNewCooldown} state={newCooldown} name="cooldown" fitExercises={fit_exercises} action={() => addToArray(newCooldown, workoutData.cooldown)}/>
       <button disabled={processing} className="admin_add_workout_save_btn" onClick={addNewWorkout}>{processing ? 'Salvestan..' : 'Salvesta'}</button>
-      {success && <p style={{ color: 'rgba(0, 112, 243, 1)', marginLeft: '-10px' }}>Treening on edukalt salvestatud.</p>}
+      {success && <p style={{ color: 'rgba(0, 112, 243, 1)', marginLeft: '-10px' }}>Salvestatud.</p>}
       {error && <p style={{ color: 'red', marginLeft: '-10px' }}>Ups. Midagi läks valesti. Täida kõik väljad korrektselt ja proovi uuesti.</p>}
     </div>
   </Layout>

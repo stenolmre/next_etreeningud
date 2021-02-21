@@ -74,7 +74,7 @@ export default function EditMobility() {
       <input name="video" value={mobilityData.video} onChange={onChange}/>
       <button disabled={processing} style={{ marginLeft: '0' }} className="admin_add_workout_save_btn" onClick={updateCurrentWorkout}>{processing ? 'Salvestan..' : 'Salvesta'}</button>
       <Link href="/private/admin/fitness"><a className="admin_edit_workout_go_back">Tagasi</a></Link>
-      {success && <p className="form_success">Liikuvustreening on edukalt salvestatud.</p>}
+      {success && <p className="form_success">Salvestatud.</p>}
       {error && <p className="form_error">Ups. Midagi läks valesti. Täida kõik väljad korrektselt ja proovi uuesti.</p>}
     </div>
   </Layout>

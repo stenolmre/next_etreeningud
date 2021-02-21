@@ -8,6 +8,7 @@ const Navbar = () => {
     <Anchor name="Features" link="features" />
     <Anchor name="Sotsiaalmeedia" link="sotsiaalmeedia" />
     <Anchor name="Blogi autorid" link="writers" />
+    <Anchor name="Blogi lisad" link="blogikategooriad" />
     <Anchor name="Harjutused" link="harjutused" />
     <Anchor name="Treeningute Lisad" link="treeningud" />
   </div>

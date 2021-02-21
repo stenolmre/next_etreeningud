@@ -7,6 +7,11 @@
   padding-bottom: 100px;
 }
 
+.admin_list_load_more_btn {
+  margin: 25px 0 0 0;
+  cursor: pointer;
+}
+
 .admin_row {
   margin: 7px 0 7px -5px;
   padding: 8px 10px;
@@ -557,4 +562,62 @@
   width: 25px;
   height: 25px;
   padding: 0;
+}
+
+/* =======ADMIN=ANALYTICS=NAVBAR======================= */
+.admin_analytics_cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 225px 225px 225px;
+  grid-gap: 25px;
+  align-items: center;
+}
+
+.admin_analytics_card {
+  min-width: 185px;
+  height: 175px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 24px;
+}
+
+.admin_analytics_card h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.admin_analytics_card p {
+  width: 75%;
+}
+
+.admin_analytics_card i {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 100%;
+}
+
+.admin_analytics_navbar {
+  margin: 100px 0 25px 0;
+}
+
+.admin_analytics_navbar a {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 14px;
+}
+
+.admin_row_analytics_header {
+  width: 760px;
+  min-width: 760px;
+  grid-template-columns: 50px calc(100% - 350px) 200px 100px;
+}
+
+.admin_row_analytics {
+  width: 760px;
+  min-width: 760px;
+  grid-template-columns: 50px calc(100% - 350px) 200px 100px;
 }

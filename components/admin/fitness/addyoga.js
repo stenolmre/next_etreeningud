@@ -53,7 +53,7 @@ export default function AddYoga() {
       <label>Youtube Video ID <span className="form_required">*</span></label>
       <input name="video" value={yogaData.video} onChange={onChange}/>
       <button disabled={processing} style={{ marginLeft: '0' }} className="admin_add_workout_save_btn" onClick={addNewWorkout}>{processing ? 'Salvestan..' : 'Salvesta'}</button>
-      {success && <p className="form_success">Joogatund on edukalt salvestatud.</p>}
+      {success && <p className="form_success">Salvestatud.</p>}
       {error && <p className="form_error">Ups. Midagi läks valesti. Täida kõik väljad korrektselt ja proovi uuesti.</p>}
     </div>
   </Layout>

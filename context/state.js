@@ -4,6 +4,7 @@ import PostProvider from './post'
 import SettingsProvider from './settings'
 import AdminProvider from './admin'
 import WriterProvider from './writer'
+import Analytic from './analytic'
 
 const GlobalState = ({ children }) => {
   return <FitnessProvider>
@@ -11,7 +12,9 @@ const GlobalState = ({ children }) => {
       <SettingsProvider>
         <AdminProvider>
           <WriterProvider>
-            { children}
+            <Analytic>
+              { children}
+            </Analytic>
           </WriterProvider>
         </AdminProvider>
       </SettingsProvider>

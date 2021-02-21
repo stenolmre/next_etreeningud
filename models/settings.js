@@ -24,6 +24,7 @@ const SettingsSchema = mongoose.Schema({
   ],
   fit_categories: Array,
   fit_equipment: Array,
+  blog_categories: Array,
   social: [
     {
       _id: {
