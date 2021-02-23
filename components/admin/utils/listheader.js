@@ -7,6 +7,7 @@ const Header = ({ posts }) => {
     <p>{posts ? 'Kategooria' : 'Treening'}</p>
     <p>{posts ? 'Autor' : 'Kestvus'}</p>
     <p>{posts ? 'Kuupäev' : 'Vahendid'}</p>
+    <p>Stat.</p>
     <p>Muuda</p>
   </div>
 }

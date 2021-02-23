@@ -2,6 +2,7 @@ import React from 'react'
 
 import Layout from './../utils/layout'
 import Workouts from './workouts'
+import Analytics from './analytics'
 import Posts from './posts'
 
 const Dashboard = () => {
@@ -9,7 +10,7 @@ const Dashboard = () => {
     <div className="admin_dashboard">
       <div></div>
       <Workouts />
-      <div></div>
+      <Analytics />
       <Posts />
     </div>
   </Layout>

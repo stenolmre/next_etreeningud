@@ -26,9 +26,9 @@ const Fitness = ({ analytics }) => {
     {
       loading ? <div className="admin_loader"><Loader /></div> : <Fragment>
         {
-          analytics && fitness && analytics.filter(el => el.category === 'fitness').map(el => <Link key={el._id} href={`/fitness/${el.id}?name=${findWorkout(el.id).name.toLowerCase().replaceAll(' ', '-')}`}><a className="admin_row admin_list admin_row_analytics">
-            <img src={findWorkout(el.id).image} alt={el.id}/>
-            <p>{findWorkout(el.id).name}</p>
+          analytics && fitness && analytics.filter(el => el.category === 'fitness').map(el => <Link key={el._id} href={`/fitness/${el.id}?name=${findWorkout(el.id) && findWorkout(el.id).name.toLowerCase().replaceAll(' ', '-')}`}><a className="admin_row admin_list admin_row_analytics">
+            <img src={findWorkout(el.id) && findWorkout(el.id).image} alt={el.id}/>
+            <p>{findWorkout(el.id) ? findWorkout(el.id).name : 'Treening on kustutatud.'}</p>
             <p>{new Date(el.createdAt).toLocaleDateString()}</p>
             <p>{`${new Date(el.createdAt).getHours()}.${new Date(el.createdAt).getMinutes()}`}</p>
           </a></Link>)

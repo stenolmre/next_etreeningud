@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 
 import { usePostState, usePostDispatch } from './../../../context/post'
 import { getPosts, removePost } from './../../../actions/post'
+import { useAnalyticState, useAnalyticDispatch } from './../../../context/analytic'
+import { getAnalytics } from './../../../actions/analytic'
 
 import Layout from './../utils/layout'
 import Header from './../utils/listheader'
@@ -12,10 +14,15 @@ import Loader from './../../utils/loader'
 export default function Posts() {
   const router = useRouter()
 
+  const dispatchAnalytic = useAnalyticDispatch()
+  const { analytics } = useAnalyticState()
   const dispatchPost = usePostDispatch()
   const { posts, loading } = usePostState()
 
-  useEffect(() => { getPosts(dispatchPost) }, [dispatchPost])
+  useEffect(() => {
+    getPosts(dispatchPost)
+    getAnalytics(dispatchAnalytic)
+  }, [dispatchPost, dispatchAnalytic])
 
   const [search, setSearch] = useState('')
 
@@ -36,6 +43,7 @@ export default function Posts() {
                   <Anchor id={el._id} name={el.category}/>
                   <Anchor id={el._id} name={el.author}/>
                   <Anchor id={el._id} name={new Date(el.createdAt).toLocaleDateString()}/>
+                  <p>{analytics && analytics.filter(_el => _el.id === el._id).length}</p>
                   <div>
                     <Link href={`/private/admin/editpost?id=${el._id}`}><a>
                       <i className="fas fa-pen"/>

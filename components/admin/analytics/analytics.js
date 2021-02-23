@@ -25,18 +25,24 @@ const Analytics = () => {
         loading
           ? <div className="admin_loader"><Loader /></div>
           : analytics && <Fragment>
+              <h3>Külastatavus</h3>
               <div className="admin_analytics_cards">
-                <Card name="Esilehe Külastuste Arv Kokku" num={analytics.filter(el => el.category === 'landing' ).length} icon="fas fa-eye"/>
-                <Card name="Tehtud Treeninguid Kokku" num={analytics.filter(el => el.category === 'fitness' ).length} icon="fas fa-dumbbell"/>
-                <Card name="Loetud Postitusi Kokku" num={analytics.filter(el => el.category === 'blog' ).length} icon="fas fa-pen"/>
+                <Card name="Kokku" num={analytics.filter(el => el.category === 'landing' ).length} icon="fas fa-thumbs-up"/>
+                <Card name="Sel Aastal" num={analytics.filter(el => el.category === 'landing' ).filter(x => new Date(x.createdAt).getFullYear() === new Date().getFullYear()).length} icon="fas fa-thumbs-up"/>
+                <Card name="Sel Kuul" num={analytics.filter(el => el.category === 'landing' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-thumbs-up"/>
               </div>
-              <div className="admin_analytics_navbar">
-                <Anchor name="Fitness" link="fitness" num="10"/>
-                <Anchor name="Postitused" link="posts" num="10"/>
+              <h3>Tehtud Treeningud</h3>
+              <div className="admin_analytics_cards">
+                <Card name="Kokku" num={analytics.filter(el => el.category === 'fitness' ).length} icon="fas fa-dumbbell"/>
+                <Card name="Sel Aastal" num={analytics.filter(el => el.category === 'fitness' ).filter(x => new Date(x.createdAt).getFullYear() === new Date().getFullYear()).length} icon="fas fa-dumbbell"/>
+                <Card name="Sel Kuul" num={analytics.filter(el => el.category === 'fitness' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-dumbbell"/>
               </div>
-              {
-                query.page === 'fitness' ? <Fitness analytics={analytics}/> : <Posts analytics={analytics}/>
-              }
+              <h3>Loetud Postitused</h3>
+              <div className="admin_analytics_cards">
+                <Card name="Kokku" num={analytics.filter(el => el.category === 'blog' ).length} icon="fas fa-pen"/>
+                <Card name="Sel Aastal" num={analytics.filter(el => el.category === 'blog' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-pen"/>
+                <Card name="Sel Kuul" num={analytics.filter(el => el.category === 'blog' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-pen"/>
+              </div>
             </Fragment>
       }
     </div>

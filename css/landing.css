@@ -396,11 +396,6 @@
   border-bottom: 1px solid var(--graysmoke);
 }
 
-.landing_video_container p {
-  width: 70%;
-  margin-left: 15%;
-}
-
 .landing_video {
   margin-top: 25px;
   padding: 5px;
@@ -416,6 +411,7 @@
   width: 768px;
   border-radius: 10px;
   outline: none;
+  object-fit: cover;
 }
 
 

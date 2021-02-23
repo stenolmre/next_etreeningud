@@ -1,6 +1,11 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useRef, useEffect } from 'react'
+
+import { useAnalyticDispatch } from './../../context/analytic'
+import { addAnalytic } from './../../actions/analytic'
 
 const Exercises = ({ workout }) => {
+  const dispatchAnalytic = useAnalyticDispatch()
+
   const [wu_ids, setWuIds] = useState([])
   const [wo1_ids, setWo1Ids] = useState([])
   const [wo2_ids, setWo2Ids] = useState([])
@@ -21,11 +26,37 @@ const Exercises = ({ workout }) => {
     action([...arr, x])
   }
 
+  const cooldownSection = useRef()
+  const [isCompleted, setIsCompleted] = useState(false)
+
+  const workoutIsCompleted = async () => await addAnalytic(dispatchAnalytic, { id: workout._id, category: 'fitness' }, () => setIsCompleted(true))
+
+  const scrollHandler = _ => {
+    const divPos = cooldownSection.current.getBoundingClientRect().bottom
+    const windowHeight =  window.innerHeight
+
+    if (windowHeight >= divPos) {
+      setIsCompleted(true)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler, true)
+    return () => window.removeEventListener("scroll", scrollHandler, true)
+  }, [])
+
+  useEffect(() => {
+    if (isCompleted && process.env.NODE_ENV !== 'development') {
+      workoutIsCompleted()
+    }
+  }, [isCompleted])
+
   return <div className="workout">
     <Exercise color="rgba(33, 33, 33, .4)" heading="soojendus" state={wu_ids} setState={setWuIds} type={workout.warmup} open={open} close={close} id="start"/>
     <Exercise color="rgba(0, 112, 243)" heading="ring 1" state={wo1_ids} setState={setWo1Ids} type={workout.workout} open={open} close={close}/>
     <Exercise color="rgb(247, 168, 12)" heading="ring 2" state={wo2_ids} setState={setWo2Ids} type={workout.workout} open={open} close={close}/>
     <Exercise color="#ff4500" heading="ring 3" state={wo3_ids} setState={setWo3Ids} type={workout.workout} open={open} close={close}/>
+    <div ref={cooldownSection}/>
     <Exercise color="rgba(33, 33, 33, .4)" heading="cooldown" state={c_ids} setState={setCIds} type={workout.cooldown} open={open} close={close}/>
   </div>
 }

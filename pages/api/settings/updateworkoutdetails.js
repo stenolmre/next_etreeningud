@@ -5,11 +5,12 @@ connectDB()
 
 export default async function (req, res) {
   const { id } = req.query
-  const { fit_categories, fit_equipment } = req.body
+  const { fit_categories, fit_equipment, fit_ending_messages } = req.body
 
   let fields = {}
   if (fit_categories) fields.fit_categories = fit_categories
   if (fit_equipment) fields.fit_equipment = fit_equipment
+  if (fit_ending_messages) fields.fit_ending_messages = fit_ending_messages
 
   try {
     let edit_workout_settings = await Settings.findById(id)

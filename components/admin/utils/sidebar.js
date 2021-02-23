@@ -23,7 +23,7 @@ const Sidebar = () => {
       <Anchor name="lisa liikuvustreening" href="addmobility" />
       <Anchor name="joogatunnid" href="yoga" />
       <Anchor name="lisa joogatund" href="addyoga" />
-      <Anchor name="postitused" href="posts?num=10" path="posts" />
+      <Anchor name="postitused" href="posts" />
       <Anchor name="lisa postitus" href="addpost" />
       <br/>
       <Anchor name="administraatorid" href="admins" />

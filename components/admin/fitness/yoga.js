@@ -3,16 +3,23 @@ import Link from 'next/link'
 
 import { useFitState, useFitDispatch } from './../../../context/fitness'
 import { getWorkouts, removeWorkout } from './../../../actions/fitness'
+import { useAnalyticState, useAnalyticDispatch } from './../../../context/analytic'
+import { getAnalytics } from './../../../actions/analytic'
 
 import Layout from './../utils/layout'
 import Loader from './../../utils/loader'
 import Header from './../utils/listheader'
 
 const Yoga = () => {
+  const dispatchAnalytic = useAnalyticDispatch()
+  const { analytics } = useAnalyticState()
   const dispatchFit = useFitDispatch()
   const { fitness, loading } = useFitState()
 
-  useEffect(() => { getWorkouts(dispatchFit) }, [dispatchFit])
+  useEffect(() => {
+    getWorkouts(dispatchFit)
+    getAnalytics(dispatchAnalytic)
+  }, [dispatchFit, dispatchAnalytic])
 
   const [search, setSearch] = useState('')
 
@@ -26,6 +33,7 @@ const Yoga = () => {
           <Anchor id={fit._id} name={fit.category}/>
           <Anchor id={fit._id} name={`${fit.length}min`}/>
           <Anchor id={fit._id} name={fit.equipment}/>
+          <p>{analytics && analytics.filter(_el => _el.id === fit._id).length}</p>
           <div>
             <Link href={`/private/admin/edityoga?id=${fit._id}`}><a>
               <i className="fas fa-pen"/>

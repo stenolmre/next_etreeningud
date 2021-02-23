@@ -21,7 +21,7 @@ const Posts = () => {
 
   useEffect(() => { getPosts(dispatchPost) }, [dispatchPost])
 
-  const indexOfLastPost = currentPage * postsPerPage
+  const indexOfLastPost = (query.page ? query.page : 1) * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
 
   return <Fragment>
@@ -36,7 +36,7 @@ const Posts = () => {
                   posts.filter(el => query.category ? el.category === query.category : el.category).filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).map(post => <Card key={post._id} post={post}/>).slice(indexOfFirstPost, indexOfLastPost)
                 }
               </div>
-              <Pagination totalPosts={posts.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={Math.ceil(posts.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).length / postsPerPage)} />
+              <Pagination totalPosts={posts.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).length} postsPerPage={postsPerPage} totalPages={Math.ceil(posts.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).length / postsPerPage)} />
             </Fragment>
       }
     </div>

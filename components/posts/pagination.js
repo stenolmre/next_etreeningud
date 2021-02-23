@@ -1,18 +1,22 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-const Pagination = ({ totalPosts, postsPerPage, setCurrentPage, currentPage, totalPages }) => {
+const Pagination = ({ totalPosts, postsPerPage, totalPages }) => {
+  const router = useRouter()
+  const currentPage = router.query.page ? parseInt(router.query.page) : 1
+
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i)
   }
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  const paginate = (pageNumber) => router.push(`/posts?page=${pageNumber}`)
 
-  const paginateToNext = () => currentPage === totalPages ? setCurrentPage(totalPages) : setCurrentPage(currentPage + 1)
+  const paginateToNext = () => currentPage === totalPages ? () => router.push(`/posts?page=${totalPages}`) : () => router.push(`/posts?page=${currentPage + 1}`)
 
-  const paginateToPrevious = () => currentPage === 1 ? setCurrentPage(1) : setCurrentPage(currentPage - 1)
+  const paginateToPrevious = () => currentPage === 1 ? () => router.push(`/posts?page=1`) : () => router.push(`/posts?page=${currentPage - 1}`)
 
   const paginateRight = (number) => {
     paginateToNext(number)

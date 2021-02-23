@@ -7,7 +7,7 @@ import Loader from './../../utils/loader'
 
 const WorkoutSettings = () => {
   const dispatchSettings = useSettingsDispatch()
-  const { id, fit_categories, fit_equipment, loading, error } = useSettingsState()
+  const { id, fit_categories, fit_equipment, fit_ending_messages, loading, error } = useSettingsState()
 
   const [processing, setProcessing] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -15,6 +15,7 @@ const WorkoutSettings = () => {
 
   const [categoriesData, setCategoriesData] = useState({ categories: [] })
   const [equipmentData, setEquipmentData] = useState({ equipments: [] })
+  const [endingMessages, setEndingMessages] = useState({ upper_message: '', lower_message: '' })
 
   useEffect(() => {
     setCategoriesData(categoriesData => ({ ...categoriesData,
@@ -23,7 +24,11 @@ const WorkoutSettings = () => {
     setEquipmentData(equipmentData => ({ ...equipmentData,
       equipments: !fit_equipment ? [] : fit_equipment,
     }))
-  }, [fit_categories, fit_equipment])
+    setEndingMessages(endingMessages => ({ ...endingMessages,
+      upper_message: !fit_ending_messages ? '' : fit_ending_messages.fit_ending_upper_message,
+      lower_message: !fit_ending_messages ? '' : fit_ending_messages.fit_ending_lower_message,
+    }))
+  }, [fit_categories, fit_equipment, fit_ending_messages])
 
   const addNewCategory = () => {
     categoriesData.categories.push('')
@@ -39,7 +44,11 @@ const WorkoutSettings = () => {
     setProcessing(true)
     await updateWorkoutDetails(dispatchSettings, {
       fit_categories: categoriesData.categories,
-      fit_equipment: equipmentData.equipments
+      fit_equipment: equipmentData.equipments,
+      fit_ending_messages: {
+        fit_ending_upper_message: endingMessages.upper_message,
+        fit_ending_lower_message: endingMessages.lower_message
+      }
     }, id, () => setSuccess(true), () => setErr(true))
     setProcessing(false)
   }
@@ -81,6 +90,11 @@ const WorkoutSettings = () => {
         <div>
           <button className="admin_settings_add_writer_btn" onClick={addNewEquipment}><i className="fas fa-plus"/></button>
         </div>
+        <h3>Treeningut Lõpetav Sõnum</h3>
+        <label>Esimene rida <span className="form_required">*</span></label>
+        <input style={{ width: 'calc(100% - 14px)' }} name="upper_message" value={endingMessages.upper_message} onChange={e => setEndingMessages({ ...endingMessages, upper_message: e.target.value })}/>
+        <label>Teine rida <span className="form_required">*</span></label>
+        <input style={{ width: 'calc(100% - 14px)' }} name="lower_message" value={endingMessages.lower_message} onChange={e => setEndingMessages({ ...endingMessages, lower_message: e.target.value })}/>
         <div style={{ marginTop: '25px' }}>
           <button onClick={saveUpdatedWorkoututils} disabled={processing}>{processing ? 'Salvestan..' : 'Salvesta'}</button>
           {success && <p className="form_success">Salvestatud.</p>}

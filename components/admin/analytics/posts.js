@@ -26,9 +26,9 @@ const Fitness = ({ analytics }) => {
     {
       loading ? <div className="admin_loader"><Loader /></div> : <Fragment>
         {
-          analytics && posts && analytics.filter(el => el.category === 'blog').map(el => <Link key={el._id} href={`/posts/${el.id}?name=${findPost(el.id).name.toLowerCase().replaceAll(' ', '-')}`}><a className="admin_row admin_list admin_row_analytics">
-            <img src={findPost(el.id).image} alt={el.id}/>
-            <p>{findPost(el.id).name}</p>
+          analytics && posts && analytics.filter(el => el.category === 'blog').map(el => <Link key={el._id} href={`/posts/${el.id}?name=${findPost(el.id) && findPost(el.id).name.toLowerCase().replaceAll(' ', '-')}`}><a className="admin_row admin_list admin_row_analytics">
+            <img src={findPost(el.id) && findPost(el.id).image} alt={el.id}/>
+            <p>{findPost(el.id) ? findPost(el.id).name : 'Postitus on kustutatud.'}</p>
             <p>{new Date(el.createdAt).toLocaleDateString()}</p>
             <p>{`${new Date(el.createdAt).getHours()}.${new Date(el.createdAt).getMinutes()}`}</p>
           </a></Link>).slice(0, numOfLoadedPosts)
