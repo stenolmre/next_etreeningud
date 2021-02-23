@@ -21,6 +21,9 @@ const Searchbar = ({ onChange, placeholder, href, fitness }) => {
         <Category name="Jooga" icon="fas fa-peace" category="jooga"/>
       </div>
     }
+    {
+      router.query.search && <p>Leitud tulemused otsingule "{router.query.search}".</p>
+    }
   </div>
 }
 

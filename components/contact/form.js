@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import emailjs from 'emailjs-com'
 
 import validateEmail from './../../utils/validateemail'
 
@@ -10,7 +11,7 @@ const Form = () => {
 
   const onChange = e => setContactData({ ...contactData, [e.target.name]: e.target.value })
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault()
     setProcessing(true)
 
@@ -24,7 +25,13 @@ const Form = () => {
       setError({ state: true, email: '', message: 'Palun sisesta sõnum.' })
       setProcessing(false)
     } else {
-      console.log(contactData)
+      const templateParams = {
+        client_email: contactData.email,
+        client_message: contactData.message
+      }
+
+      await emailjs.send('gmail', 'feedback_form_people', templateParams, 'user_d35Shv7J12m9DhmwjDmiA')
+
       setProcessing(false)
       setError({ state: false, email: '', message: '' })
       setSuccess(true)

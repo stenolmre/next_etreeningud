@@ -52,15 +52,3 @@ const Landing = () => {
 }
 
 export default Landing
-
-// <div className="demo">
-//   <div className="box"/>
-//   <div className="box_img">
-//     <img src={landing.landing_image} alt="illustration"/>
-//   </div>
-//   <h1 className="box_watermark">{landing.landing_watermark}</h1>
-//   <Navbar />
-//   <h1 className="box_heading">{landing.landing_title}</h1>
-//   <p className="box_subheading">{landing.landing_subtitle}</p>
-//   <Link href={`/${landing.landing_button_link}`}><a className="box_btn">{landing.landing_button_text}</a></Link>
-// </div>
