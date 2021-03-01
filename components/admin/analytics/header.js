@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Header = ({ posts }) => {
+const Header = ({ index }) => {
   return <div className="admin_row_analytics_header admin_row_header">
-    <p>#</p>
-    <p>Nimi</p>
-    <p>Kuupäev</p>
-    <p>Kellaaeg</p>
+    <p>{index}</p>
+    <p>Külastatavus</p>
+    <p>Tehtud Treeningud</p>
+    <p>Loetud Postitused</p>
   </div>
 }
 

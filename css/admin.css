@@ -650,18 +650,18 @@
 }
 
 /* =======ADMIN=ANALYTICS=NAVBAR======================= */
-.admin_analytics_cards {
+.admin_analytics {
   width: 100%;
+  min-width: 900px;
   margin: 0 0 50px -10px;
-  display: grid;
-  grid-template-columns: 175px 175px 175px;
-  grid-gap: 25px;
-  align-items: center;
+  display: flex;
 }
 
 .admin_analytics_card {
+  width: 135px;
   min-width: 135px;
-  height: 135px;
+  height: 155px;
+  margin: 0 0 0 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -697,13 +697,20 @@
 }
 
 .admin_row_analytics_header {
-  width: 760px;
-  min-width: 760px;
-  grid-template-columns: 50px calc(100% - 350px) 200px 100px;
+  width: 900px;
+  min-width: 900px;
+  grid-template-columns: 150px 250px 250px 250px;
 }
 
 .admin_row_analytics {
-  width: 760px;
-  min-width: 760px;
-  grid-template-columns: 50px calc(100% - 350px) 200px 100px;
+  width: 900px;
+  min-width: 900px;
+  grid-template-columns: 150px 250px 250px 250px;
+}
+
+.admin_analytic_year_selection {
+  margin-right: 10px;
+  padding: 5px 15px;
+  border-radius: 14px;
+  cursor: pointer;
 }

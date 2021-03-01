@@ -7,9 +7,10 @@ import { getAnalytics } from './../../../actions/analytic'
 
 import Layout from './../utils/layout'
 import Loader from './../../utils/loader'
+import Calendar from './../utils/calendar'
 import Card from './card'
-import Fitness from './fitness'
-import Posts from './posts'
+import Yearly from './yearly'
+import Monthly from './monthly'
 
 const Analytics = () => {
   const { query } = useRouter()
@@ -19,30 +20,22 @@ const Analytics = () => {
 
   useEffect(() => { getAnalytics(dispatchAnalytic) }, [dispatchAnalytic])
 
+  const [selectedDate, setSelectedDate] = useState(new Date())
+
   return <Layout name="Statistika">
     <div className="admin_page">
       {
         loading
           ? <div className="admin_loader"><Loader /></div>
           : analytics && <Fragment>
-              <h3>Külastatavus</h3>
-              <div className="admin_analytics_cards">
-                <Card name="Kokku" num={analytics.filter(el => el.category === 'landing' ).length} icon="fas fa-thumbs-up"/>
-                <Card name="Sel Aastal" num={analytics.filter(el => el.category === 'landing' ).filter(x => new Date(x.createdAt).getFullYear() === new Date().getFullYear()).length} icon="fas fa-thumbs-up"/>
-                <Card name="Sel Kuul" num={analytics.filter(el => el.category === 'landing' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-thumbs-up"/>
+              <div className="admin_analytics">
+                <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+                <Card num={analytics.filter(el => el.category === 'landing').filter(el => new Date(el.createdAt).toLocaleDateString() === selectedDate.toLocaleDateString()).length} name="eTreeningute külastatavus" icon="fas fa-thumbs-up"/>
+                <Card num={analytics.filter(el => el.category === 'fitness').filter(el => new Date(el.createdAt).toLocaleDateString() === selectedDate.toLocaleDateString()).length} name="Tehtud treeningud" icon="fas fa-dumbbell"/>
+                <Card num={analytics.filter(el => el.category === 'blog').filter(el => new Date(el.createdAt).toLocaleDateString() === selectedDate.toLocaleDateString()).length} name="Loetud postitused" icon="fas fa-pen"/>
               </div>
-              <h3>Tehtud Treeningud</h3>
-              <div className="admin_analytics_cards">
-                <Card name="Kokku" num={analytics.filter(el => el.category === 'fitness' ).length} icon="fas fa-dumbbell"/>
-                <Card name="Sel Aastal" num={analytics.filter(el => el.category === 'fitness' ).filter(x => new Date(x.createdAt).getFullYear() === new Date().getFullYear()).length} icon="fas fa-dumbbell"/>
-                <Card name="Sel Kuul" num={analytics.filter(el => el.category === 'fitness' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-dumbbell"/>
-              </div>
-              <h3>Loetud Postitused</h3>
-              <div className="admin_analytics_cards">
-                <Card name="Kokku" num={analytics.filter(el => el.category === 'blog' ).length} icon="fas fa-pen"/>
-                <Card name="Sel Aastal" num={analytics.filter(el => el.category === 'blog' ).filter(x => new Date(x.createdAt).getFullYear() === new Date().getFullYear()).length} icon="fas fa-pen"/>
-                <Card name="Sel Kuul" num={analytics.filter(el => el.category === 'blog' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-pen"/>
-              </div>
+              <Yearly analytics={analytics}/>
+              <Monthly analytics={analytics}/>
             </Fragment>
       }
     </div>
