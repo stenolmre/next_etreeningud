@@ -67,7 +67,7 @@ export default function EditYoga() {
       </select>
       <label>Autor <span className="form_required">*</span></label>
       <input name="author" value={postData.author} onChange={onChange}/>
-      <label>Lühikirjeldus (100 tähemärki) <span className="form_required">*</span></label>
+      <label>Lühikirjeldus (105 tähemärki) <span className="form_required">*</span></label>
       <textarea name="excerpt" value={postData.excerpt} onChange={onChange} maxLength="104"/>
       <label>Sisu <span className="form_required">*</span></label>
       <textarea name="content" value={postData.content} onChange={onChange}/>

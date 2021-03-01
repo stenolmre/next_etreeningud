@@ -40,7 +40,7 @@ const Analytics = () => {
               <h3>Loetud Postitused</h3>
               <div className="admin_analytics_cards">
                 <Card name="Kokku" num={analytics.filter(el => el.category === 'blog' ).length} icon="fas fa-pen"/>
-                <Card name="Sel Aastal" num={analytics.filter(el => el.category === 'blog' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-pen"/>
+                <Card name="Sel Aastal" num={analytics.filter(el => el.category === 'blog' ).filter(x => new Date(x.createdAt).getFullYear() === new Date().getFullYear()).length} icon="fas fa-pen"/>
                 <Card name="Sel Kuul" num={analytics.filter(el => el.category === 'blog' ).filter(x => new Date(x.createdAt).getMonth() === new Date().getMonth()).length} icon="fas fa-pen"/>
               </div>
             </Fragment>

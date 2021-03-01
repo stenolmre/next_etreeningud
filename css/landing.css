@@ -72,7 +72,7 @@
 @media (max-width: 768px) {
   .landing_box {
     height: 25%;
-    top: 40%;
+    top: 35%;
     left: 0;
   }
 }
@@ -102,7 +102,7 @@
 @media (max-width: 768px) {
   .landing_watermark {
     height: 25%;
-    top: 53%;
+    top: 48%;
     left: 25vw;
   }
 }
@@ -132,7 +132,7 @@
     width: 90vw;
     height: 35vh;
     right: 5vw;
-    top: 125px;
+    top: 100px;
   }
 
   .landing_img img {
@@ -194,7 +194,7 @@
 
 @media (max-width: 420px) {
   .landing_content {
-    top: 65%;
+    top: 62%;
   }
 
   .landing_btn {

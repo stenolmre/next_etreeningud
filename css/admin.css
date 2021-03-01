@@ -262,6 +262,43 @@
   text-transform: uppercase;
 }
 
+/* =======MOST=ORDERED================================ */
+.most_ordered_item {
+  width: calc(100% - 40px);
+  height: 100%;
+  padding-right: 40px;
+  display: grid;
+  grid-template-columns: auto 300px;
+  grid-gap: 25px;
+}
+
+.most_ordered_item h5 {
+  margin-bottom: 10px;
+}
+
+.semi-circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  border: 4px solid #fff;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  transform: rotate(-45deg);
+  padding: 10px;
+}
+
+.most_ordered_item img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: rotate(45deg);
+  box-shadow: 2px 2px 6px rgba(33, 33, 33, .3);
+  background: white;
+}
+
 /* =======ADD=WORKOUT================================= */
 .admin_add_workout {
   width: 250px;
