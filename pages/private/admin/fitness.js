@@ -28,7 +28,7 @@ Fitness.getInitialProps = async ctx => {
 
     const { data } = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
       ? await axios.get('http://localhost:3000/api/admin/get')
-      : await axios.get('https://next-etreeningud.vercel.app/api/admin/get')
+      : await axios.get('https://etreeningud.ee/api/admin/get')
 
     return { user_token, name: data.admin.name }
   } catch (err) {
