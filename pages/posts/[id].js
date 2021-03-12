@@ -19,7 +19,7 @@ Post.getInitialProps = async ctx => {
 
   const { data } = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
     ? await axios.get(`http://localhost:3000/api/posts/get?id=${id}`)
-    : await axios.get(`https://next-etreeningud.vercel.app/api/posts/get?id=${id}`)
+    : await axios.get(`https://etreeningud.ee/api/posts/get?id=${id}`)
 
   return { post: data }
 }
