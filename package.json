@@ -22,9 +22,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.16",
     "nanoid": "^3.1.20",
-    "next": "^10.0.6",
+    "next": "^11.1.2",
     "next-cookies": "^2.0.3",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "sass": "^1.39.0"
   }
 }
