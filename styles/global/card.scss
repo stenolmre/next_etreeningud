@@ -1,0 +1,70 @@
+.card {
+  width: 250px;
+  height: 300px;
+  border-radius: 1rem;
+  background: $whitesmoke;
+  @include box-shadow;
+  overflow: hidden;
+
+  @include grid($gap: 1rem, $rows: 110px 105px 1fr);
+
+  > .card_header {
+    position: relative;
+    @include grid($gap: 0, $columns: 145px auto);
+
+    > .card_image {
+      width: 150px;
+      height: 150px;
+      padding: .25rem;
+      border-radius: 100%;
+      @include box-shadow($mixed: true);
+      @include position(relative, $top: -25px, $left: -25px);
+
+      > img {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    div {
+      > p {
+        font-weight: 600;
+        margin: 2rem 0 0 0;
+      }
+
+      > span {
+        font-size: .75rem;
+      }
+    }
+  }
+
+  .card_info {
+    padding: .75rem;
+
+    > h2 {
+      margin: 0 0 .25rem 0;
+      font-size: 1.2rem;
+    }
+  }
+
+  > .card_footer {
+    padding: .75rem;
+    @include flex($align: center, $justify: space-between);
+
+    > i {
+      width: 2rem;
+      height: 2rem;
+      @include icon-shadow;
+      border-radius: 100%;
+      @include place-center;
+      background: $whitesmoke;
+    }
+
+    > span {
+      font-size: .75rem;
+    }
+  }
+}

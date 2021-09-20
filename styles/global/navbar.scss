@@ -1,0 +1,87 @@
+nav {
+  width: 100%;
+  height: $navbarHeight;
+  padding: 0 5rem;
+  @include position(fixed);
+  @include grid($gap: 0, $columns: .75fr 2fr 1fr);
+  align-items: center;
+  background: $whitesmoke;
+  border-bottom: 1px solid rgba(33, 33, 33, .1);
+  z-index: 1000;
+
+  @media (max-width: $mobile) {
+    @include grid($gap: 0, $columns: 1fr 1fr);
+    padding: 0 1rem;
+  }
+
+  > #logo {
+    @include flex($align: center);
+
+    > .logo {
+      width: 1.5rem;
+      height: 3rem;
+      display: inline-block;
+      background-image: url('https://res.cloudinary.com/etreeningud/image/upload/v1631998622/next_etreeningud_logo_coogb5.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    > span {
+      font-size: .75rem;
+      color: $dodgerblue;
+      font-weight: 600;
+      margin-left: .5rem;
+    }
+  }
+
+  > #navs {
+    @include only-desktop;
+
+    > a {
+      padding: .5rem 1rem;
+
+      font-weight: 600;
+      text-transform: uppercase;
+      @include transition($time: 250ms, $value: color);
+      cursor: pointer;
+
+      &:hover {
+        color: $dodgerblue;
+      }
+    }
+
+    > a + a {
+      margin-left: 1rem;
+    }
+
+    > .active {
+      color: $dodgerblue;
+      border-radius: 1rem;
+      @include box-shadow($inset: true);
+    }
+  }
+
+  > #social {
+    $socialWidth: 70%;
+    width: $socialWidth;
+    margin-left: 100% - $socialWidth;
+    padding: .5rem 0;
+    @include flex-center-center;
+    border-radius: 1rem;
+    @include box-shadow;
+
+    > a {
+      font-size: 1.1rem;
+      @include transition($time: 250ms, $value: color);
+
+      &:hover {
+        color: $dodgerblue;
+      }
+    }
+
+    > a + a {
+      margin-left: 1rem;
+    }
+  }
+}

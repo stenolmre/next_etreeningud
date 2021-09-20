@@ -1,0 +1,79 @@
+$sidebarWidth: 225px;
+$sidebarMinWidth: 25px;
+
+.sidebar {
+  width: $sidebarWidth;
+  height: unquote('calc(100vh - #{$navbarHeight})');
+  @include position(fixed, $top: $navbarHeight, $left: 0);
+  border-right: 1px solid rgba(33, 33, 33, .1);
+  background: rgb(249, 249, 249);
+  @include transition($time: 350ms, $value: width);
+
+  > .sidebar_toggle_button {
+    $width: 1rem;
+    width: $width;
+    height: 2.5rem;
+    background: rgb(249, 249, 249);
+    @include position(absolute, $top: 3rem, $right: -$width);
+    @include place-center;
+    border-top: 1px solid rgba(33, 33, 33, .1);
+    border-right: 1px solid rgba(33, 33, 33, .1);
+    border-bottom: 1px solid rgba(33, 33, 33, .1);
+    font-size: .7rem;
+    cursor: pointer;
+  }
+
+  > .sidebar_content {
+    padding: 3rem 1rem 1rem 1rem;
+
+    > h4 {
+      margin-top: 2rem;
+      opacity: .7;
+
+      &:nth-of-type(1) {
+        margin-top: 0;
+      }
+    }
+
+    > .active {
+      color: $dodgerblue;
+      font-weight: 600;
+    }
+
+    > div {
+      margin: .5rem 0;
+      cursor: pointer;
+      font-size: .8rem;
+
+      &:hover {
+        color: $dodgerblue;
+      }
+    }
+  }
+}
+
+.sidebar_minimized {
+  width: 25px;
+
+  > .sidebar_content {
+    display: none;
+  }
+}
+
+.sidebar + .page_container {
+  margin-left: $sidebarWidth + 50px;
+  @include transition($time: 350ms, $value: margin);
+}
+
+.sidebar_minimized + .page_container {
+  margin-left: $sidebarMinWidth + 50px;
+  @include transition($time: 350ms, $value: margin);
+}
+
+.page_container {
+  padding: $navbarHeight + 2.5rem 0 2.5rem 0;
+
+  > h1 {
+    margin-left: 1rem;
+  }
+}

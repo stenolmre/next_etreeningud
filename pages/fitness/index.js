@@ -2,10 +2,8 @@ import React, { Fragment } from 'react'
 import Head from 'next/head'
 
 import Layout from '@c/global/layout'
-import Landing from '@c/views/landing'
-import Fitness from '@c/apps/landing/fitness'
-import Features from '@c/apps/landing/features'
-import Blog from '@c/apps/landing/blog'
+import Sidebar from '@c/apps/fitness/sidebar'
+import Fitness from '@c/apps/fitness/fitness'
 
 const Index = () => {
   return <Fragment>
@@ -13,10 +11,8 @@ const Index = () => {
         <title>eTreeningud</title>
     </Head>
     <Layout>
-      <Landing />
+      <Sidebar />
       <Fitness />
-      <Features />
-      <Blog />
     </Layout>
   </Fragment>
 }
