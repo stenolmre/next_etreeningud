@@ -1,6 +1,5 @@
 import React from 'react'
 
-import useFitness from '@hooks/useFitness'
 import useEquipments from '@hooks/useEquipments'
 import useTypes from '@hooks/useTypes'
 import { useFitDispatch } from '@context/fitness'
@@ -8,9 +7,8 @@ import { addFitFilter, removeFitFilter } from '@actions/fitness'
 
 import Sidebar from '@c/global/sidebar'
 
-const FitnessSidebar = () => {
+const FitnessSidebar = ({ filterBy, sortBy }) => {
   const dispatchFit = useFitDispatch()
-  const { filterBy, sortBy } = useFitness()
 
   return <Sidebar>
     <h4>Filter</h4>

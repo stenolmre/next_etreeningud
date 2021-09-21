@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
 
-import useFitness from '@hooks/useFitness'
 import { filterFitness, sortFitness } from '@utils/filterFitness'
 
 import Card from '@c/global/card'
 
-const Fitness = () => {
-  const { fitness, filterBy, sortBy } = useFitness()
-
+const Fitness = ({ fitness, filterBy, sortBy }) => {
   return <div className="page_container">
     <h1>Fitness</h1>
     <div className="page">
@@ -18,7 +15,7 @@ const Fitness = () => {
           category={workout.category}
           equipment={workout.equipment}
           title={workout.name}
-          info={workout.length + 'min'}
+          info={workout.length + ' min'}
           icon="fas fa-heartbeat"
           date={workout.createdAt}
         />)

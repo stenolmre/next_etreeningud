@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useFitState, useFitDispatch } from '@context/fitness'
 import { getWorkouts } from '@actions/fitness'
 
-const useEquipments = () => {
+const useFitness = () => {
   const dispatchFit = useFitDispatch()
   const fitness = useFitState()
 
@@ -12,4 +12,4 @@ const useEquipments = () => {
   return fitness
 }
 
-export default useEquipments
+export default useFitness

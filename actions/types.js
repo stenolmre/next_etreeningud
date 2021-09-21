@@ -16,6 +16,7 @@ export const RATE_POST = 'RATE_POST'
 export const COMMENT_POST = 'COMMENT_POST'
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const POST_ERROR = 'POST_ERROR'
+export const ADD_POST_FILTER = 'ADD_POST_FILTER'
 
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS'
 export const GET_SETTINGS = 'GET_SETTINGS'

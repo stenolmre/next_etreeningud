@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Head from 'next/head'
 
 import Layout from '@c/global/layout'
-import Sidebar from '@c/global/sidebar'
+import Sidebar from '@c/apps/blog/sidebar'
 import Blog from '@c/apps/blog/blog'
 
 const Index = () => {

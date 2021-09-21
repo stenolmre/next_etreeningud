@@ -1,9 +1,15 @@
-import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR } from '@actions/types'
+import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR, ADD_POST_FILTER } from '@actions/types'
 
 export const initialState = {
   post: null,
   posts: [],
   loading: true,
+  sortBy: {
+    Latest: true,
+    Oldest: false,
+    AZ: false,
+    ZA: false
+  },
   error: null
 }
 
@@ -53,6 +59,17 @@ export const PostReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true
+      }
+    case ADD_POST_FILTER:
+      const hasFilterKey = Object.keys(payload).map(el => Object.keys(state.sortBy).includes(el)).toString() === 'true' ? true : false
+      return {
+        ...state,
+        sortBy: {
+          Latest: payload.Latest != null ? payload.Latest : hasFilterKey ? false : state.sortBy.Latest,
+          Oldest: payload.Oldest != null ? payload.Oldest : hasFilterKey ? false : state.sortBy.Oldest,
+          AZ: payload.AZ != null ? payload.AZ : hasFilterKey ? false : state.sortBy.AZ,
+          ZA: payload.ZA != null ? payload.ZA : hasFilterKey ? false : state.sortBy.ZA
+        }
       }
     case POST_ERROR:
       return {

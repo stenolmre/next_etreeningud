@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR } from './types'
+import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR, ADD_POST_FILTER } from './types'
 
 export const getPosts = async (dispatch) => {
   dispatch({
@@ -19,4 +19,11 @@ export const getPosts = async (dispatch) => {
       payload: err.response.data
     })
   }
+}
+
+export const addPostFilter = (dispatch, data) => {
+  dispatch({
+    type: ADD_POST_FILTER,
+    payload: data
+  })
 }

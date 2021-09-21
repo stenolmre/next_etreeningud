@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react'
 
-import { usePostState, usePostDispatch } from '@context/post'
-import { getPosts } from '@actions/post'
+import usePosts from '@hooks/usePosts'
+import sort from '@utils/sort'
 
 import Card from '@c/global/card'
 
 const Fitness = () => {
-  const dispatchPost = usePostDispatch()
-  const { posts } = usePostState()
-
-  useEffect(() => { getPosts(dispatchPost) }, [dispatchPost])
+  const { posts, sortBy } = usePosts()
 
   return <div className="page_container">
     <h1>Blog</h1>
     <div className="page">
       {
-        posts && posts.map(post => <Card
+        posts && sort(posts, sortBy).map(post => <Card
           key={post._id}
           image={post.image}
           category={post.category}
