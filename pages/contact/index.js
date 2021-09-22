@@ -6,7 +6,7 @@ import useTimer from '@hooks/useTimer'
 import Layout from '@c/global/layout'
 
 const Index = () => {
-  const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0)
+  const { timer, isActive, isPaused, start, pause, resume, reset } = useTimer(0)
 
   if (timer % 13 === 0) console.log(timer)
 
@@ -29,13 +29,13 @@ const Index = () => {
         <div className='buttons'>
           {
             !isActive && !isPaused ?
-              <button onClick={handleStart}>Start</button>
+              <button onClick={start}>Start</button>
               : (
-                isPaused ? <button onClick={handlePause}>Pause</button> :
-                  <button onClick={handleResume}>Resume</button>
+                isPaused ? <button onClick={pause}>Pause</button> :
+                  <button onClick={resume}>Resume</button>
               )
           }
-          <button onClick={handleReset} disabled={!isActive}>Reset</button>
+          <button onClick={reset} disabled={!isActive}>Reset</button>
         </div>
       </div>
     </Layout>
