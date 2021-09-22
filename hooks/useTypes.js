@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react'
 
-import { useFitState, useFitDispatch } from '@context/fitness'
-import { getWorkouts } from '@actions/fitness'
+import useFitness from '@hooks/useFitness'
 
 const useTypes = () => {
-  const dispatchFit = useFitDispatch()
-  const { fitness } = useFitState()
-
-  useEffect(() => { getWorkouts(dispatchFit) }, [dispatchFit])
-
+  const { fitness } = useFitness()
   let types = {}
 
   fitness && fitness.map(workout => workout.category).forEach(type => {
