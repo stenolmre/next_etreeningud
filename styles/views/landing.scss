@@ -58,7 +58,8 @@
   row-gap: .5rem;
 }
 
-.landing_section {
+.landing_section,
+.landing_section_col {
   width: 95vw;
   margin: 0 auto;
   padding: 5rem 0;
@@ -85,6 +86,10 @@
       margin: 1rem;
     }
   }
+}
+
+.landing_section_col > .landing_children {
+  display: block;
 }
 
 .feature {

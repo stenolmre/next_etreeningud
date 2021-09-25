@@ -1,0 +1,12 @@
+.preview {
+  max-width: 768px;
+  margin: 0 auto;
+  @include grid($columns: 75px auto 100px);
+
+  > img {
+    width: 75px;
+    height: 61px;
+    object-fit: cover;
+    object-position: center;
+  }
+}

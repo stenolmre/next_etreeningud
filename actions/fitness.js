@@ -7,7 +7,7 @@ export const getWorkouts = async (dispatch) => {
   })
 
   try {
-    const { data } = await axios.get('/api/fitness/_get')
+    const { data } = await axios.get('/api/fitness')
 
     dispatch({
       type: GET_WORKOUTS,

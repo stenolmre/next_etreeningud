@@ -7,6 +7,7 @@
       "@context/*": ["context/*"],
       "@helpers/*": ["helpers/*"],
       "@hooks/*": ["hooks/*"],
+      "@models/*": ["models/*"],
       "@reducers/*": ["reducers/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
