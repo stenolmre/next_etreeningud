@@ -9,9 +9,10 @@ import Fitness from '@c/apps/fitness/fitness'
 
 const Index = () => {
   const { fitness, sortBy, filterBy } = useFitness()
+
   return <Fragment>
     <Head>
-        <title>eTreeningud</title>
+      <title>eTreeningud</title>
     </Head>
     <Layout>
       <Sidebar sortBy={sortBy} filterBy={filterBy}/>

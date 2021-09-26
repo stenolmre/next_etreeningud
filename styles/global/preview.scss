@@ -1,12 +1,59 @@
 .preview {
   max-width: 768px;
   margin: 0 auto;
+  padding: .25rem;
   @include grid($columns: 75px auto 100px);
+  border: 1px solid rgba(33, 33, 33, .05);
+  border-radius: .25rem;
 
   > img {
     width: 75px;
     height: 61px;
     object-fit: cover;
     object-position: center;
+  }
+
+  > .preview_details {
+    @include flex($direction: column, $justify: center);
+
+    > h4 {
+      margin: 0;
+    }
+
+    > div {
+      > span {
+        font-size: .75rem;
+
+        + span {
+          padding-left: .75rem;
+          margin-left: .75rem;
+          position: relative;
+
+          &::before {
+            content: '• ';
+            @include position(absolute, $top: 50%, $left: 0);
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+
+  > .preview_rating {
+    @include flex-center-center;
+
+    > label {
+      > input[type = 'radio'] {
+        display: none;
+      }
+
+      i {
+        opacity: .6;
+      }
+
+      > .gold {
+        color: #ffc107;
+      }
+    }
   }
 }

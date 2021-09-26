@@ -11,7 +11,7 @@ const FitnessSidebar = ({ filterBy, sortBy }) => {
   const dispatchFit = useFitDispatch()
 
   return <Sidebar>
-    <h4>Filter</h4>
+    <h4>Sort by</h4>
     {
       Object.entries(sortBy).map(([key, value]) => <div key={key} className={sortBy[key] ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { [key]: true })}>{key}</div>)
     }

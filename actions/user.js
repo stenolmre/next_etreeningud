@@ -25,7 +25,6 @@ export const login = async (dispatch, data, success, error) => {
       success()
     }
   } catch (err) {
-    console.log(err);
     dispatch({
       type: USER_ERROR,
       payload: err.response.data

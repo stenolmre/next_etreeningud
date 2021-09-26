@@ -7,7 +7,7 @@ const usePosts = () => {
   const dispatchPost = usePostDispatch()
   const posts = usePostState()
 
-  useEffect(() => { getPosts(dispatchPost) }, [dispatchPost])
+  if (!posts.posts.length) useEffect(() => { getPosts(dispatchPost) }, [dispatchPost])
 
   return posts
 }

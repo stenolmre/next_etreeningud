@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react'
 
-import { useFitState, useFitDispatch } from '@context/fitness'
-import { getWorkouts } from '@actions/fitness'
+import useFitness from '@hooks/useFitness'
 
 import Section from '@c/apps/landing/section'
 import Card from '@c/global/card'
 
 const Fitness = () => {
-  const dispatchFit = useFitDispatch()
-  const { fitness } = useFitState()
-
-  useEffect(() => { getWorkouts(dispatchFit) }, [dispatchFit])
+  const { fitness } = useFitness()
 
   return <Section title="Working out can be enjoyable." subtitle="Latest workouts" button="All workouts" link="/fitness">
     {
@@ -21,7 +17,6 @@ const Fitness = () => {
             category={workout.category}
             equipment={workout.equipment}
             title={workout.name}
-            info={workout.intro}
             icon="fas fa-heartbeat"
             date={workout.createdAt.slice(0, 10).replaceAll('-', '/')}
           />).slice(0, 3)

@@ -11,7 +11,7 @@ const BlogSidebar = () => {
   const { sortBy } = usePosts()
 
   return <Sidebar>
-    <h4>Filter</h4>
+    <h4>Sort by</h4>
     {
       Object.entries(sortBy).map(([key, value]) => <div key={key} className={sortBy[key] ? 'active' : ''} onClick={() => addPostFilter(dispatchPost, { [key]: true })}>{key}</div>)
     }

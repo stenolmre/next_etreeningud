@@ -1,4 +1,5 @@
 .landing {
+  position: relative;
   padding: $navbarHeight + 6rem 5rem 9rem 5rem;
   @include grid($gap: 2rem, $columns: 1fr 1fr);
   border-bottom: 1px solid rgba(33, 33, 33, .1);
@@ -53,7 +54,7 @@
 }
 
 .landing_bottom_dots {
-  @include position(absolute, $bottom: 8rem, $right: 2.5rem);
+  @include position(absolute, $bottom: 4rem, $right: 2.5rem);
   @include grid($gap: 1rem, $columns: repeat(10, 1fr));
   row-gap: .5rem;
 }
@@ -90,6 +91,10 @@
 
 .landing_section_col > .landing_children {
   display: block;
+
+  > div {
+    margin: 1rem auto;
+  }
 }
 
 .feature {

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 
-import { filterFitness, sortFitness } from '@utils/filterFitness'
+import sort from '@utils/sort'
+import filter from '@utils/filter'
 
 import Card from '@c/global/card'
 
@@ -9,7 +10,7 @@ const Fitness = ({ fitness, filterBy, sortBy }) => {
     <h1>Fitness</h1>
     <div className="page">
       {
-        fitness && sortFitness(filterFitness(fitness, filterBy), sortBy).map(workout => <Card
+        fitness && sort(filter(fitness, filterBy), sortBy).map(workout => <Card
           key={workout._id}
           image={workout.image}
           category={workout.category}

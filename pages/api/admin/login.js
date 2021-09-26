@@ -4,15 +4,14 @@ import connectDB from '@utils/connectDB'
 connectDB()
 
 import token from '@utils/token'
-import validateEmail from '@utils/validateemail'
+import isEmail from '@utils/isEmail'
 
 import Admin from '@models/admin'
 
 export default async function (req, res) {
   const { email, password } = req.body
 
-  if (!validateEmail(email) || !password || password.length < 6) return res.status(401).json({ msg: 'Ebakorrektsed kasutajatunnused.' })
-  console.log(req.body)
+  if (!isEmail(email) || !password || password.length < 6) return res.status(401).json({ msg: 'Ebakorrektsed kasutajatunnused.' })
 
   try {
     const admin = await Admin.findOne({ email })

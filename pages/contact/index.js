@@ -8,8 +8,6 @@ import Layout from '@c/global/layout'
 const Index = () => {
   const { timer, isActive, isPaused, start, pause, resume, reset } = useTimer(0)
 
-  if (timer % 13 === 0) console.log(timer)
-
   const formatTime = (timer) => {
     const getSeconds = `0${(timer % 60)}`.slice(-2)
     const minutes = `${Math.floor(timer / 60)}`

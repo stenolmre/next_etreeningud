@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 
+import calcReadTime from '@utils/calcReadTime'
+
 import { usePostState, usePostDispatch } from '@context/post'
 import { getPosts } from '@actions/post'
 
@@ -21,8 +23,8 @@ const Blog = () => {
             title={post.name}
             author={post.author}
             category={post.category}
-            readtime="12min"
-            date={post.createdAt.slice(0, 10).replaceAll('-', '/')}
+            readtime={calcReadTime(post.content)}
+            rating={post.rating}
           />).slice(0, 3)
         : <h2>Loading..</h2>
     }
