@@ -1,10 +1,11 @@
-.preview {
+.row {
   max-width: 768px;
-  margin: 0 auto;
+  margin: .5rem 0;
   padding: .25rem;
   @include grid($columns: 75px auto 100px);
   border: 1px solid rgba(33, 33, 33, .05);
   border-radius: .25rem;
+  cursor: pointer;
 
   > img {
     width: 75px;
@@ -13,7 +14,7 @@
     object-position: center;
   }
 
-  > .preview_details {
+  > .row_details {
     @include flex($direction: column, $justify: center);
 
     > h4 {
@@ -39,7 +40,7 @@
     }
   }
 
-  > .preview_rating {
+  > .row_rating {
     @include flex-center-center;
 
     > label {

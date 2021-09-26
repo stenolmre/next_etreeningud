@@ -2,6 +2,7 @@ const $get = async (req, res, Model, id, errorMessage) => {
   try {
     let response
     if (id != null) {
+      if (typeof id === 'object') id = id.id
       response = await Model.findById(id)
     } else {
       response = await Model.find().sort({ createdAt: -1 })

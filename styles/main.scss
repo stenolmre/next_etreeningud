@@ -37,3 +37,12 @@ a {
   color: $dodgerblue;
   font-weight: 600;
 }
+
+footer {
+  padding: 4rem 5rem;
+  border-top: 1px solid rgba(33, 33, 33, .1);
+
+  > span {
+    font-size: .75rem;
+  }
+}

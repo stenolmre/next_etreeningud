@@ -6,11 +6,12 @@ import Landing from '@c/views/landing'
 import Fitness from '@c/apps/landing/fitness'
 import Features from '@c/apps/landing/features'
 import Blog from '@c/apps/landing/blog'
+import Footer from '@c/global/footer'
 
 const Index = () => {
   return <Fragment>
     <Head>
-        <title>eTreeningud</title>
+      <title>eTreeningud</title>
     </Head>
     <Layout>
       <Landing />
@@ -18,6 +19,7 @@ const Index = () => {
       <Features />
       <Blog />
     </Layout>
+    <Footer />
   </Fragment>
 }
 

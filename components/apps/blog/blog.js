@@ -1,24 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import sort from '@utils/sort'
-import Card from '@c/global/card'
+import Row from '@c/global/row'
 
-const Fitness = ({ posts, sortBy }) => <div className="page_container">
-  <h1>Blog</h1>
-  <div className="page">
+const Fitness = ({ posts, sortBy }) => {
+  const [numOfPosts, setNumOfPosts] = useState(10)
+
+  return <div className="page_container">
+    <div className="page_col">
+      {
+        posts && sort(posts, sortBy).map(post => <Row
+          key={post._id}
+          id={post._id}
+          image={post.image}
+          category={post.category}
+          equipment={post.equipment}
+          title={post.name}
+          date={post.createdAt.slice(0, 10).replaceAll('-', '/')}
+        />).slice(0, numOfPosts)
+      }
+    </div>
     {
-      posts && sort(posts, sortBy).map(post => <Card
-        key={post._id}
-        image={post.image}
-        category={post.category}
-        equipment={post.equipment}
-        title={post.name}
-
-        icon="fas fa-heartbeat"
-        date={post.createdAt.slice(0, 10).replaceAll('-', '/')}
-      />)
+      numOfPosts < posts.length && <span className="load_more" onClick={() => setNumOfPosts(numOfPosts + 10)}>Load more posts..</span>
     }
   </div>
-</div>
+}
 
 export default Fitness

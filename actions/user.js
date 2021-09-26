@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 import setAuthToken from '@utils/setAuthToken'
 
-import { LOGIN_USER, USER_LOGOUT, USER_ERROR } from './types'
+import { LOGIN_USER, USER_LOGOUT, GET_USER, USER_ERROR } from './types'
 
 const user_token = Cookies.get('user_token') ? Cookies.get('user_token') : ''
 
@@ -31,5 +31,23 @@ export const login = async (dispatch, data, success, error) => {
     })
 
     error()
+  }
+}
+
+export const getUser = async (dispatch, success, error) => {
+  setAuthToken(user_token)
+
+  try {
+    const { data } = await axios.get('/api/admin/get')
+
+    dispatch({
+      type: GET_USER,
+      payload: data.admin
+    })
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.response.data
+    })
   }
 }

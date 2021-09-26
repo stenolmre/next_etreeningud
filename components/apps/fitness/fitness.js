@@ -7,11 +7,11 @@ import Card from '@c/global/card'
 
 const Fitness = ({ fitness, filterBy, sortBy }) => {
   return <div className="page_container">
-    <h1>Fitness</h1>
     <div className="page">
       {
         fitness && sort(filter(fitness, filterBy), sortBy).map(workout => <Card
           key={workout._id}
+          id={workout._id}
           image={workout.image}
           category={workout.category}
           equipment={workout.equipment}

@@ -1,9 +1,13 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 
 import parseDate from '@utils/parseDate'
 
-const Card = ({ image, category, equipment, title, info, icon, date }) => {
-  return <div className="card">
+const Card = ({ id, image, category, equipment, title, info, icon, date }) => {
+  const router = useRouter()
+  const openWorkout = () => router.push(`/fitness/${id}`)
+
+  return <div className="card" onClick={openWorkout}>
     <div className="card_header">
       <div className="card_image">
         <img src={image} alt={title}/>

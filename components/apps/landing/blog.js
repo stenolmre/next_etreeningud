@@ -1,23 +1,18 @@
 import React, { useEffect } from 'react'
 
 import calcReadTime from '@utils/calcReadTime'
-
-import { usePostState, usePostDispatch } from '@context/post'
-import { getPosts } from '@actions/post'
+import usePosts from '@hooks/usePosts'
 
 import Section from '@c/apps/landing/section'
-import Preview from '@c/global/preview'
+import Row from '@c/global/row'
 
 const Blog = () => {
-  const dispatchPost = usePostDispatch()
-  const { posts } = usePostState()
-
-  useEffect(() => { getPosts(dispatchPost) }, [dispatchPost])
+  const { posts } = usePosts()
 
   return <Section title={<span>Explore our blog<br/>for useful tips and tricks.</span>} subtitle="Latest posts" button="All posts" link="/blog" column>
     {
       posts
-        ? posts.map(post => <Preview
+        ? posts.map(post => <Row
             key={post._id}
             image={post.image}
             title={post.name}

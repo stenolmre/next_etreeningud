@@ -1,14 +1,23 @@
 @import 'navbar';
 @import 'card';
 @import 'sidebar';
-@import 'preview';
+@import 'row';
 
 .page_container {
   > h1 {
     margin: 0 0 1rem 0;
   }
+
+  > .load_more {
+    font-size: .75rem;
+    cursor: pointer;
+  }
 }
 
 .page {
   @include grid($gap: 2rem, $columns: repeat(auto-fit, 250px));
+}
+
+.page_col {
+  margin-bottom: 1rem;
 }

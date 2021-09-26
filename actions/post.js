@@ -7,7 +7,7 @@ export const getPosts = async (dispatch) => {
   })
 
   try {
-    const { data } = await axios.get('/api/posts/_get')
+    const { data } = await axios.get('/api/posts')
 
     dispatch({
       type: GET_POSTS,

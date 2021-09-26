@@ -5,7 +5,7 @@
   background: $whitesmoke;
   @include box-shadow;
   overflow: hidden;
-
+  cursor: pointer;
   @include grid($gap: 1rem, $rows: 110px auto 1fr);
 
   > .card_header {
