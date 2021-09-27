@@ -5,7 +5,7 @@ $sidebarMinWidth: 25px;
   width: $sidebarWidth;
   height: unquote('calc(100vh - #{$navbarHeight})');
   @include position(fixed, $top: $navbarHeight, $left: 0);
-  border-right: 1px solid rgba(33, 33, 33, .1);
+  @include border($side: right);
   background: rgb(249, 249, 249);
   @include transition($time: 350ms, $value: width);
 
@@ -16,9 +16,9 @@ $sidebarMinWidth: 25px;
     background: rgb(249, 249, 249);
     @include position(absolute, $top: 3rem, $right: -$width);
     @include place-center;
-    border-top: 1px solid rgba(33, 33, 33, .1);
-    border-right: 1px solid rgba(33, 33, 33, .1);
-    border-bottom: 1px solid rgba(33, 33, 33, .1);
+    @include border($side: top);
+    @include border($side: right);
+    @include border($side: bottom);
     font-size: .7rem;
     cursor: pointer;
   }

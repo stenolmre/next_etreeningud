@@ -6,7 +6,7 @@ nav {
   @include grid($gap: 0, $columns: .75fr 2fr 1fr);
   align-items: center;
   background: $whitesmoke;
-  border-bottom: 1px solid rgba(33, 33, 33, .1);
+  @include border;
   z-index: 1000;
 
   @media (max-width: $mobile) {

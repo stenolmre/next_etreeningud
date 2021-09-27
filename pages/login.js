@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import axios from 'axios'
 import cookies from 'next-cookies'
 
 import setAuthToken from '@utils/setAuthToken'
-import { useUserDispatch } from '@context/user'
+import { useUserState, useUserDispatch } from '@context/user'
 import { login } from '@actions/user'
 
 const Login = () => {
+  const router = useRouter()
   const dispatchUser = useUserDispatch()
+  const { error } = useUserState()
+
+  const [data, setData] = useState({ email: '', password: '' })
+  const onChange = e => setData({ ...data, [e.target.name]: e.target.value })
+
+  const submit = e => {
+    e.preventDefault()
+    login(dispatchUser, data, () => router.push('/user'))
+  }
 
   return <div style={{ margin: '2rem' }}>
-    <input />
-    <input type="password"/>
-    <button onClick={() => login(dispatchUser, { email: 'mary@smith.com', password: 'marysmith' }, () => console.log('success'), () => console.log('error'))}>login</button>
+    <form onSubmit={submit}>
+      <input name="email" value={data.email} onChange={onChange}/>
+      <input type="password" name="password" value={data.password} onChange={onChange}/>
+      <button>login</button>
+      {
+        error != null && <span>{error.msg}</span>
+      }
+    </form>
   </div>
 }
 

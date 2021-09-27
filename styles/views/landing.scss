@@ -2,7 +2,7 @@
   position: relative;
   padding: $navbarHeight + 6rem 5rem 9rem 5rem;
   @include grid($gap: 2rem, $columns: 1fr 1fr);
-  border-bottom: 1px solid rgba(33, 33, 33, .1);
+  @include border($side: bottom);
 
   @media (max-width: $mobile) {
     @include grid($gap: 2rem, $columns: 1fr);
@@ -101,7 +101,7 @@
   width: 250px;
   height: 175px;
   padding: 1rem;
-  border: 1px solid rgba(33, 33, 33, .1);
+  @include border;
   background: rgb(249, 249, 249);
 
   > h4 {

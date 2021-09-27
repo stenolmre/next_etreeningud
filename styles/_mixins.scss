@@ -1,18 +1,9 @@
 @mixin flex($align: null, $justify: null, $direction: null) {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   @if ($align != null) {
-    -webkit-box-align: $align;
-    -moz-box-align: $align;
-    -ms-flex-align: $align;
-    -webkit-align-items: $align;
     align-items: $align;
   }
   @if ($justify != null) {
-    -webkit-justify-content: $justify;
     justify-content: $justify;
   }
   @if ($direction != null) {
@@ -21,17 +12,8 @@
 }
 
 @mixin flex-center-center() {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
   align-items: center;
-  -webkit-justify-content: center;
   justify-content: center;
 }
 
@@ -69,6 +51,28 @@
     @if ($left != null) {
       left: $left;
     }
+  }
+}
+
+@mixin border($side: null, $color: rgba(33, 33, 33, .1), $width: 1px) {
+  @if ($side == null) {
+    border: $width solid $color;
+  }
+
+  @if ($side == top) {
+    border-top: $width solid $color;
+  }
+
+  @if ($side == right) {
+    border-right: $width solid $color;
+  }
+
+  @if ($side == bottom) {
+    border-bottom: $width solid $color;
+  }
+
+  @if ($side == left) {
+    border-left: $width solid $color;
   }
 }
 

@@ -3,7 +3,7 @@
   margin: .5rem 0;
   padding: .25rem;
   @include grid($columns: 75px auto 100px);
-  border: 1px solid rgba(33, 33, 33, .05);
+  @include border($color: rgba(33, 33, 33, .05));
   border-radius: .25rem;
   cursor: pointer;
 

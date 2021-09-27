@@ -41,7 +41,7 @@ a {
 
 footer {
   padding: 4rem 5rem;
-  border-top: 1px solid rgba(33, 33, 33, .1);
+  @include border;
 
   > span {
     font-size: .75rem;
