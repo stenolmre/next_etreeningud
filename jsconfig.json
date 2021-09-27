@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@actions/*": ["actions/*"],
+      "@admin/*": ["components/admin/*"],
       "@c/*": ["components/*"],
       "@context/*": ["context/*"],
       "@helpers/*": ["helpers/*"],

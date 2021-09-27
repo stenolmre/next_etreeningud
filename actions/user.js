@@ -34,6 +34,13 @@ export const login = async (dispatch, data, success, error) => {
   }
 }
 
+export const setUser = async (dispatch, data) => {
+  dispatch({
+    type: GET_USER,
+    payload: data
+  })
+}
+
 export const getUser = async (dispatch, success, error) => {
   setAuthToken(user_token)
 
@@ -50,4 +57,14 @@ export const getUser = async (dispatch, success, error) => {
       payload: err.response.data
     })
   }
+}
+
+export const logout = async (dispatch, redirect) => {
+  dispatch({
+    type: USER_LOGOUT
+  })
+
+  redirect()
+
+  Cookies.remove('user_token')
 }

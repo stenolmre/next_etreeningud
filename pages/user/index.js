@@ -5,19 +5,21 @@ import Head from 'next/head'
 
 import setAuthToken from '@utils/setAuthToken'
 import { useUserState, useUserDispatch } from '@context/user'
+import { setUser } from '@actions/user'
+
+import Layout from '@admin/global/layout'
 
 const Index = ({ user }) => {
   const dispatchUser = useUserDispatch()
-  useEffect(() => {() => dispatchUser({
-    type: 'GET_USER',
-    payload: user
-  })}, [])
+  useEffect(() => { setUser(dispatchUser, user) }, [])
 
   return <Fragment>
     <Head>
       <title>User</title>
     </Head>
+    <Layout>
 
+    </Layout>
   </Fragment>
 }
 
