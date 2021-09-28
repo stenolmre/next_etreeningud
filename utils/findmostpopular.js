@@ -1,27 +1,20 @@
 import React from 'react'
 
-const histogram = iterable => {
-  const result = new Map()
+function mostPopular(arr = []) {
+  let item = arr[0]
+  let ocurrencesMap = {}
 
-  for (const x of iterable) {
-    result.set(x, (result.get(x) || 0) + 1)
+  for (let i in arr) {
+    const current = arr[i]
+
+    if (ocurrencesMap[current]) ocurrencesMap[current]++
+    else ocurrencesMap[current] = 1
+
+    if (ocurrencesMap[item] < ocurrencesMap[current]) item = current
   }
 
-  return result
-}
-
-const mostPopular = iterable => {
-  let maxCount = 0
-  let maxKey
-
-  for (const [key, count] of histogram(iterable)) {
-    if (count > maxCount) {
-      maxCount = count
-      maxKey = key
-    }
-  }
-
-  return maxKey
+//   return { item, ocurrences: ocurrencesMap[item] };
+  return item
 }
 
 export default mostPopular
