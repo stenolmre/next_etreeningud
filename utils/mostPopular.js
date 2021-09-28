@@ -1,6 +1,4 @@
-import React from 'react'
-
-function mostPopular(arr = []) {
+const mostPopular = (arr = []) => {
   let item = arr[0]
   let ocurrencesMap = {}
 
