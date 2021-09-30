@@ -54,25 +54,11 @@
   }
 }
 
-@mixin border($side: null, $color: rgba(33, 33, 33, .1), $width: 1px) {
-  @if ($side == null) {
-    border: $width solid $color;
-  }
-
-  @if ($side == top) {
-    border-top: $width solid $color;
-  }
-
-  @if ($side == right) {
-    border-right: $width solid $color;
-  }
-
-  @if ($side == bottom) {
-    border-bottom: $width solid $color;
-  }
-
-  @if ($side == left) {
-    border-left: $width solid $color;
+@mixin border($side: null, $color: rgb(229, 236, 245), $width: 1) {
+  @if ($side != null) {
+    border-#{$side}: #{$width}px solid $color;
+  } @else {
+    border: #{$width}px solid $color;
   }
 }
 
