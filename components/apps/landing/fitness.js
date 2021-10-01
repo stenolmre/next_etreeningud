@@ -8,7 +8,7 @@ import Card from '@c/global/card'
 const Fitness = () => {
   const { fitness } = useFitness()
 
-  return <Section title="Working out can be enjoyable." subtitle="Latest workouts" button="All workouts" link="/fitness">
+  return <Section title="Working out can be enjoyable." subtitle="Uusimad treeningud" button="Treeningud" link="/fitness">
     {
       fitness
         ? fitness.map(workout => <Card

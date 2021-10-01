@@ -7,7 +7,7 @@ const Landing = () => {
     <section>
       <h1>Make your dreams come to you.</h1>
       <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</span>
-      <Link href="/fitness"><a className="btn">Get Started</a></Link>
+      <Link href="/fitness"><a className="btn">Alusta täna</a></Link>
     </section>
     <div className="landing_video">
       <div>

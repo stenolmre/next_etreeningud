@@ -1,8 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import { useUserState } from '@context/user'
+
+import Tooltip from '@c/global/tooltip'
+
 const Navbar = () => {
+  const router = useRouter()
+  const { user } = useUserState()
+
   const [navs] = useState([
     { name: 'Esileht', href: '/' },
     { name: 'Treeningud', href: '/fitness' },
@@ -19,17 +26,20 @@ const Navbar = () => {
   ])
 
   return <nav>
-    <div id="logo">
+    <div id="logo" onClick={() => router.push('/')}>
       <div className="logo"/>
       <span>eTreeningud</span>
     </div>
     <div id="navs">
       {
-        navs.map((nav, index) => <Link key={index} href={nav.href}><a className={useRouter().pathname === nav.href ? 'active' : ''}>
+        navs.map((nav, index) => <Link key={index} href={nav.href}><a className={router.pathname === nav.href ? 'active' : ''}>
           {nav.name}
         </a></Link>)
       }
     </div>
+    <Tooltip tooltip={user != null ? 'Minu töölaud' : 'Logi sisse'} position="bottom">
+      <i className="fas fa-fingerprint" onClick={() => router.push(`${user != null ? '/user' : '/login'}`)}/>
+    </Tooltip>
     <div id="social">
       {
         social.map((link, index) => <a key={index} href={link.href}>

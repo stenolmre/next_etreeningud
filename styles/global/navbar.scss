@@ -1,21 +1,21 @@
 nav {
   width: 100%;
   height: $navbarHeight;
-  padding: 0 5rem;
+  padding: 0 10vw;
   @include position(fixed);
-  @include grid($gap: 0, $columns: .75fr 2fr 1fr);
+  @include flex($align: center);
   align-items: center;
   background: $whitesmoke;
   @include border;
   z-index: 1000;
 
   @media (max-width: $mobile) {
-    @include grid($gap: 0, $columns: 1fr 1fr);
-    padding: 0 1rem;
+
   }
 
   > #logo {
     @include flex($align: center);
+    cursor: pointer;
 
     > .logo {
       width: 1.5rem;
@@ -37,13 +37,15 @@ nav {
 
   > #navs {
     @include only-desktop;
+    padding-left: 5vw;
+    flex-grow: 1;
 
     > a {
       padding: .5rem 1rem;
 
       font-weight: 600;
       text-transform: uppercase;
-      @include transition($time: 250ms, $value: color);
+      @include transition($time: 150ms, $value: color);
       cursor: pointer;
 
       &:hover {
@@ -62,18 +64,29 @@ nav {
     }
   }
 
+  > .tooltip > span {
+    > .fa-fingerprint,
+    > .fa-lock-open {
+      font-size: 1.2rem;
+      cursor: pointer;
+      @include transition($time: 150ms, $value: color);
+
+      &:hover {
+        color: $dodgerblue;
+      }
+    }
+  }
+
   > #social {
-    $socialWidth: 70%;
-    width: $socialWidth;
-    margin-left: 100% - $socialWidth;
-    padding: .5rem 0;
+    margin-left: 2rem;
+    padding: .5rem 1rem;
     @include flex-center-center;
     border-radius: 1rem;
     @include box-shadow;
 
     > a {
       font-size: 1.1rem;
-      @include transition($time: 250ms, $value: color);
+      @include transition($time: 150ms, $value: color);
 
       &:hover {
         color: $dodgerblue;

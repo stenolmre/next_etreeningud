@@ -1,4 +1,6 @@
 .landing {
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
   padding: $navbarHeight + 6rem 5rem 9rem 5rem;
   @include grid($gap: 2rem, $columns: 1fr 1fr);

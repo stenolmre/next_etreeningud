@@ -16,12 +16,12 @@ const FitnessSidebar = ({ filterBy, sortBy }) => {
       Object.entries(sortBy).map(([key, value]) => <div key={key} className={sortBy[key] ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { [key]: true })}>{key}</div>)
     }
     <h4>Filter by workout type</h4>
-    <All filter={filterBy.type} dispatchFit={dispatchFit}/>
+    <All name="type" filter={filterBy.type} dispatchFit={dispatchFit}/>
     {
       useTypes().map(type => <div key={type} className={filterBy.type === type ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { type: type })}>{type}</div>)
     }
     <h4>Filter by equipment</h4>
-    <All filter={filterBy.equipment} dispatchFit={dispatchFit}/>
+    <All name="equipment" filter={filterBy.equipment} dispatchFit={dispatchFit}/>
     {
       useEquipments().map(equipment => <div key={equipment} className={filterBy.equipment === equipment ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { equipment })}>{equipment}</div>)
     }
@@ -30,4 +30,4 @@ const FitnessSidebar = ({ filterBy, sortBy }) => {
 
 export default FitnessSidebar
 
-const All = ({ filter, dispatchFit }) => <div className={filter === null ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { type: null })}>All</div>
+const All = ({ filter, dispatchFit, name }) => <div className={filter === null ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { [name]: null })}>All</div>

@@ -9,7 +9,7 @@ import Row from '@c/global/row'
 const Blog = () => {
   const { posts } = usePosts()
 
-  return <Section title={<span>Explore our blog<br/>for useful tips and tricks.</span>} subtitle="Latest posts" button="All posts" link="/blog" column>
+  return <Section title={<span>Explore our blog<br/>for useful tips and tricks.</span>} subtitle="Uusimad postitused" button="Postitused" link="/blog" column>
     {
       posts
         ? posts.map(post => <Row

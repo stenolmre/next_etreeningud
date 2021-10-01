@@ -15,11 +15,12 @@ const Card = ({ id, image, category, equipment, title, info, icon, date }) => {
       <div>
         <p>{category}</p>
         <span>{equipment}</span>
+        <span><strong>--</strong></span>
+        <span>{info}</span>
       </div>
     </div>
     <div className="card_info">
       <h2>{title}</h2>
-      <span>{info}</span>
     </div>
     <div className="card_footer">
       <i className={icon} />
