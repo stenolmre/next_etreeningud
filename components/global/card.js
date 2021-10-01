@@ -3,29 +3,35 @@ import { useRouter } from 'next/router'
 
 import parseDate from '@utils/parseDate'
 
-const Card = ({ id, image, category, equipment, title, info, icon, date }) => {
+import Tooltip from '@c/global/tooltip'
+
+const Card = ({ id, image, category, equipment, title, time }) => {
   const router = useRouter()
   const openWorkout = () => router.push(`/fitness/${id}`)
 
+  const setCategory = () => {
+    if (category === 'jooga') return 'fas fa-yin-yang'
+    if (category === 'jõud') return 'fas fa-heartbeat'
+    if (category === 'HIIT') return 'fas fa-running'
+    return 'fas fa-heartbeat'
+  }
+
   return <div className="card" onClick={openWorkout}>
-    <div className="card_header">
-      <div className="card_image">
-        <img src={image} alt={title}/>
+    <div className="card_top">
+      <img src={image} alt={title}/>
+      <div className="card_details">
+        <Tooltip tooltip={category}>
+          <i className={setCategory()}/>
+        </Tooltip>
+        <Tooltip tooltip={<div>Vahendid: <br/> {equipment}</div>}>
+          <i className="fas fa-dumbbell"/>
+        </Tooltip>
+        <Tooltip tooltip={<div>Aeg: <br/> {time}min</div>}>
+          <span>{time}</span>
+        </Tooltip>
       </div>
-      <div>
-        <p>{category}</p>
-        <span>{equipment}</span>
-        <span><strong>--</strong></span>
-        <span>{info}</span>
-      </div>
     </div>
-    <div className="card_info">
-      <h2>{title}</h2>
-    </div>
-    <div className="card_footer">
-      <i className={icon} />
-      <span>{parseDate(date)}</span>
-    </div>
+    <h4>{title}</h4>
   </div>
 }
 

@@ -16,9 +16,7 @@ const Fitness = ({ fitness, filterBy, sortBy }) => {
           category={workout.category}
           equipment={workout.equipment}
           title={workout.name}
-          info={workout.length + ' min'}
-          icon="fas fa-heartbeat"
-          date={workout.createdAt}
+          time={workout.length}
         />)
       }
     </div>

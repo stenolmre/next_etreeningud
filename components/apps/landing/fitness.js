@@ -17,8 +17,7 @@ const Fitness = () => {
             category={workout.category}
             equipment={workout.equipment}
             title={workout.name}
-            icon="fas fa-heartbeat"
-            date={workout.createdAt.slice(0, 10).replaceAll('-', '/')}
+            time={`${workout.length}`}
           />).slice(0, 3)
         : <h2>Loading..</h2>
     }
