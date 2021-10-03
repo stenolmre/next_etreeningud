@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { useUserState, useUserDispatch } from '@context/user'
@@ -26,6 +27,7 @@ const Navbar = () => {
       <div className="user_image" onClick={toggleMenu}>{getInitials()}</div>
       {
         showMenu && <div className="sub_menu">
+          <Link href="/"><a>Esileht</a></Link>
           <span>Minu profiil</span>
           <span onClick={() => logout(dispatchUser, () => router.push('/'))}>Logi välja</span>
         </div>

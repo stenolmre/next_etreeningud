@@ -1,41 +1,56 @@
 import React, { useState, useEffect } from 'react'
 
-import { useEditor, useEditorLoad, useEditorSave, useEditorParser } from '@hooks/useEditor'
+import { useEditor, useEditorLoad, useEditorParser } from '@hooks/useEditor'
 import { useConfigState } from '@context/config'
+
+import { usePostDispatch } from '@context/post'
+import { publishPost } from '@actions/post'
 
 import Preview from '@admin/blog/preview'
 
 const Editor = () => {
+  const dispatchPost = usePostDispatch()
   const { blog } = useConfigState()
-  const [content, setContent] = useState(null)
-  const [newPost, setNewPost] = useState({ title: '', content: '', author: '', category: '', image: 'url' })
+
+  const [newPost, setNewPost] = useState({ title: '', content: null, author: '', category: '', image: '' })
   const onChange = e => setNewPost({ ...newPost, [e.target.name]: e.target.value })
 
   const { editor } = useEditor()
-  const { save } = useEditorSave(editor, setContent)
-  const parsedPost = useEditorParser(content)
-  useEditorLoad(editor, content)
+  const parsedPost = useEditorParser(newPost.content)
+  useEditorLoad(editor, newPost.content)
 
   const [showPreview, setShowPreview] = useState(false)
 
   const initPreview = () => {
-    save()
+    if (!editor) return
+
+    editor.save().then(data => {
+      setNewPost({ ...newPost, content: data })
+    })
+
     setShowPreview(!showPreview)
   }
 
   const hidePreview = e => {
     if (e.target.classList.contains('preview')) return
-    setShowPreview(!showPreview)
+    return setShowPreview(!showPreview)
   }
 
   const publish = async () => {
-    if (window.confirm('Are you sure?')) save()
-  }
+    if (!editor) return
 
-  useEffect(() => {
-    if (showPreview) return document.body.style.overflow = 'hidden';
-    document.body.style.overflow = 'scroll';
-  }, [showPreview])
+    editor.save().then(data => {
+      if (window.confirm('Are you sure?')) return publishPost(dispatchPost, {
+        title: newPost.title,
+        content: data,
+        author: newPost.author,
+        category: newPost.category,
+        image: newPost.image
+      })
+
+      return
+    })
+  }
 
   const getAuthorImage = () => {
     if (blog == null || newPost.author === '') return
@@ -43,8 +58,14 @@ const Editor = () => {
     return author.image
   }
 
+  useEffect(() => {
+    if (showPreview) return document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'scroll';
+  }, [showPreview])
+
   return <div className="editor_container">
-    <input name="title" value={newPost.title} onChange={onChange} placeholder="Post title"/>
+    <input name="title" value={newPost.title} onChange={onChange} placeholder="Pealkiri"/>
+    <input name="image" value={newPost.image} onChange={onChange} placeholder="Pilt (url)"/>
     <div id="editorjs" className="editor"/>
     <div className="editor_select editor_select_with_img">
       <div style={{ backgroundImage: `url(${getAuthorImage()})`}}></div>

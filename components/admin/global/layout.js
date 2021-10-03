@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     if (user && user.isAdmin) getUsers(dispatchUser)
-  }, [dispatchUser])
+  }, [dispatchUser, user])
 
   return <div className="admin">
     <Navbar />
@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
         user && user.isAdmin && <Fragment>
           <Collapsible title="Users" icon="fas fa-user">
             {
-              // users && users.map(user => <div key={user._id}>{user.name}</div>)
+              users && users.map(user => <div key={user._id}>{user.name}</div>)
             }
           </Collapsible>
           <Collapsible title="Blog" icon="fas fa-pen">

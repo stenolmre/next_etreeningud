@@ -50,20 +50,6 @@ export const useEditorLoad = (editor, data) => {
   }, [editor, data])
 }
 
-export const useEditorSave = (editor, setPost) => {
-  const save = async () => {
-    if (!editor) return
-
-    await editor.save().then(data => {
-      setPost(data)
-    }).catch(error => {
-      console.log(error)
-    })
-  }
-
-  return { save }
-}
-
 export const useEditorParser = post => {
   if (post == null || !post.blocks.length) return
 

@@ -5,8 +5,6 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
 import setAuthToken from '@utils/setAuthToken'
-import { useUserState, useUserDispatch } from '@context/user'
-import { setUser } from '@actions/user'
 
 import Layout from '@admin/global/layout'
 const Editor = dynamic(
@@ -14,10 +12,7 @@ const Editor = dynamic(
   { ssr: false }
 )
 
-const Index = ({ user }) => {
-  const dispatchUser = useUserDispatch()
-  useEffect(() => { setUser(dispatchUser, user) }, [])
-
+const Index = () => {
   return <Fragment>
     <Head>
       <title>User</title>
@@ -38,7 +33,7 @@ Index.getInitialProps = async ctx => {
       ? await axios.get('http://localhost:3000/api/user')
       : await axios.get('https://etreeningud.ee/api/user')
 
-    return { user: data }
+    return {}
   } catch (err) {
     ctx.res.writeHead(302, { Location: '/login' });
     ctx.res.end()

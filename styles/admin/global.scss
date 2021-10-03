@@ -90,7 +90,7 @@
       @include border($color: rgba(0, 112, 243, .4));
       border-radius: .25rem;
 
-      > span {
+      > span, a {
         display: block;
         padding: .5rem 1rem;
         @include transition($time: 150ms);

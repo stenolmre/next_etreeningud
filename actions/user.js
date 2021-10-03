@@ -57,13 +57,6 @@ export const register = async (dispatch, data, success) => {
   }
 }
 
-export const setUser = async (dispatch, data) => {
-  dispatch({
-    type: GET_USER,
-    payload: data
-  })
-}
-
 export const getUser = async (dispatch, success, error) => {
   setAuthToken(user_token)
 
@@ -83,11 +76,10 @@ export const getUser = async (dispatch, success, error) => {
 }
 
 export const getUsers = async (dispatch, success, error) => {
-  const config = { headers: { 'Content-Type': 'application/json' } }
   setAuthToken(user_token)
 
   try {
-    const { data } = await axios.get('/api/user?_get=true', config)
+    const { data } = await axios.get('/api/user/_get')
 
     dispatch({
       type: GET_USERS,
