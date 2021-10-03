@@ -15,14 +15,10 @@ const PostSchema = mongoose.Schema({
     required: true
   },
   content: {
-    type: String,
+    type: Object,
     required: true
   },
   category: {
-    type: String,
-    required: true
-  },
-  excerpt: {
     type: String,
     required: true
   },

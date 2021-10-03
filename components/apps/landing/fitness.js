@@ -17,7 +17,7 @@ const Fitness = () => {
             category={workout.category}
             equipment={workout.equipment}
             title={workout.name}
-            time={`${workout.length}`}
+            time={workout.length}
           />).slice(0, 3)
         : <h2>Loading..</h2>
     }

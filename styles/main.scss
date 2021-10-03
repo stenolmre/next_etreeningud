@@ -31,6 +31,16 @@ a {
   text-decoration: none;
 }
 
+input, select {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .875rem;
+  color: $darkslategray;
+
+  &::placeholder {
+    color: rgba(36, 55, 100, .7);
+  }
+}
+
 .btn {
   padding: .75rem 2rem;
   @include box-shadow;

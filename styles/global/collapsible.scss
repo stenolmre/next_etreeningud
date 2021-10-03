@@ -1,0 +1,39 @@
+.collapsible {
+  > .collapsible_title {
+    @include flex($align: center);
+    width: unquote("calc(225px - 2rem)");
+    margin: .5rem 0;
+    padding: .25rem 0;
+    font-weight: 600;
+    @include transition($time: 250ms);
+    cursor: pointer;
+
+    > i:nth-of-type(1) {
+      width: 32px;
+      margin-right: .5rem;
+      text-align: center;
+    }
+
+    > span {
+      flex-grow: 2;
+    }
+
+    > .fa-chevron-down {
+      @include transition($time: 250ms, $value: transform);
+      font-size: .65rem;
+    }
+
+    > .upside-down {
+      transform: rotate(180deg);
+    }
+  }
+  > .collapsible_content {
+    padding-left: 2.5rem;
+
+    > div {
+      margin: .5rem 0;
+      font-size: .75rem;
+      cursor: pointer;
+    }
+  }
+}

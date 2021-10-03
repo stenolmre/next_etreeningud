@@ -27,3 +27,23 @@ export const addPostFilter = (dispatch, data) => {
     payload: data
   })
 }
+
+export const publishPost = async (dispatch, new_post) => {
+  const config = { headers: { 'Content-Type': 'application/json' } }
+  const body = JSON.stringify(new_post)
+
+  try {
+    const { data } = await axios.post('/api/posts', body, config)
+
+    dispatch({
+      type: ADD_POST,
+      payload: data
+    })
+  } catch (err) {
+    console.log(err)
+    dispatch({
+      type: POST_ERROR,
+      payload: err.response.data
+    })
+  }
+}

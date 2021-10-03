@@ -2,11 +2,11 @@ $dimension: 250px;
 
 .card {
   width: $dimension;
-  padding: 0 0 1rem 0;
   border-radius: 1rem;
   background: $whitesmoke;
   @include box-shadow;
   cursor: pointer;
+  position: relative;
 
   > .card_top {
     width: $dimension;
@@ -24,7 +24,7 @@ $dimension: 250px;
     }
 
     > .card_details {
-      @include position(absolute, $right: 1rem, $bottom: -1rem);
+      @include position(absolute, $right: 1rem, $top: 1rem);
 
       > div {
         + div {
@@ -36,8 +36,8 @@ $dimension: 250px;
           width: 32px;
           height: 32px;
           background: white;
-          border-radius: .5rem;
-          box-shadow: 1px -1px 5px #e3e6e9, -1px 1px 5px #fff;
+          border-radius: .25rem;
+          box-shadow: 1px -1px 7px rgba(255, 255, 255, .4), -1px 1px 7px rgba(255, 255, 255, .4);
           @include place-center;
         }
 
@@ -49,9 +49,14 @@ $dimension: 250px;
     }
   }
 
-  > h4 {
-    margin: 1.5rem 0 0 0;
-    padding: 0 1rem;
-    @include ellipsis;
+  > .card_title {
+    width: calc(100% - .4rem);
+    padding: 1.5rem 1rem 1rem 1rem;
+    @include position(absolute, $right: .2rem, $bottom: .2rem);
+    background: linear-gradient(to bottom, transparent, #000 100%);
+    border-radius: 0 0 1rem 1rem;
+    color: white;
+    font-weight: 600;
+    @include ellipsis($lines: 2);
   }
 }

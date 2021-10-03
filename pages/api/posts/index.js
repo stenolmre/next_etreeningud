@@ -14,7 +14,6 @@ export default async function (req, res) {
 
   switch (req.method) {
     case 'GET':
-      if (id != null) return $get(req, res, Post, id, 'Post not found.')
       return $get(req, res, Post, id, 'Posts not found.')
 
     case 'POST':

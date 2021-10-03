@@ -6,7 +6,7 @@ connectDB()
 import token from '@utils/token'
 import isEmail from '@utils/isEmail'
 
-import Admin from '@models/admin'
+import User from '@models/user'
 
 export default async function (req, res) {
   const { email, password } = req.body
@@ -14,18 +14,18 @@ export default async function (req, res) {
   if (!isEmail(email) || !password || password.length < 6) return res.status(401).json({ msg: 'Ebakorrektsed kasutajatunnused.' })
 
   try {
-    const admin = await Admin.findOne({ email })
+    const user = await User.findOne({ email })
 
-    if (!admin) return res.status(404).json({ msg: 'Ebakorrektsed kasutajatunnused.' })
+    if (!user) return res.status(404).json({ msg: 'Ebakorrektsed kasutajatunnused.' })
 
-    const isMatch = await bcrypt.compare(password, admin.password)
+    const isMatch = await bcrypt.compare(password, user.password)
 
     if (!isMatch) return res.status(401).json({ msg: 'Ebakorrektsed kasutajatunnused.' })
 
     res.json({
       status: 'success',
-      token: token(admin._id),
-      admin: admin
+      token: token(user._id),
+      user: user
     })
   } catch (err) {
     res.status(500).json({ msg: err.message })

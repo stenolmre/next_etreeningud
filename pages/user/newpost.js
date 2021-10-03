@@ -2,12 +2,17 @@ import React, { Fragment, useEffect } from 'react'
 import axios from 'axios'
 import cookies from 'next-cookies'
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 
 import setAuthToken from '@utils/setAuthToken'
 import { useUserState, useUserDispatch } from '@context/user'
 import { setUser } from '@actions/user'
 
 import Layout from '@admin/global/layout'
+const Editor = dynamic(
+  () => import('@admin/blog/editor'),
+  { ssr: false }
+)
 
 const Index = ({ user }) => {
   const dispatchUser = useUserDispatch()
@@ -18,7 +23,7 @@ const Index = ({ user }) => {
       <title>User</title>
     </Head>
     <Layout>
-
+      <Editor />
     </Layout>
   </Fragment>
 }

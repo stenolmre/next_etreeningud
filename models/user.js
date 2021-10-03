@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { nanoid } from 'nanoid'
 
-const AdminSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
   _id: {
     type: String,
     default: () => nanoid(5)
@@ -22,6 +22,10 @@ const AdminSchema = mongoose.Schema({
     type: Boolean,
     default: false
   },
+  isAuthor: {
+    type: Boolean,
+    default: false
+  },
   isOwner: {
     type: Boolean,
     default: false
@@ -30,6 +34,6 @@ const AdminSchema = mongoose.Schema({
   timestamps: true
 })
 
-const Admin = mongoose.models.Admin || mongoose.model('Admin', AdminSchema)
+const User = mongoose.models.User || mongoose.model('User', UserSchema)
 
-export default Admin
+export default User

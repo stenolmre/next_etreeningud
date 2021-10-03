@@ -31,7 +31,7 @@ const Card = ({ id, image, category, equipment, title, time }) => {
         </Tooltip>
       </div>
     </div>
-    <h4>{title}</h4>
+    <div className="card_title">{title}</div>
   </div>
 }
 

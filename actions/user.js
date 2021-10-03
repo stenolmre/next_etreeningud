@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 import setAuthToken from '@utils/setAuthToken'
 
-import { LOGIN_USER, USER_LOGOUT, GET_USER, USER_ERROR } from './types'
+import { LOGIN_USER, USER_LOGOUT, GET_USER, GET_USERS, USER_ERROR } from './types'
 
 const user_token = Cookies.get('user_token') ? Cookies.get('user_token') : ''
 
@@ -12,13 +12,13 @@ export const login = async (dispatch, data, success, error) => {
   const body = JSON.stringify(data)
 
   try {
-    const { data } = await axios.post('/api/admin/login', body, config)
+    const { data } = await axios.post('/api/user/login', body, config)
 
     Cookies.set('user_token', data.token)
 
     dispatch({
       type: LOGIN_USER,
-      payload: data.admin
+      payload: data.user
     })
 
     if (data.status === 'success') {
@@ -28,6 +28,31 @@ export const login = async (dispatch, data, success, error) => {
     dispatch({
       type: USER_ERROR,
       payload: err.response.data
+    })
+  }
+}
+
+export const register = async (dispatch, data, success) => {
+  const config = { headers: { 'Content-Type': 'application/json' } }
+  const body = JSON.stringify(data)
+
+  try {
+    const { data } = await axios.post('/api/user/add', body, config)
+
+    Cookies.set('user_token', data.token)
+
+    dispatch({
+      type: LOGIN_USER,
+      payload: data.user
+    })
+
+    if (data.status === 'success') {
+      success()
+    }
+  } catch (error) {
+    dispatch({
+      type: USER_ERROR,
+      payload: error.response.data
     })
   }
 }
@@ -43,11 +68,30 @@ export const getUser = async (dispatch, success, error) => {
   setAuthToken(user_token)
 
   try {
-    const { data } = await axios.get('/api/admin/get')
+    const { data } = await axios.get('/api/user')
 
     dispatch({
       type: GET_USER,
-      payload: data.admin
+      payload: data
+    })
+  } catch (err) {
+    dispatch({
+      type: USER_ERROR,
+      payload: err.response.data
+    })
+  }
+}
+
+export const getUsers = async (dispatch, success, error) => {
+  const config = { headers: { 'Content-Type': 'application/json' } }
+  setAuthToken(user_token)
+
+  try {
+    const { data } = await axios.get('/api/user?_get=true', config)
+
+    dispatch({
+      type: GET_USERS,
+      payload: data
     })
   } catch (err) {
     dispatch({

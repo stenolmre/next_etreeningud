@@ -18,9 +18,9 @@ export const LOAD_POSTS = 'LOAD_POSTS'
 export const POST_ERROR = 'POST_ERROR'
 export const ADD_POST_FILTER = 'ADD_POST_FILTER'
 
-export const UPDATE_SETTINGS = 'UPDATE_SETTINGS'
-export const GET_SETTINGS = 'GET_SETTINGS'
-export const SETTINGS_ERROR = 'SETTINGS_ERROR'
+export const INIT_CONFIG = 'INIT_CONFIG'
+export const GET_CONFIG = 'GET_CONFIG'
+export const CONFIG_ERROR = 'CONFIG_ERROR'
 
 export const LOGIN_USER = 'LOGIN_USER'
 export const ADD_USER = 'ADD_USER'

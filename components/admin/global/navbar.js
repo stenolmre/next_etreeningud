@@ -27,7 +27,6 @@ const Navbar = () => {
       {
         showMenu && <div className="sub_menu">
           <span>Minu profiil</span>
-          <span>Saada sõnum</span>
           <span onClick={() => logout(dispatchUser, () => router.push('/'))}>Logi välja</span>
         </div>
       }

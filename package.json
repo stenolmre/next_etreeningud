@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@editorjs/editorjs": "^2.22.2",
     "@fortawesome/fontawesome-free": "^5.15.2",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
@@ -24,5 +25,11 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "sass": "^1.39.0"
+  },
+  "devDependencies": {
+    "@editorjs/header": "^2.6.1",
+    "@editorjs/link": "^2.3.1",
+    "@editorjs/list": "^1.6.2",
+    "@editorjs/simple-image": "^1.4.1"
   }
 }

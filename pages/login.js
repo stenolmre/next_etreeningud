@@ -39,8 +39,8 @@ Login.getInitialProps = async ctx => {
     setAuthToken(user_token)
 
     const { data } = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
-      ? await axios.get('http://localhost:3000/api/admin/get')
-      : await axios.get('https://etreeningud.ee/api/admin/get')
+      ? await axios.get('http://localhost:3000/api/user')
+      : await axios.get('https://etreeningud.ee/api/user')
 
     if (data.status === 'success') {
       ctx.res.writeHead(302, { Location: '/user' })
