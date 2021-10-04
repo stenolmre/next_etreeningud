@@ -1,4 +1,6 @@
 import isEmail from '@utils/isEmail'
+import isURL from '@utils/isURL'
+import isImage from '@utils/isImage'
 
 const isValid = (setErrors, data) => {
   let errors = {}
@@ -14,6 +16,12 @@ const isValid = (setErrors, data) => {
     if (key === 'password' && value.length < 6) {
       is_valid = false
       errors[key] = `${key[0].toUpperCase() + key.slice(1).toLowerCase()} is required and must be longer than 6 chars.`
+      return
+    }
+    
+    if (key === 'image' && (!isURL(value) || !isImage(value))) {
+      is_valid = false
+      errors[key] = `${key[0].toUpperCase() + key.slice(1).toLowerCase()} is required and it must be URL with an ending of |jpeg jpg gif png|.`
       return
     }
     
