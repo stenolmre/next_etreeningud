@@ -1,6 +1,6 @@
 const isEmail = email => {
-  let re = /\S+@\S+\.\S+/
-  return re.test(email)
+  let regexp = /\S+@\S+\.\S+/
+  return regexp.test(email)
 }
 
 export default isEmail
