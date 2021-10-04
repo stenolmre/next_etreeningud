@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 
-const connection = {}
-
-export default async function connectDB() {
+const connectDB = async () => {
+  const connection = {}
   if (connection.isConnected) return
 
   const db = await mongoose.connect(process.env.MONGO_URI, {
@@ -14,3 +13,5 @@ export default async function connectDB() {
   connection.isConnected = db.connections[0].readyState
   console.log(connection.isConnected)
 }
+
+export default connectDB
