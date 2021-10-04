@@ -3,6 +3,8 @@ import isURL from '@utils/isURL'
 import isImage from '@utils/isImage'
 
 const isValid = (setErrors, data) => {
+  if (typeof data !== 'object') throw new Error('Second parameter must be an object.')
+  
   let errors = {}
   let is_valid = true
   
