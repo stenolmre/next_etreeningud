@@ -28,7 +28,7 @@ Index.getInitialProps = async ctx => {
       ? await axios.get('http://localhost:3000/api/user')
       : await axios.get('https://etreeningud.ee/api/user')
 
-    return {}
+    return { data }
   } catch (err) {
     ctx.res.writeHead(302, { Location: '/login' });
     ctx.res.end()

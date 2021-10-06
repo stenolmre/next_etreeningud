@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react'
 
-import { useConfigDispatch, useConfigState } from '@context/config'
+import { useConfigDispatch } from '@context/config'
 import { getConfig } from '@actions/config'
 
 const useConfig = () => {
-  const dispatch = useConfigDispatch()
+  const dispatchConfig = useConfigDispatch()
 
-  return useEffect(() => {
-    getConfig(dispatch)
-  }, [dispatch])
+  return useEffect(() => { getConfig(dispatchConfig) }, [dispatchConfig])
 }
 
 export default useConfig

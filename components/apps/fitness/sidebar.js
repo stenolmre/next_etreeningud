@@ -1,7 +1,6 @@
 import React from 'react'
 
-import useEquipments from '@hooks/useEquipments'
-import useTypes from '@hooks/useTypes'
+import useFitnessFilters from '@hooks/useFitnessFilters'
 import { useFitDispatch } from '@context/fitness'
 import { addFitFilter, removeFitFilter } from '@actions/fitness'
 
@@ -9,6 +8,7 @@ import Sidebar from '@c/global/sidebar'
 
 const FitnessSidebar = ({ filterBy, sortBy }) => {
   const dispatchFit = useFitDispatch()
+  const { types, equipments } = useFitnessFilters()
 
   return <Sidebar>
     <h4>Sort by</h4>
@@ -18,12 +18,12 @@ const FitnessSidebar = ({ filterBy, sortBy }) => {
     <h4>Filter by workout type</h4>
     <All name="type" filter={filterBy.type} dispatchFit={dispatchFit}/>
     {
-      useTypes().map(type => <div key={type} className={filterBy.type === type ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { type: type })}>{type}</div>)
+      types && Object.keys(types).map(type => <div key={type} className={filterBy.type === type ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { type: type })}>{type}</div>)
     }
     <h4>Filter by equipment</h4>
     <All name="equipment" filter={filterBy.equipment} dispatchFit={dispatchFit}/>
     {
-      useEquipments().map(equipment => <div key={equipment} className={filterBy.equipment === equipment ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { equipment })}>{equipment}</div>)
+      equipments && Object.keys(equipments).map(equipment => <div key={equipment} className={filterBy.equipment === equipment ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { equipment })}>{equipment}</div>)
     }
   </Sidebar>
 }

@@ -47,7 +47,7 @@ Login.getInitialProps = async ctx => {
       ctx.res.end()
     }
 
-    return {}
+    return { data }
   } catch (err) {
     return { user_token }
   }
