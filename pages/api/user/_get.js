@@ -1,11 +1,7 @@
-import jwt from 'jsonwebtoken'
-import bcrypt from 'bcryptjs'
-
-import token from '@utils/token'
 import connectDB from '@utils/connectDB'
-import User from '@models/user'
-
 connectDB()
+
+import User from '@models/user'
 
 export default async function (req, res) {
   const jwtToken = req.headers['x-auth-token']

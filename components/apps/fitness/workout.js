@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Workout = ({ workout }) => {
+const Workout = () => {
   return <div></div>
 }
 

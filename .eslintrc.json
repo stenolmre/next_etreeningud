@@ -1,0 +1,14 @@
+{
+  "extends": ["next", "next/core-web-vitals"],
+  "rules": {
+    "no-unused-vars": "error",
+    "quotes": ["warn", "single", { "avoidEscape": true }],
+    "indent": ["error", 2, { "SwitchCase": 1, "offsetTernaryExpressions": true }],
+    "semi": ["error", "never"],
+    "no-trailing-spaces": [2],
+    "max-params": [2, 5],
+    "eqeqeq": ["error", "smart"],
+    "no-irregular-whitespace": 2,
+    "import/no-anonymous-default-export": ["error", { "allowAnonymousFunction": true }]
+  }
+}

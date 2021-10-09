@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import useFitness from '@hooks/useFitness'
 
@@ -12,13 +12,13 @@ const Fitness = () => {
     {
       fitness
         ? fitness.map(workout => <Card
-            key={workout._id}
-            image={workout.image}
-            category={workout.category}
-            equipment={workout.equipment}
-            title={workout.name}
-            time={workout.length}
-          />).slice(0, 3)
+          key={workout._id}
+          image={workout.image}
+          category={workout.category}
+          equipment={workout.equipment}
+          title={workout.name}
+          time={workout.length}
+        />).slice(0, 3)
         : <h2>Loading..</h2>
     }
   </Section>

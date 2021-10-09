@@ -2,7 +2,7 @@ import React from 'react'
 
 import useFitnessFilters from '@hooks/useFitnessFilters'
 import { useFitDispatch } from '@context/fitness'
-import { addFitFilter, removeFitFilter } from '@actions/fitness'
+import { addFitFilter } from '@actions/fitness'
 
 import Sidebar from '@c/global/sidebar'
 
@@ -13,7 +13,7 @@ const FitnessSidebar = ({ filterBy, sortBy }) => {
   return <Sidebar>
     <h4>Sort by</h4>
     {
-      Object.entries(sortBy).map(([key, value]) => <div key={key} className={sortBy[key] ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { [key]: true })}>{key}</div>)
+      Object.keys(sortBy).map(key => <div key={key} className={sortBy[key] ? 'active' : ''} onClick={() => addFitFilter(dispatchFit, { [key]: true })}>{key}</div>)
     }
     <h4>Filter by workout type</h4>
     <All name="type" filter={filterBy.type} dispatchFit={dispatchFit}/>

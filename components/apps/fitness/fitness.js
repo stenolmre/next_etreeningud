@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import sort from '@utils/sort'
 import filter from '@utils/filter'

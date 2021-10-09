@@ -6,7 +6,7 @@ const Landing = () => {
     <Dots num="20" className="landing_top_dots"/>
     <section>
       <h1>Make your dreams come to you.</h1>
-      <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</span>
+      <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s.</span>
       <Link href="/fitness"><a className="btn">Alusta täna</a></Link>
     </section>
     <div className="landing_video">

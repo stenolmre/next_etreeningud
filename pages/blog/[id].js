@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import axios from 'axios'
 
 import Post from '@c/apps/blog/post'

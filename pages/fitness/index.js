@@ -8,7 +8,7 @@ import Sidebar from '@c/apps/fitness/sidebar'
 import Fitness from '@c/apps/fitness/fitness'
 
 const Index = () => {
-  const { fitness, sortBy, filterBy, workout } = useFitness()
+  const { fitness, sortBy, filterBy } = useFitness()
 
   return <Fragment>
     <Head>

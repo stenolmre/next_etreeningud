@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import axios from 'axios'
 import cookies from 'next-cookies'
 import Head from 'next/head'
@@ -30,7 +30,7 @@ Index.getInitialProps = async ctx => {
 
     return { data }
   } catch (err) {
-    ctx.res.writeHead(302, { Location: '/login' });
+    ctx.res.writeHead(302, { Location: '/login' })
     ctx.res.end()
   }
 }

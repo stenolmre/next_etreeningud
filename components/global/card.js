@@ -1,7 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-
-import parseDate from '@utils/parseDate'
+import Image from 'next/image'
 
 import Tooltip from '@c/global/tooltip'
 
@@ -18,7 +17,7 @@ const Card = ({ id, image, category, equipment, title, time }) => {
 
   return <div className="card" onClick={openWorkout}>
     <div className="card_top">
-      <img src={image} alt={title}/>
+      <Image src={image} alt={title}/>
       <div className="card_details">
         <Tooltip tooltip={category}>
           <i className={setCategory()}/>

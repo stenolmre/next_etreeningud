@@ -4,11 +4,11 @@ const Sidebar = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(true)
   const [isMinimized, setIsMinimized] = useState(false)
 
-  const mouseEnter = (e) => {
+  const mouseEnter = () => {
     if (!isExpanded) return setIsMinimized(true)
   }
 
-  const mouseLeave = (e) => {
+  const mouseLeave = () => {
     if (!isExpanded) return setIsMinimized(false)
   }
 

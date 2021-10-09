@@ -18,7 +18,7 @@ const Index = () => {
 
   return <Fragment>
     <Head>
-        <title>eTreeningud</title>
+      <title>eTreeningud</title>
     </Head>
     <Layout>
       <h1 style={{ padding: '10rem 0 0 5rem' }}>stopwatch</h1>
@@ -26,12 +26,11 @@ const Index = () => {
         <p>{formatTime(timer)}</p>
         <div className='buttons'>
           {
-            !isActive && !isPaused ?
-              <button onClick={start}>Start</button>
-              : (
-                isPaused ? <button onClick={pause}>Pause</button> :
-                  <button onClick={resume}>Resume</button>
-              )
+            !isActive && !isPaused
+              ? <button onClick={start}>Start</button>
+              : isPaused
+                ? <button onClick={pause}>Pause</button>
+                : <button onClick={resume}>Resume</button>
           }
           <button onClick={reset} disabled={!isActive}>Reset</button>
         </div>

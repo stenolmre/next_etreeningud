@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React from 'react'
 
 import GlobalState from '@context/state'
 import GetConfig from '@c/utils/getconfig'

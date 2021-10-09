@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import axios from 'axios'
 
 import Workout from '@c/apps/fitness/workout'

@@ -4,7 +4,7 @@ connectDB()
 import Config from '@models/config'
 
 import $get from '@utils/api/get'
-import $delete from '@utils/api/delete'
+// import $delete from '@utils/api/delete'
 // import $post from '@utils/api/post'
 
 const $post = async (req, res, Model, errorMessage) => {
