@@ -6,6 +6,7 @@ import cookies from 'next-cookies'
 import setAuthToken from '@utils/setAuthToken'
 import { useUserState, useUserDispatch } from '@context/user'
 import { login } from '@actions/user'
+import useForm from '@hooks/useForm'
 
 import Layout from '@c/global/layout'
 import Dots from '@c/global/dots'
@@ -19,6 +20,7 @@ const Login = () => {
   const [data, setData] = useState({ email: '', password: '' })
   const onChange = e => setData({ ...data, [e.target.name]: e.target.value })
   const [showError, setShowError] = useState(false)
+  const form = useForm({ email: 'Email', password: 'Password' }, data, setData)
 
   const submit = e => {
     e.preventDefault()
@@ -36,10 +38,7 @@ const Login = () => {
       </div>
       <form onSubmit={submit}>
         <h3>Logi sisse</h3>
-        <label>Email</label>
-        <input name="email" value={data.email} onChange={onChange}/>
-        <label>Password</label>
-        <input type="password" name="password" value={data.password} onChange={onChange}/>
+        { form }
         <button>login</button>
         {
           error != null && showError && <span className="error_message">{error.msg}</span>

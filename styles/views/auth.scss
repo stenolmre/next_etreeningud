@@ -38,21 +38,23 @@
     border-radius: 1rem;
     @include box-shadow;
 
-    > label {
-      font-size: .75rem;
-    }
-
-    > input {
-      width: 100%;
-      margin: .25rem 0 1.5rem 0;
-      padding: .5rem;
-      @include border;
-      border-radius: .25rem;
-      outline: none;
-
-      &:focus {
-        @include border($color: $dodgerblue);
+    > div {
+      > label {
+        font-size: .75rem;
       }
+
+      > input {
+        width: 100%;
+        margin: .25rem 0 1.5rem 0;
+        padding: .5rem;
+        @include border;
+        border-radius: .25rem;
+        outline: none;
+
+        &:focus {
+          @include border($color: $dodgerblue);
+        }
+      }  
     }
 
     > button {
