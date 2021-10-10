@@ -96,7 +96,7 @@ export const getUsers = async (dispatch, success, error) => {
 }
 
 export const logout = async (dispatch, redirect) => {
-  dispatch({
+  await dispatch({
     type: USER_LOGOUT
   })
 
