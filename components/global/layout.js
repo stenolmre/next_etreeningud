@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+
+import { useConfigState } from '@context/config'
 
 import Navbar from './navbar'
 
 const Layout = ({ children }) => {
+  const { loading } = useConfigState()
+
   return <section>
-    <Navbar />
-    {children}
+    {
+      loading
+        ? 'LOADING..'
+        : <Fragment>
+          <Navbar />
+          { children }
+        </Fragment>
+    }
   </section>
 }
 

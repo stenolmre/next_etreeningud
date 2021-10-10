@@ -79,11 +79,11 @@ export const getUsers = async (dispatch, success, error) => {
   setAuthToken(user_token)
 
   try {
-    const { data } = await axios.get('/api/user/_get')
-
+    const { data } = await axios.get('/api/user')
+    console.log(data)
     dispatch({
       type: GET_USERS,
-      payload: data
+      payload: data.users
     })
   } catch (err) {
     dispatch({

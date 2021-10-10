@@ -1,13 +1,17 @@
 import React from 'react'
 import Link from 'next/link'
 
+import { useConfigState } from '@context/config'
+
 const Landing = () => {
+  const { landing } = useConfigState()
+
   return <div className="landing">
     <Dots num="20" className="landing_top_dots"/>
     <section>
-      <h1>Make your dreams come to you.</h1>
-      <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s.</span>
-      <Link href="/fitness"><a className="btn">Alusta täna</a></Link>
+      <h1>{ landing.title }</h1>
+      <span>{ landing.subtitle }</span>
+      <Link href={ landing.button.link }><a className="btn">{ landing.button.title }</a></Link>
     </section>
     <div className="landing_video">
       <div>

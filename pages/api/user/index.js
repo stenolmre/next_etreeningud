@@ -11,11 +11,12 @@ import $post from '@utils/api/post'
 
 export default async function (req, res) {
   const jwtToken = req.headers['x-auth-token']
+  let id = null
 
-  const decoded = jwt.verify(jwtToken, process.env.JWT_KEY)
-
-  let id
-  id = decoded.id
+  if (jwtToken != null) {
+    const decoded = jwt.verify(jwtToken, process.env.JWT_KEY)
+    id = decoded.id
+  }
 
   switch (req.method) {
     case 'GET':

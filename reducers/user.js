@@ -22,7 +22,6 @@ export const UserReducer = (state = initialState, action) => {
     case ADD_USER:
     case REMOVE_USER:
     case GET_USERS:
-
       return {
         ...state,
         users: payload,

@@ -17,7 +17,11 @@ const ConfigSchema = mongoose.Schema({
         type: String,
         required: true
       },
-      info: {
+      bio: {
+        type: String,
+        required: true
+      },
+      image: {
         type: String,
         required: true
       },
@@ -26,7 +30,7 @@ const ConfigSchema = mongoose.Schema({
           type: String,
           default: () => nanoid(5)
         },
-        title: {
+        icon: {
           type: String,
           required: true
         },
@@ -61,7 +65,7 @@ const ConfigSchema = mongoose.Schema({
       type: String,
       default: () => nanoid(5)
     },
-    title: {
+    icon: {
       type: String,
       required: true
     },
@@ -75,11 +79,11 @@ const ConfigSchema = mongoose.Schema({
       type: String,
       default: () => nanoid(5)
     },
-    feature_name: {
+    title: {
       type: String,
       required: true
     },
-    feature_info: {
+    body: {
       type: String,
       required: true
     }
@@ -87,6 +91,32 @@ const ConfigSchema = mongoose.Schema({
   landing: {
     title: String,
     subtitle: String,
+    sections: {
+      fitness: {
+        title: String,
+        subtitle: String,
+        button: {
+          title: String,
+          link: String
+        }
+      },
+      features: {
+        title: String,
+        subtitle: String,
+        button: {
+          title: String,
+          link: String
+        }
+      },
+      blog: {
+        title: String,
+        subtitle: String,
+        button: {
+          title: String,
+          link: String
+        }
+      }
+    },
     button: {
       title: String,
       link: String

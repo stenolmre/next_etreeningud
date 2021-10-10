@@ -1,15 +1,18 @@
 import React from 'react'
 
 import calcReadTime from '@utils/calcReadTime'
+import breakSentence from '@utils/breakSentence'
 import usePosts from '@hooks/usePosts'
+import { useConfigState } from '@context/config'
 
 import Section from '@c/apps/landing/section'
 import Row from '@c/global/row'
 
 const Blog = () => {
   const { posts } = usePosts()
+  const { landing } = useConfigState()
 
-  return <Section title={<span>Explore our blog<br/>for useful tips and tricks.</span>} subtitle="Uusimad postitused" button="Postitused" link="/blog" column>
+  return <Section title={ breakSentence(landing.sections.blog.title) } subtitle={ landing.sections.blog.subtitle } button={ landing.sections.blog.button.title } link={ landing.sections.blog.button.link } column>
     {
       posts
         ? posts.map(post => <Row

@@ -8,12 +8,12 @@ export const getConfig = async (dispatch) => {
 
     dispatch({
       type: GET_CONFIG,
-      payload: data
+      payload: data[0]
     })
-  } catch (err) {
+  } catch (error) {
     dispatch({
       type: CONFIG_ERROR,
-      payload: err.response.data
+      payload: error.response.data
     })
   }
 }
@@ -27,7 +27,7 @@ export const initConfig = async (dispatch, data) => {
 
     dispatch({
       type: INIT_CONFIG,
-      payload: data
+      payload: data[0]
     })
   } catch (error) {
     dispatch({

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Section = ({ children, title, subtitle, link, button, column }) => {
   return <section className={column ? 'landing_section_col' : 'landing_section'}>
-    <h2>{title}</h2>
+    <h2 dangerouslySetInnerHTML={title}/>
     <span>{subtitle}</span>
     <div className="landing_children">
       {children}

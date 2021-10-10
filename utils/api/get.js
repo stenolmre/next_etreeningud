@@ -1,14 +1,14 @@
 const $get = async (req, res, Model, id, errorMessage) => {
   try {
-    let response
+    let response = {}
+
     if (id != null) {
-      if (typeof id === 'object') id = id.id
       response = await Model.findById(id)
+      if (response == null) return res.status(404).json({ msg: errorMessage })
     } else {
       response = await Model.find().sort({ createdAt: -1 })
+      if (!response.length) return res.status(404).json({ msg: errorMessage })
     }
-
-    if (response == null) return res.status(404).json({ msg: errorMessage })
 
     res.send(response)
   } catch (error) {

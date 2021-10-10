@@ -3,7 +3,7 @@
   "rules": {
     "no-unused-vars": "error",
     "quotes": ["warn", "single", { "avoidEscape": true }],
-    "indent": ["error", 2, { "SwitchCase": 1, "offsetTernaryExpressions": true }],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "semi": ["error", "never"],
     "no-trailing-spaces": [2],
     "max-params": [2, 5],
