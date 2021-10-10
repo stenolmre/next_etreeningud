@@ -7,6 +7,10 @@ import setAuthToken from '@utils/setAuthToken'
 import { useUserState, useUserDispatch } from '@context/user'
 import { login } from '@actions/user'
 
+import Layout from '@c/global/layout'
+import Dots from '@c/global/dots'
+import Footer from '@c/global/footer'
+
 const Login = () => {
   const router = useRouter()
   const dispatchUser = useUserDispatch()
@@ -14,22 +18,37 @@ const Login = () => {
 
   const [data, setData] = useState({ email: '', password: '' })
   const onChange = e => setData({ ...data, [e.target.name]: e.target.value })
+  const [showError, setShowError] = useState(false)
 
   const submit = e => {
     e.preventDefault()
-    login(dispatchUser, data, () => router.push('/user'))
+    login(dispatchUser, data, () => router.push('/user'), () => setShowError(true))
   }
 
-  return <div style={{ margin: '2rem' }}>
-    <form onSubmit={submit}>
-      <input name="email" value={data.email} onChange={onChange}/>
-      <input type="password" name="password" value={data.password} onChange={onChange}/>
-      <button>login</button>
-      {
-        error != null && <span>{error.msg}</span>
-      }
-    </form>
-  </div>
+  return <Layout>
+    <div className="auth_container">
+      <div className="auth">
+        <h1>
+          <Dots num={20} className="auth_top_dots"/>
+          <span>Connect to our community for better progress.</span>
+        </h1>
+        <span>By doing together, you will inspire others and get enough motivation to get through the hard days.</span>
+      </div>
+      <form onSubmit={submit}>
+        <h3>Logi sisse</h3>
+        <label>Email</label>
+        <input name="email" value={data.email} onChange={onChange}/>
+        <label>Password</label>
+        <input type="password" name="password" value={data.password} onChange={onChange}/>
+        <button>login</button>
+        {
+          error != null && showError && <span className="error_message">{error.msg}</span>
+        }
+        <Dots num={48} className="auth_bottom_dots"/>
+      </form>
+    </div>
+    <Footer />
+  </Layout>
 }
 
 Login.getInitialProps = async ctx => {

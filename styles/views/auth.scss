@@ -1,0 +1,82 @@
+.auth_container {
+  max-width: 1200px;
+  min-height: unquote('calc(100vh - #{$footerHeight})');
+  margin: 0 auto;
+  position: relative;
+  padding: $navbarHeight + 6rem 5rem 9rem 5rem;
+  @include grid($gap: 2rem, $columns: 1fr 1fr);
+  place-items: center;
+
+  @media (max-width: $mobile) {
+    @include grid($gap: 2rem, $columns: 1fr);
+    padding: $navbarHeight + 6rem 1rem 9rem 1rem;
+  }
+
+  > div {
+    margin-top: -10rem;
+
+    > h1 {
+      position: relative;
+      max-width: 425px;
+      font-size: 2rem;
+      font-weight: 900;
+    }
+
+    > span {
+      max-width: 400px;
+      display: block;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  > form {
+    position: relative;
+    width: 325px;
+    margin: 10rem 0 0 10rem;
+    padding: 1rem;
+    background: $whitesmoke;
+    border-radius: 1rem;
+    @include box-shadow;
+
+    > label {
+      font-size: .75rem;
+    }
+
+    > input {
+      width: 100%;
+      margin: .25rem 0 1.5rem 0;
+      padding: .5rem;
+      @include border;
+      border-radius: .25rem;
+      outline: none;
+
+      &:focus {
+        @include border($color: $dodgerblue);
+      }
+    }
+
+    > button {
+      display: block;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
+    > .error_message {
+      font-size: .75rem;
+      font-weight: 600;
+      color: $tomato;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.auth_top_dots {
+  @include position(absolute, $top: -25%, $left: -3.5rem);
+  @include grid($gap: 1rem, $columns: repeat(5, 1fr));
+}
+
+.auth_bottom_dots {
+  @include position(absolute, $bottom: -25%, $right: -3rem);
+  @include grid($gap: 1rem, $columns: repeat(6, 1fr));
+  row-gap: .5rem;
+}

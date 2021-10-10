@@ -29,6 +29,8 @@ export const login = async (dispatch, data, success, error) => {
       type: USER_ERROR,
       payload: err.response.data
     })
+
+    error()
   }
 }
 

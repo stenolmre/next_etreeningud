@@ -3,6 +3,8 @@ import Link from 'next/link'
 
 import { useConfigState } from '@context/config'
 
+import Dots from '@c/global/dots'
+
 const Landing = () => {
   const { landing } = useConfigState()
 
@@ -23,9 +25,3 @@ const Landing = () => {
 }
 
 export default Landing
-
-const Dots = ({ num, className }) => <div className={`${className} dots`}>
-  {
-    Array.from({ length: num }, (v, i) => i).map((dot, index) => <div className="dot" key={index} />)
-  }
-</div>

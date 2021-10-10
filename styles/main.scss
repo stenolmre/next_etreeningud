@@ -50,8 +50,12 @@ input, select {
 }
 
 footer {
-  padding: 4rem 10vw;
+  height: $footerHeight;
+  padding: 0 10vw;
   @include border;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   > div {
     margin-bottom: 1rem;
