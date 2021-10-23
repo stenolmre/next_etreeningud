@@ -1,6 +1,6 @@
 import React from 'react'
 
-import breakSentence from '@utils/breakSentence'
+import breakSentence from '@ui/utils/breakSentence'
 import { useConfigState } from '@context/config'
 
 import Section from '@c/apps/landing/section'

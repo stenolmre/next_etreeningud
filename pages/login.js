@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import cookies from 'next-cookies'
 
-import setAuthToken from '@utils/setAuthToken'
+import setAuthToken from '@ui/utils/setAuthToken'
 import { useUserState, useUserDispatch } from '@context/user'
 import { login } from '@actions/user'
 import useForm from '@hooks/useForm'
@@ -18,7 +18,6 @@ const Login = () => {
   const { error } = useUserState()
 
   const [data, setData] = useState({ email: '', password: '' })
-  const onChange = e => setData({ ...data, [e.target.name]: e.target.value })
   const [showError, setShowError] = useState(false)
   const form = useForm({ email: 'Email', password: 'Password' }, data, setData)
 

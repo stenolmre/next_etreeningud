@@ -1,6 +1,6 @@
 import React from 'react'
 
-import breakSentence from '@utils/breakSentence'
+import breakSentence from '@ui/utils/breakSentence'
 import useFitness from '@hooks/useFitness'
 import { useConfigState } from '@context/config'
 

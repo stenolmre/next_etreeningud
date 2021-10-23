@@ -1,10 +1,10 @@
 import bcrypt from 'bcryptjs'
 
-import connectDB from '@utils/connectDB'
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
 import token from '@utils/token'
-import isEmail from '@utils/isEmail'
+import isEmail from '@ui/utils/isEmail'
 
 import User from '@models/user'
 

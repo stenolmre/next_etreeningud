@@ -4,7 +4,7 @@ import cookies from 'next-cookies'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
-import setAuthToken from '@utils/setAuthToken'
+import setAuthToken from '@ui/utils/setAuthToken'
 
 import Layout from '@admin/global/layout'
 const Editor = dynamic(

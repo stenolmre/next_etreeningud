@@ -3,7 +3,7 @@ import axios from 'axios'
 import cookies from 'next-cookies'
 import Head from 'next/head'
 
-import setAuthToken from '@utils/setAuthToken'
+import setAuthToken from '@ui/utils/setAuthToken'
 
 import Layout from '@admin/global/layout'
 

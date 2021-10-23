@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-import connectDB from '@utils/connectDB'
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
 import User from '@models/user'

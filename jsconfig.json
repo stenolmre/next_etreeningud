@@ -11,6 +11,7 @@
       "@models/*": ["models/*"],
       "@reducers/*": ["reducers/*"],
       "@styles/*": ["styles/*"],
+      "@ui/*": ["ui/*"],
       "@utils/*": ["utils/*"],
       "@validations/*": ["validations/*"]
     }

@@ -1,4 +1,4 @@
-import connectDB from '@utils/connectDB'
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
 import Post from '@models/post'

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-import setAuthToken from '@utils/setAuthToken'
+import setAuthToken from '@ui/utils/setAuthToken'
 
 import { LOGIN_USER, USER_LOGOUT, GET_USER, GET_USERS, USER_ERROR } from './types'
 

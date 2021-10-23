@@ -1,7 +1,7 @@
 import React from 'react'
 
-import calcReadTime from '@utils/calcReadTime'
-import breakSentence from '@utils/breakSentence'
+import calcReadTime from '@ui/utils/calcReadTime'
+import breakSentence from '@ui/utils/breakSentence'
 import usePosts from '@hooks/usePosts'
 import { useConfigState } from '@context/config'
 
