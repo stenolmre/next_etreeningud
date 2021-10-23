@@ -3,7 +3,7 @@ import React from 'react'
 import sort from '@utils/sort'
 import filter from '@utils/filter'
 
-import Card from '@c/global/card'
+import Card from '@c/global/card/fitness'
 
 const Fitness = ({ fitness, filterBy, sortBy }) => {
   return <div className="page_container">

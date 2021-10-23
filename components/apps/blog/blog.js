@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import sort from '@utils/sort'
-import Row from '@c/global/row'
+import Card from '@c/global/card/blog'
 
 const Fitness = ({ posts, sortBy }) => {
   const [numOfPosts, setNumOfPosts] = useState(10)
@@ -9,7 +9,7 @@ const Fitness = ({ posts, sortBy }) => {
   return <div className="page_container">
     <div className="page_col">
       {
-        posts && sort(posts, sortBy).map(post => <Row
+        posts && sort(posts, sortBy).map(post => <Card
           key={post._id}
           id={post._id}
           image={post.image}

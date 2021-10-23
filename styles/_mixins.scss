@@ -17,3 +17,150 @@
     box-shadow: $boxShadowLeft $boxShadowDark, $boxShadowRight $boxShadowLight, inset $boxShadowLeft $boxShadowDark, inset $boxShadowRight $boxShadowLight;
   }
 }
+
+@mixin divide-with-dot {
+  padding-left: .75rem;
+  margin-left: .75rem;
+  position: relative;
+
+  &::before {
+    content: '•';
+    @include position(absolute, $top: 50%, $left: 0);
+    transform: translateY(-50%);
+  }
+}
+
+@mixin button-animation() {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  & > .icon {
+    @include position(absolute, $left: -2rem, $top: 50%);
+    transform: translateY(-50%);
+    transition: 450ms ease-out;
+  }
+
+  & > span {
+    margin-left: 0;
+    transition: 550ms ease-out;
+  }
+
+  &:hover {
+    & > .icon {
+      left: 1.5rem;
+    }
+
+    & > span {
+      margin-left: .75rem;
+    }
+  }
+}
+
+@mixin border-animation($color: $lavender, $hoverColor: rgba(0, 112, 243, .2)) {
+  $easing: cubic-bezier(0.4, 0, 0.2, 1);
+  $time: 650ms;
+  position: relative;
+  overflow: hidden;
+
+  &:before,
+  &:after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    @include position(absolute, $left: 0);
+    background-color: $color;
+  }
+
+  &:before {
+    top: 0;
+  }
+
+  &:after {
+    bottom: 0;
+  }
+
+  &:hover {
+    & > * {
+      & > * {
+        &:before,
+        &:after {
+          transform: translate3d(0, 0, 0);
+        }
+        & > * {
+          &:before,
+          &:after {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+      }
+    }
+  }
+
+  & > * {
+    &:before,
+    &:after {
+      content: "";
+      width: 1px;
+      height: 100%;
+      @include position(absolute, $top: 0);
+      background-color: $color;
+    }
+
+    &:before {
+      left: 0;
+    }
+
+    &:after {
+      right: 0;
+    }
+
+    & > * {
+      &:before,
+      &:after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        @include position(absolute, $left: 0);
+        background-color: $hoverColor;
+        z-index: 9;
+      }
+
+      &:before {
+        top: 0;
+        transform: translate3d(-105%, 0, 0);
+        transition: transform $time $easing;
+      }
+
+      &:after {
+        bottom: 0;
+        transform: translate3d(105%, 0, 0);
+        transition: transform $time $easing;
+      }
+
+      & > * {
+        &:before,
+        &:after {
+          content: "";
+          width: 1px;
+          height: 100%;
+          @include position(absolute, $top: 0);
+          background-color: $hoverColor;
+          z-index: 9;
+        }
+
+        &:before {
+          left: 0;
+          transform: translate3d(0, 105%, 0);
+          transition: transform $time $easing;
+        }
+
+        &:after {
+          right: 0;
+          transform: translate3d(0, -105%, 0);
+          transition: transform $time $easing;
+        }
+      }
+    }
+  }
+}

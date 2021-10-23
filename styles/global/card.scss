@@ -1,62 +1,117 @@
 $dimension: 250px;
 
-.card {
+.fit_card {
   width: $dimension;
   border-radius: 1rem;
   background: $whitesmoke;
   @include box-shadow;
   cursor: pointer;
   position: relative;
+  @include transition($time: 450ms);
 
-  > .card_top {
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  > .fit_card_top {
     width: $dimension;
     height: $dimension;
     padding: .2rem;
     border-radius: 1rem;
     position: relative;
 
-    > img {
-      width: 100%;
-      height: 100%;
+    > .fit_card_image {
       border-radius: 1rem;
-      object-fit: cover;
-      object-position: center;
+      @include background-image($color: #000);
     }
 
-    > .card_details {
+    > .fit_card_time {
       @include position(absolute, $right: 1rem, $top: 1rem);
 
-      > div {
-        + div {
-          margin-left: .5rem;
-        }
-
-        > span > i,
-        > span > span {
-          width: 32px;
-          height: 32px;
-          background: white;
-          border-radius: .25rem;
-          box-shadow: 1px -1px 7px rgba(255, 255, 255, .4), -1px 1px 7px rgba(255, 255, 255, .4);
-          @include place-center;
-        }
-
-        > span > span {
-          font-size: .75rem;
-          font-weight: 600;
-        }
+      > div > span > span {
+        width: 32px;
+        height: 32px;
+        background: white;
+        border-radius: .25rem;
+        box-shadow: 1px -1px 7px rgba(255, 255, 255, .4), -1px 1px 7px rgba(255, 255, 255, .4);
+        @include place-center;
+        font-size: .75rem;
+        font-weight: 600;
       }
     }
   }
 
-  > .card_title {
+  > .fit_card_title {
     width: calc(100% - .4rem);
-    padding: 1.5rem 1rem 1rem 1rem;
+    padding: 1.5rem 1rem 2rem 1rem;
     @include position(absolute, $right: .2rem, $bottom: .2rem);
     background: linear-gradient(to bottom, transparent, #000 100%);
     border-radius: 0 0 1rem 1rem;
     color: white;
     font-weight: 600;
     @include ellipsis($lines: 2);
+  }
+
+  > .fit_card_details {
+    width: calc(100% - .4rem);
+    padding: 1.5rem 1rem 1rem 1rem;
+    @include position(absolute, $right: .2rem, $bottom: 0rem);
+    color: white;
+    font-size: .7rem;
+    @include ellipsis($lines: 1);
+
+    > span + span {
+      @include divide-with-dot;
+    }
+  }
+}
+
+.blog_card {
+  max-width: 768px;
+  margin: .5rem 0;
+  padding: .5rem;
+  @include flex($align: center);
+  @include border($color: rgba(33, 33, 33, .05));
+  border-radius: .25rem;
+  cursor: pointer;
+  @include transition($time: 450ms);
+
+  &:hover {
+    background: $white;
+  }
+
+  > .blog_card_details {
+    margin: 0 1rem;
+    flex-grow: 1;
+
+    > h4 {
+      margin: 0;
+    }
+
+    > div {
+      font-size: .75rem;
+      > span + span {
+        @include divide-with-dot;
+      }
+    }
+  }
+
+  > .blog_card_rating {
+    @include flex-center-center;
+
+    > label {
+      > input[type = 'radio'] {
+        display: none;
+      }
+
+      > i {
+        opacity: .2;
+      }
+
+      > .gold {
+        opacity: 1;
+        color: #ffc107;
+      }
+    }
   }
 }

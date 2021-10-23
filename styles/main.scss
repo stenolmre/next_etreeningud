@@ -28,6 +28,7 @@ input, select {
   border-radius: 1.5rem;
   color: $dodgerblue;
   font-weight: 600;
+  @include button-animation;
 }
 
 footer {

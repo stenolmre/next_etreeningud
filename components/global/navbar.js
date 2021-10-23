@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { useUserState } from '@context/user'
 
-import Tooltip from '@c/global/tooltip'
+import Tooltip from '@ui/ui/tooltip'
 
 const Navbar = () => {
   const router = useRouter()
@@ -18,11 +18,11 @@ const Navbar = () => {
   ])
 
   const [social] = useState([
-    { icon: 'fab fa-instagram', href: 'https://instagram.com/etreeningud' },
-    { icon: 'fab fa-facebook', href: 'https://facebook.com/etreeningud' },
-    { icon: 'fab fa-youtube', href: 'https://www.youtube.com/channel/UCMJqTp0gaaR4cKGP_oESsYw' },
-    { icon: 'fas fa-mobile-alt', href: 'tel:37258810021' },
-    { icon: 'far fa-paper-plane', href: 'mailto:info@etreeningud.ee' }
+    { icon: 'fab fa-instagram', href: 'https://instagram.com/etreeningud', tooltip: 'Instagram' },
+    { icon: 'fab fa-facebook', href: 'https://facebook.com/etreeningud', tooltip: 'Facebook' },
+    { icon: 'fab fa-youtube', href: 'https://www.youtube.com/channel/UCMJqTp0gaaR4cKGP_oESsYw', tooltip: 'Youtube' },
+    { icon: 'fas fa-mobile-alt', href: 'tel:37258810021', tooltip: 'Helista meile' },
+    { icon: 'far fa-paper-plane', href: 'mailto:info@etreeningud.ee', tooltip: 'Saada email' }
   ])
 
   return <nav>
@@ -42,9 +42,11 @@ const Navbar = () => {
     </Tooltip>
     <div id="social">
       {
-        social.map((link, index) => <a key={index} href={link.href}>
-          <i className={link.icon} />
-        </a>)
+        social.map((link, index) => <Tooltip tooltip={link.tooltip} position="bottom" key={index}>
+          <a href={link.href}>
+            <i className={link.icon} />
+          </a>
+        </Tooltip>)
       }
     </div>
   </nav>

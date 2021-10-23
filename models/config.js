@@ -72,6 +72,10 @@ const ConfigSchema = mongoose.Schema({
     link: {
       type: String,
       required: true
+    },
+    tooltip: {
+      type: String,
+      required: true
     }
   }],
   features: [{

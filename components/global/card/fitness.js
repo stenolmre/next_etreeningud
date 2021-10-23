@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
-import Tooltip from '@c/global/tooltip'
+import Tooltip from '@ui/ui/tooltip'
 
 const Card = ({ id, image, category, equipment, title, time }) => {
   const router = useRouter()
@@ -15,22 +15,20 @@ const Card = ({ id, image, category, equipment, title, time }) => {
     return 'fas fa-heartbeat'
   }
 
-  return <div className="card" onClick={openWorkout}>
-    <div className="card_top">
-      <Image src={image} alt={title}/>
-      <div className="card_details">
-        <Tooltip tooltip={category}>
-          <i className={setCategory()}/>
-        </Tooltip>
-        <Tooltip tooltip={<div>Vahendid: <br/> {equipment}</div>}>
-          <i className="fas fa-dumbbell"/>
-        </Tooltip>
-        <Tooltip tooltip={<div>Aeg: <br/> {time}min</div>}>
+  return <div className="fit_card" onClick={openWorkout}>
+    <div className="fit_card_top">
+      <div className="fit_card_image" style={{backgroundImage: `url(${image})`}}/>
+      <div className="fit_card_time">
+        <Tooltip tooltip={`Treeningu kestvus: ${time}min`}>
           <span>{time}</span>
         </Tooltip>
       </div>
     </div>
-    <div className="card_title">{title}</div>
+    <div className="fit_card_title">{title}</div>
+    <div className="fit_card_details">
+      <span>{category}</span>
+      <span>{equipment}</span>
+    </div>
   </div>
 }
 

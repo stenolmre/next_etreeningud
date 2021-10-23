@@ -6,7 +6,7 @@ import { useUserState } from '@context/user'
 
 import Navbar from '@admin/global/navbar'
 import Sidebar from '@c/global/sidebar'
-import Collapsible from '@c/global/collapsible'
+import Collapsible from '@ui/ui/collapsible'
 
 const Layout = ({ children }) => {
   const router = useRouter()

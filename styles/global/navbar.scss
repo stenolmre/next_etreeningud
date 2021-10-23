@@ -84,16 +84,18 @@ nav {
     border-radius: 1rem;
     @include box-shadow;
 
-    > a {
-      font-size: 1.1rem;
-      @include transition($time: 150ms, $value: color);
+    > .tooltip > span {
+      > a {
+        font-size: 1.1rem;
+        @include transition($time: 150ms, $value: color);
 
-      &:hover {
-        color: $dodgerblue;
+        &:hover {
+          color: $dodgerblue;
+        }
       }
     }
 
-    > a + a {
+    > .tooltip + .tooltip {
       margin-left: 1rem;
     }
   }
