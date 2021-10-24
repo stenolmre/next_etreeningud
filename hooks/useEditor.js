@@ -3,6 +3,7 @@ import EditorJS from '@editorjs/editorjs'
 import Header from '@editorjs/header'
 import List from '@editorjs/list'
 import SimpleImage from '@editorjs/simple-image'
+import Quote from '@editorjs/quote'
 
 export const useEditor = () => {
   const [editorInit, setEditor] = useState(null)
@@ -20,6 +21,7 @@ export const useEditor = () => {
           inlineToolbar: true,
         },
         image: SimpleImage,
+        quote: Quote,
       },
       minHeight: 100,
       data: {}
@@ -72,6 +74,7 @@ export const useEditorParser = post => {
       </ul>
     }
     if (block.type === 'image') return <img key={index} src={block.data.url}/>
+    if (block.type === 'quote') return <blockquote>{block.data.text} - {block.data.caption}</blockquote>
     return
   })
 }

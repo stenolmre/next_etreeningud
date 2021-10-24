@@ -1,0 +1,110 @@
+.post_container {
+  max-width: 768px;
+  margin: 0 auto;
+
+  > .post_title {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  > .author_details_bio {
+    width: 110%;
+    margin: 0 0 3rem -5%;
+    padding: 1rem 5%;
+    background: $white;
+  }
+
+  > .author_details,
+  > .author_details_bio {
+    @include flex($align: center);
+
+    > .author_details_image,
+    > .author_details_image_bio {
+      margin-right: .5rem;
+      border-radius: 100%;
+      @include background-image($color: $lavender, $width: 2rem, $height: 2rem);
+    }
+
+    > .author_details_image_bio {
+      @include background-image($color: $lavender, $width: 4rem, $height: 4rem);
+    }
+
+    > div {
+      font-size: .75rem;
+
+      > .author_details_name {
+        color: $dodgerblue;
+        font-weight: 600;
+      }
+
+      > span + span {
+        @include divide-with-dot;
+      }
+    }
+
+    > .author_details_social {
+      flex-grow: 1;
+      text-align: right;
+      font-size: 1rem;
+
+      > a {
+        color: $darkslategray;
+        @include transition($time: 450ms);
+        cursor: pointer;
+
+        &:hover {
+          color: $dodgerblue;
+        }
+
+        & + a {
+          margin-left: .75rem;
+        }
+      }
+    }
+  }
+
+  > .post {
+    margin-top: 3rem;
+
+    > img, > iframe {
+      width: 110%;
+      margin: 1rem 0 1rem -5%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: .25rem;
+    }
+
+    a {
+      color: $dodgerblue;
+    }
+
+    blockquote {
+      width: 80%;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, $dodgerblue 4px, transparent 4px) 0 100%, linear-gradient(to left, $dodgerblue 4px, transparent 4px) 100% 0, linear-gradient(to bottom, $dodgerblue 4px, transparent 4px) 100% 0, linear-gradient(to top, $dodgerblue 4px, transparent 4px) 0 100%;
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      text-align: center;
+    }
+  }
+
+  > .post_reaction {
+    margin: 3rem 0;
+    @include flex($align: center);
+
+    > span {
+      @include flex($align: center);
+
+      & + span {
+        margin-left: 1rem;
+      }
+
+      > i {
+        font-size: 1.5rem;
+        margin-right: .25rem;
+      }
+    }
+  }
+}

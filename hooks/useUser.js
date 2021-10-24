@@ -7,7 +7,7 @@ const useUser = () => {
   const dispatchUser = useUserDispatch()
   const user = useUserState()
 
-  if (user.user == null) useEffect(() => { getUser(dispatchUser) }, [dispatchUser])
+  useEffect(() => { getUser(dispatchUser) }, [dispatchUser])
 
   return user
 }

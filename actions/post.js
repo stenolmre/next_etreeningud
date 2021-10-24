@@ -7,7 +7,7 @@ export const getPosts = async (dispatch) => {
   })
 
   try {
-    const { data } = await axios.get('/api/posts')
+    const { data } = await axios.get('/api/post')
 
     dispatch({
       type: GET_POSTS,
@@ -33,7 +33,7 @@ export const publishPost = async (dispatch, new_post) => {
   const body = JSON.stringify(new_post)
 
   try {
-    const { data } = await axios.post('/api/posts', body, config)
+    const { data } = await axios.post('/api/post', body, config)
 
     dispatch({
       type: ADD_POST,

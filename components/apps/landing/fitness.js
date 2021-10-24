@@ -13,31 +13,31 @@ const Fitness = () => {
 
   const fitness = [{
     _id: 'asd',
-    image: "https://images.pexels.com/photos/1302925/pexels-photo-1302925.jpeg?auto=compress&cs=tinysrgb&dpr=1",
-    name: "Lower body full attack",
-    equipment: "Joogamatt",
-    category: "Jooga",
+    image: 'https://images.pexels.com/photos/1302925/pexels-photo-1302925.jpeg?auto=compress&cs=tinysrgb&dpr=1',
+    name: 'Lower body full attack',
+    equipment: 'Joogamatt',
+    category: 'Jooga',
     length: 32
   },{
     _id: 'asd1',
-    image: "https://images.pexels.com/photos/1089164/pexels-photo-1089164.jpeg?auto=compress&cs=tinysrgb&dpr=1",
-    name: "Lower body full attack to be greater than usual.",
-    category: "jõud",
-    equipment: "hantlid & kummiloop",
+    image: 'https://images.pexels.com/photos/1089164/pexels-photo-1089164.jpeg?auto=compress&cs=tinysrgb&dpr=1',
+    name: 'Lower body full attack to be greater than usual.',
+    category: 'jõud',
+    equipment: 'hantlid & kummiloop',
     length: 3
   },{
     _id: 'asd2',
-    image: "https://images.pexels.com/photos/1089147/pexels-photo-1089147.jpeg?auto=compress&cs=tinysrgb&dpr=1",
-    name: "You can do it.",
-    category: "HIIT",
-    equipment: "treeningmatt",
+    image: 'https://images.pexels.com/photos/1089147/pexels-photo-1089147.jpeg?auto=compress&cs=tinysrgb&dpr=1',
+    name: 'You can do it.',
+    category: 'HIIT',
+    equipment: 'treeningmatt',
     length: 5
   },{
     _id: 'as2d',
-    image: "https://images.pexels.com/photos/1302925/pexels-photo-1302925.jpeg?auto=compress&cs=tinysrgb&dpr=1",
-    name: "Lower body full attack",
-    equipment: "Joogamatt",
-    category: "Jooga",
+    image: 'https://images.pexels.com/photos/1302925/pexels-photo-1302925.jpeg?auto=compress&cs=tinysrgb&dpr=1',
+    name: 'Lower body full attack',
+    equipment: 'Joogamatt',
+    category: 'Jooga',
     length: 32
   }]
 

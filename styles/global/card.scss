@@ -80,6 +80,10 @@ $dimension: 250px;
     background: $white;
   }
 
+  > .blog_card_image {
+    @include background-image($color: $lavender, $width: 75px, $height: 61px);
+  }
+
   > .blog_card_details {
     margin: 0 1rem;
     flex-grow: 1;
@@ -111,6 +115,62 @@ $dimension: 250px;
       > .gold {
         opacity: 1;
         color: #ffc107;
+      }
+    }
+  }
+}
+
+.first_post {
+  max-width: 768px;
+  margin: .5rem 0;
+  padding: .5rem;
+  @include flex($align: center);
+  @include border($color: rgba(33, 33, 33, .05));
+  border-radius: .25rem;
+  cursor: pointer;
+  @include transition($time: 450ms);
+
+  &:hover {
+    background: $white;
+  }
+
+  > .first_post_image {
+    @include background-image($color: $lavender, $width: 250px, $height: 175px);
+  }
+
+  > .first_post_details {
+    flex-grow: 1;
+    margin-left: 2rem;
+    width: 300px;
+
+    > h1 {
+      font-size: 1.5rem;
+    }
+
+    > div {
+      font-size: .875rem;
+      > span + span {
+        @include divide-with-dot;
+      }
+    }
+
+    > .first_post_rating {
+      margin-top: 1rem;
+
+      > label {
+        > input[type = 'radio'] {
+          display: none;
+        }
+
+        > i {
+          font-size: 1rem;
+          opacity: .2;
+        }
+
+        > .gold {
+          opacity: 1;
+          color: #ffc107;
+        }
       }
     }
   }

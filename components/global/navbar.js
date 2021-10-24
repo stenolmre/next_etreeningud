@@ -3,26 +3,20 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { useUserState } from '@context/user'
+import { useConfigState } from '@context/config'
 
 import Tooltip from '@ui/ui/tooltip'
 
 const Navbar = () => {
   const router = useRouter()
   const { user } = useUserState()
+  const { social } = useConfigState()
 
   const [navs] = useState([
     { name: 'Esileht', href: '/' },
     { name: 'Treeningud', href: '/fitness' },
     { name: 'Blogi', href: '/blog' },
     { name: 'Kontakt', href: '/contact' }
-  ])
-
-  const [social] = useState([
-    { icon: 'fab fa-instagram', href: 'https://instagram.com/etreeningud', tooltip: 'Instagram' },
-    { icon: 'fab fa-facebook', href: 'https://facebook.com/etreeningud', tooltip: 'Facebook' },
-    { icon: 'fab fa-youtube', href: 'https://www.youtube.com/channel/UCMJqTp0gaaR4cKGP_oESsYw', tooltip: 'Youtube' },
-    { icon: 'fas fa-mobile-alt', href: 'tel:37258810021', tooltip: 'Helista meile' },
-    { icon: 'far fa-paper-plane', href: 'mailto:info@etreeningud.ee', tooltip: 'Saada email' }
   ])
 
   return <nav>
@@ -43,7 +37,7 @@ const Navbar = () => {
     <div id="social">
       {
         social.map((link, index) => <Tooltip tooltip={link.tooltip} position="bottom" key={index}>
-          <a href={link.href}>
+          <a href={link.link}>
             <i className={link.icon} />
           </a>
         </Tooltip>)

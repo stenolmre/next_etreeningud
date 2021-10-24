@@ -31,6 +31,7 @@
     "@editorjs/header": "^2.6.1",
     "@editorjs/link": "^2.3.1",
     "@editorjs/list": "^1.6.2",
+    "@editorjs/quote": "^2.4.0",
     "@editorjs/simple-image": "^1.4.1",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.2"

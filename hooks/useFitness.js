@@ -7,7 +7,7 @@ const useFitness = () => {
   const dispatchFit = useFitDispatch()
   const fitness = useFitState()
 
-  if (!fitness.fitness.length) useEffect(() => { getWorkouts(dispatchFit) }, [dispatchFit])
+  useEffect(() => { getWorkouts(dispatchFit) }, [dispatchFit])
 
   return fitness
 }

@@ -1,14 +1,14 @@
 const sort = (array, sortBy) => {
   return array.sort((a, b) => {
     if (sortBy.AZ) {
-      if(a.name < b.name) return -1
-      if(a.name > b.name) return 1
+      if(a.title < b.title) return -1
+      if(a.title > b.title) return 1
       return 0
     }
 
     if (sortBy.ZA) {
-      if(a.name > b.name) return -1
-      if(a.name < b.name) return 1
+      if(a.title > b.title) return -1
+      if(a.title < b.title) return 1
       return 0
     }
 

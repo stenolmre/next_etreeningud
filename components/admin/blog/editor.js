@@ -59,8 +59,8 @@
 //   }
 //
 //   useEffect(() => {
-//     if (showPreview) return document.body.style.overflow = 'hidden';
-//     document.body.style.overflow = 'scroll';
+//     if (showPreview) return document.body.style.overflow = 'hidden'
+//     document.body.style.overflow = 'scroll'
 //   }, [showPreview])
 //
 //   return <div className="editor_container">

@@ -8,8 +8,25 @@
   }
 
   > .load_more {
+    max-width: 768px;
+    margin-top: 3rem;
+    @include flex-center-center;
     font-size: .75rem;
     cursor: pointer;
+    @include transition($time: 450ms);
+
+    &:hover {
+      color: $dodgerblue;
+    }
+
+    > span {
+      font-weight: 600;
+    }
+
+    > hr {
+      flex-grow: 1;
+      @include border;
+    }
   }
 }
 

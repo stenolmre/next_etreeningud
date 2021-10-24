@@ -26,16 +26,13 @@ const PostSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  ratings: [
-    {
-      rating: {
-        type: Number,
-        required: true
-      }
-    }
-  ],
+  likes: Array,
   comments: [
     {
+      name: {
+        type: String,
+        required: true
+      },
       comment: {
         type: String,
         required: true
