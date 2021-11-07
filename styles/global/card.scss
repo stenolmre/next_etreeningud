@@ -9,6 +9,10 @@ $dimension: 250px;
   position: relative;
   @include transition($time: 450ms);
 
+  @media (max-width: 590px) {
+    width: 100%;
+  }
+
   &:hover {
     transform: scale(1.03);
   }
@@ -16,9 +20,13 @@ $dimension: 250px;
   > .fit_card_top {
     width: $dimension;
     height: $dimension;
-    padding: .2rem;
+    padding: 0.2rem;
     border-radius: 1rem;
     position: relative;
+
+    @media (max-width: 590px) {
+      width: 100%;
+    }
 
     > .fit_card_image {
       border-radius: 1rem;
@@ -32,10 +40,10 @@ $dimension: 250px;
         width: 32px;
         height: 32px;
         background: white;
-        border-radius: .25rem;
+        border-radius: 0.25rem;
         box-shadow: 1px -1px 7px rgba(255, 255, 255, .4), -1px 1px 7px rgba(255, 255, 255, .4);
         @include place-center;
-        font-size: .75rem;
+        font-size: 0.75rem;
         font-weight: 600;
       }
     }
@@ -43,8 +51,8 @@ $dimension: 250px;
 
   > .fit_card_title {
     width: calc(100% - .4rem);
-    padding: 1.5rem 1rem 2rem 1rem;
-    @include position(absolute, $right: .2rem, $bottom: .2rem);
+    padding: 1.5rem 1rem 2rem;
+    @include position(absolute, $right: 0.2rem, $bottom: 0.2rem);
     background: linear-gradient(to bottom, transparent, #000 100%);
     border-radius: 0 0 1rem 1rem;
     color: white;
@@ -54,10 +62,10 @@ $dimension: 250px;
 
   > .fit_card_details {
     width: calc(100% - .4rem);
-    padding: 1.5rem 1rem 1rem 1rem;
-    @include position(absolute, $right: .2rem, $bottom: 0rem);
+    padding: 1.5rem 1rem 1rem;
+    @include position(absolute, $right: 0.2rem, $bottom: 0);
     color: white;
-    font-size: .7rem;
+    font-size: 0.7rem;
     @include ellipsis($lines: 1);
 
     > span + span {
@@ -66,112 +74,158 @@ $dimension: 250px;
   }
 }
 
+$some_media: 600px;
+
 .blog_card {
+  width: 100%;
+  height: 80px;
   max-width: 768px;
-  margin: .5rem 0;
-  padding: .5rem;
+  margin: auto;
+  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+  @include position(relative, $left: 0);
   @include flex($align: center);
-  @include border($color: rgba(33, 33, 33, .05));
-  border-radius: .25rem;
+  gap: 0.5rem;
+  border-radius: 0.25rem;
+  background: #F1F5F8;
+  box-shadow: -2px -2px 5px #FFFFFF, 2px 2px 5px #DEE1E4;
+  border: 1px solid $white;
+  @include transition($time: 250ms);
   cursor: pointer;
-  @include transition($time: 450ms);
+
+  & + .blog_card {
+    margin-top: 1rem;
+  }
 
   &:hover {
-    background: $white;
+    left: .5rem;
+  }
+
+  @media(max-width: $some_media) {
+    height: 8rem;
+    gap: 1rem;
   }
 
   > .blog_card_image {
-    @include background-image($color: $lavender, $width: 75px, $height: 61px);
+    @include background-image($color: $lavender, $width: 71px, $height: 100%);
+    min-width: 71px;
+
+    @media(max-width: $some_media) {
+      @include background-image($color: $lavender, $width: 7rem, $height: 7rem);
+      min-width: 7rem;
+    }
   }
 
-  > .blog_card_details {
-    margin: 0 1rem;
+  > .blog_card_info {
     flex-grow: 1;
 
     > h4 {
-      margin: 0;
+      margin: 0 0 0.25rem;
+      @include ellipsis;
+      @media(max-width: $some_media) {
+        margin: 0 0 0.5rem;
+        @include ellipsis($lines: 2);
+      }
     }
 
-    > div {
-      font-size: .75rem;
-      > span + span {
-        @include divide-with-dot;
+    > .aut {
+      @media(max-width: $some_media) {
+        display: block;
+      }
+    }
+
+    .cate {
+      @media(max-width: $some_media) {
+        margin-right: 1.5rem;
+        position: relative;
+
+        &::before {
+          content: '•';
+          @include position(absolute, $right: -.9rem, $top: 50%);
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    > span {
+      @media(max-width: $some_media) {
+        font-size: 0.875rem;
+      }
+
+      & + span {
+        @media(min-width: $some_media) {
+          margin-left: 1.5rem;
+          position: relative;
+
+          &::before {
+            content: '•';
+            @include position(absolute, $left: -.9rem, $top: 50%);
+            transform: translateY(-50%);
+          }
+        }
       }
     }
   }
 
-  > .blog_card_rating {
-    @include flex-center-center;
-
-    > label {
-      > input[type = 'radio'] {
-        display: none;
-      }
-
-      > i {
-        opacity: .2;
-      }
-
-      > .gold {
-        opacity: 1;
-        color: #ffc107;
-      }
+  > .blog_card_social {
+    position: relative;
+    @media(max-width: $some_media) {
+      // @include position(absolute, $right: .5rem, $bottom: .5rem);
+      display: none;
     }
+
+    > i {
+      font-size: 1.2rem;
+      color: $tomato;
+    }
+
+    > span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      @include position(absolute, $top: -.75rem, $right: -.75rem);
+    }
+  }
+
+  > .blog_card_category {
+    width: 6px;
+    height: 2rem;
+    @include position(absolute, $right: -1px, $top: 50%);
+    transform: translateY(-50%);
+    background: rgba(43, 233, 163, 1);
+    border-radius: 0.25rem 0 0 0.25rem;
   }
 }
 
-.first_post {
-  max-width: 768px;
-  margin: .5rem 0;
-  padding: .5rem;
-  @include flex($align: center);
-  @include border($color: rgba(33, 33, 33, .05));
-  border-radius: .25rem;
-  cursor: pointer;
-  @include transition($time: 450ms);
+.blog_card_first {
+  min-height: 240px;
+  gap: 1.5rem;
 
-  &:hover {
-    background: $white;
+  @media(max-width: $some_media) {
+    min-height: 380px;
+    padding: .5rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  > .first_post_image {
-    @include background-image($color: $lavender, $width: 250px, $height: 175px);
+  > .blog_card_image {
+    width: 310px;
+
+    @media(max-width: $some_media) {
+      width: 100%;
+      height: 240px;
+    }
   }
 
-  > .first_post_details {
-    flex-grow: 1;
-    margin-left: 2rem;
-    width: 300px;
-
-    > h1 {
+  > .blog_card_info {
+    > h4 {
       font-size: 1.5rem;
+      margin: 0 0 .5rem 0;
+      @include ellipsis($lines: 2);
     }
+  }
 
-    > div {
-      font-size: .875rem;
-      > span + span {
-        @include divide-with-dot;
-      }
-    }
-
-    > .first_post_rating {
-      margin-top: 1rem;
-
-      > label {
-        > input[type = 'radio'] {
-          display: none;
-        }
-
-        > i {
-          font-size: 1rem;
-          opacity: .2;
-        }
-
-        > .gold {
-          opacity: 1;
-          color: #ffc107;
-        }
-      }
+  > .blog_card_category {
+    @media(max-width: $some_media) {
+      display: none;
     }
   }
 }

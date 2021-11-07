@@ -2,6 +2,10 @@
   max-width: 768px;
   margin: 0 auto;
 
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+
   > .post_title {
     margin: 0 0 1rem 0;
     font-size: 2rem;
@@ -13,6 +17,11 @@
     margin: 0 0 3rem -5%;
     padding: 1rem 5%;
     background: $white;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: 0 0 3rem 0;
+    }
   }
 
   > .author_details,
@@ -28,6 +37,12 @@
 
     > .author_details_image_bio {
       @include background-image($color: $lavender, $width: 4rem, $height: 4rem);
+
+      @media (max-width: 768px) {
+        min-width: 2rem;
+        min-height: 2rem;
+        @include background-image($color: $lavender, $width: 2rem, $height: 2rem);
+      }
     }
 
     > div {
@@ -73,6 +88,11 @@
       object-fit: cover;
       object-position: center;
       border-radius: .25rem;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        margin: 1rem 0;
+      }
     }
 
     a {

@@ -16,7 +16,6 @@ const Navbar = () => {
     { name: 'Esileht', href: '/' },
     { name: 'Treeningud', href: '/fitness' },
     { name: 'Blogi', href: '/blog' },
-    { name: 'Kontakt', href: '/contact' }
   ])
 
   return <nav>
@@ -32,7 +31,7 @@ const Navbar = () => {
       }
     </div>
     <Tooltip tooltip={user != null ? 'Minu töölaud' : 'Logi sisse'} position="bottom">
-      <i className="fas fa-fingerprint" onClick={() => router.push(`${user != null ? '/user' : '/login'}`)}/>
+      <i className="fas fa-fingerprint" onClick={() => window.open('https://app.etreeningud.ee', '_blank')}/>
     </Tooltip>
     <div id="social">
       {

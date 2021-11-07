@@ -10,12 +10,18 @@ nav {
   z-index: 1000;
 
   @media (max-width: $mobile) {
-
+    height: 3rem;
+    background: $dodgerblue;
+    color: $white;
   }
 
   > #logo {
     @include flex($align: center);
     cursor: pointer;
+    
+    @media (max-width: $mobile) {
+      flex-grow: 1;
+    }
 
     > .logo {
       width: 1.5rem;
@@ -25,6 +31,11 @@ nav {
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
+
+      @media (max-width: $mobile) {
+        width: 1rem;
+        height: 2rem;
+      }
     }
 
     > span {
@@ -32,6 +43,10 @@ nav {
       color: $dodgerblue;
       font-weight: 600;
       margin-left: .5rem;
+
+      @media (max-width: $mobile) {
+        color: $white;
+      }
     }
   }
 
@@ -83,6 +98,10 @@ nav {
     @include flex-center-center;
     border-radius: 1rem;
     @include box-shadow;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
 
     > .tooltip > span {
       > a {

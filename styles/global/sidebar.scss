@@ -8,6 +8,12 @@ $sidebarMinWidth: 25px;
   @include border($side: right);
   background: rgb(249, 249, 249);
   @include transition($time: 350ms, $value: width);
+  z-index: 2;
+
+  @media (max-width: $mobile) {
+    top: 3rem;
+    height: calc(100vh - 3rem);
+  }
 
   > .sidebar_toggle_button {
     $width: 1rem;
@@ -21,10 +27,26 @@ $sidebarMinWidth: 25px;
     @include border($side: bottom);
     font-size: .7rem;
     cursor: pointer;
+
+    @media (max-width: $mobile) {
+      $width: 2rem;
+      width: $width;
+      height: 3.5rem;
+      @include position(absolute, $top: 80%, $right: -$width);
+      font-size: .875rem;
+      border-radius: 0 .25rem .25rem 0;
+      font-size: 1.2rem;
+    }
   }
 
   > .sidebar_content {
     padding: 3rem 1rem 1rem 1rem;
+
+    @media (max-width: $mobile) {
+      height: 100%;
+      padding: 3rem 1rem;
+      overflow-y: scroll;
+    }
 
     > h4 {
       margin-top: 2rem;
@@ -61,17 +83,30 @@ $sidebarMinWidth: 25px;
 }
 
 .sidebar + .page_container {
-  margin-left: $sidebarWidth + 50px;
+  margin-left: $sidebarWidth + 32px;
   @include transition($time: 350ms, $value: margin);
+
+  @media (max-width: $mobile) {
+    margin-left: $sidebarMinWidth;
+    overflow: hidden;
+  }
 }
 
 .sidebar_minimized + .page_container {
-  margin-left: $sidebarMinWidth + 50px;
+  margin-left: $sidebarMinWidth + 32px;
   @include transition($time: 350ms, $value: margin);
+
+  @media (max-width: $mobile) {
+    margin-left: $sidebarMinWidth;
+  }
 }
 
 .page_container {
-  padding: $navbarHeight + 2.5rem 0 2.5rem 0;
+  padding: $navbarHeight + 2.5rem 0 7.5rem 0;
+
+  @media (max-width: $mobile) {
+    padding-top: 5.5rem;
+  }
 
   > h1 {
     margin-left: 1rem;

@@ -10,6 +10,10 @@ export const initialState = {
     AZ: false,
     ZA: false
   },
+  filterBy: {
+    category: null,
+    author: null
+  },
   error: null
 }
 
@@ -69,6 +73,10 @@ export const PostReducer = (state = initialState, action) => {
           Oldest: payload.Oldest != null ? payload.Oldest : hasFilterKey ? false : state.sortBy.Oldest,
           AZ: payload.AZ != null ? payload.AZ : hasFilterKey ? false : state.sortBy.AZ,
           ZA: payload.ZA != null ? payload.ZA : hasFilterKey ? false : state.sortBy.ZA
+        },
+        filterBy: {
+          category: payload.hasOwnProperty('category') ? payload.category : state.filterBy.category,
+          author: payload.hasOwnProperty('author') ? payload.author : state.filterBy.author
         }
       }
     case POST_ERROR:

@@ -8,24 +8,90 @@
 
   @media (max-width: $mobile) {
     @include grid($gap: 2rem, $columns: 1fr);
-    padding: $navbarHeight + 6rem 1rem 9rem 1rem;
+    padding: 7rem 1rem 3rem 1rem;
+    text-align: center;
+  }
+
+  > .landing_mobile_media {
+    display: none;
+
+    @media (max-width: $mobile) {
+      display: block;
+      width: 100%;
+      max-width: 375px;
+      height: 220px;
+      margin: 0 auto;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 1rem;
+    }
   }
 
   > section {
+    > .landing_mobile_top_text {
+      display: none;
+
+      @media (max-width: $mobile) {
+        display: inline-block;
+        margin: 1rem 0;
+        padding: 0 1rem .25rem 1rem;
+        border-bottom: 3px solid $lavender;
+        text-transform: uppercase;
+        font-size: .875rem;
+        font-weight: 600;
+        opacity: .4;
+      }
+    }
+
     > h1 {
       font-size: 2rem;
       font-weight: 900;
+
+      @media (max-width: $mobile) {
+        margin-top: 0;
+      }
     }
 
     > span {
       max-width: 400px;
       display: block;
       margin-bottom: 2.5rem;
+
+      @include only-desktop;
+    }
+  }
+
+  > .landing_powered_by {
+    display: none;
+
+    @media (max-width: $mobile) {
+      display: block;
+      margin-top: 2rem;
+
+      > p {
+        display: inline-block;
+        padding: 0 1rem .25rem 1rem;
+        border-bottom: 3px solid $lavender;
+        text-transform: uppercase;
+        font-size: .875rem;
+        font-weight: 600;
+        opacity: .4;
+      }
+
+      > div {
+        > img {
+          width: 52px;
+          + img {
+            margin-left: 1rem;
+          }
+        }
+      }
     }
   }
 
   > .landing_video {
     margin-top: 3rem;
+    @include only-desktop;
 
     > div > iframe {
       width: 100%;
@@ -49,12 +115,16 @@
 .landing_top_dots {
   @include position(absolute, $top: 11rem, $left: 2.5rem);
   @include grid($gap: 1rem, $columns: repeat(5, 1fr));
+  @include only-desktop;
+  display: grid;
 }
 
 .landing_bottom_dots {
   @include position(absolute, $bottom: 6rem, $right: 2.5rem);
   @include grid($gap: 1rem, $columns: repeat(10, 1fr));
   row-gap: .5rem;
+  @include only-desktop;
+  display: grid;
 }
 
 .landing_section,
@@ -97,18 +167,25 @@
 
 .feature {
   width: 250px;
-  height: 160px;
-  padding: 1rem;
+  height: 150px;
+  padding: 1.5rem;
   background: $white;
   @include border-animation;
 
-  > h4 {
+  > div > div > h4 {
+    margin: 0 0 1rem 0;
     @include transition(350ms);
   }
 
   &:hover {
-    > h4 {
+    > div > div > h4 {
       color: $dodgerblue;
     }
+  }
+
+  @media (max-width: 590px) {
+    width: 100%;
+    height: auto;
+    padding: 2rem 1rem;
   }
 }

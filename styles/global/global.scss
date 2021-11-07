@@ -1,15 +1,20 @@
 @import 'navbar';
 @import 'card';
 @import 'sidebar';
+@import 'footbar';
+@import 'author';
 
 .page_container {
+  padding-right: .5rem;
+  padding-left: .5rem;
+
   > h1 {
     margin: 0 0 1rem 0;
   }
 
   > .load_more {
     max-width: 768px;
-    margin-top: 3rem;
+    margin: 3rem auto 0 auto;
     @include flex-center-center;
     font-size: .75rem;
     cursor: pointer;

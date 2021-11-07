@@ -18,19 +18,21 @@ const Author = ({ post, bio }) => {
     }
   }
 
-  return <div className={`author_details${bio ? '_bio' : ''}`}>
-    <div className={`author_details_image${bio ? '_bio' : ''}`} style={{ backgroundImage: `url(${ author.image })` }}/>
-    <div>
-      <span className="author_details_name">{author.name}</span>
-      <span>{bio ? 'Treener' : parseDate(post.createdAt)}</span>
-      <span>{bio ? 'CEO TalTech Tantsutüdrukud' : calcReadTime(post.content.data)}</span>
-    </div>
-    <div className="author_details_social">
-      {
-        author.social.map(link => <a key={link._id} href={link.link} target="_blank" rel="noreferrer">
-          <i className={link.icon} />
-        </a>)
-      }
+  return <div className={`some`}>
+    <div className={`author_img`} style={{ backgroundImage: `url(${ author.image })` }}/>
+    <div className="n">
+      <div className="m">
+        <span className="na">{author.name}</span>
+        <span>{bio ? 'Treener' : parseDate(post.createdAt)}</span>
+        <span>{bio ? 'CEO TalTech Tantsutüdrukud' : calcReadTime(post.content.data)}</span>
+      </div>
+      <div className="s">
+        {
+          author.social.map(link => <a key={link._id} href={link.link} target="_blank" rel="noreferrer">
+            <i className={link.icon} />
+          </a>)
+        }
+      </div>
     </div>
   </div>
 }

@@ -41,15 +41,14 @@ footer {
 
   > div {
     margin-bottom: 1rem;
+    @include flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 
     > span {
       color: $dodgerblue;
       font-weight: 600;
       font-size: .75rem;
-
-      + span {
-        margin-left: 2rem;
-      }
     }
   }
 

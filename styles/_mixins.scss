@@ -39,11 +39,20 @@
     @include position(absolute, $left: -2rem, $top: 50%);
     transform: translateY(-50%);
     transition: 450ms ease-out;
+    margin-top: -1px;
+
+    @media (max-width: $mobile) {
+      left: 1.5rem;
+    }
   }
 
   & > span {
     margin-left: 0;
     transition: 550ms ease-out;
+
+    @media (max-width: $mobile) {
+      margin-left: 1rem;
+    }
   }
 
   &:hover {
@@ -52,7 +61,7 @@
     }
 
     & > span {
-      margin-left: .75rem;
+      margin-left: 1rem;
     }
   }
 }
