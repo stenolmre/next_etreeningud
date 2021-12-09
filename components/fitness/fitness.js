@@ -1,39 +1,36 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 
-import { useFitState, useFitDispatch } from './../../context/fitness'
-import { getWorkouts } from './../../actions/fitness'
+import { useFitState, useFitDispatch } from '@context/fitness'
+import { filterFit } from '@actions/fitness'
 
-import Loader from './../utils/loader'
-import Searchbar from './../utils/searchbar'
-import { Row, Header } from './row'
-import Card from './card'
+import Loader from '@c/utils/loader'
+import Card from '@c/fitness/card'
+import Sidebar from '@c/sidebar'
 
 const Fitness = () => {
-  const { query } = useRouter()
+  const dispatch = useFitDispatch()
+  const { loading, fitness, filters } = useFitState()
 
-  const [search, setSearch] = useState('')
+  const arr = ['jõud', 'jooga', 'HIIT']
 
-  const dispatchFitness = useFitDispatch()
-  const { loading, fitness } = useFitState()
+  const showFitness = () => {
+    if (!fitness.length || fitness == null) return
+    if (!filters.length) return fitness
 
-  useEffect(() => { getWorkouts(dispatchFitness) }, [dispatchFitness])
+    return fitness.filter(_fit => filters.includes(_fit.category))
+  }
 
   return <Fragment>
-    <Searchbar fitness onChange={e => setSearch(e.target.value)} placeholder="Otsi treeningut" href={`/fitness?search=${search}`}/>
+    <Sidebar>
+      {
+        fitness && [...new Set(fitness.map(fit => fit.category))].map(x => <span key={x} className={`${filters.includes(x) ? 'active' : ''}`} onClick={() => filterFit(dispatch, filters, x)}>{x}</span>)
+      }
+    </Sidebar>
     <div className="fitness">
       {
         loading
           ? <div className="fitness_loader"><Loader /></div>
-          : query.category
-            ? fitness && fitness.filter(el => el.category.toLowerCase() === query.category).length < 1
-              ? <p className="no_workouts_msg">Treeningud puuduvad hetkel.</p>
-              : fitness && fitness.filter(el => el.category.toLowerCase() === query.category).map(fit => <Fragment key={fit._id}>
-                  <Card fit={fit}/>
-                </Fragment>)
-            : fitness && fitness.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).map(fit => <Fragment key={fit._id}>
-                <Card fit={fit}/>
-              </Fragment>)
+          : showFitness().map((fit, index) => <Card key={index} fit={fit}/>)
       }
     </div>
   </Fragment>

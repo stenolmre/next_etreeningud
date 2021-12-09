@@ -5,6 +5,7 @@ export const GET_WORKOUT = 'GET_WORKOUT'
 export const GET_WORKOUTS = 'GET_WORKOUTS'
 export const LOAD_FITNESS = 'LOAD_FITNESS'
 export const FITNESS_ERROR = 'FITNESS_ERROR'
+export const FILTER_FITNESS = 'FILTER_FITNESS'
 
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'

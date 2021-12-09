@@ -1,0 +1,8 @@
+.fitness {
+  width: 100%;
+  min-height: calc(100vh - 225px);
+  // padding: 25px 50px;
+
+  @include flex-center-center;
+  flex-wrap: wrap;
+}

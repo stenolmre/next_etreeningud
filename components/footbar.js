@@ -1,24 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 
 const Footbar = () => {
+  const [show, setShow] = useState(false)
+  const navs = [{
+    icon: 'fas fa-home',
+    title: 'Home',
+    link: '/'
+  }, {
+    icon: 'fas fa-blog',
+    title: 'Blog',
+    link: '/posts'
+  }, {
+    icon: 'fas fa-rocket',
+    title: 'Fit',
+    link: '/fitness'
+  }]
+
   return <div className="footbar">
-    <Link href="/"><a>
-      <i className="fas fa-home"/>
-      <p>Esileht</p>
-    </a></Link>
-    <Link href="/fitness"><a>
-      <i className="fas fa-dumbbell"/>
-      <p>Treeningud</p>
-    </a></Link>
-    <Link href="/posts"><a>
-      <i className="fas fa-pen"/>
-      <p>Blogi</p>
-    </a></Link>
-    <Link href="/#contact"><a>
-      <i className="fas fa-phone"/>
-      <p>Kontakt</p>
-    </a></Link>
+    <i className={`fas fa-${show ? 'times' : 'bars'}`} onClick={() => setShow(!show)}/>
+    {
+      navs.map((nav, index) => <Link href={nav.link}><a
+        key={index}
+        className={`footbar_nav footbar_nav_${show ? index : ''}`}
+      >
+        <i className={nav.icon}/>
+        <span>{nav.title}</span>
+      </a></Link>)
+    }
   </div>
 }
 

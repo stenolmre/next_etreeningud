@@ -1,0 +1,88 @@
+.footbar {
+  @include position(fixed, $left: 50%, $bottom: 2rem);
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 200;
+
+  $width: 3.5rem;
+
+  > .fa-bars, > .fa-times {
+    width: $width;
+    height: $width;
+    border-radius: 100%;
+    background: $light-100;
+    @include place-center;
+    position: relative;
+    z-index: 10;
+    border: 1px solid $light-500;
+  }
+
+  > .footbar_nav {
+    width: $width;
+    height: $width;
+    border-radius: 100%;
+    background: $light-100;
+    @include flex-center-center;
+    flex-direction: column;
+    z-index: 9;
+    @include transition($time: 250ms);
+    border: 1px solid $light-500;
+    @include position(absolute, $left: 0, $top: 0);
+
+    > i {
+      margin-bottom: 2px;
+      font-size: 1.2rem;
+    }
+
+    > span {
+      font-size: .5rem;
+    }
+  }
+
+  @for $i from 0 through 2 {
+    $base: 100;
+    $value: $base * $i;
+    @if $i == 0 {
+      .footbar_nav_#{$i} {
+        @include position(absolute, $left: -125%, $top: -75%);
+      }
+    } @else if $i == 1 {
+      .footbar_nav_#{$i} {
+        @include position(absolute, $left: 0, $top: -125%);
+        transition-delay: #{$value}ms;
+      }
+    } @else if $i == 2 {
+      .footbar_nav_#{$i} {
+        @include position(absolute, $left: 125%, $top: -75%);
+        transition-delay: #{$value}ms;
+      }
+    }
+  }
+}
+
+.footbar_expanded {
+  @for $i from 0 through 3 {
+    $base: 100;
+    $value: $base * $i;
+    @if $i == 0 {
+      .footbar_nav_#{$i} {
+        @include position(absolute, $left: -125%, $top: -25%);
+      }
+    } @else if $i == 1 {
+      .footbar_nav_#{$i} {
+        @include position(absolute, $left: -55%, $top: -120%);
+        transition-delay: #{$value}ms;
+      }
+    } @else if $i == 2 {
+      .footbar_nav_#{$i} {
+        @include position(absolute, $left: 55%, $top: -120%);
+        transition-delay: #{$value}ms;
+      }
+    } @else if $i == 3 {
+      .footbar_nav_#{$i} {
+        @include position(absolute, $left: 125%, $top: -25%);
+        transition-delay: #{$value}ms;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@actions/*": ["actions/*"],
+      "@context/*": ["context/*"],
+      "@c/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
+      "models/*": ["models/*"],
+      "@reducers/*": ["reducers/*"],
+      "@styles/*": ["styles/*"],
+      "@ui/*": ["ui/*"],
+      "@utils/*": ["utils/*"]
+    }
+  }
+}

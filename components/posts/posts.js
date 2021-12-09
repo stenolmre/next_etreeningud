@@ -1,13 +1,12 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { usePostState, usePostDispatch } from './../../context/post'
-import { getPosts } from './../../actions/post'
+import { usePostState } from '@context/post'
 
-import Loader from './../utils/loader'
-import Searchbar from './../utils/searchbar'
-import Card from './card'
-import Pagination from './pagination'
+import Loader from '@c/utils/loader'
+import Sidebar from '@c/sidebar'
+import Card from '@c/posts/card'
+import Pagination from '@c/posts/pagination'
 
 const Posts = () => {
   const { query } = useRouter()
@@ -16,16 +15,18 @@ const Posts = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(12)
 
-  const dispatchPost = usePostDispatch()
   const { loading, posts } = usePostState()
-
-  useEffect(() => { getPosts(dispatchPost) }, [dispatchPost])
 
   const indexOfLastPost = (query.page ? query.page : 1) * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
 
+  const arr = ['Strength', 'Yoga', 'Mobility', 'HIIT']
   return <Fragment>
-    <Searchbar onChange={e => setSearch(e.target.value)} placeholder="Otsi postitust" href={`/posts?search=${search}`}/>
+    <Sidebar>
+      {
+        arr.map(x => <span key={x}>{x}</span>)
+      }
+    </Sidebar>
     <div className="posts_container">
       {
         loading

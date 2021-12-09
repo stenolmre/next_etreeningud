@@ -1,10 +1,20 @@
-import { ADD_WORKOUT, UPDATE_WORKOUT, REMOVE_WORKOUT, GET_WORKOUT, GET_WORKOUTS, LOAD_FITNESS, FITNESS_ERROR } from './../actions/types'
+import {
+  ADD_WORKOUT,
+  UPDATE_WORKOUT,
+  REMOVE_WORKOUT,
+  GET_WORKOUT,
+  GET_WORKOUTS,
+  LOAD_FITNESS,
+  FITNESS_ERROR,
+  FILTER_FITNESS
+} from '@actions/types'
 
 export const initialState = {
   workout: null,
   fitness: [],
   loading: true,
-  error: null
+  error: null,
+  filters: []
 }
 
 export const FitnessReducer = (state = initialState, action) => {
@@ -47,6 +57,11 @@ export const FitnessReducer = (state = initialState, action) => {
         fitness: [],
         loading: false,
         error: payload
+      }
+    case FILTER_FITNESS:
+      return {
+        ...state,
+        filters: payload
       }
     default:
       return {

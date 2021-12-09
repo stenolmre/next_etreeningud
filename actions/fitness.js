@@ -1,6 +1,15 @@
 import axios from 'axios'
 
-import { ADD_WORKOUT, UPDATE_WORKOUT, REMOVE_WORKOUT, GET_WORKOUT, GET_WORKOUTS, LOAD_FITNESS, FITNESS_ERROR } from './types'
+import {
+  ADD_WORKOUT,
+  UPDATE_WORKOUT,
+  REMOVE_WORKOUT,
+  GET_WORKOUT,
+  GET_WORKOUTS,
+  LOAD_FITNESS,
+  FITNESS_ERROR,
+  FILTER_FITNESS
+} from '@actions/types'
 
 export const addWorkout = async (dispatch, data, success, error) => {
   const config = { headers: { 'Content-Type': 'application/json' } }
@@ -100,6 +109,28 @@ export const removeWorkout = async (dispatch, id) => {
     dispatch({
       type: FITNESS_ERROR,
       payload: err.response.data
+    })
+  }
+}
+
+export const filterFit = async (dispatch, filters, value) => {
+  let new_filters = filters
+
+  if (filters.includes(value)) {
+    new_filters = filters.filter(x => x != value)
+  } else {
+    new_filters.push(value)
+  }
+
+  try {
+    await dispatch({
+      type: FILTER_FITNESS,
+      payload: new_filters
+    })
+  } catch (err) {
+    dispatch({
+      type: FITNESS_ERROR,
+      payload: err
     })
   }
 }

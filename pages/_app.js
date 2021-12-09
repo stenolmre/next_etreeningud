@@ -9,6 +9,8 @@ import './../css/fitness.css'
 import './../css/landing.css'
 import './../css/admin.css'
 
+import '@styles/main.scss'
+
 import MarkVisitor from './../utils/markvisitor'
 
 const App = ({ Component, pageProps }) => {

@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react'
 
-import Navbar from './navbar'
-import Footer from './footer'
-import Footbar from './footbar'
+import useFitness from '@hooks/useFitness'
+import usePosts from '@hooks/usePosts'
 
-function Layout({ children, landing }) {
+import Footbar from '@c/footbar'
+
+const Layout = ({ children }) => {
+  useFitness()
+  usePosts()
+
   return <Fragment>
-    {
-      !landing && <Navbar/>
-    }
     { children }
     <Footbar />
-    <Footer/>
   </Fragment>
 }
 
