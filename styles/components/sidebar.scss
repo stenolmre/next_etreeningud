@@ -22,42 +22,51 @@
     height: 100%;
     padding: 4rem 1rem;
 
-    @include flex($align: flex-start, $justify: flex-end, $direction: column);
-    gap: .5rem;
+    @include flex($align: flex-start, $justify: space-between, $direction: column);
 
     background: $white;
 
-    > h3 {
-      margin: 0;
-      @include flex;
-      font-size: .875rem;
-
-      > i {
-        @include sidebar-icon($opacity: 1);
-      }
-
-      + span {
-        margin-top: .5rem;
-      }
+    > svg {
+      width: 50%;
+      height: 15%;
     }
 
-    > span {
-      @include flex-center-center;
-      font-size: .875rem;
+    > div {
+      @include flex($align: flex-start, $direction: column);
+      gap: .5rem;
 
-      + h3 {
-        margin-top: 1.5rem;
+      > h3 {
+        margin: 0;
+        @include flex;
+        font-size: .875rem;
+
+        > i {
+          @include sidebar-icon($opacity: 1);
+        }
+
+        + span {
+          margin-top: .5rem;
+        }
       }
 
-      > i {
-        @include sidebar-icon;
-      }
-    }
+      > span {
+        @include flex-center-center;
+        font-size: .875rem;
 
-    > .active {
-      > i {
-        @include sidebar-icon($opacity: 1);
-        color: $main-green;
+        + h3 {
+          margin-top: 1.5rem;
+        }
+
+        > i {
+          @include sidebar-icon;
+        }
+      }
+
+      > .active {
+        > i {
+          @include sidebar-icon($opacity: 1);
+          color: $main-green;
+        }
       }
     }
   }

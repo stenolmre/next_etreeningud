@@ -1,5 +1,5 @@
 .card {
-  width: 250px;
+  width: 100%;
   height: 285px;
 
   @include grid($rows: 120px 115px 50px, $gap: 0);
@@ -14,6 +14,8 @@
   &:hover {
     transform: scale(1.01);
   }
+
+  // 596px
 
   > .card_top {
     @include grid($columns: 100px 150px, $gap: 1rem);
@@ -62,7 +64,6 @@
   }
 
   > .card_bottom {
-    width: 250px;
     padding: 1rem;
 
     > h3 {
@@ -81,7 +82,6 @@
   }
 
   > .card_footer {
-    width: 250px;
     padding: 1rem;
     @include flex($align: center, $justify: space-between);
 
