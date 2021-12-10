@@ -1,10 +1,12 @@
-import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR } from './../actions/types'
+import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR, FILTER_POSTS, SORT_POSTS } from '@actions/types'
 
 export const initialState = {
   post: null,
   posts: [],
   loading: true,
-  error: null
+  error: null,
+  filters: [],
+  sortBy: 'newest'
 }
 
 export const PostReducer = (state = initialState, action) => {
@@ -59,6 +61,16 @@ export const PostReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: payload
+      }
+    case FILTER_POSTS:
+      return {
+        ...state,
+        filters: payload
+      }
+    case SORT_POSTS:
+      return {
+        ...state,
+        sortBy: payload
       }
     default:
       return {

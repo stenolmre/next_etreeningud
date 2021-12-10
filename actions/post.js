@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR } from './types'
+import { ADD_POST, UPDATE_POST, REMOVE_POST, GET_POST, GET_POSTS, RATE_POST, COMMENT_POST, LOAD_POSTS, POST_ERROR, FILTER_POSTS, SORT_POSTS } from './types'
 
 export const addPost = async (dispatch, data, success, error) => {
   const config = { headers: { 'Content-Type': 'application/json' } }
@@ -147,5 +147,43 @@ export const commentPost = async (dispatch, id, data, success, error) => {
     })
 
     error()
+  }
+}
+
+export const filterPosts = async (dispatch, filters, value) => {
+  let new_filters = filters
+
+  if (Array.isArray(value)) {
+    new_filters = value
+  } else if (filters.includes(value)) {
+    new_filters = filters.filter(x => x != value)
+  } else {
+    new_filters.push(value)
+  }
+
+  try {
+    await dispatch({
+      type: FILTER_POSTS,
+      payload: new_filters
+    })
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: err
+    })
+  }
+}
+
+export const sortPosts = async (dispatch, value) => {
+  try {
+    await dispatch({
+      type: SORT_POSTS,
+      payload: value
+    })
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: err
+    })
   }
 }

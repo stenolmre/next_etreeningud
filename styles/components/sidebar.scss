@@ -1,18 +1,66 @@
+@mixin sidebar-icon($opacity: .3) {
+  width: 1.5rem;
+  margin-right: .5rem;
+  @include flex-center-center;
+  font-size: 1rem;
+  opacity: $opacity;
+}
+
 .sidebar {
   width: 15rem;
   height: 100vh;
-  padding: 4rem 2rem;
+  padding: 0 0 0 1rem;
 
   @include position(fixed, $bottom: 0, $right: 0);
-  @include flex($align: flex-start, $justify: flex-end, $direction: column);
-  gap: .5rem;
 
   background: $tomato;
-  color: $white;
-
   @include transition($time: 450ms);
-
   z-index: 999999;
+
+  > .sidebar_content {
+    width: 100%;
+    height: 100%;
+    padding: 4rem 1rem;
+
+    @include flex($align: flex-start, $justify: flex-end, $direction: column);
+    gap: .5rem;
+
+    background: $white;
+
+    > h3 {
+      margin: 0;
+      @include flex;
+      font-size: .875rem;
+
+      > i {
+        @include sidebar-icon($opacity: 1);
+      }
+
+      + span {
+        margin-top: .5rem;
+      }
+    }
+
+    > span {
+      @include flex-center-center;
+      font-size: .875rem;
+
+      + h3 {
+        margin-top: 1.5rem;
+      }
+
+      > i {
+        @include sidebar-icon;
+      }
+    }
+
+    > .active {
+      > i {
+        @include sidebar-icon($opacity: 1);
+        color: $main-green;
+      }
+    }
+  }
 
   > .sidebar_btn {
     content: '+';
@@ -30,10 +78,6 @@
 
     cursor: pointer;
     transform: rotate(180deg);
-  }
-
-  > .active {
-    text-decoration: underline;
   }
 }
 

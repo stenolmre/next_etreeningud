@@ -6,7 +6,8 @@ import {
   GET_WORKOUTS,
   LOAD_FITNESS,
   FITNESS_ERROR,
-  FILTER_FITNESS
+  FILTER_FITNESS,
+  SORT_FITNESS
 } from '@actions/types'
 
 export const initialState = {
@@ -14,7 +15,8 @@ export const initialState = {
   fitness: [],
   loading: true,
   error: null,
-  filters: []
+  filters: [],
+  sortBy: 'newest'
 }
 
 export const FitnessReducer = (state = initialState, action) => {
@@ -62,6 +64,11 @@ export const FitnessReducer = (state = initialState, action) => {
       return {
         ...state,
         filters: payload
+      }
+    case SORT_FITNESS:
+      return {
+        ...state,
+        sortBy: payload
       }
     default:
       return {

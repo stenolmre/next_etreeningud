@@ -1,44 +1,51 @@
-import React, { Fragment, useState } from 'react'
-import { useRouter } from 'next/router'
+import React, { Fragment } from 'react'
 
 import { usePostState } from '@context/post'
+import daysToGo from '@ui/utils/daysToGo'
 
 import Loader from '@c/utils/loader'
-import Sidebar from '@c/sidebar'
-import Card from '@c/posts/card'
-import Pagination from '@c/posts/pagination'
+import Sidebar from '@c/posts/sidebar'
+import Card from '@c/card'
 
 const Posts = () => {
-  const { query } = useRouter()
+  const { loading, posts, filters, sortBy } = usePostState()
 
-  const [search, setSearch] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage] = useState(12)
+  const showPosts = () => {
+    if (!posts.length || posts == null) return
+    if (!filters.length) return sortPosts(posts)
 
-  const { loading, posts } = usePostState()
+    return sortPosts(posts).filter(_post => filters.includes(_post.category))
+  }
 
-  const indexOfLastPost = (query.page ? query.page : 1) * postsPerPage
-  const indexOfFirstPost = indexOfLastPost - postsPerPage
+  const sortPosts = (posts) => {
+    if (!posts.length || posts == null) return
 
-  const arr = ['Strength', 'Yoga', 'Mobility', 'HIIT']
-  return <Fragment>
-    <Sidebar>
-      {
-        arr.map(x => <span key={x}>{x}</span>)
+    return posts.sort((a, b) => {
+      if (sortBy === 'newest') {
+        if (daysToGo(a.createdAt) > daysToGo(b.createdAt)) return -1
       }
-    </Sidebar>
-    <div className="posts_container">
+
+      if (sortBy === 'oldest') {
+        if (daysToGo(a.createdAt) < daysToGo(b.createdAt)) return -1
+      }
+
+      if (sortBy === 'az') {
+        if (a.name < b.name) return -1
+      }
+
+      if (sortBy === 'za') {
+        if (a.name > b.name) return -1
+      }
+
+      return 0
+    })
+  }
+
+  return <Fragment>
+    <Sidebar />
+    <div className="cards_container">
       {
-        loading
-          ? <div className="page_loader"><Loader /></div>
-          : posts && <Fragment>
-              <div className="posts">
-                {
-                  posts.filter(el => query.category ? el.category === query.category : el.category).filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).map(post => <Card key={post._id} post={post}/>).slice(indexOfFirstPost, indexOfLastPost)
-                }
-              </div>
-              <Pagination totalPosts={posts.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).length} postsPerPage={postsPerPage} totalPages={Math.ceil(posts.filter(el => el.name.toLowerCase().includes(query.search ? query.search.toLowerCase() : '')).length / postsPerPage)} />
-            </Fragment>
+        loading ? <div className="page_loader"><Loader /></div> : posts && showPosts().map(post => <Card key={post._id} data={post}/>)
       }
     </div>
   </Fragment>

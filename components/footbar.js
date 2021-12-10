@@ -20,10 +20,7 @@ const Footbar = () => {
   return <div className="footbar">
     <i className={`fas fa-${show ? 'times' : 'bars'}`} onClick={() => setShow(!show)}/>
     {
-      navs.map((nav, index) => <Link href={nav.link}><a
-        key={index}
-        className={`footbar_nav footbar_nav_${show ? index : ''}`}
-      >
+      navs.map((nav, index) => <Link href={nav.link} key={index}><a className={`footbar_nav footbar_nav_${show ? index : ''}`}>
         <i className={nav.icon}/>
         <span>{nav.title}</span>
       </a></Link>)

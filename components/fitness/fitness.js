@@ -1,36 +1,53 @@
 import React, { Fragment, useState, useEffect } from 'react'
 
-import { useFitState, useFitDispatch } from '@context/fitness'
-import { filterFit } from '@actions/fitness'
+import { useFitState } from '@context/fitness'
+import daysToGo from '@ui/utils/daysToGo'
 
 import Loader from '@c/utils/loader'
-import Card from '@c/fitness/card'
-import Sidebar from '@c/sidebar'
+import Card from '@c/card'
+import Sidebar from '@c/fitness/sidebar'
 
 const Fitness = () => {
-  const dispatch = useFitDispatch()
-  const { loading, fitness, filters } = useFitState()
+  const { loading, fitness, filters, sortBy } = useFitState()
 
-  const arr = ['jõud', 'jooga', 'HIIT']
+  const sortFit = (posts) => {
+    if (!fitness.length || fitness == null) return
+
+    return fitness.sort((a, b) => {
+      if (sortBy === 'newest') {
+        if (daysToGo(a.createdAt) > daysToGo(b.createdAt)) return -1
+      }
+
+      if (sortBy === 'oldest') {
+        if (daysToGo(a.createdAt) < daysToGo(b.createdAt)) return -1
+      }
+
+      if (sortBy === 'az') {
+        if (a.name < b.name) return -1
+      }
+
+      if (sortBy === 'za') {
+        if (a.name > b.name) return -1
+      }
+
+      return 0
+    })
+  }
 
   const showFitness = () => {
     if (!fitness.length || fitness == null) return
-    if (!filters.length) return fitness
+    if (!filters.length) return sortFit(fitness)
 
-    return fitness.filter(_fit => filters.includes(_fit.category))
+    return sortFit(fitness).filter(_fit => filters.includes(_fit.category))
   }
 
   return <Fragment>
-    <Sidebar>
-      {
-        fitness && [...new Set(fitness.map(fit => fit.category))].map(x => <span key={x} className={`${filters.includes(x) ? 'active' : ''}`} onClick={() => filterFit(dispatch, filters, x)}>{x}</span>)
-      }
-    </Sidebar>
-    <div className="fitness">
+    <Sidebar/>
+    <div className="cards_container">
       {
         loading
           ? <div className="fitness_loader"><Loader /></div>
-          : showFitness().map((fit, index) => <Card key={index} fit={fit}/>)
+          : showFitness().map((fit, index) => <Card key={index} data={fit}/>)
       }
     </div>
   </Fragment>

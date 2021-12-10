@@ -5,3 +5,11 @@
 @import 'components/sidebar';
 
 @import 'fitness/fitness';
+
+.cards_container {
+  padding: 2rem;
+
+  @include flex($align: center, $justify: center);
+  flex-wrap: wrap;
+  gap: 1rem;
+}

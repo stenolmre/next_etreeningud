@@ -8,7 +8,8 @@ import {
   GET_WORKOUTS,
   LOAD_FITNESS,
   FITNESS_ERROR,
-  FILTER_FITNESS
+  FILTER_FITNESS,
+  SORT_FITNESS
 } from '@actions/types'
 
 export const addWorkout = async (dispatch, data, success, error) => {
@@ -116,7 +117,9 @@ export const removeWorkout = async (dispatch, id) => {
 export const filterFit = async (dispatch, filters, value) => {
   let new_filters = filters
 
-  if (filters.includes(value)) {
+  if (Array.isArray(value)) {
+    new_filters = value
+  } else if (filters.includes(value)) {
     new_filters = filters.filter(x => x != value)
   } else {
     new_filters.push(value)
@@ -126,6 +129,20 @@ export const filterFit = async (dispatch, filters, value) => {
     await dispatch({
       type: FILTER_FITNESS,
       payload: new_filters
+    })
+  } catch (err) {
+    dispatch({
+      type: FITNESS_ERROR,
+      payload: err
+    })
+  }
+}
+
+export const sortFit = async (dispatch, value) => {
+  try {
+    await dispatch({
+      type: SORT_FITNESS,
+      payload: value
     })
   } catch (err) {
     dispatch({
