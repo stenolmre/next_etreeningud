@@ -2,6 +2,8 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
+import { getDate } from '@ui/utils/date'
+
 const Card = ({ data, events = true }) => {
   const router = useRouter()
   const selectIcon = () => {
@@ -33,7 +35,7 @@ const Card = ({ data, events = true }) => {
       <div className="card_author"/>
       <div className="content">
         <h5>Kiyoko Yoshi</h5>
-        <h5>Jaan 15 2021</h5>
+        <h5>{getDate(data.createdAt, 'est')}</h5>
       </div>
     </div>
     <div className="card_category" />

@@ -1,16 +1,15 @@
 import React from 'react'
 
-import GlobalState from './../context/state'
+import GlobalState from '@context/state'
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './../css/styles.css'
 import './../css/fitness.css'
-import './../css/landing.css'
 import './../css/admin.css'
 
 import '@styles/main.scss'
 
-import MarkVisitor from './../utils/markvisitor'
+import MarkVisitor from '@utils/markvisitor'
 
 const App = ({ Component, pageProps }) => {
   return <GlobalState>

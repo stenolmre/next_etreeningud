@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
-import Head from './../../components/utils/head'
+import Head from '@c/utils/head'
 
-import Layout from './../../components/layout'
-import FitnessContent from './../../components/fitness/fitness'
+import Layout from '@c/layout'
+import FitnessContent from '@c/fitness/fitness'
 
 const Fitness = () => {
   return <Fragment>
