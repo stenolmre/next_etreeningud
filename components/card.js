@@ -1,6 +1,9 @@
 import React from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
-const Card = ({ data }) => {
+const Card = ({ data, events = true }) => {
+  const router = useRouter()
   const selectIcon = () => {
     if (data.category.toLowerCase() === 'jooga') return icons.jooga
     if (data.category.toLowerCase() === 'jõud') return icons.joud
@@ -13,7 +16,12 @@ const Card = ({ data }) => {
     if (data.category.toLowerCase() === 'vaba aeg') return icons.vabaaeg
   }
 
-  return <div className="card">
+  const generateLink = () => {
+    if (data.category === 'jooga') return window.location.origin + '/yoga/' + data._id
+    return router.pathname + '/' + data._id
+  }
+
+  return <Link href={generateLink()}><a className={`card ${!events ? 'no_events': ''}`}>
     <div className="card_image" style={{ backgroundImage: `url('${data.image}')`}}/>
     <div className="content">
       <h3>{data.name}</h3>
@@ -29,7 +37,7 @@ const Card = ({ data }) => {
       </div>
     </div>
     <div className="card_category" />
-  </div>
+  </a></Link>
 }
 
 export default Card

@@ -1,16 +1,16 @@
 import React, { Fragment } from 'react'
-import Head from './../../components/utils/head'
+import Head from '@c/utils/head'
 
-import Layout from './../../components/layout'
-import PostsContent from './../../components/posts/posts'
+import Layout from '@c/layout'
+import Posts from '@c/posts/posts'
 
-const Posts = () => {
+const Index = () => {
   return <Fragment>
     <Head title="Blogi" url="https://etreeningud.ee/posts"/>
     <Layout>
-      <PostsContent />
+      <Posts />
     </Layout>
   </Fragment>
 }
 
-export default Posts
+export default Index

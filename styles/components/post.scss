@@ -1,0 +1,75 @@
+.post_container {
+  max-width: 45rem;
+  margin: 0 auto;
+  padding: 4rem 2rem 1rem 2rem;
+  border-bottom: 1px solid $white;
+
+  > .post_author {
+    @include flex($align: center);
+    gap: .5rem;
+
+    > div {
+      border-radius: 100%;
+      @include background-image($width: 2.5rem, $height: 2.5rem, $color: $white);
+      background-image: url('https://images.unsplash.com/photo-1535207010348-71e47296838a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fHBvcnRyYWl0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+    }
+
+    > a {
+      font-size: .75rem;
+      font-weight: 600;
+      color: $dodgerblue;
+    }
+  }
+
+  > h1 + .post_author {
+    margin-top: .5rem;
+  }
+
+  > .post {
+    > img, > div > img, > iframe {
+      width: 100%;
+      border-radius: .25rem;
+    }
+
+    > a, > p > a, > ul > li > a {
+      color: $dodgerblue;
+    }
+
+    > blockquote {
+      width: 60%;
+      margin: 30px auto;
+      border-left: 5px solid $dodgerblue;
+      padding: 0.5em 10px;
+      quotes: "\201C""\201D""\2018""\2019";
+
+      &::before {
+        color: $dodgerblue;
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+      }
+
+      > p {
+        display: inline;
+      }
+    }
+
+    > table {
+      border: 1px solid white;
+      border-collapse: collapse;
+
+      > td, th {
+        border: 1px solid #ddd;
+        padding-left: 5px;
+      }
+
+      > th {
+        color: rgba(0, 112, 243);
+        padding: 7px 0 7px 5px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

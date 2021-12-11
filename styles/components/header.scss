@@ -14,8 +14,18 @@
     gap: .5rem;
 
     > h1 {
-      font-size: 3rem;
-      opacity: .4;
+      padding: .25rem;
+      border-radius: .5rem;
+      background: $white;
+      transform: rotate(-10deg);
+
+      > span {
+        display: block;
+        transform: rotate(10deg);
+
+        font-size: 2.5rem;
+        color: $dodgerblue;
+      }
     }
 
     > div {

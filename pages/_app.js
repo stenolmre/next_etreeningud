@@ -4,7 +4,6 @@ import GlobalState from './../context/state'
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './../css/styles.css'
-import './../css/posts.css'
 import './../css/fitness.css'
 import './../css/landing.css'
 import './../css/admin.css'

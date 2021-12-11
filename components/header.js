@@ -7,7 +7,7 @@ const Header = ({ pills = [], title, info, icon }) => {
         <i className={icon}/>
         <h2>{title}</h2>
       </div>
-      <h1>et.</h1>
+      <h1><span>et.</span></h1>
     </div>
     <span>{info}</span>
     <div className="pills">

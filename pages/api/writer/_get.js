@@ -1,11 +1,11 @@
-import connectDB from './../../../utils/connectDB'
-import Writer from './../../../models/writer'
+import connectDB from '@utils/connectDB'
+import WriterV2 from '@models/writerv2'
 
 connectDB()
 
 export default async function (req, res) {
   try {
-    const writers = await Writer.find()
+    const writers = await WriterV2.find()
 
     if (!writers) return res.status(404).json({ msg: 'Writers not found.' })
 

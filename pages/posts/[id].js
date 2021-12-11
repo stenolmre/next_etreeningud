@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import axios from 'axios'
-import Head from './../../components/utils/head'
+import Head from '@c/utils/head'
 
-import Layout from './../../components/layout'
-import PostContent from './../../components/posts/post'
+import Layout from '@c/layout'
+import PostContent from '@c/posts/post'
 
 const Post = ({ post }) => {
   return <Fragment>

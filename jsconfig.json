@@ -6,7 +6,7 @@
       "@context/*": ["context/*"],
       "@c/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
-      "models/*": ["models/*"],
+      "@models/*": ["models/*"],
       "@reducers/*": ["reducers/*"],
       "@styles/*": ["styles/*"],
       "@ui/*": ["ui/*"],

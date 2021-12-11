@@ -1,15 +1,14 @@
-@mixin footbar-btn($width: 3.5rem, $zIndex: 10, $bg: $dark-400, $border: $dark-300) {
+@mixin footbar-btn($width: 3.5rem, $zIndex: 10, $bg: $dodgerblue) {
   width: $width;
   height: $width;
 
   @include flex-center-center;
   flex-direction: column;
 
-  border: 1px solid $border;
   border-radius: 100%;
   background: $bg;
 
-  color: $light-700;
+  color: $white;
   z-index: $zIndex;
 
   > i {

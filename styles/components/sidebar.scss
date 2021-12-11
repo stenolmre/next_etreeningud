@@ -13,7 +13,7 @@
 
   @include position(fixed, $bottom: 0, $right: 0);
 
-  background: $dark-400;
+  background: $dodgerblue;
   @include transition($time: 450ms);
   z-index: 999999;
 
@@ -71,11 +71,11 @@
     width: 2rem;
     height: 3rem;
 
-    @include position(absolute, $bottom: 2rem, $left: -1rem);
+    @include position(absolute, $bottom: 10rem, $left: -1rem);
     @include flex-center-center;
 
     border-radius: 0 .25rem .25rem 0;
-    background: $dark-400;
+    background: $dodgerblue;
 
     color: $white;
     font-size: 1rem;
