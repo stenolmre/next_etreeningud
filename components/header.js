@@ -1,13 +1,18 @@
 import React from 'react'
 
-const Header = ({ pills = [], title }) => {
+const Header = ({ pills = [], title, info, icon }) => {
   return <div className="header">
-    <i className="fas fa-search"/>
-    <h2>{title}</h2>
-    <span>Discover ways to improve  yourself.</span>
+    <div className="header_title">
+      <div>
+        <i className={icon}/>
+        <h2>{title}</h2>
+      </div>
+      <h1>et.</h1>
+    </div>
+    <span>{info}</span>
     <div className="pills">
       {
-        pills.map(pill => <span key={pill} className="pill">{pill}</span>)
+        pills.map(pill => <span key={pill} className="pill">#{pill}</span>)
       }
     </div>
   </div>

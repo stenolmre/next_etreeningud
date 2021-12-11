@@ -44,7 +44,7 @@ const Posts = () => {
 
   return <Fragment>
     <Sidebar />
-    <Header pills={[...filters, sortBy]} title="Postitused"/>
+    <Header pills={[...filters, sortBy]} title="Postitused" icon="fas fa-blog" info="Avasta uusi teadmisi meie blogist, kus kirjutame treeningust, tasakaalustatud toitumisest ja tervislikust eluviisist. Samuti teeme tutvust meid ümbritsevate lahedate inimestega."/>
     <div className="cards_container">
       {
         loading ? <div className="page_loader"><Loader /></div> : posts && showPosts().map(post => <Card key={post._id} data={post}/>)

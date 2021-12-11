@@ -16,136 +16,19 @@ body {
   font-size: .875rem;
 }
 
-a {
-  font-size: .875rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  cursor: pointer;
-  border: 1px solid var(--whitesmoke);
-  outline: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: .875rem;
-}
-
-label {
-  font-size: .75rem;
-}
-
-input,
-textarea,
-select {
-  -webkit-appearance: none;
-  outline: none;
-  border: 1px solid var(--whitesmoke);
-  font-family: 'Montserrat', sans-serif;
-  font-size: .875rem;
-  margin: 2px 0 10px 0;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border: 1px solid var(--dodgerblue);
-}
-
-@media (max-width: 768px) {
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  select {
-    font-size: 1rem;
-  }
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Righteous', sans-serif;
 }
 
 .cards_container {
   padding: 2rem 2rem 2rem 1rem;
 
-  @include grid($columns: repeat(auto-fit, minmax(255px, 1fr)), $gap: 1.5rem);
+  @include grid($columns: repeat(auto-fit, minmax(215px, 1fr)), $gap: 1.5rem);
   place-items: center;
 
   @media (max-width: 596px) {
     gap: 1rem;
-  }
-}
-
-._card {
-  width: 100%;
-  min-height: 315px;
-  padding: .25rem;
-
-  @include grid($rows: 175px auto 50px, $gap: 1rem);
-
-  border: 3px solid $light-100;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 8px #cdd0d3, -2px -2px 8px #ffffff;
-  background: $white;
-
-  overflow: hidden;
-
-  @media (max-width: 596px) {
-    min-height: 135px;
-    @include grid($columns: 40% 60%, $rows: auto 50px, $gap: 1rem);
-
-    > .img {
-      grid-area: span 2;
-    }
-  }
-
-  > .img {
-    border-radius: .5rem;
-    @include background-image;
-  }
-
-  > .h3 {
-    padding: 0 .25rem;
-    @include flex($align: center);
-
-    @include ellipsis($lines: 2);
-    font-weight: 600;
-    font-size: 1.1rem;
-
-    @media (max-width: 596px) {
-      margin: 1rem 1rem -.5rem 0;
-      -webkit-line-clamp: 2;
-    }
-  }
-
-  > ._card_footer {
-    @include flex($align: center);
-    gap: .5rem;
-
-    > img {
-      width: 2.5rem;
-      height: 2.5rem;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 100%;
-
-      @media (max-width: 596px) {
-        width: 2rem;
-        height: 2rem;
-      }
-    }
-
-    > div {
-      @include flex($align: flex-start, $direction: column);
-      gap: .125rem;
-      font-size: .75rem;
-
-      > span {
-        &:nth-of-type(1) {
-          font-weight: 600;
-        }
-
-        &:nth-of-type(2) {
-          @include ellipsis($lines: 1);
-        }
-      }
-    }
   }
 }

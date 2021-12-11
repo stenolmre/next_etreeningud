@@ -44,7 +44,7 @@ const Fitness = () => {
 
   return <Fragment>
     <Sidebar/>
-    <Header pills={[...filters, sortBy]} title="Treeningud"/>
+    <Header pills={[...filters, sortBy]} title="Treeningud" icon="fas fa-dumbbell" info="Mitmekülgsed treeningud, nii HIIT sõbrale kui ka jõutreeningute pooldajale. Lisaks pakume rahulikku joogat koos Kaisaga. Iga treeningu juures on videod ja harjustuste aeg, et iseseisev treening oleks sama lihtne nagu treeneriga."/>
     <div className="cards_container">
       {
         loading

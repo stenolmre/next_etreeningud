@@ -13,16 +13,22 @@ const Card = ({ data }) => {
     if (data.category.toLowerCase() === 'vaba aeg') return icons.vabaaeg
   }
 
-  return <div className="_card">
-    <div className="img" style={{ backgroundImage: `url('${data.image}')`}}/>
-    <div className="h3">{data.name}</div>
-    <div className="_card_footer">
-      <img src="https://images.pexels.com/photos/5794559/pexels-photo-5794559.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="png"/>
-      <div>
-        <span>{data.author || data.category}</span>
-        <span>{data.equipment || new Date(data.createdAt).toLocaleDateString()}</span>
+  return <div className="card">
+    <div className="card_image" style={{ backgroundImage: `url('${data.image}')`}}/>
+    <div className="content">
+      <h3>{data.name}</h3>
+      <div className="card_hashtags">
+        <span>#{data.category.toLowerCase()}</span>
       </div>
     </div>
+    <div className="card_footer">
+      <div className="card_author"/>
+      <div className="content">
+        <h5>Kiyoko Yoshi</h5>
+        <h5>Jaan 15 2021</h5>
+      </div>
+    </div>
+    <div className="card_category" />
   </div>
 }
 

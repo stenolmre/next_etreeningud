@@ -1,107 +1,100 @@
+$break: 30.865rem;
+$padding: 0 1rem;
+$padding_mobile: 0 .5rem;
+
+
 .card {
   width: 100%;
-  height: 285px;
+  @include grid($rows: 200px auto 50px, $gap: .5rem);
+  position: relative;
 
-  @include grid($rows: 120px 115px 50px, $gap: 0);
-
-  border: 1px solid $light-400;
   border-radius: 1rem;
-  box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
+  background: $white;
 
-  overflow: hidden;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.01);
+  @media (max-width: $break) {
+    @include grid($columns: 40% auto, $rows: 90px 60px, $gap: .5rem);
   }
 
-  // 596px
+  > .card_image {
+    background: $whitesmoke;
+    @include background-image($height: 200px);
+    background-image: url('https://images.pexels.com/photos/1064136/pexels-photo-1064136.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
 
-  > .card_top {
-    @include grid($columns: 100px 150px, $gap: 1rem);
+    border-radius: 1rem;
 
-    > .card_image {
-      min-width: 145px;
-      min-height: 145px;
-
-      @include position(relative, $top: -30px, $left: -30px);
-      border-radius: 100%;
-
-      @include background-image;
-
-      &::before {
-        content: '';
-        width: 156px;
-        height: 156px;
-
-        @include position(absolute, $top: -7px, $left: -7px);
-
-        border-radius: 100%;
-        box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
-
-        z-index: -1;
-      }
-    }
-
-    > .card_top_content {
-      width: 100%;
-      padding: 1.5rem 1rem;
-
-      @include flex($direction: column);
-
-      font-size: .75rem;
-
-      > span {
-        &:nth-of-type(1) {
-          font-weight: 600;
-        }
-
-        + span {
-          margin-top: .5rem;
-        }
-      }
+    @media (max-width: $break) {
+      height: 100%;
+      grid-area: span 2;
     }
   }
 
-  > .card_bottom {
-    padding: 1rem;
+  > .content {
+    padding: $padding;
 
     > h3 {
-      margin: 0;
       @include ellipsis($lines: 2);
+    }
 
-      + span {
-        margin-top: .5rem;
+    > .card_hashtags {
+      margin-top: .5rem;
+
+      span {
+        font-size: .75rem;
+        font-family: 'Righteous', sans-serif;
+        opacity: .5;
+
+        + span {
+          margin-left: .5rem;
+        }
       }
     }
 
-    > span {
-      @include ellipsis($lines: 3);
-      font-size: .75rem;
+    @media (max-width: $break) {
+      padding: $padding_mobile;
+      @include flex($justify: flex-end, $direction: column);
     }
   }
 
   > .card_footer {
-    padding: 1rem;
-    @include flex($align: center, $justify: space-between);
+    padding: $padding;
+    @include flex($align: center);
+    gap: .5rem;
 
-    > i {
-      width: 2rem;
-      height: 2rem;
-      margin-left: -.25rem;
-
-      @include place-center;
-
-      border-radius: 100%;
-      box-shadow: 1px 1px 3px rgba(33, 33, 33, .2);
-      background: rgba(255, 255, 255, .2);
-
-      color: $main-green;
-      font-size: 1rem;
+    @media (max-width: $break) {
+      padding: $padding_mobile;
     }
 
-    > span {
+    > .card_author {
+      border-radius: 100%;
+      background: $whitesmoke;
+
+      @include background-image($width: 2.5rem, $height: 2.5rem);
+      background-image: url('https://images.unsplash.com/photo-1535207010348-71e47296838a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fHBvcnRyYWl0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+    }
+
+    > .content {
       font-size: .75rem;
+
+      > h5 {
+        &:nth-of-type(2) {
+          opacity: .5;
+        }
+      }
+    }
+  }
+
+  > .card_category {
+    width: 5px;
+    height: 35px;
+
+    @include position(absolute, $right: 0, $top: 250px);
+
+    border-radius: .25rem 0 0 .25rem;
+    background: $main-green;
+
+    @media (max-width: $break) {
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 }

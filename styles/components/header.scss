@@ -1,7 +1,5 @@
 .header {
-  padding: 2rem 2rem 0 2rem;
-
-  border-radius: 0 0 0 2rem;
+  padding: 2rem 2rem 0 1.5rem;
 
   > .fa-search {
     margin-bottom: 1rem;
@@ -11,10 +9,28 @@
     cursor: pointer;
   }
 
-  > h2 {
-    margin: 0;
+  > .header_title {
+    @include flex($align: center, $justify: space-between);
+    gap: .5rem;
+
+    > h1 {
+      font-size: 3rem;
+      opacity: .4;
+    }
+
+    > div {
+      @include flex($align: center);
+      gap: .5rem;
+
+      > i {
+        color: $dodgerblue;
+        font-size: 1.5rem;
+      }
+    }
 
     + span {
+      max-width: 32rem;
+      display: block;
       margin-top: .5rem;
       font-size: .75rem;
     }
