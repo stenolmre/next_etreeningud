@@ -13,13 +13,7 @@ const Workout = ({ workout }) => {
 
 Workout.getInitialProps = async ctx => {
   const id = ctx.query.id
-
-  // const { data } = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
-  //   ? await axios.get(`http://localhost:3000/api/fitness/get?id=${id}`)
-  //   : await axios.get(`https://etreeningud.ee/api/fitness/get?id=${id}`)
-
   const { data } = await axios.get(window.location.origin + '/api/fitness/get?id=' + id)
-
   return { workout: data }
 }
 

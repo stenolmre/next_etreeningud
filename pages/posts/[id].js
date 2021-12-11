@@ -16,11 +16,7 @@ const Post = ({ post }) => {
 
 Post.getInitialProps = async ctx => {
   const id = ctx.query.id
-
-  const { data } = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
-    ? await axios.get(`http://localhost:3000/api/posts/get?id=${id}`)
-    : await axios.get(`https://etreeningud.ee/api/posts/get?id=${id}`)
-
+  const { data } = await axios.get(window.location.origin + '/api/posts/get?id=' + id)
   return { post: data }
 }
 
