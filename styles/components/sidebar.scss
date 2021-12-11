@@ -13,7 +13,7 @@
 
   @include position(fixed, $bottom: 0, $right: 0);
 
-  background: $tomato;
+  background: $dark-400;
   @include transition($time: 450ms);
   z-index: 999999;
 
@@ -22,57 +22,52 @@
     height: 100%;
     padding: 4rem 1rem;
 
-    @include flex($align: flex-start, $justify: space-between, $direction: column);
+    @include flex($align: flex-start, $justify: flex-end, $direction: column);
 
-    background: $white;
+    background-color: $whitesmoke;
+    background-image:  radial-gradient($light-300 .75px, transparent 0.5px), radial-gradient($light-300 .75px, transparent 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
 
-    > svg {
-      width: 50%;
-      height: 15%;
+    @include flex($align: flex-start, $direction: column);
+    gap: .75rem;
+
+    > h3 {
+      margin: 0;
+      @include flex;
+      font-size: .875rem;
+
+      > i {
+        @include sidebar-icon($opacity: 1);
+      }
+
+      + span {
+        margin-top: .5rem;
+      }
     }
 
-    > div {
-      @include flex($align: flex-start, $direction: column);
-      gap: .5rem;
+    > span {
+      @include flex-center-center;
+      font-size: .875rem;
 
-      > h3 {
-        margin: 0;
-        @include flex;
-        font-size: .875rem;
-
-        > i {
-          @include sidebar-icon($opacity: 1);
-        }
-
-        + span {
-          margin-top: .5rem;
-        }
+      + h3 {
+        margin-top: 1.5rem;
       }
 
-      > span {
-        @include flex-center-center;
-        font-size: .875rem;
-
-        + h3 {
-          margin-top: 1.5rem;
-        }
-
-        > i {
-          @include sidebar-icon;
-        }
+      > i {
+        @include sidebar-icon;
       }
+    }
 
-      > .active {
-        > i {
-          @include sidebar-icon($opacity: 1);
-          color: $main-green;
-        }
+    > .active {
+      > i {
+        @include sidebar-icon($opacity: 1);
+        color: $dodgerblue;
       }
     }
   }
 
   > .sidebar_btn {
-    content: '+';
     width: 2rem;
     height: 3rem;
 
@@ -80,7 +75,7 @@
     @include flex-center-center;
 
     border-radius: 0 .25rem .25rem 0;
-    background: $tomato;
+    background: $dark-400;
 
     color: $white;
     font-size: 1rem;

@@ -1,0 +1,41 @@
+.header {
+  padding: 2rem 2rem 0 2rem;
+
+  border-radius: 0 0 0 2rem;
+
+  > .fa-search {
+    margin-bottom: 1rem;
+    @include flex($align: center, $justify: flex-end);
+
+    color: $gray-100;
+    cursor: pointer;
+  }
+
+  > h2 {
+    margin: 0;
+
+    + span {
+      margin-top: .5rem;
+      font-size: .75rem;
+    }
+  }
+
+  > .pills {
+    margin-top: 1rem;
+    @include flex($align: center, $justify: flex-start);
+    flex-wrap: wrap;
+    gap: .5rem;
+
+    > .pill {
+      padding: .25rem .75rem;
+
+      border-radius: 1rem;
+      box-shadow: 2px 2px 5px rgba($dodgerblue, .75), -2px -2px 5px rgba($light-400, .8);
+      background: $dodgerblue;
+      color: $whitesmoke;
+
+      font-size: .75rem;
+      font-weight: 600;
+    }
+  }
+}

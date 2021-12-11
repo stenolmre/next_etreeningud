@@ -5,6 +5,7 @@ import daysToGo from '@ui/utils/daysToGo'
 
 import Loader from '@c/utils/loader'
 import Sidebar from '@c/posts/sidebar'
+import Header from '@c/header'
 import Card from '@c/card'
 
 const Posts = () => {
@@ -43,6 +44,7 @@ const Posts = () => {
 
   return <Fragment>
     <Sidebar />
+    <Header pills={[...filters, sortBy]} title="Postitused"/>
     <div className="cards_container">
       {
         loading ? <div className="page_loader"><Loader /></div> : posts && showPosts().map(post => <Card key={post._id} data={post}/>)

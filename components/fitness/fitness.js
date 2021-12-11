@@ -6,6 +6,7 @@ import daysToGo from '@ui/utils/daysToGo'
 import Loader from '@c/utils/loader'
 import Card from '@c/card'
 import Sidebar from '@c/fitness/sidebar'
+import Header from '@c/header'
 
 const Fitness = () => {
   const { loading, fitness, filters, sortBy } = useFitState()
@@ -43,6 +44,7 @@ const Fitness = () => {
 
   return <Fragment>
     <Sidebar/>
+    <Header pills={[...filters, sortBy]} title="Treeningud"/>
     <div className="cards_container">
       {
         loading

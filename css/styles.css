@@ -6,57 +6,6 @@
 }
 
 /* =======STYLES===================================== */
-body {
-  background: var(--whitesmoke);
-}
-
-a {
-  font-size: .875rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  cursor: pointer;
-  border: 1px solid var(--whitesmoke);
-  outline: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: .875rem;
-}
-
-label {
-  font-size: .75rem;
-}
-
-input,
-textarea,
-select {
-  -webkit-appearance: none;
-  outline: none;
-  border: 1px solid var(--whitesmoke);
-  font-family: 'Montserrat', sans-serif;
-  font-size: .875rem;
-  margin: 2px 0 10px 0;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border: 1px solid var(--dodgerblue);
-}
-
-@media (max-width: 768px) {
-
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  select {
-    font-size: 1rem;
-  }
-}
-
 .form_error,
 .form_required {
   color: red;

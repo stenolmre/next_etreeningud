@@ -13,7 +13,8 @@ const SidebarPosts = () => {
     tervis: 'fas fa-peace',
     treening: 'fas fa-dumbbell',
     toitumine: 'fas fa-apple-alt',
-    inimesed: 'fas fa-walking'
+    inimesed: 'fas fa-walking',
+    vabaaeg: 'fas fa-arrow-up'
   }
 
   const sorted = [
@@ -50,7 +51,7 @@ const SidebarPosts = () => {
     <h3><i className="fas fa-filter"/>Filtreeri postitused</h3>
     <span className={`${!filters.length ? 'active' : ''}`} onClick={() => filterPosts(dispatch, filters, [])}><i className="fas fa-border-all"/>Kõik</span>
     {
-      posts && [...new Set(posts.map(post => post.category.toLowerCase()))].map(x => <span key={x} className={`${filters.includes(x) ? 'active' : ''}`} onClick={() => filterPosts(dispatch, filters, x)}><i className={icons[x]}/>{x}</span>)
+      posts && [...new Set(posts.map(post => post.category.toLowerCase()))].map(x => <span key={x} className={`${filters.includes(x) ? 'active' : ''}`} onClick={() => filterPosts(dispatch, filters, x)}><i className={icons[x.replace(/ /g, '')]}/>{x}</span>)
     }
   </Sidebar>
 }

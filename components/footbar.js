@@ -5,11 +5,11 @@ const Footbar = () => {
   const [show, setShow] = useState(false)
   const navs = [{
     icon: 'fas fa-home',
-    title: 'Home',
+    title: 'Esileht',
     link: '/'
   }, {
     icon: 'fas fa-blog',
-    title: 'Blog',
+    title: 'Blogi',
     link: '/posts'
   }, {
     icon: 'fas fa-rocket',
@@ -18,7 +18,10 @@ const Footbar = () => {
   }]
 
   return <div className="footbar">
-    <i className={`fas fa-${show ? 'times' : 'bars'}`} onClick={() => setShow(!show)}/>
+    <div className="footbar_main" onClick={() => setShow(!show)}>
+      <i className={`fas fa-${show ? 'times' : 'bars'}`}/>
+      <span>{show ? 'Sulge' : 'Menüü'}</span>
+    </div>
     {
       navs.map((nav, index) => <Link href={nav.link} key={index}><a className={`footbar_nav footbar_nav_${show ? index : ''}`}>
         <i className={nav.icon}/>
