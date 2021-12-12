@@ -15,9 +15,11 @@ const Post = ({ post }) => {
 }
 
 Post.getInitialProps = async ctx => {
-  const id = await ctx.query.id
-  const host = await ctx.req.headers.host
+  const id = ctx.query.id
+  const host = ctx.req.headers.host
   const base = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'http://' : 'https://'
+
+  console.log(id, host, base)
 
   const { data } = await axios.get(base + host + '/api/posts/get?id=' + id)
   return { post: data }
