@@ -1,9 +1,9 @@
-import connectDB from './../../../utils/connectDB'
-import Settings from './../../../models/settings'
-
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-export default async function (req, res) {
+import Settings from '@models/settings'
+
+export default async function _get(req, res) {
   try {
     const settings = await Settings.find()
 

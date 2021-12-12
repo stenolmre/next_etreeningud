@@ -1,9 +1,9 @@
-import connectDB from './../../../utils/connectDB'
-import Fitness from './../../../models/fitness'
-
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-export default async function (req, res) {
+import Fitness from '@models/fitness'
+
+export default async function _delete(req, res) {
   const { id } = req.query
 
   try {

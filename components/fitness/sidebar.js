@@ -27,12 +27,12 @@ const SidebarFitness = () => {
       icon: 'fas fa-sort-alpha-down'
     },
     {
-      slug: 'newest',
+      slug: 'uuemad enne',
       name: 'Uuemad enne',
       icon: 'fas fa-sort-numeric-up'
     },
     {
-      slug: 'oldest',
+      slug: 'vanemad enne',
       name: 'Vanemad enne',
       icon: 'fas fa-sort-numeric-down'
     }

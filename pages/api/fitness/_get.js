@@ -1,9 +1,9 @@
-import connectDB from './../../../utils/connectDB'
-import Fitness from './../../../models/fitness'
-
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-export default async function (req, res) {
+import Fitness from '@models/fitness'
+
+export default async function _get(req, res) {
   try {
     const fitness = await Fitness.find().sort({ createdAt: -1 })
 

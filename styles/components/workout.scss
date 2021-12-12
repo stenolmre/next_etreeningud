@@ -1,0 +1,183 @@
+.workout_intro {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  @include grid($columns: 50% 50%);
+  overflow: hidden;
+
+  @media (max-width: 45rem) {
+    @include grid($columns: 100%);
+  }
+
+  > .workout_intro_image {
+    width: 100%;
+    @include flex-center-center;
+
+    > img {
+      width: 100%;
+      max-width: 575px;
+      max-height: 375px;
+
+      object-fit: cover;
+      object-position: center;
+
+      border: 2px solid $white;
+      border-radius: 14px;
+    }
+  }
+
+  > .workout_details {
+    width: 100%;
+    @include flex($direction: column, $align: center, $justify: center);
+
+    > h2 {
+      margin-bottom: 1rem;
+      text-transform: capitalize;
+    }
+
+    > .left, > .right {
+      width: 300px;
+      margin: .5rem 0;
+      padding: .125rem 1.5rem;
+      @include flex($justify: center, $direction: column);
+
+      > div {
+        font-weight: 600;
+      }
+
+      > span {
+        font-size: .75rem;
+      }
+    }
+
+    > .left {
+      margin-right: 325px;
+      border-right: 4px solid rgba(33, 33, 33, .2);
+      text-align: right;
+    }
+
+    > .right {
+      margin-left: 325px;
+      border-left: 4px solid rgba(33, 33, 33, .2);
+    }
+
+    > .first {
+      border-left: 7px solid rgba(0, 112, 243);
+    }
+
+    > .second {
+      border-right: 7px solid $main-yellow;
+    }
+
+    > .third {
+      border-left: 7px solid $main-orange;
+    }
+
+    > a {
+      margin-top: 2rem;
+      padding: .5rem 2rem;
+      border-radius: .25rem;
+      background: $dodgerblue;
+      box-shadow: 0px 1px 21px rgb($dodgerblue, .4);
+      color: white;
+    }
+  }
+}
+
+.exercise {
+  width: 100%;
+  max-width: 690px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  @include flex($align: center, $justify: flex-start, $direction: column);
+  text-transform: capitalize;
+
+  + .exercise {
+    margin-top: 1rem;
+  }
+
+  > .header {
+    width: 100%;
+    margin-bottom: .5rem;
+    @include flex($align: center, $justify: space-between);
+    cursor: pointer;
+
+    > h3 {
+      flex-grow: 1;
+    }
+
+    > .gray {
+      color: $light-700;
+    }
+
+    > span {
+      font-size: .75rem;
+
+      + i {
+        margin-left: .5rem;
+      }
+    }
+
+    > i {
+      width: 1.5rem;
+      height: 1.5rem;
+      @include place-center;
+      border-radius: 100%;
+      background: $dodgerblue;
+      box-shadow: 0px 1px 7px rgb($dodgerblue, .4);
+      color: $white;
+      font-size: .7rem;
+    }
+  }
+
+  > .video {
+    width: 100%;
+    margin: .25rem 0;
+    @include flex($align: center, $justify: flex-start, $direction: column);
+    border: 1px solid $light-200;
+    border-radius: .25rem;
+    background: $white;
+    overflow: hidden;
+    cursor: pointer;
+
+    > .info {
+      width: 100%;
+      padding: 1rem;
+      @include flex($align: center, $justify: space-between);
+
+      > div {
+        font-weight: 600;
+      }
+
+      > span {
+        font-size: .75rem;
+      }
+    }
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  > .closed {
+    height: 3rem;
+  }
+}
+
+.workout_completed_container {
+  width: 100%;
+  padding: 4rem 0;
+  border-top: 1px solid $light-200;
+  text-align: center;
+
+  > h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: $dodgerblue;
+
+    @media(max-width: 35rem) {
+      padding: 25px 0;
+      font-size: 2rem;
+    }
+  }
+}

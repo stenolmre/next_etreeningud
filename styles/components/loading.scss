@@ -1,0 +1,99 @@
+@mixin ad-style($bg: $light-200, $img: 100px) {
+  width: 100%;
+  animation: wobble 2450ms ease-in-out infinite;
+
+  > .loading_ad_image {
+    width: 100%;
+    height: $img;
+    margin-bottom: .5rem;
+
+    border-radius: .5rem;
+    background: $bg;
+  }
+
+  > .loading_ad_title {
+    width: 90%;
+    height: 24px;
+    margin-bottom: .25rem;
+
+    background: $bg;
+  }
+
+  > .loading_ad_hashtags {
+    width: 40%;
+    height: 16px;
+    background: $bg;
+  }
+
+  > section {
+    margin-top: .5rem;
+    @include flex($align: center);
+    gap: .5rem;
+
+    > .loading_ad_author_image {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 100%;
+      background: $bg;
+    }
+
+    > .loading_ad_author_name {
+      width: 40%;
+      height: 16px;
+      background: $bg;
+    }
+  }
+}
+
+.loading_ad {
+  @include ad-style;
+
+  + .loading_ad {
+    margin-top: 1rem;
+  }
+}
+
+.loading_card {
+  @include ad-style($bg: $light-300, $img: 200px);
+  padding-bottom: 1rem;
+
+  border-radius: 1rem;
+  background: $white;
+
+  > .loading_ad_title {
+    margin: 0 1rem .25rem 1rem;
+  }
+
+  > .loading_ad_hashtags {
+    margin: 0 1rem 1rem 1rem;
+  }
+
+  > section {
+    margin: 0 1rem;
+  }
+}
+
+@for $i from 1 through 30 {
+  $time: $i * 75;
+  .loading_ad_#{$i} {
+    animation-delay: #{$time}ms;
+  }
+
+  .loading_ad_#{$i} {
+    animation-delay: #{$time}ms;
+  }
+
+  .loading_card_#{$i} {
+    animation-delay: #{$time}ms;
+  }
+
+  .loading_card_#{$i} {
+    animation-delay: #{$time}ms;
+  }
+}
+
+@keyframes wobble {
+  0% { opacity: 1 }
+  50% { opacity: .2 }
+  100% { opacity: 1 }
+}

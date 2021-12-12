@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Head from '@c/utils/head'
+import Head from '@utils/head'
 
 import Layout from '@c/layout'
 import FitnessContent from '@c/fitness/fitness'

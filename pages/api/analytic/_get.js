@@ -1,9 +1,9 @@
-import connectDB from './../../../utils/connectDB'
-import Analytic from './../../../models/analytic'
-
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-export default async function (req, res) {
+import Analytic from '@models/analytic'
+
+export default async function _get(req, res) {
   try {
     const analytics = await Analytic.find().sort({ createdAt: -1 })
 

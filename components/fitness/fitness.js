@@ -1,17 +1,17 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment } from 'react'
 
 import { useFitState } from '@context/fitness'
 import daysToGo from '@ui/utils/daysToGo'
 
-import Loader from '@c/utils/loader'
 import Card from '@c/card'
 import Sidebar from '@c/fitness/sidebar'
 import Header from '@c/header'
+import { LoadingCards } from '@c/loading'
 
 const Fitness = () => {
   const { loading, fitness, filters, sortBy } = useFitState()
 
-  const sortFit = (posts) => {
+  const sortFit = () => {
     if (!fitness.length || fitness == null) return
 
     return fitness.sort((a, b) => {
@@ -48,7 +48,7 @@ const Fitness = () => {
     <div className="cards_container">
       {
         loading
-          ? <div className="fitness_loader"><Loader /></div>
+          ? <LoadingCards />
           : showFitness().map((fit, index) => <Card key={index} data={fit} blog={false}/>)
       }
     </div>

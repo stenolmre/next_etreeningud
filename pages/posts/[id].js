@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import axios from 'axios'
-import Head from '@c/utils/head'
+import Head from '@utils/head'
 
 import Layout from '@c/layout'
 import PostContent from '@c/posts/post'
@@ -24,7 +24,7 @@ export async function getServerSideProps(ctx) {
     props: {
       post: data
     }
-  };
+  }
 }
 
 export default Some

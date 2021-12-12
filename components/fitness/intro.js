@@ -8,34 +8,25 @@ export default function Intro({ workout }) {
     </div>
     <div className="workout_details">
       <h2>{workout.name}</h2>
-      <hr/>
-      <div className="workout_detail_left">
-        <small>Soojendus</small>
-      </div>
-      <div className="workout_detail_right first_round">
-        <h4>Ring 1</h4>
-        <p>{workout.workout.length} harjutust | {workout.workout[0].reps}</p>
-      </div>
-      <div className="workout_detail_right">
-        <small>Puhkus</small>
-      </div>
-      <div className="workout_detail_left second_round">
-        <h4>Ring 2</h4>
-        <p>{workout.workout.length} harjutust | {workout.workout[0].reps}</p>
-      </div>
-      <div className="workout_detail_left">
-        <small>Puhkus</small>
-      </div>
-      <div className="workout_detail_right third_round">
-        <h4>Ring 3</h4>
-        <p>{workout.workout.length} harjutust | {workout.workout[0].reps}</p>
-      </div>
-      <div className="workout_detail_right">
-        <small>Cooldown</small>
-      </div>
+      {
+        elements.map((element, index) => <div key={index} className={element.className}>
+          <div>{element.name}</div>
+          {element.exercises && <span>{workout.workout.length} harjutust | {workout.workout[0].reps}</span>}
+        </div>)
+      }
       <Link href={`/fitness/${workout._id}#start`}>
         <a>Alusta treeningut</a>
       </Link>
     </div>
   </div>
 }
+
+const elements = [
+  { name: 'Soojendus', className: 'left', exercises: false },
+  { name: 'Ring 1', className: 'right first', exercises: true },
+  { name: 'Puhkus', className: 'right', exercises: false },
+  { name: 'Ring 2', className: 'left second', exercises: true },
+  { name: 'Puhkus', className: 'left', exercises: false },
+  { name: 'Ring 3', className: 'right third', exercises: true },
+  { name: 'Cooldown', className: 'right', exercises: false },
+]

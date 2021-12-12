@@ -3,10 +3,10 @@ import React, { Fragment } from 'react'
 import { usePostState } from '@context/post'
 import daysToGo from '@ui/utils/daysToGo'
 
-import Loader from '@c/utils/loader'
 import Sidebar from '@c/posts/sidebar'
 import Header from '@c/header'
 import Card from '@c/card'
+import { LoadingCards } from '@c/loading'
 
 const Posts = () => {
   const { loading, posts, filters, sortBy } = usePostState()
@@ -47,7 +47,7 @@ const Posts = () => {
     <Header pills={[...filters, sortBy]} title="Postitused" icon="fas fa-blog" info="Avasta uusi teadmisi meie blogist, kus kirjutame treeningust, tasakaalustatud toitumisest ja tervislikust eluviisist. Samuti teeme tutvust meid ümbritsevate lahedate inimestega."/>
     <div className="cards_container">
       {
-        loading ? <div className="page_loader"><Loader /></div> : posts && showPosts().map(post => <Card key={post._id} data={post}/>)
+        loading ? <LoadingCards/> : posts && showPosts().map(post => <Card key={post._id} data={post}/>)
       }
     </div>
   </Fragment>

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import axios from 'axios'
-import Head from '@c/utils/head'
+import Head from '@utils/head'
 
 import Layout from '@c/layout'
 import Card from '@c/card'
@@ -17,13 +17,15 @@ const Yoga = ({ yoga }) => {
   </Fragment>
 }
 
-Yoga.getInitialProps = async ctx => {
-  const id = await ctx.query.id
-  const host = await ctx.req.headers.host
+export async function getServerSideProps(ctx) {
   const base = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'http://' : 'https://'
+  const { data } = await axios.get(`${base}${ctx.req.headers.host}/api/fitness/get?id=${ctx.query.id}`)
 
-  const { data } = await axios.get(base + host + '/api/fitness/get?id=' + id)
-  return { yoga: data }
+  return {
+    props: {
+      yoga: data
+    }
+  }
 }
 
 export default Yoga

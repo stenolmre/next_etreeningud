@@ -1,9 +1,9 @@
-import connectDB from './../../../utils/connectDB'
-import Post from './../../../models/post'
-
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-export default async function (req, res) {
+import Post from '@models/post'
+
+export default async function get(req, res) {
   const { id } = req.query
 
   try {

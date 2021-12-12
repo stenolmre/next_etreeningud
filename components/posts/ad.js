@@ -5,14 +5,14 @@ import { usePostState } from '@context/post'
 import { useWriterState } from '@context/writer'
 
 import Card from '@c/card'
+import { LoadingCards, LoadingAd } from '@c/loading'
 
 const Ad = ({ id }) => {
-  const { posts } = usePostState()
-  const { writers } = useWriterState()
+  const { posts, loading } = usePostState()
 
   return <div className="ad">
     {
-      posts && posts.filter(x => x._id !== id).map(post => <Card key={post._id} data={post}/>).slice(0, 3)
+      loading ? <LoadingCards num={3}/> : posts && posts.filter(x => x._id !== id).map(post => <Card key={post._id} data={post}/>).slice(0, 3)
     }
   </div>
 }
@@ -38,7 +38,7 @@ const AdSmall = ({ id }) => {
 
   return <div className="ad_small">
     {
-      posts && posts.filter(x => x._id !== id).map(post => <Link key={post._id} href={`/posts/${post._id}`}>
+      loading ? <LoadingAd /> : posts && posts.filter(x => x._id !== id).map(post => <Link key={post._id} href={`/posts/${post._id}`}>
         <a className="single_ad">
           <div className="ad_image" style={{ backgroundImage: `url('${post.image}')`}}/>
           <h4>{post.name}</h4>

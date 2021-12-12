@@ -1,23 +1,9 @@
 import React from 'react'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 import { getDate } from '@ui/utils/date'
 
 const Card = ({ data, events = true, blog = true }) => {
-  const router = useRouter()
-  const selectIcon = () => {
-    if (data.category.toLowerCase() === 'jooga') return icons.jooga
-    if (data.category.toLowerCase() === 'jõud') return icons.joud
-    if (data.category.toLowerCase() === 'hiit') return icons.hiit
-
-    if (data.category.toLowerCase() === 'tervis') return icons.tervis
-    if (data.category.toLowerCase() === 'treening') return icons.treening
-    if (data.category.toLowerCase() === 'inimesed') return icons.inimesed
-    if (data.category.toLowerCase() === 'toitumine') return icons.toitumine
-    if (data.category.toLowerCase() === 'vaba aeg') return icons.vabaaeg
-  }
-
   const generateLink = () => {
     if (data.category === 'jooga') return window.location.origin + '/yoga/' + data._id
     if (blog) return '/posts/' + data._id
@@ -44,15 +30,3 @@ const Card = ({ data, events = true, blog = true }) => {
 }
 
 export default Card
-
-const icons = {
-  jooga: 'fas fa-peace color-secondary-orange',
-  joud: 'fas fa-dumbbell color-primary-green',
-  hiit: 'fas fa-heartbeat color-primary-red',
-
-  tervis: 'fas fa-heartbeat color-primary-red',
-  treening: 'fas fa-dumbbell color-primary-green',
-  inimesed: 'fas fa-walking color-primary-blue',
-  toitumine: 'fas fa-apple-alt color-secondary-orange',
-  vabaaeg: 'fas fa-arrow-up color-darkslategray'
-}

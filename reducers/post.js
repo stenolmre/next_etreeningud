@@ -6,7 +6,7 @@ export const initialState = {
   loading: true,
   error: null,
   filters: [],
-  sortBy: 'newest'
+  sortBy: 'uuemad enne'
 }
 
 export const PostReducer = (state = initialState, action) => {

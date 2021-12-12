@@ -4,7 +4,6 @@ import { useWriterState } from '@context/writer'
 import { useAnalyticDispatch } from '@context/analytic'
 import { addAnalytic } from '@actions/analytic'
 
-import Loader from '@c/utils/loader'
 import { Ad, AdSmall } from '@c/posts/ad'
 
 const Post = ({ post }) => {
@@ -12,7 +11,7 @@ const Post = ({ post }) => {
   const dispatchAnalytic = useAnalyticDispatch()
 
   const content = () => {
-    return {__html: `${post.content}`};
+    return {__html: `${post.content}`}
   }
 
   const [isAnalyized, setIsAnalyized] = useState(false)

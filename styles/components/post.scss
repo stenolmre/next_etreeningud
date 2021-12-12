@@ -80,12 +80,12 @@
     }
 
     > h1 + .post_author {
-      margin-top: .5rem;
+      margin: 1rem 0 2rem 0;
     }
 
     > .post {
       line-height: 1.8;
-      > img, > div > img, > iframe {
+      img, iframe {
         width: 100%;
         border-radius: .25rem;
       }

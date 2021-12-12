@@ -1,9 +1,9 @@
-import connectDB from '@utils/connectDB'
-import WriterV2 from '@models/writerv2'
-
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-export default async function (req, res) {
+import WriterV2 from '@models/writerv2'
+
+export default async function _get(req, res) {
   try {
     const writers = await WriterV2.find()
 

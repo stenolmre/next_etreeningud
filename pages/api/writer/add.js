@@ -1,9 +1,9 @@
-import connectDB from './../../../utils/connectDB'
-import Writer from './../../../models/writer'
-
+import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-export default async function (req, res) {
+import Writer from '@models/writer'
+
+export default async function add(req, res) {
   const { image, name, bio } = req.body
 
   if (!image || !name || !bio) return res.status(401).json({ msg: 'Please fill all fields with correct information.' })
