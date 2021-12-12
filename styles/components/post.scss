@@ -15,6 +15,7 @@
     position: sticky;
     top: 2rem;
     align-self: start;
+    @include flex($direction: column);
 
     @media (max-width: 60rem) {
       display: none;

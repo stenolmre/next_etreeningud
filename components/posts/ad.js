@@ -48,7 +48,7 @@ const AdSmall = ({ id }) => {
             <a target="_blank" rel="noreferrer" href={getAuthor(post.author).social}>@{post.author}</a>
           </div>
         </a>
-      </Link>).slice(0, 5)
+      </Link>).slice(0, 4)
     }
   </div>
 }
