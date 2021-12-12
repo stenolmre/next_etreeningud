@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { getDate } from '@ui/utils/date'
 
-const Card = ({ data, events = true }) => {
+const Card = ({ data, events = true, blog = true }) => {
   const router = useRouter()
   const selectIcon = () => {
     if (data.category.toLowerCase() === 'jooga') return icons.jooga
@@ -20,7 +20,8 @@ const Card = ({ data, events = true }) => {
 
   const generateLink = () => {
     if (data.category === 'jooga') return window.location.origin + '/yoga/' + data._id
-    return router.pathname + '/' + data._id
+    if (blog) return '/posts/' + data._id
+    return '/fitness/' + data._id
   }
 
   return <Link href={generateLink()}><a className={`card ${!events ? 'no_events': ''}`}>

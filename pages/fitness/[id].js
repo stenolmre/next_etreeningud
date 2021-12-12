@@ -12,8 +12,11 @@ const Workout = ({ workout }) => {
 }
 
 Workout.getInitialProps = async ctx => {
-  const id = ctx.query.id
-  const { data } = await axios.get(window.location.origin + '/api/fitness/get?id=' + id)
+  const id = await ctx.query.id
+  const host = await ctx.req.headers.host
+  const base = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'http://' : 'https://'
+
+  const { data } = await axios.get(base + host + '/api/fitness/get?id=' + id)
   return { workout: data }
 }
 

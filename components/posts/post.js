@@ -5,7 +5,7 @@ import { useAnalyticDispatch } from '@context/analytic'
 import { addAnalytic } from '@actions/analytic'
 
 import Loader from '@c/utils/loader'
-import Ad from '@c/posts/ad'
+import { Ad, AdSmall } from '@c/posts/ad'
 
 const Post = ({ post }) => {
   const { writers } = useWriterState()
@@ -46,12 +46,15 @@ const Post = ({ post }) => {
     {
       post && <Fragment>
         <div className="post_container">
-          <h1>{post.name}</h1>
-          <div className="post_author">
-            <div style={{ backgroundImage: `url('${getAuthor(post.author).image}')`}}/>
-            <a target="_blank" rel="noreferrer" href={getAuthor(post.author).social}>@{post.author}</a>
+          <div>
+            <h1>{post.name}</h1>
+            <div className="post_author">
+              <div style={{ backgroundImage: `url('${getAuthor(post.author).image}')`}}/>
+              <a target="_blank" rel="noreferrer" href={getAuthor(post.author).social}>@{post.author}</a>
+            </div>
+            <div className="post" dangerouslySetInnerHTML={content()}/>
           </div>
-          <div className="post" dangerouslySetInnerHTML={content()}/>
+          <AdSmall id={post._id}/>
         </div>
         <Ad id={post._id}/>
       </Fragment>

@@ -49,7 +49,7 @@ const Fitness = () => {
       {
         loading
           ? <div className="fitness_loader"><Loader /></div>
-          : showFitness().map((fit, index) => <Card key={index} data={fit}/>)
+          : showFitness().map((fit, index) => <Card key={index} data={fit} blog={false}/>)
       }
     </div>
   </Fragment>

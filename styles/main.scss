@@ -13,8 +13,7 @@
 @import 'components/sidebar';
 @import 'components/header';
 @import 'components/post';
-
-@import 'fitness/fitness';
+@import 'components/fitness';
 
 body {
   background: $whitesmoke;
@@ -32,6 +31,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cards_container {
+  padding: 2rem;
+
+  @include grid($columns: repeat(auto-fit, minmax(215px, 1fr)), $gap: 1.5rem);
+  place-items: center;
+
+  @media (max-width: 35rem) {
+    gap: 1rem;
+  }
+}
+
+.ad {
+  max-width: 55rem;
+  margin: 0 auto;
   padding: 2rem;
 
   @include grid($columns: repeat(auto-fit, minmax(215px, 1fr)), $gap: 1.5rem);

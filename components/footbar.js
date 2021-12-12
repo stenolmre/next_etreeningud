@@ -12,12 +12,16 @@ const Footbar = () => {
     title: 'Blogi',
     link: '/posts'
   }, {
-    icon: 'fas fa-rocket',
+    icon: 'fas fa-dumbbell',
     title: 'Fit',
     link: '/fitness'
+  }, {
+    icon: 'fas fa-mobile-alt',
+    title: 'Kontakt',
+    link: 'https://m.me/coachkeisy'
   }]
 
-  return <div className="footbar">
+  return <div className="footbar footbar_expanded">
     <div className="footbar_main" onClick={() => setShow(!show)}>
       <i className={`fas fa-${show ? 'times' : 'bars'}`}/>
       <span>{show ? 'Sulge' : 'Menüü'}</span>
