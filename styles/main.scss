@@ -17,6 +17,7 @@
 @import 'components/footer';
 @import 'components/loading';
 @import 'components/workout';
+@import 'components/landing';
 
 body {
   background: $whitesmoke;
@@ -40,6 +41,7 @@ h1, h2, h3, h4, h5, h6 {
   place-items: center;
 
   @media (max-width: 35rem) {
+    padding: 0;
     gap: 1rem;
   }
 }

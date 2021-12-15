@@ -22,6 +22,9 @@
 }
 
 .footbar {
+  @media (min-width: 35rem) {
+    display: none;
+  }
   @include position(fixed, $left: 50%, $bottom: 2rem);
   transform: translateX(-50%);
   cursor: pointer;

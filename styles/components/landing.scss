@@ -1,0 +1,276 @@
+.landing {
+  width: 100%;
+  min-height: 100vh;
+
+  @include grid($columns: 75px auto 360px, $gap: 0);
+
+  @media (max-width: 70rem) {
+    grid-template-columns: 75px auto;
+  }
+
+  @media (max-width: 35rem) {
+    grid-template-columns: auto;
+  }
+
+  > nav {
+    @include flex($direction: column);
+    padding: 4rem 0;
+    background: $white;
+    border-radius: 0 2rem 0 0;
+
+    @media (max-width: 35rem) {
+      display: none;
+    }
+
+    > h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: $dodgerblue;
+      margin-bottom: 4rem;
+    }
+
+    .main {
+      flex-grow: 1;
+
+      > .nav {
+        @include flex($align: center, $justify: center, $direction: column);
+        gap: .25rem;
+
+        > i {
+          font-size: 1.1rem;
+        }
+
+        > span {
+          font-size: .625rem;
+        }
+
+        + .nav {
+          margin-top: 1.5rem;
+        }
+
+        &:hover {
+          color: $dodgerblue;
+          transition: 250ms ease-in;
+        }
+      }
+    }
+
+    > span {
+      text-align: center;
+      font-size: .5rem;
+      opacity: .75;
+    }
+  }
+
+  > .main {
+    padding: 1rem;
+    background: none;
+
+    > .header {
+      @include grid($columns: 6rem auto, $gap: .5rem);
+      align-items: center;
+
+      @media (max-width: 35rem) {
+        padding: 1rem;
+        @include grid($columns: auto, $rows: 35vh auto auto, $gap: .5rem);
+        margin: 2rem 0;
+        position: relative;
+        border-radius: 1rem;
+        @include background-image($width: 100%, $height: 60vh, $color: $white);
+        background-image: url('https://images.unsplash.com/photo-1530021232320-687d8e3dba54?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHdvbWFuJTIwcG9ydHJhaXQlMjBjb2xvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+        color: $white;
+
+        &::after {
+          content: '';
+          width: 100%;
+          height: 100%;
+          @include position(absolute);
+          border-radius: 1rem;
+          background: rgba($black, .25);
+          z-index: 1;
+        }
+      }
+
+      > .owner_image {
+        grid-row: 1 / 3;
+        @include background-image($width: 6rem, $height: 6rem, $color: $white);
+        background-image: url('https://images.unsplash.com/photo-1530021232320-687d8e3dba54?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHdvbWFuJTIwcG9ydHJhaXQlMjBjb2xvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+        border-radius: 100%;
+
+        @media (max-width: 35rem) {
+          display: none;
+        }
+      }
+
+      > span {
+        @media (min-width: 35rem) {
+          display: none;
+        }
+
+        height: 100%;
+        @include flex($align: flex-start, $justify: center);
+        font-size: .875rem;
+        opacity: .75;
+        z-index: 2;
+        position: relative;
+
+        &::after, &::before {
+          content: '';
+          width: 1.25rem;
+          height: .125rem;
+          background: $white;
+          border-radius: .25rem;
+          z-index: 2;
+        }
+
+        &::after {
+          @include position(absolute, $top: .5rem, $right: 2rem);
+        }
+
+        &::before {
+          @include position(absolute, $top: .5rem, $left: 2rem);
+        }
+      }
+
+      > h1 {
+        height: 100%;
+        @include flex($align: flex-end);
+        color: $dodgerblue;
+        font-size: 2rem;
+        z-index: 2;
+
+        @media (max-width: 35rem) {
+          height: auto;
+          @include flex($align: center);
+          font-size: 1.5rem;
+          color: $white;
+        }
+      }
+
+      > h3 {
+        height: 100%;
+        @include flex($align: flex-start);
+        font-family: 'Montserrat', sans-serif;
+        z-index: 2;
+
+        @media (max-width: 35rem) {
+          // grid-column: span 2;
+          font-size: .875rem;
+          opacity: .75;
+        }
+      }
+    }
+  }
+
+  > ._sidebar {
+    padding: 2rem;
+    background: $white;
+
+    @media (max-width: 70rem) {
+      display: none;
+    }
+
+    > ._sidebar_cards {
+      padding: 2rem 0;
+      position: sticky;
+      top: 0;
+    }
+  }
+}
+
+.postcard_main {
+  padding: 1rem;
+  @include flex($align: center, $justify: space-between, $direction: column);
+  gap: .5rem;
+  position: relative;
+  border-radius: 1rem;
+  @include background-image($width: 100%, $height: 27rem);
+  background-image: url('https://images.unsplash.com/photo-1482877346909-048fb6477632?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGNpdHklMjBjb2xvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+  color: $white;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    @include position(absolute);
+    border-radius: 1rem;
+    background: rgba($black, .25);
+    z-index: 1;
+  }
+
+  + .postcard_sm {
+    margin-top: 2rem;
+  }
+
+  > span, > h2, > small {
+    z-index: 2;
+  }
+
+  > span {
+    position: relative;
+
+    &::after, &::before {
+      content: '';
+      width: 1.25rem;
+      height: .125rem;
+      background: $white;
+      border-radius: .25rem;
+    }
+
+    &::after {
+      @include position(absolute, $top: 50%, $right: -2rem);
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      @include position(absolute, $top: 50%, $left: -2rem);
+      transform: translateY(-50%);
+    }
+  }
+
+  > h2 {
+    flex-grow: 1;
+    @include flex($align: flex-end);
+    text-align: center;
+  }
+}
+
+.postcard_sm {
+  @include grid($columns: 5rem auto 1rem, $gap: .5rem);
+  align-items: center;
+
+  + .postcard_sm {
+    margin-top: 2rem;
+  }
+
+  > .image {
+    grid-row: 1 / 3;
+    border-radius: 100%;
+    @include background-image($width: 5rem, $height: 5rem);
+  }
+
+  > section {
+    grid-row: 1 / 3;
+    @include flex($justify: center, $direction: column);
+    gap: .25rem;
+
+    > h4 {
+      @include ellipsis($lines: 2);
+    }
+
+    > div > span {
+      font-size: .75rem;
+      opacity: .75;
+
+      + span {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  > i {
+    grid-row: 1 / 3;
+    @include flex($justify: center, $direction: column);
+    color: $dodgerblue;
+  }
+}
