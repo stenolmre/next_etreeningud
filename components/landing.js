@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import Fitness from '@c/fitness/fitnessv2'
-import Posts from '@c/posts/postsv2'
+// import Posts from '@c/posts/postsv2'
 import { MainCard, SmCard } from '@c/postcard'
 
 const Landing = () => {
