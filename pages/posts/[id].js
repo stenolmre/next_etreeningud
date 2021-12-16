@@ -2,17 +2,14 @@ import React, { Fragment } from 'react'
 import axios from 'axios'
 import Head from '@utils/head'
 
-import Layout from '@c/layout'
 import PostContent from '@c/posts/post'
-import Footer from '@c/footer'
+import Footer from '@c/layout/footer'
 
 const Some = ({ post }) => {
   return <Fragment>
     <Head title={post.name} url={`https://etreeningud.ee/posts/${post._id}?name=${post.name}`} image={post.image} description={post.excerpt}/>
-    <Layout>
-      <PostContent post={post}/>
-      <Footer />
-    </Layout>
+    <PostContent post={post}/>
+    <Footer />
   </Fragment>
 }
 

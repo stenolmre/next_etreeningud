@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePostState } from '@context/post'
 import { useWriterState } from '@context/writer'
 
-import Card from '@c/card'
+import { MainCard } from '@c/card'
 import { LoadingCards, LoadingAd } from '@c/loading'
 
 const Ad = ({ id }) => {
@@ -12,7 +12,7 @@ const Ad = ({ id }) => {
 
   return <div className="ad">
     {
-      loading ? <LoadingCards num={3}/> : posts && posts.filter(x => x._id !== id).map(post => <Card key={post._id} data={post}/>).slice(0, 3)
+      loading ? <LoadingCards num={3}/> : posts && posts.filter(x => x._id !== id).map(post => <MainCard key={post._id} data={post}/>).slice(0, 3)
     }
   </div>
 }
