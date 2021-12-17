@@ -13,8 +13,7 @@ const Navbar = () => {
   return <nav>
     <h1>et.</h1>
     <div className="main">
-      <A href="/" icon="fas fa-rocket">Esileht</A>
-      <A href="/fitness" icon="fas fa-heartbeat">Fitness</A>
+      <A href="/" icon="fas fa-heartbeat">Fitness</A>
       <A href="/posts" icon="fas fa-blog">Blogi</A>
       <A target="_blank" rel="noreferrer" href="https://m.me/coachkeisy" icon="fas fa-mobile-alt">Kontakt</A>
     </div>
