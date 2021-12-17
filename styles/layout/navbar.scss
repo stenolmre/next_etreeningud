@@ -1,0 +1,85 @@
+nav {
+  @include flex($direction: column);
+  padding: 4rem 0;
+  background: $white;
+  border-radius: 0 2rem 0 0;
+
+  @media (max-width: 35rem) {
+    display: none;
+  }
+
+  > h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: $dodgerblue;
+    margin-bottom: 4rem;
+  }
+
+  .main {
+    padding: 1rem 0;
+    background: $light-200;
+
+    > .nav {
+      @include flex($align: center, $justify: center, $direction: column);
+      gap: .25rem;
+
+      > i {
+        font-size: 1.1rem;
+      }
+
+      > span {
+        font-size: .625rem;
+      }
+
+      + .nav {
+        margin-top: 1.5rem;
+      }
+
+      &:hover {
+        color: $dodgerblue;
+        transition: 250ms ease-in;
+      }
+    }
+
+    > .active {
+      color: $dodgerblue;
+      font-weight: 600;
+    }
+  }
+
+  .main_sticky {
+    position: sticky;
+    top: 2rem;
+  }
+
+  > .filters {
+    padding: 4rem 0;
+    @include flex($align: center, $justify: center, $direction: column);
+    gap: 1rem;
+
+    position: sticky;
+    top: 0;
+
+    span {
+      font-size: .75rem;
+      font-weight: 600;
+    }
+
+    > .filter {
+      font-size: 1.2rem;
+      cursor: pointer;
+      &:hover {
+        color: $dodgerblue;
+        transition: 250ms ease-in;
+      }
+
+      + span {
+        margin-top: 1.5rem;
+      }
+    }
+
+    > .active {
+      color: $dodgerblue;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { useWriterState } from '@context/writer'
 import { useAnalyticDispatch } from '@context/analytic'
 import { addAnalytic } from '@actions/analytic'
 
-import { Ad, AdSmall } from '@c/posts/ad'
+import { AdSmall } from '@c/posts/ad'
 
 const Post = ({ post }) => {
   const { writers } = useWriterState()
@@ -55,7 +55,6 @@ const Post = ({ post }) => {
           </div>
           <AdSmall id={post._id}/>
         </div>
-        <Ad id={post._id}/>
       </Fragment>
     }
   </div>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-import setAuthToken from './../utils/setAuthToken'
+import setAuthToken from '@ui/utils/setAuthToken'
 
 import { LOGIN_ADMIN, ADD_ADMIN, UPDATE_ADMIN, REMOVE_ADMIN, GET_ADMIN, GET_ADMINS, ADMIN_LOGOUT, ADMIN_ERROR } from './types'
 

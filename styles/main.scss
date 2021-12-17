@@ -8,16 +8,16 @@
   font-display: swap;
 }
 
-@import 'components/footbar';
 @import 'components/card';
-@import 'components/sidebar';
-@import 'components/header';
 @import 'components/post';
 @import 'components/fitness';
-@import 'components/footer';
 @import 'components/loading';
 @import 'components/workout';
 @import 'components/landing';
+
+@import 'layout/navbar';
+@import 'layout/footbar';
+@import 'layout/header';
 
 body {
   background: $whitesmoke;

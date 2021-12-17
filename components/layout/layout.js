@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import useFitness from '@hooks/useFitness'
 import usePosts from '@hooks/usePosts'
@@ -9,27 +9,31 @@ import Header from '@c/layout/header'
 import Navbar from '@c/layout/navbar'
 import { LgCard, SmCard } from '@c/card'
 
-const Layout = ({ children, pills }) => {
+const Layout = ({ children, pills, post = false }) => {
   useFitness()
   usePosts()
   useWriters()
 
-  return <main className="landing">
-    <Navbar />
-    <section className="main">
-      <Header pills={pills}/>
-      { children }
-    </section>
-    <section className="_sidebar">
-      <div className="_sidebar_cards">
-        {
-          arr.map((el, index) => {
-            if (index === 0) return <LgCard key={index} image={el}/>
-            return <SmCard key={index} image={el}/>
-          }).slice(0, 4)
-        }
-      </div>
-    </section>
+  return <main className={`landing ${post ? 'landing_no_sidebar' : ''}`}>
+    <Navbar post={post}/>
+    {
+      !post ? <Fragment>
+        <section className="main">
+          <Header pills={pills}/>
+          { children }
+        </section>
+        <section className="_sidebar">
+          <div className="_sidebar_cards">
+            {
+              arr.map((el, index) => {
+                if (index === 0) return <LgCard key={index} image={el}/>
+                return <SmCard key={index} image={el}/>
+              }).slice(0, 4)
+            }
+          </div>
+        </section>
+      </Fragment> : <Fragment>{children}</Fragment>
+    }
     <Footbar />
   </main>
 }

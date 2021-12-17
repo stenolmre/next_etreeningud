@@ -7,27 +7,29 @@ import { sortPosts, filterPosts } from '@actions/post'
 import { useFitState, useFitDispatch } from '@context/fitness'
 import { sortFit, filterFit } from '@actions/fitness'
 
-const Navbar = () => {
+const Navbar = ({ post }) => {
   const { asPath } = useRouter()
 
   return <nav>
     <h1>et.</h1>
-    <div className="main">
+    <div className={`main ${post ? 'main_sticky' : ''}`}>
       <A href="/" icon="fas fa-heartbeat">Fitness</A>
       <A href="/posts" icon="fas fa-blog">Blogi</A>
       <A target="_blank" rel="noreferrer" href="https://m.me/coachkeisy" icon="fas fa-mobile-alt">Kontakt</A>
     </div>
-    <div className="filters">
-      <span>Sorteeri</span>
-      <Sorter icon="fas fa-sort-numeric-down" value="uuemad enne"/>
-      <Sorter icon="fas fa-sort-numeric-up" value="vanemad enne"/>
-      <Sorter icon="fas fa-sort-alpha-down" value="az"/>
-      <Sorter icon="fas fa-sort-alpha-up" value="za"/>
-      <span>Filtreeri</span>
-      {
-        asPath === '/posts' ? <PostFilters /> : <FitFilters />
-      }
-    </div>
+    {
+      !post && <div className="filters">
+        <span>Sorteeri</span>
+        <Sorter icon="fas fa-sort-numeric-down" value="uuemad enne"/>
+        <Sorter icon="fas fa-sort-numeric-up" value="vanemad enne"/>
+        <Sorter icon="fas fa-sort-alpha-down" value="az"/>
+        <Sorter icon="fas fa-sort-alpha-up" value="za"/>
+        <span>Filtreeri</span>
+        {
+          asPath === '/posts' ? <PostFilters /> : <FitFilters />
+        }
+      </div>
+    }
   </nav>
 }
 
