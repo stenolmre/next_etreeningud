@@ -1,23 +1,17 @@
 import React from 'react'
-import FitnessProvider from './fitness'
-import PostProvider from './post'
-import SettingsProvider from './settings'
-import AdminProvider from './admin'
-import WriterProvider from './writer'
-import Analytic from './analytic'
+import FitnessProvider from '@context/fitness'
+import PostProvider from '@context/post'
+import ConfigProvider from '@context/config'
+import Analytic from '@context/analytic'
 
 const GlobalState = ({ children }) => {
   return <FitnessProvider>
     <PostProvider>
-      <SettingsProvider>
-        <AdminProvider>
-          <WriterProvider>
-            <Analytic>
-              { children}
-            </Analytic>
-          </WriterProvider>
-        </AdminProvider>
-      </SettingsProvider>
+      <ConfigProvider>
+        <Analytic>
+          { children}
+        </Analytic>
+      </ConfigProvider>
     </PostProvider>
   </FitnessProvider>
 }

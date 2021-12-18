@@ -1,15 +1,15 @@
 import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-import Settings from '@models/settings'
+import Config from '@models/config'
 
 export default async function add(req, res) {
   try {
-    const settings = new Settings(req.body)
+    const config = new Config(req.body)
+    await config.save()
 
-    await settings.save()
-
-    res.send(settings)
+    const _config = await Config.find()
+    res.send(_config)
   } catch (err) {
     res.status(500).json({ msg: err.message })
   }

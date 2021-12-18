@@ -1,7 +1,8 @@
 const generateLink = (data, blog) => {
-  if (data.category === 'jooga') return window.location.origin + '/yoga/' + data._id
-  if (blog) return '/posts/' + data._id
-  return '/fitness/' + data._id
+  const slug = `?${data.slug}`
+  if (data.category === 'jooga') return '/yoga/' + data._id + slug
+  if (blog) return '/posts/' + data._id + slug
+  return '/fitness/' + data._id + slug
 }
 
 export default generateLink

@@ -1,11 +1,11 @@
 import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-import Post from '@models/post'
+import Postv2 from '@models/postv2'
 
 export default async function _get(req, res) {
   try {
-    const posts = await Post.find().sort({ createdAt: -1 })
+    const posts = await Postv2.find().sort({ createdAt: -1 })
 
     if (!posts) return res.status(404).json({ msg: 'Posts not found.' })
 

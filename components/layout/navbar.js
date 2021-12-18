@@ -11,7 +11,7 @@ const Navbar = ({ post }) => {
   const { asPath } = useRouter()
 
   return <nav>
-    <h1>et.</h1>
+    <Link href="/"><a className="logo">et.</a></Link>
     <div className={`main ${post ? 'main_sticky' : ''}`}>
       <A href="/" icon="fas fa-heartbeat">Fitness</A>
       <A href="/posts" icon="fas fa-blog">Blogi</A>
@@ -79,7 +79,8 @@ const icons = {
   inimesed: 'fas fa-user-friends',
   tervis: 'far fa-heart',
   toitumine: 'fas fa-apple-alt',
-  treening: 'fas fa-dumbbell'
+  treening: 'fas fa-dumbbell',
+  elustiil: 'fas fa-rocket'
 }
 
 export default Navbar

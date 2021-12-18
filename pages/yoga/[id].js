@@ -2,13 +2,17 @@ import React, { Fragment } from 'react'
 import axios from 'axios'
 import Head from '@utils/head'
 
+import { useFitState } from '@context/fitness'
+
 import Layout from '@c/layout/layout'
 import { MainCard } from '@c/card'
 
 const Yoga = ({ yoga }) => {
+  const { fitness, loading } = useFitState()
+
   return <Fragment>
     <Head title={yoga.name} url={`https://etreeningud.ee/yoga/${yoga._id}?name=${yoga.name}`} image={yoga.image} description={yoga.intro}/>
-    <Layout>
+    <Layout pills={['jooga']} sidebar={fitness && fitness.filter(fit => fit._id !== yoga._id)} loading={loading} blog={false} num={4}>
       <div className="yoga_layout">
         <MainCard data={yoga} events={false}/>
         <iframe src={`https://www.youtube.com/embed/${yoga.video}`} frameBorder="0" allowFullScreen/>

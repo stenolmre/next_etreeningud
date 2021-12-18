@@ -11,7 +11,7 @@ import { LoadingCards } from '@c/loading'
 
 const Index = () => {
   const { loading, fitness, filters, sortBy } = useFitState()
-  const { posts } = usePostState()
+  const blog = usePostState()
 
   const [numOfPosts, setNumOfPosts] = useState(12)
 
@@ -22,14 +22,14 @@ const Index = () => {
     return sort(fitness, sortBy).filter(_fit => filters.includes(_fit.category.toLowerCase()))
   }
 
-  const loadMorePosts = () => {
+  const loadMoreWorkouts = () => {
     if (numOfPosts > fitness.length) return
     setNumOfPosts(numOfPosts + 12)
   }
 
   return <Fragment>
     <Head title="Treeningud" url="https://etreeningud.ee/"/>
-    <Layout sidebar={posts && posts} pills={['treeningud', sortBy, ...filters]}>
+    <Layout sidebar={blog.posts && blog.posts} loading={blog.loading} pills={['treeningud', sortBy, ...filters]}>
       <div className="cards_container">
         {
           loading
@@ -38,7 +38,7 @@ const Index = () => {
         }
       </div>
       {
-        showFitness().length > numOfPosts && <div className="load_more" onClick={loadMorePosts}>Näita rohkem treeninguid</div>
+        showFitness().length > numOfPosts && <div className="load_more" onClick={loadMoreWorkouts}>Näita rohkem treeninguid</div>
       }
     </Layout>
   </Fragment>

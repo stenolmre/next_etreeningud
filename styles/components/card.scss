@@ -2,9 +2,43 @@ $break: 30.865rem;
 $padding: 0 1rem;
 $padding_mobile: 0 .5rem;
 
+@mixin card-footer() {
+  width: 100%;
+  padding: $padding;
+  @include grid($columns: 2.5rem auto, $gap: .5rem);
+  align-items: center;
+
+  > .image {
+    border-radius: 100%;
+    @include background-image($width: 2.5rem, $height: 2.5rem, $color: $whitesmoke);
+  }
+
+  > .content {
+    font-size: .75rem;
+
+    > h5:nth-of-type(2) {
+      opacity: .5;
+    }
+  }
+}
+
+@mixin card-hashtags() {
+  margin-top: .5rem;
+
+  span {
+    font-size: .75rem;
+    font-family: 'Righteous', sans-serif;
+    opacity: .5;
+
+    + span {
+      margin-left: .5rem;
+    }
+  }
+}
 
 .card {
   width: 100%;
+  max-width: 375px;
   @include grid($rows: 200px auto 50px, $gap: .5rem);
   position: relative;
 
@@ -34,17 +68,7 @@ $padding_mobile: 0 .5rem;
     }
 
     > .card_hashtags {
-      margin-top: .5rem;
-
-      span {
-        font-size: .75rem;
-        font-family: 'Righteous', sans-serif;
-        opacity: .5;
-
-        + span {
-          margin-left: .5rem;
-        }
-      }
+      @include card-hashtags;
     }
 
     @media (max-width: $break) {
@@ -54,29 +78,7 @@ $padding_mobile: 0 .5rem;
   }
 
   > .card_footer {
-    padding: $padding;
-    @include flex($align: center);
-    gap: .5rem;
-
-    @media (max-width: $break) {
-      padding: $padding_mobile;
-    }
-
-    > .card_author {
-      border-radius: 100%;
-      @include background-image($width: 2.5rem, $height: 2.5rem);
-      background-image: url('https://images.unsplash.com/photo-1535207010348-71e47296838a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzN8fHBvcnRyYWl0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
-    }
-
-    > .content {
-      font-size: .75rem;
-
-      > h5 {
-        &:nth-of-type(2) {
-          opacity: .5;
-        }
-      }
-    }
+    @include card-footer;
   }
 
   > .card_category {

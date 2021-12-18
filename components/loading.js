@@ -20,10 +20,10 @@ const LoadingCards = ({ num = 20 }) => {
   </Fragment>
 }
 
-const LoadingAd = () => {
+const LoadingAd = ({ num = 5 }) => {
   return <Fragment>
     {
-      generateArray(5).map(ad => <div key={ad} className={`loading_ad loading_ad_${ad}`}>
+      generateArray(num).map(ad => <div key={ad} className={`loading_ad loading_ad_${ad}`}>
         <div className="loading_ad_image"/>
         <div className="loading_ad_title"/>
         <div className="loading_ad_hashtags"/>

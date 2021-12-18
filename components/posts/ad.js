@@ -2,39 +2,14 @@ import React from 'react'
 import Link from 'next/link'
 
 import { usePostState } from '@context/post'
-import { useWriterState } from '@context/writer'
+import { useConfigState } from '@context/config'
 
-import { MainCard } from '@c/card'
-import { LoadingCards, LoadingAd } from '@c/loading'
-
-const Ad = ({ id }) => {
-  const { posts, loading } = usePostState()
-
-  return <div className="ad">
-    {
-      loading ? <LoadingCards num={3}/> : posts && posts.filter(x => x._id !== id).map(post => <MainCard key={post._id} data={post}/>).slice(0, 3)
-    }
-  </div>
-}
+import { LoadingAd } from '@c/loading'
 
 const AdSmall = ({ id }) => {
   const { posts, loading } = usePostState()
-  const { writers } = useWriterState()
-
-  const getAuthor = (author) => {
-    if (!writers.length || writers == null || writers.find(writer => writer.name === author) == null) {
-      return {
-        image: null,
-        social: null
-      }
-    } else {
-      const writer = writers.find(writer => writer.name === author)
-      return {
-        image: writer.image,
-        social: writer.social
-      }
-    }
-  }
+  const { writers } = useConfigState()
+  const getWriter = (writer) => writers.find(_writer => _writer.slug === writer)
 
   return <div className="ad_small">
     {
@@ -44,8 +19,8 @@ const AdSmall = ({ id }) => {
           <h4>{post.name}</h4>
           <span>#{post.category}</span>
           <div className="post_author">
-            <div style={{ backgroundImage: `url('${getAuthor(post.author).image}')`}}/>
-            <a target="_blank" rel="noreferrer" href={getAuthor(post.author).social}>@{post.author}</a>
+            <div style={{ backgroundImage: `url('${getWriter(post.writer).image}')`}}/>
+            <a target="_blank" rel="noreferrer" href={getWriter(post.writer).social}>@{getWriter(post.writer).name}</a>
           </div>
         </a>
       </Link>).slice(0, 4)
@@ -53,4 +28,4 @@ const AdSmall = ({ id }) => {
   </div>
 }
 
-export { Ad, AdSmall }
+export { AdSmall }

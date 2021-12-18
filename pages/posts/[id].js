@@ -10,7 +10,7 @@ import PostContent from '@c/posts/post'
 const Index = ({ post }) => {
   usePosts()
   return <Layout post>
-    <Head title={post.name} url={`https://etreeningud.ee/posts/${post._id}?name=${post.name}`} image={post.image} description={post.excerpt}/>
+    <Head title={post.name} url={`https://etreeningud.ee/posts/${post._id}?name=${post.name}`} image={post.image} />
     <PostContent post={post}/>
   </Layout>
 }

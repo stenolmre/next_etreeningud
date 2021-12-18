@@ -10,7 +10,7 @@ import { MainCard } from '@c/card'
 import { LoadingCards } from '@c/loading'
 
 const Index = () => {
-  const { fitness } = useFitState()
+  const fit = useFitState()
   const { loading, posts, filters, sortBy } = usePostState()
 
   const [numOfPosts, setNumOfPosts] = useState(12)
@@ -29,7 +29,7 @@ const Index = () => {
 
   return <Fragment>
     <Head title="Treeningud" url="https://etreeningud.ee/posts"/>
-    <Layout sidebar={fitness && fitness} pills={['blogi', sortBy, ...filters]}>
+    <Layout sidebar={fit.fitness && fit.fitness} loading={fit.loading} blog={false} num={7} pills={['blogi', sortBy, ...filters]}>
       <div className="cards_container">
         {
           loading

@@ -1,13 +1,13 @@
 import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-import Fitness from '@models/fitness'
+import Fitnessv2 from '@models/fitnessv2'
 
 export default async function get(req, res) {
   const { id } = req.query
 
   try {
-    const workout = await Fitness.findById(id)
+    const workout = await Fitnessv2.findById(id)
 
     if (!workout) return res.status(404).json({ msg: 'Workout not found.' })
 

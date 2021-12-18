@@ -2,17 +2,18 @@ import React, { Fragment } from 'react'
 
 import useFitness from '@hooks/useFitness'
 import usePosts from '@hooks/usePosts'
-import useWriters from '@hooks/useWriters'
+import useConfig from '@hooks/useConfig'
 
 import Footbar from '@c/layout/footbar'
 import Header from '@c/layout/header'
 import Navbar from '@c/layout/navbar'
 import { LgCard, SmCard } from '@c/card'
+import { LoadingAd } from '@c/loading'
 
-const Layout = ({ children, pills, post = false }) => {
+const Layout = ({ children, pills, post = false, sidebar = [], loading = true, num = 5, blog }) => {
+  useConfig()
   useFitness()
   usePosts()
-  useWriters()
 
   return <main className={`landing ${post ? 'landing_no_sidebar' : ''}`}>
     <Navbar post={post}/>
@@ -25,10 +26,10 @@ const Layout = ({ children, pills, post = false }) => {
         <section className="_sidebar">
           <div className="_sidebar_cards">
             {
-              arr.map((el, index) => {
-                if (index === 0) return <LgCard key={index} image={el}/>
-                return <SmCard key={index} image={el}/>
-              }).slice(0, 4)
+              loading ? <LoadingAd num={4} /> : sidebar.map((el, index) => {
+                if (index === 0) return <LgCard key={index} data={el} blog={blog}/>
+                return <SmCard key={index} data={el}  blog={blog}/>
+              }).slice(0, num)
             }
           </div>
         </section>
@@ -39,10 +40,3 @@ const Layout = ({ children, pills, post = false }) => {
 }
 
 export default Layout
-
-const arr = [
-  'https://images.unsplash.com/photo-1482877346909-048fb6477632?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGNpdHklMjBjb2xvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1571114431613-68b587d553e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE1fHxjaXR5JTIwY29sb3J8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1514679347725-10436adc23a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM2fHxjaXR5JTIwY29sb3J8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-  'https://images.unsplash.com/photo-1528805639423-44f7d2a3b368?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvcmtpbmclMjBvdXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
-]

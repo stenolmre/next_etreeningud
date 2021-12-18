@@ -1,15 +1,12 @@
 import connectDB from '@ui/utils/connectDB'
 connectDB()
 
-import WriterV2 from '@models/writerv2'
+import Config from '@models/config'
 
 export default async function _get(req, res) {
   try {
-    const writers = await WriterV2.find()
-
-    if (!writers) return res.status(404).json({ msg: 'Writers not found.' })
-
-    res.send(writers)
+    const _config = await Config.find()
+    res.send(_config[0])
   } catch (err) {
     res.status(500).json({ msg: err.message })
   }

@@ -20,15 +20,15 @@ const Exercises = ({ workout }) => {
   const open = (arr, action, x) => action([...arr, x])
 
   return <div className="workout">
-    <Exercise2 color="gray" heading="soojendus" state={wu_ids} setState={setWuIds} type={workout.warmup} open={open} close={close} id="start"/>
-    <Exercise2 color="color-primary-blue" heading="ring 1" state={wo1_ids} setState={setWo1Ids} type={workout.workout} open={open} close={close}/>
-    <Exercise2 color="color-secondary-yellow" heading="ring 2" state={wo2_ids} setState={setWo2Ids} type={workout.workout} open={open} close={close}/>
-    <Exercise2 color="color-secondary-orange" heading="ring 3" state={wo3_ids} setState={setWo3Ids} type={workout.workout} open={open} close={close}/>
-    <Exercise2 color="gray" heading="cooldown" state={c_ids} setState={setCIds} type={workout.cooldown} open={open} close={close}/>
+    <Exercise color="gray" heading="soojendus" state={wu_ids} setState={setWuIds} type={workout.warmup} open={open} close={close} id="start"/>
+    <Exercise color="color-primary-blue" heading="ring 1" state={wo1_ids} setState={setWo1Ids} type={workout.workout} open={open} close={close}/>
+    <Exercise color="color-secondary-yellow" heading="ring 2" state={wo2_ids} setState={setWo2Ids} type={workout.workout} open={open} close={close}/>
+    <Exercise color="color-secondary-orange" heading="ring 3" state={wo3_ids} setState={setWo3Ids} type={workout.workout} open={open} close={close}/>
+    <Exercise color="gray" heading="cooldown" state={c_ids} setState={setCIds} type={workout.cooldown} open={open} close={close}/>
   </div>
 }
 
-const Exercise2 = ({ heading, type, state, setState, color, open, close, id }) => {
+const Exercise = ({ heading, type, state, setState, color, open, close, id }) => {
   return <div className="exercise" id={id}>
     <div className="header" onClick={state.length < type.length ? () => setState(Array.from(Object.values(type), x => x._id)) : () => setState([])}>
       <h3 className={color}>{heading}</h3>

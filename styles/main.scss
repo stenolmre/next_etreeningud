@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2rem;
 
   @include grid($columns: repeat(auto-fit, minmax(215px, 1fr)), $gap: 1.5rem);
-  place-items: center;
+  // place-items: center;
 
   @media (max-width: 35rem) {
     padding: 0;
@@ -84,4 +84,30 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   color: $dodgerblue;
   cursor: pointer;
+}
+
+.error {
+  height: 100vh;
+  @include flex-center-center;
+  flex-direction: column;
+
+  > div {
+    font-family: 'Righteous', sans-serif;
+
+    + a {
+      margin-top: 1rem;
+    }
+  }
+
+  > a {
+    padding: .5rem 1.5rem;
+    border: 2px solid $dodgerblue;
+    border-radius: .5rem;
+    font-weight: 600;
+    color: $dodgerblue;
+
+    > i {
+      margin-right: .5rem;
+    }
+  }
 }

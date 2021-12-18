@@ -3,8 +3,13 @@ import Link from 'next/link'
 
 import { getDate } from '@ui/utils/date'
 import generateLink from '@utils/generateLink'
+import getAuthor from '@utils/getAuthor'
+
+import { useConfigState } from '@context/config'
 
 const MainCard = ({ data, events = true, blog = true }) => {
+  const { writers } = useConfigState()
+
   return <Link href={generateLink(data, blog)}><a className={`card ${!events ? 'no_events': ''}`}>
     <div className="card_image" style={{ backgroundImage: `url('${data.image}')`}}/>
     <div className="content">
@@ -14,9 +19,9 @@ const MainCard = ({ data, events = true, blog = true }) => {
       </div>
     </div>
     <div className="card_footer">
-      <div className="card_author"/>
+      <div className="image" style={{ backgroundImage: `url(${getAuthor(data, writers).image})`}}/>
       <div className="content">
-        <h5>Kiyoko Yoshi</h5>
+        <h5>{getAuthor(data, writers).name}</h5>
         <h5>{getDate(data.createdAt, 'est')}</h5>
       </div>
     </div>
@@ -24,27 +29,32 @@ const MainCard = ({ data, events = true, blog = true }) => {
   </a></Link>
 }
 
-const LgCard = ({ image }) => {
-  return <div className="postcard_main" style={{ backgroundImage: `url(${image})`}}>
-    <span>Kiyoko Yoshi</span>
-    <h2>How to make morning coffee, according to the Science</h2>
-    <small>#tervis</small>
-    <small>31 jaan 2022</small>
-  </div>
+const LgCard = ({ data, blog = true }) => {
+  const { writers } = useConfigState()
+
+  return <Link href={generateLink(data, blog)}><a className="postcard_main" style={{ backgroundImage: `url(${data.image})`}}>
+    <span>{getAuthor(data, writers).name}</span>
+    <h2>{data.name}</h2>
+    <small>#{data.category}</small>
+    <small>{getDate(data.createdAt, 'est')}</small>
+  </a></Link>
 }
 
-const SmCard = ({ image }) => {
-  return <div className="postcard_sm">
-    <div className="image" style={{ backgroundImage: `url(${image})`}}/>
+const SmCard = ({ data, blog = true }) => {
+  const { writers } = useConfigState()
+
+
+  return <Link href={generateLink(data, blog)}><a className="postcard_sm">
+    <div className="image" style={{ backgroundImage: `url(${data.image})`}}/>
     <section>
-      <h4>Moving is good, even if you just walk around the city.</h4>
+      <h4>{data.name}</h4>
       <div>
-        <span>Kiyoko Yoshi</span>
-        <span>#eluviis</span>
+        <span>{getAuthor(data, writers).name}</span>
+        <span>#{data.category}</span>
       </div>
     </section>
     <i className="fas fa-chevron-right" />
-  </div>
+  </a></Link>
 }
 
 export { MainCard, LgCard, SmCard }

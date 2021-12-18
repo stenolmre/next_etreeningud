@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect, useState } from 'react'
 
-import { useWriterState } from '@context/writer'
+import getAuthor from '@utils/getAuthor'
+
+import { useConfigState } from '@context/config'
 import { useAnalyticDispatch } from '@context/analytic'
 import { addAnalytic } from '@actions/analytic'
 
 import { AdSmall } from '@c/posts/ad'
 
 const Post = ({ post }) => {
-  const { writers } = useWriterState()
+  const { writers } = useConfigState()
   const dispatchAnalytic = useAnalyticDispatch()
 
   const content = () => {
@@ -26,21 +28,6 @@ const Post = ({ post }) => {
     }
   }, [isAnalyized, dispatchAnalytic])
 
-  const getAuthor = (author) => {
-    if (!writers.length || writers == null || writers.find(writer => writer.name === author) == null) {
-      return {
-        image: null,
-        social: null
-      }
-    } else {
-      const writer = writers.find(writer => writer.name === author)
-      return {
-        image: writer.image,
-        social: writer.social
-      }
-    }
-  }
-
   return <div className="post">
     {
       post && <Fragment>
@@ -48,8 +35,8 @@ const Post = ({ post }) => {
           <div>
             <h1>{post.name}</h1>
             <div className="post_author">
-              <div style={{ backgroundImage: `url('${getAuthor(post.author).image}')`}}/>
-              <a target="_blank" rel="noreferrer" href={getAuthor(post.author).social}>@{post.author}</a>
+              <div style={{ backgroundImage: `url('${getAuthor(post, writers).image}')`}}/>
+              <a target="_blank" rel="noreferrer" href={getAuthor(post, writers).social}>@{getAuthor(post, writers).name}</a>
             </div>
             <div className="post" dangerouslySetInnerHTML={content()}/>
           </div>

@@ -8,9 +8,10 @@ nav {
     display: none;
   }
 
-  > h1 {
+  > .logo {
     text-align: center;
     font-size: 2rem;
+    font-family: 'Righteous', sans-serif;
     color: $dodgerblue;
     margin-bottom: 4rem;
   }
