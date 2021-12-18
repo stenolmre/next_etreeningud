@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 
+import { useConfigDispatch } from '@context/config'
+import { toggleSidebar } from '@actions/config'
+
 const Footbar = () => {
   const [show, setShow] = useState(false)
   const navs = [{
@@ -17,7 +20,14 @@ const Footbar = () => {
     link: 'https://m.me/coachkeisy'
   }]
 
-  return <div className="footbar">
+  const dispatchConfig = useConfigDispatch()
+
+  const closeSidebar = () => {
+    toggleSidebar(dispatchConfig)
+    setShow(false)
+  }
+
+  return <div className="footbar_expanded footbar">
     <div className="footbar_main" onClick={() => setShow(!show)}>
       <i className={`fas fa-${show ? 'times' : 'bars'}`}/>
       <span>{show ? 'Sulge' : 'Menüü'}</span>
@@ -28,6 +38,10 @@ const Footbar = () => {
         <span>{nav.title}</span>
       </a></Link>)
     }
+    <div className={`footbar_nav footbar_nav_${show ? '3' : ''}`} onClick={closeSidebar}>
+      <i className="fas fa-cog"/>
+      <span>Seaded</span>
+    </div>
   </div>
 }
 

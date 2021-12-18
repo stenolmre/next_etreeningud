@@ -6,6 +6,7 @@ import { usePostState } from '@context/post'
 import sort from '@utils/sort'
 
 import Layout from '@c/layout/layout'
+import Sidebar from '@c/layout/sidebar'
 import { MainCard } from '@c/card'
 import { LoadingCards } from '@c/loading'
 
@@ -41,6 +42,7 @@ const Index = () => {
         showPosts().length > numOfPosts && <div className="load_more" onClick={loadMorePosts}>Näita rohkem postitusi</div>
       }
     </Layout>
+    <Sidebar />
   </Fragment>
 }
 

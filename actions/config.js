@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { GET_CONFIG } from './types'
+import { GET_CONFIG, TOGGLE_SIDEBAR } from './types'
 
 export const getConfig = async (dispatch) => {
   try {
@@ -13,4 +13,10 @@ export const getConfig = async (dispatch) => {
   } catch (err) {
     console.debug(err)
   }
+}
+
+export const toggleSidebar = async dispatch => {
+  dispatch({
+    type: TOGGLE_SIDEBAR
+  })
 }

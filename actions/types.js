@@ -11,6 +11,7 @@ export const FILTER_POSTS = 'FILTER_POSTS'
 export const SORT_POSTS = 'SORT_POSTS'
 
 export const GET_CONFIG = 'GET_CONFIG'
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'
 
 export const ADD_ANALYTIC = 'ADD_ANALYTIC'
 export const GET_ANALYTICS = 'GET_ANALYTICS'

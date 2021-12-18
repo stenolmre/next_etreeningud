@@ -1,4 +1,4 @@
-import { GET_CONFIG } from '@actions/types'
+import { GET_CONFIG, TOGGLE_SIDEBAR } from '@actions/types'
 
 export const initialState = {
   fitness: {
@@ -15,7 +15,8 @@ export const initialState = {
   },
   writers: [],
   loading: true,
-  error: null
+  error: null,
+  sidebar: false
 }
 
 export const ConfigReducer = (state = initialState, action) => {
@@ -39,6 +40,11 @@ export const ConfigReducer = (state = initialState, action) => {
         },
         writers: payload.writers,
         loading: false
+      }
+    case TOGGLE_SIDEBAR:
+      return {
+        ...state,
+        sidebar: !state.sidebar
       }
     default:
       return {
