@@ -30,7 +30,7 @@ const Exercises = ({ workout }) => {
 
 const Exercise = ({ heading, type, state, setState, color, open, close, id }) => {
   return <div className="exercise" id={id}>
-    <div className="header" onClick={state.length < type.length ? () => setState(Array.from(Object.values(type), x => x._id)) : () => setState([])}>
+    <div className="exercise_header" onClick={state.length < type.length ? () => setState(Array.from(Object.values(type), x => x._id)) : () => setState([])}>
       <h3 className={color}>{heading}</h3>
       <span>{state.length < type.length ? 'ava' : 'sulge'} videod</span>
       <i className="fas fa-tv"/>

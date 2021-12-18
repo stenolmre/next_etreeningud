@@ -6,7 +6,8 @@
   overflow: hidden;
 
   @media (max-width: 45rem) {
-    @include grid($columns: 100%);
+    grid-template-columns: auto;
+    padding-bottom: 4rem;
   }
 
   > .workout_intro_image {
@@ -41,6 +42,10 @@
       padding: .125rem 1.5rem;
       @include flex($justify: center, $direction: column);
 
+      @media (max-width: 45rem) {
+        width: 45%;
+      }
+
       > div {
         font-weight: 600;
       }
@@ -54,11 +59,19 @@
       margin-right: 325px;
       border-right: 4px solid rgba(33, 33, 33, .2);
       text-align: right;
+
+      @media (max-width: 45rem) {
+        margin-right: 55%;
+      }
     }
 
     > .right {
       margin-left: 325px;
       border-left: 4px solid rgba(33, 33, 33, .2);
+
+      @media (max-width: 45rem) {
+        margin-left: 55%;
+      }
     }
 
     > .first {
@@ -96,7 +109,7 @@
     margin-top: 1rem;
   }
 
-  > .header {
+  > .exercise_header {
     width: 100%;
     margin-bottom: .5rem;
     @include flex($align: center, $justify: space-between);

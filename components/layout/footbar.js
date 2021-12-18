@@ -23,7 +23,7 @@ const Footbar = () => {
       <span>{show ? 'Sulge' : 'Menüü'}</span>
     </div>
     {
-      navs.map((nav, index) => <Link href={nav.link} key={index}><a className={`footbar_nav footbar_nav_${show ? index : ''}`}>
+      navs.map((nav, index) => <Link href={nav.link} key={index}><a className={`footbar_nav footbar_nav_${show ? index : ''}`} rel={nav.title === 'Kontakt' ? 'noreferrer' : ''} target={nav.title === 'Kontakt' ? '_blank': ''}>
         <i className={nav.icon}/>
         <span>{nav.title}</span>
       </a></Link>)

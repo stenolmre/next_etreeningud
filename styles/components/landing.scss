@@ -10,6 +10,7 @@
 
   @media (max-width: 35rem) {
     grid-template-columns: auto;
+    padding: 2rem 0 5rem 0;
   }
 
   > .main {
@@ -90,6 +91,14 @@
 
 .landing_no_sidebar {
   @include grid($columns: 75px auto, $gap: 0);
+
+  @media (max-width: 70rem) {
+    grid-template-columns: 75px auto;
+  }
+
+  @media (max-width: 35rem) {
+    grid-template-columns: auto;
+  }
 }
 
 .postcard_sm {

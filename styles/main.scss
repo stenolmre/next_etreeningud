@@ -41,6 +41,7 @@ h1, h2, h3, h4, h5, h6 {
   // place-items: center;
 
   @media (max-width: 35rem) {
+    place-items: center;
     padding: 0;
     gap: 1rem;
   }
@@ -59,31 +60,16 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.yoga_layout {
-  padding: 2rem;
-
-  @include grid($columns: 250px auto, $gap: 1.5rem);
-
-  > iframe {
-    width: 100%;
-    height: 150%;
-  }
-
-  @media (max-width: 35rem) {
-    @include grid($rows: auto auto, $columns: auto, $gap: 1.5rem);
-  }
-}
-
-.no_events {
-  pointer-events: none;
-}
-
 .load_more {
   margin: 1rem 0 2rem 0;
   text-align: center;
   font-weight: 600;
   color: $dodgerblue;
   cursor: pointer;
+
+  @media (max-width: 35rem)  {
+    margin-top: 2rem;
+  }
 }
 
 .error {
