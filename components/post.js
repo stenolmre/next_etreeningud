@@ -2,14 +2,17 @@ import React, { Fragment, useEffect, useState } from 'react'
 
 import getAuthor from '@utils/getAuthor'
 
+import { usePostState } from '@context/post'
 import { useConfigState } from '@context/config'
 import { useAnalyticDispatch } from '@context/analytic'
 import { addAnalytic } from '@actions/analytic'
 
-import { AdSmall } from '@c/posts/ad'
+import { LoadingAd } from '@c/loading'
+import { MainCard } from '@c/card'
 
 const Post = ({ post }) => {
   const { writers } = useConfigState()
+  const { posts, loading } = usePostState()
   const dispatchAnalytic = useAnalyticDispatch()
 
   const content = () => {
@@ -40,7 +43,11 @@ const Post = ({ post }) => {
             </div>
             <div className="post" dangerouslySetInnerHTML={content()}/>
           </div>
-          <AdSmall id={post._id}/>
+          <div className="ad_small">
+            {
+              loading ? <LoadingAd /> : posts && posts.filter(x => x._id !== post.id).map((post, index) => <MainCard key={index} data={post}/>).slice(0, 5)
+            }
+          </div>
         </div>
       </Fragment>
     }

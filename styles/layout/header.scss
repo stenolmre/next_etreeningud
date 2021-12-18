@@ -4,7 +4,8 @@
   align-items: center;
 
   @media (max-width: 35rem) {
-    display: none;
+    @include grid($columns: 4rem auto, $gap: .5rem);
+    padding: 2rem 1rem;
   }
 
   > .owner_image {
@@ -14,12 +15,23 @@
     border-radius: 100%;
 
     @media (max-width: 35rem) {
-      display: none;
+      grid-row: 1;
+      width: 4rem;
+      height: 4rem;
     }
   }
 
   > h1 {
-    display: none;
+    height: 100%;
+    @include flex($align: flex-end);
+    color: $dodgerblue;
+    font-size: 2rem;
+    z-index: 2;
+
+    @media (max-width: 35rem) {
+      align-items: center;
+      font-size: 1.5rem;
+    }
   }
 
   > h3 {
@@ -32,7 +44,9 @@
     font-weight: 400;
 
     @media (max-width: 35rem) {
-      display: none;
+      grid-column: span 2;
+      font-size: .75rem;
+      opacity: .75;
     }
   }
 
@@ -41,6 +55,10 @@
     @include flex($align: center, $justify: flex-start);
     flex-wrap: wrap;
     gap: .5rem;
+
+    @media (max-width: 35rem) {
+      grid-column: span 2;
+    }
 
     > .pill {
       padding: .25rem .75rem;
@@ -52,10 +70,6 @@
 
       font-size: .75rem;
       font-weight: 600;
-    }
-
-    @media (max-width: 35rem) {
-      display: none;
     }
   }
 }

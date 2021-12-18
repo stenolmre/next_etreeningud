@@ -10,7 +10,6 @@
 
 @import 'components/card';
 @import 'components/post';
-@import 'components/fitness';
 @import 'components/loading';
 @import 'components/workout';
 @import 'components/landing';
@@ -38,24 +37,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2rem;
 
   @include grid($columns: repeat(auto-fit, minmax(215px, 1fr)), $gap: 1.5rem);
-  // place-items: center;
 
   @media (max-width: 35rem) {
     place-items: center;
     padding: 0;
-    gap: 1rem;
-  }
-}
-
-.ad {
-  max-width: 55rem;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-
-  @include grid($columns: repeat(auto-fit, minmax(215px, 1fr)), $gap: 1.5rem);
-  place-items: center;
-
-  @media (max-width: 35rem) {
     gap: 1rem;
   }
 }

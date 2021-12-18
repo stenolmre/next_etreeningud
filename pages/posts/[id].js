@@ -5,13 +5,13 @@ import Head from '@utils/head'
 import usePosts from '@hooks/usePosts'
 
 import Layout from '@c/layout/layout'
-import PostContent from '@c/posts/post'
+import Post from '@c/post'
 
 const Index = ({ post }) => {
   usePosts()
   return <Layout post>
     <Head title={post.name} url={`https://etreeningud.ee/posts/${post._id}?name=${post.name}`} image={post.image} />
-    <PostContent post={post}/>
+    <Post post={post}/>
   </Layout>
 }
 

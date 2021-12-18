@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
+import calcReadTime from '@ui/utils/calcReadTime'
 import { getDate } from '@ui/utils/date'
 import generateLink from '@utils/generateLink'
 import getAuthor from '@utils/getAuthor'
@@ -10,12 +11,21 @@ import { useConfigState } from '@context/config'
 const MainCard = ({ data, events = true, blog = true }) => {
   const { writers } = useConfigState()
 
-  return <Link href={generateLink(data, blog)}><a className={`card ${!events ? 'no_events': ''}`}>
+  return <Link href={generateLink(data, blog)}><a className={`card ${!events ? 'no_events': ''}`} rel={data.category === 'jooga' ? 'noreferrer' : ''} target={data.category === 'jooga' ? '_blank': ''}>
     <div className="card_image" style={{ backgroundImage: `url('${data.image}')`}}/>
     <div className="content">
       <h3>{data.name}</h3>
       <div className="card_hashtags">
         <span>#{data.category.toLowerCase()}</span>
+        {
+          data.equipment != null && data.equipment.map(e => <span key={e}>#{e.toLowerCase()}</span>)
+        }
+        {
+          data.length != null && <span>#{data.length}min</span>
+        }
+        {
+          data.content != null && <span>#{calcReadTime(data.content)}</span>
+        }
       </div>
     </div>
     <div className="card_footer">
@@ -32,7 +42,7 @@ const MainCard = ({ data, events = true, blog = true }) => {
 const LgCard = ({ data, blog = true }) => {
   const { writers } = useConfigState()
 
-  return <Link href={generateLink(data, blog)}><a className="postcard_main" style={{ backgroundImage: `url(${data.image})`}}>
+  return <Link href={generateLink(data, blog)}><a className="card_lg" style={{ backgroundImage: `url(${data.image})`}} rel={data.category === 'jooga' ? 'noreferrer' : ''} target={data.category === 'jooga' ? '_blank': ''}>
     <span>{getAuthor(data, writers).name}</span>
     <h2>{data.name}</h2>
     <small>#{data.category}</small>
@@ -41,18 +51,12 @@ const LgCard = ({ data, blog = true }) => {
 }
 
 const SmCard = ({ data, blog = true }) => {
-  const { writers } = useConfigState()
-
-
-  return <Link href={generateLink(data, blog)}><a className="postcard_sm">
+  return <Link href={generateLink(data, blog)}><a className="card_sm" rel={data.category === 'jooga' ? 'noreferrer' : ''} target={data.category === 'jooga' ? '_blank': ''}>
     <div className="image" style={{ backgroundImage: `url(${data.image})`}}/>
-    <section>
-      <h4>{data.name}</h4>
-      <div>
-        <span>{getAuthor(data, writers).name}</span>
-        <span>#{data.category}</span>
-      </div>
-    </section>
+    <div className="content">
+      <h5>{data.name}</h5>
+      <h5>#{data.category}</h5>
+    </div>
     <i className="fas fa-chevron-right" />
   </a></Link>
 }
