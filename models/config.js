@@ -22,6 +22,15 @@ const ConfigSchema = mongoose.Schema({
         gif: {
           type: String,
           required: true
+        },
+        for: {
+          type: Array,
+          required: true
+        },
+        pair: String,
+        categories: {
+          type: Array,
+          default: ['all']
         }
       }
     ]
