@@ -26,6 +26,9 @@ const MainCard = ({ data, events = true, blog = true }) => {
         {
           data.content != null && <span>#{calcReadTime(data.content)}</span>
         }
+        {
+          <span>#{data._id}</span>
+        }
       </div>
     </div>
     <div className="card_footer">

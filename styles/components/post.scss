@@ -1,7 +1,7 @@
 .post_container {
   max-width: 70rem;
   margin: 0 auto;
-  padding: 4rem 2rem 0 2rem;
+  padding: 4rem 2rem;
 
   @include grid($columns: auto 200px, $gap: 5rem);
 

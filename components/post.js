@@ -45,7 +45,7 @@ const Post = ({ post }) => {
           </div>
           <div className="ad_small">
             {
-              loading ? <LoadingAd /> : posts && posts.filter(x => x._id !== post.id).map((post, index) => <MainCard key={index} data={post}/>).slice(0, 5)
+              loading ? <LoadingAd /> : posts && posts.filter(x => x._id !== post._id).map((post, index) => <MainCard key={index} data={post}/>).slice(0, 5)
             }
           </div>
         </div>
