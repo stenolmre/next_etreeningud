@@ -6,8 +6,7 @@ import { usePostState } from '@context/post'
 import sort from '@utils/sort'
 
 import Layout from '@c/layout/layout'
-import Sidebar from '@c/layout/sidebar'
-import { MainCard } from '@c/card'
+import Card from '@c/cards/card'
 import { LoadingCards } from '@c/loading'
 
 const Index = () => {
@@ -30,19 +29,18 @@ const Index = () => {
 
   return <Fragment>
     <Head title="Treeningud" url="https://etreeningud.ee/posts"/>
-    <Layout sidebar={fit.fitness && fit.fitness} loading={fit.loading} blog={false} num={7} pills={['blogi', sortBy, ...filters]}>
+    <Layout sidebar={fit.fitness && fit.fitness} loading={fit.loading} num={7} pills={['blogi', sortBy, ...filters]}>
       <div className="cards_container">
         {
           loading
             ? <LoadingCards />
-            : showPosts().map((post, index) => <MainCard key={index} data={post}/>).slice(0, numOfPosts)
+            : showPosts().map((post, index) => <Card key={index} data={post}/>).slice(0, numOfPosts)
         }
       </div>
       {
         showPosts().length > numOfPosts && <div className="load_more" onClick={loadMorePosts}>Näita rohkem postitusi</div>
       }
     </Layout>
-    <Sidebar />
   </Fragment>
 }
 

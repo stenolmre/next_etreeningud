@@ -1,0 +1,65 @@
+.card_sidebar {
+  + .card_sidebar {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid $light-200;
+  }
+
+  @include card-transition;
+  @include grid($columns: 1fr, $gap: 0);
+  position: relative;
+
+  > .image {
+    border-radius: 1rem;
+    @include background-image($width: 100%, $height: 27rem, $color: $light-300);
+  }
+
+  > .content {
+    > .ad_hashtags {
+      @include flex($align: center, $column-gap: .5rem);
+      margin-top: .25rem;
+      font-size: .75rem;
+      opacity: .5;
+      font-size: .875rem;
+    }
+
+    > h5 {
+      @include ellipsis($lines: 3);
+      font-size: 1.2rem;
+    }
+  }
+
+  &:nth-of-type(1) {
+    > .content {
+      padding: 1rem;
+      @include position(absolute, $bottom: 0);
+      z-index: 2;
+      color: $white;
+    }
+
+    > i {
+      display: none;
+    }
+  }
+
+  &:nth-of-type(n + 2) {
+    @include grid($columns: 4.5rem 1fr auto, $gap: .5rem);
+    align-items: center;
+
+    > .image {
+      height: 3.75rem;
+      border-radius: .5rem;
+    }
+
+    > .content {
+      > .ad_hashtags {
+        font-size: .75rem;
+      }
+
+      > h5 {
+        @include ellipsis($lines: 2);
+        font-size: .825rem;
+      }
+    }
+  }
+}

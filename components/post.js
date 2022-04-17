@@ -8,7 +8,7 @@ import { useAnalyticDispatch } from '@context/analytic'
 import { addAnalytic } from '@actions/analytic'
 
 import { LoadingAd } from '@c/loading'
-import { MainCard } from '@c/card'
+import Card from '@c/cards/card'
 
 const Post = ({ post }) => {
   const { writers } = useConfigState()
@@ -43,9 +43,9 @@ const Post = ({ post }) => {
             </div>
             <div className="post" dangerouslySetInnerHTML={content()}/>
           </div>
-          <div className="ad_small">
+          <div className="ads">
             {
-              loading ? <LoadingAd /> : posts && posts.filter(x => x._id !== post._id).map((post, index) => <MainCard key={index} data={post}/>).slice(0, 5)
+              loading ? <LoadingAd /> : posts && posts.filter(x => x._id !== post._id).map((post, index) => <Card key={index} data={post} image={false}/>).slice(0, 5)
             }
           </div>
         </div>

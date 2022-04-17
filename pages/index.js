@@ -6,8 +6,7 @@ import { usePostState } from '@context/post'
 import sort from '@utils/sort'
 
 import Layout from '@c/layout/layout'
-import Sidebar from '@c/layout/sidebar'
-import { MainCard } from '@c/card'
+import Card from '@c/cards/card'
 import { LoadingCards } from '@c/loading'
 
 const Index = () => {
@@ -35,14 +34,13 @@ const Index = () => {
         {
           loading
             ? <LoadingCards />
-            : showFitness().map((fit, index) => <MainCard key={index} data={fit} blog={false}/>).slice(0, numOfPosts)
+            : showFitness().map((fit, index) => <Card key={index} data={fit} />).slice(0, numOfPosts)
         }
       </div>
       {
         showFitness().length > numOfPosts && <div className="load_more" onClick={loadMoreWorkouts}>Näita rohkem treeninguid</div>
       }
     </Layout>
-    <Sidebar />
   </Fragment>
 }
 
