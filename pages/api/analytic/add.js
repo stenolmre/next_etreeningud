@@ -1,22 +1,26 @@
-import connectDB from './../../../utils/connectDB'
-import Analytic from './../../../models/analytic'
+import connectDB from "./../../../utils/connectDB";
+import Analytic from "./../../../models/analytic";
 
-connectDB()
+connectDB();
 
 export default async function (req, res) {
-  const { id, category } = req.body
+  const { id, category } = req.body;
 
-  if (!id || !category) return res.status(401).json({ msg: 'Statistilise näitaja ID ja Kategooria on kohustuslikud.' })
+  if (!id || !category)
+    return res
+      .status(401)
+      .json({ msg: "Statistilise näitaja ID ja Kategooria on kohustuslikud." });
 
   try {
-    const analytic = new Analytic(req.body)
+    // const analytic = new Analytic(req.body)
 
-    await analytic.save()
+    // await analytic.save()
 
-    const analytics = await Analytic.find().sort({ createdAt: -1 })
+    // const analytics = await Analytic.find().sort({ createdAt: -1 })
 
-    res.send(analytics)
+    // res.send(analytics)
+    res.send(false);
   } catch (err) {
-    res.status(500).json({ msg: err.message })
+    res.status(500).json({ msg: err.message });
   }
 }

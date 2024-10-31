@@ -1,25 +1,27 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 const Footbar = () => {
-  return <div className="footbar">
-    <Link href="/"><a>
-      <i className="fas fa-home"/>
-      <p>Esileht</p>
-    </a></Link>
-    <Link href="/fitness"><a>
-      <i className="fas fa-dumbbell"/>
-      <p>Treeningud</p>
-    </a></Link>
-    <Link href="/posts"><a>
-      <i className="fas fa-pen"/>
-      <p>Blogi</p>
-    </a></Link>
-    <Link href="/#contact"><a>
-      <i className="fas fa-phone"/>
-      <p>Kontakt</p>
-    </a></Link>
-  </div>
-}
+  return (
+    <div className="footbar">
+      <Link href="/">
+        <i className="fas fa-home" />
+        <p>Esileht</p>
+      </Link>
+      <Link href="/fitness">
+        <i className="fas fa-dumbbell" />
+        <p>Treeningud</p>
+      </Link>
+      <Link href="/posts">
+        <i className="fas fa-pen" />
+        <p>Blogi</p>
+      </Link>
+      <Link href="/#contact">
+        <i className="fas fa-phone" />
+        <p>Kontakt</p>
+      </Link>
+    </div>
+  );
+};
 
-export default Footbar
+export default Footbar;

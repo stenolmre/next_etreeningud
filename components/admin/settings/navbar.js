@@ -1,26 +1,33 @@
-import React from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
-  return <div className="admin_settings_navbar">
-    <Anchor name="Esileht" link="landing" />
-    <Anchor name="Features" link="features" />
-    <Anchor name="Sotsiaalmeedia" link="sotsiaalmeedia" />
-    <Anchor name="Blogi autorid" link="writers" />
-    <Anchor name="Blogi lisad" link="blogikategooriad" />
-    <Anchor name="Harjutused" link="harjutused" />
-    <Anchor name="Treeningute lisad" link="treeningud" />
-    <Anchor name="Treeningute pildid" link="treeningutepildid" />
-  </div>
-}
+  return (
+    <div className="admin_settings_navbar">
+      <Anchor name="Esileht" link="landing" />
+      <Anchor name="Features" link="features" />
+      <Anchor name="Sotsiaalmeedia" link="sotsiaalmeedia" />
+      <Anchor name="Blogi autorid" link="writers" />
+      <Anchor name="Blogi lisad" link="blogikategooriad" />
+      <Anchor name="Harjutused" link="harjutused" />
+      <Anchor name="Treeningute lisad" link="treeningud" />
+      <Anchor name="Treeningute pildid" link="treeningutepildid" />
+    </div>
+  );
+};
 
 const Anchor = ({ name, link }) => {
-  const { query } = useRouter()
+  const { query } = useRouter();
 
-  return <Link href={`/private/admin/settings?page=${link}`}><a className={query.page === link ? 'inset_neumorphism' : 'neumorphism'}>
-    { name }
-  </a></Link>
-}
+  return (
+    <Link
+      href={`/private/admin/settings?page=${link}`}
+      className={query.page === link ? "inset_neumorphism" : "neumorphism"}
+    >
+      {name}
+    </Link>
+  );
+};
 
-export default Navbar
+export default Navbar;
