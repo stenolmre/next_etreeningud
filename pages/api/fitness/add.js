@@ -1,22 +1,24 @@
-import connectDB from './../../../utils/connectDB'
-import Fitness from './../../../models/fitness'
-
-connectDB()
+import connectDB from "./../../../utils/connectDB";
+import Fitness from "./../../../models/fitness";
 
 export default async function (req, res) {
-  const { image, name, category, length, equipment, intro } = req.body
+  await connectDB();
+  const { image, name, category, length, equipment, intro } = req.body;
 
-  if (!image || !name || !category || !length || !intro || !equipment) return res.status(401).json({ msg: 'Please fill all fields with correct information.' })
+  if (!image || !name || !category || !length || !intro || !equipment)
+    return res
+      .status(401)
+      .json({ msg: "Please fill all fields with correct information." });
 
   try {
-    const workout = new Fitness(req.body)
+    const workout = new Fitness(req.body);
 
-    await workout.save()
+    await workout.save();
 
-    const fitness = await Fitness.find().sort({ createdAt: -1 })
+    const fitness = await Fitness.find().sort({ createdAt: -1 });
 
-    res.send(fitness)
+    res.send(fitness);
   } catch (err) {
-    res.status(500).json({ msg: err.message })
+    res.status(500).json({ msg: err.message });
   }
 }

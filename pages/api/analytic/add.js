@@ -1,9 +1,8 @@
 import connectDB from "./../../../utils/connectDB";
 import Analytic from "./../../../models/analytic";
 
-connectDB();
-
 export default async function (req, res) {
+  await connectDB();
   const { id, category } = req.body;
 
   if (!id || !category)

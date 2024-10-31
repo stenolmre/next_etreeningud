@@ -1,22 +1,21 @@
-import connectDB from './../../../utils/connectDB'
-import Writer from './../../../models/writer'
-
-connectDB()
+import connectDB from "./../../../utils/connectDB";
+import Writer from "./../../../models/writer";
 
 export default async function (req, res) {
-  const { id } = req.query
+  await connectDB();
+  const { id } = req.query;
 
   try {
-    const writer = await Writer.findById(id)
+    const writer = await Writer.findById(id);
 
-    if (!writer) return res.status(404).json({ msg: 'Writer not found.' })
+    if (!writer) return res.status(404).json({ msg: "Writer not found." });
 
-    await writer.remove()
+    await writer.remove();
 
-    const writers = await Writer.find()
+    const writers = await Writer.find();
 
-    res.send(writers)
+    res.send(writers);
   } catch (err) {
-    res.status(500).json({ msg: err.message })
+    res.status(500).json({ msg: err.message });
   }
 }

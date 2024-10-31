@@ -1,18 +1,17 @@
-import connectDB from './../../../utils/connectDB'
-import Post from './../../../models/post'
-
-connectDB()
+import connectDB from "./../../../utils/connectDB";
+import Post from "./../../../models/post";
 
 export default async function (req, res) {
-  const { id } = req.query
+  await connectDB();
+  const { id } = req.query;
 
   try {
-    const post = await Post.findById(id)
+    const post = await Post.findById(id);
 
-    if (!post) return res.status(404).json({ msg: 'Post not found.' })
+    if (!post) return res.status(404).json({ msg: "Post not found." });
 
-    res.send(post)
+    res.send(post);
   } catch (err) {
-    res.status(500).json({ msg: err.message })
+    res.status(500).json({ msg: err.message });
   }
 }

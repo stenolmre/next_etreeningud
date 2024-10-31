@@ -1,24 +1,23 @@
-import connectDB from './../../../utils/connectDB'
-import Fitness from './../../../models/fitness'
-
-connectDB()
+import connectDB from "./../../../utils/connectDB";
+import Fitness from "./../../../models/fitness";
 
 export default async function (req, res) {
-  const { id } = req.query
+  await connectDB();
+  const { id } = req.query;
 
   try {
-    const workout = await Fitness.findById(id)
+    const workout = await Fitness.findById(id);
 
-    if (!workout) return res.status(404).json({ msg: 'Workout not found.' })
+    if (!workout) return res.status(404).json({ msg: "Workout not found." });
 
-    await workout.remove()
+    await workout.remove();
 
-    const fitness = await Fitness.find().sort({ createdAt: -1 })
+    const fitness = await Fitness.find().sort({ createdAt: -1 });
 
-    if (!fitness) return res.status(404).json({ msg: 'Workouts not found.' })
+    if (!fitness) return res.status(404).json({ msg: "Workouts not found." });
 
-    res.send(fitness)
+    res.send(fitness);
   } catch (err) {
-    res.status(500).json({ msg: err.message })
+    res.status(500).json({ msg: err.message });
   }
 }
