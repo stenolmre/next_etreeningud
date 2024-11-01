@@ -1,32 +1,31 @@
-import { ADD_ANALYTIC, GET_ANALYTICS, ANALYTICS_ERROR } from './../actions/types'
+import { GET_ANALYTICS, ANALYTICS_ERROR } from './../actions/types'
 
 export const initialState = {
   analytics: [],
   loading: true,
-  error: null
+  error: null,
 }
 
 export const AnalyticReducer = (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {
-    case ADD_ANALYTIC:
     case GET_ANALYTICS:
       return {
         ...state,
         analytics: payload,
         loading: false,
-        error: null
+        error: null,
       }
     case ANALYTICS_ERROR:
       return {
         ...state,
         loading: false,
-        error: payload
+        error: payload,
       }
     default:
       return {
-        state
+        state,
       }
   }
 }

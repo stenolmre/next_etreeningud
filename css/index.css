@@ -1,0 +1,7 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+@import 'styles';
+@import 'posts';
+@import 'fitness';
+@import 'landing';
+@import 'admin';

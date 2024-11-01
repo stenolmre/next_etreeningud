@@ -1,27 +1,21 @@
-import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
-
-import token from "./../../../utils/token";
-import connectDB from "./../../../utils/connectDB";
-import Admin from "./../../../models/admin";
-
-import validateEmail from "./../../../utils/validateemail";
+import connectDB from './../../../utils/connectDB'
+import Admin from './../../../models/admin'
 
 export default async function (req, res) {
-  await connectDB();
-  const jwtToken = req.headers["x-auth-token"];
+  await connectDB()
+  const jwtToken = req.headers['x-auth-token']
 
   if (!jwtToken)
-    return res.status(500).json({ msg: "No token. Authorization denied." });
+    return res.status(500).json({ msg: 'No token. Authorization denied.' })
 
   try {
-    const admins = await Admin.find();
+    const admins = await Admin.find()
 
     if (!admins)
-      return res.status(404).json({ msg: "Administrators not found." });
+      return res.status(404).json({ msg: 'Administrators not found.' })
 
-    res.send(admins);
+    res.send(admins)
   } catch (err) {
-    res.status(500).json({ msg: err.message });
+    res.status(500).json({ msg: err.message })
   }
 }

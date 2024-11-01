@@ -36,6 +36,5 @@ export const GET_WRITER = 'GET_WRITER'
 export const GET_WRITERS = 'GET_WRITERS'
 export const WRITER_ERROR = 'WRITER_ERROR'
 
-export const ADD_ANALYTIC = 'ADD_ANALYTIC'
 export const GET_ANALYTICS = 'GET_ANALYTICS'
 export const ANALYTICS_ERROR = 'ANALYTICS_ERROR'

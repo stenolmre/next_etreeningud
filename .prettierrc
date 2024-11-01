@@ -1,0 +1,13 @@
+semi: false
+singleQuote: true
+avoidEscape: true
+trailingComma: all
+tabWidth: 2
+bracketLine: true
+bracketSpacing: true
+noIrregularWhitespace: true
+noTrailingWhitespace: true
+noMultipleEmptyLines: true
+maxLineLength: 220
+endOfLine: lf
+arrowParens: avoid

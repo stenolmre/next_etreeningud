@@ -1,25 +1,18 @@
 import React from 'react'
+import { GeistSans } from 'geist/font/sans'
 
 import GlobalState from './../context/state'
 
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import './../css/styles.css'
-import './../css/posts.css'
-import './../css/fitness.css'
-import './../css/landing.css'
-import './../css/admin.css'
-
-import MarkVisitor from './../utils/markvisitor'
+import './../css/index.css'
 
 const App = ({ Component, pageProps }) => {
-  return <GlobalState>
-    <MarkVisitor>
-      <Component { ...pageProps } />
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
-      `}</style>
-    </MarkVisitor>
-  </GlobalState>
+  return (
+    <div className={GeistSans.className}>
+      <GlobalState>
+        <Component {...pageProps} />
+      </GlobalState>
+    </div>
+  )
 }
 
 export default App
