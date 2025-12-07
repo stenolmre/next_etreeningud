@@ -1,32 +1,24 @@
 {
-  "name": "next_etreeningud",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "etreeningud",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Sten Olmre",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.1.0",
-    "axios": "^1.13.2",
-    "bcryptjs": "^3.0.3",
-    "date-fns": "^4.1.0",
-    "dates-generator": "^1.0.5",
-    "js-cookie": "^3.0.5",
-    "jsonwebtoken": "^9.0.3",
-    "nanoid": "^5.1.6",
+    "mongodb": "^7.0.0",
     "next": "^16.0.7",
-    "next-cookies": "^2.0.3",
     "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "react-dom": "^19.2.1",
+    "sass": "^1.94.2"
   },
   "devDependencies": {
-    "geist": "^1.5.1",
-    "mongoose": "^8.20.2"
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "moment": "^2.30.1",
+    "typescript": "^5.9.3"
   }
 }

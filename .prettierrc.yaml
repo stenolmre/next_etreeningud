@@ -8,6 +8,6 @@ bracketSpacing: true
 noIrregularWhitespace: true
 noTrailingWhitespace: true
 noMultipleEmptyLines: true
-maxLineLength: 220
+printWidth: 100
 endOfLine: lf
 arrowParens: avoid
