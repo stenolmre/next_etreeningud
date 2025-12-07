@@ -1,0 +1,37 @@
+.flex {
+  display: flex !important;
+}
+
+@for $i from 1 through 4 {
+  .fx-grow-#{$i} {
+    flex-grow: $i !important;
+  }
+
+  .fx-#{$i} {
+    flex: $i !important;
+  }
+}
+
+@each $align in (flex-start, center, flex-end) {
+  .fx-a-#{$align} {
+    align-items: $align !important;
+  }
+}
+
+@each $justify in (flex-start, center, flex-end, space-between, space-around) {
+  .fx-j-#{$justify} {
+    justify-content: $justify !important;
+  }
+}
+
+@each $direction in (row, row-reverse, column, column-reverse) {
+  .fx-d-#{$direction} {
+    flex-direction: $direction !important;
+  }
+}
+
+@each $wrap in (nowrap, wrap, wrap-reverse) {
+  .fx-w-#{$wrap} {
+    flex-wrap: $wrap !important;
+  }
+}

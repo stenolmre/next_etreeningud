@@ -1,0 +1,84 @@
+@use '~/styles/_variables' as variables;
+
+$sides: (
+  x: inline,
+  y: block,
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+
+@each $abbr, $side in $sides {
+  .p#{$abbr}-unset {
+    padding-#{$side}: unset !important;
+  }
+
+  .m#{$abbr}-unset {
+    margin-#{$side}: unset !important;
+  }
+}
+
+.p-unset {
+  padding: unset !important;
+}
+
+.m-unset {
+  margin: unset !important;
+}
+
+@each $class, $spacing in variables.$spacing-map {
+  .fx-g-#{$class} {
+    gap: $spacing !important;
+  }
+
+  .fx-g-x-#{$class} {
+    column-gap: $spacing !important;
+  }
+
+  .fx-g-y-#{$class} {
+    row-gap: $spacing !important;
+  }
+
+  .p-#{$class} {
+    padding: $spacing !important;
+  }
+
+  .sm-p-#{$class} {
+    @media (max-width: 65em) {
+      padding: $spacing !important;
+    }
+  }
+
+  .m-#{$class} {
+    margin: $spacing !important;
+  }
+
+  .sm-m-#{$class} {
+    @media (max-width: 65em) {
+      margin: $spacing !important;
+    }
+  }
+
+  @each $abbr, $side in $sides {
+    .p#{$abbr}-#{$class} {
+      padding-#{$side}: $spacing !important;
+    }
+
+    .sm-p#{$abbr}-#{$class} {
+      @media (max-width: 65em) {
+        padding-#{$side}: $spacing !important;
+      }
+    }
+
+    .m#{$abbr}-#{$class} {
+      margin-#{$side}: $spacing !important;
+    }
+
+    .sm-m#{$abbr}-#{$class} {
+      @media (max-width: 65em) {
+        margin-#{$side}: $spacing !important;
+      }
+    }
+  }
+}

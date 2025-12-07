@@ -1,0 +1,45 @@
+$widths: (
+  10: 10%,
+  25: 25%,
+  50: 50%,
+  65: 65%,
+  75: 75%,
+  100: 100%,
+);
+
+@each $size, $value in $widths {
+  .skeleton-#{$size} {
+    width: $value;
+    height: 20px;
+  }
+}
+
+$heights: (
+  sm: 12px,
+  lg: 24px,
+);
+
+@each $size, $value in $heights {
+  .skeleton-#{$size} {
+    height: $value;
+  }
+}
+
+*[class^='skeleton-'] {
+  border-radius: 3px;
+  background: var(--cl-bg-light);
+  background: linear-gradient(
+    110deg,
+    var(--cl-bg-light) 8%,
+    light-dark(hsl(0, 0%, 93%), hsl(0, 0%, 7%)) 18%,
+    var(--cl-bg-light) 33%
+  );
+  background-size: 200% 100%;
+  animation: 1.5s skeleton linear infinite;
+}
+
+@keyframes skeleton {
+  to {
+    background-position-x: -200%;
+  }
+}

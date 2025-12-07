@@ -1,6 +1,8 @@
 import moment from 'moment'
 import { ObjectId } from 'mongodb'
 
+import { checkPermissionToUpdate } from '~/lib/permission'
+import { validateObjectId } from '~/lib/validate-object-id'
 import { db } from '~/server/db'
 
 import type { IPost } from '~/server/db/schema'
@@ -43,35 +45,112 @@ export async function getPosts() {
 }
 
 export async function getPost(post_id: string) {
-  let _id: ObjectId
-  try {
-    _id = new ObjectId(post_id)
-  } catch {
-    throw new Error('Invalid post ID')
-  }
+  const _id = validateObjectId([post_id], 'Invalid post ID')[0]
 
-  return (await db()).collection<IPost>(DB_NAME).aggregate<IPost>(AGGREGATION).next()
+  return (await db())
+    .collection<IPost>(DB_NAME)
+    .aggregate<IPost>([
+      {
+        $match: {
+          _id,
+        },
+      },
+      ...AGGREGATION,
+    ])
+    .next()
 }
 
-// @todo - allow it only for admins
+export async function addCommentToPost(post_id: string, comment: string) {
+  const _id = validateObjectId([post_id], 'Invalid post ID')[0]
+  const timestamp = moment().unix()
+
+  return (await db()).collection<IPost>(DB_NAME).updateOne(
+    {
+      _id,
+    },
+    {
+      $push: {
+        comments: {
+          _id: new ObjectId(),
+          comment,
+          created_on: timestamp,
+        },
+      },
+    },
+  )
+}
+
+export async function removeCommentFromPost(post_id: string, comment_id: string) {
+  await checkPermissionToUpdate()
+
+  const _id = validateObjectId([post_id], 'Invalid post ID')[0]
+  const _comment_id = validateObjectId([post_id], 'Invalid comment ID')[0]
+
+  return (await db()).collection<IPost>(DB_NAME).updateOne(
+    {
+      _id,
+    },
+    {
+      $pull: {
+        comments: {
+          _id: _comment_id,
+        },
+      },
+    },
+  )
+}
+
+export async function addRatingToPost(post_id: string, rating: number) {
+  const _id = validateObjectId([post_id], 'Invalid post ID')[0]
+  const timestamp = moment().unix()
+
+  return (await db()).collection<IPost>(DB_NAME).updateOne(
+    {
+      _id,
+    },
+    {
+      $push: {
+        ratings: {
+          _id: new ObjectId(),
+          rating,
+          created_on: timestamp,
+        },
+      },
+    },
+  )
+}
+
+export async function removeRatingFromPost(post_id: string, rating_id: string) {
+  await checkPermissionToUpdate()
+
+  const _id = validateObjectId([post_id], 'Invalid post ID')[0]
+  const _rating_id = validateObjectId([post_id], 'Invalid rating ID')[0]
+
+  return (await db()).collection<IPost>(DB_NAME).updateOne(
+    {
+      _id,
+    },
+    {
+      $pull: {
+        ratings: {
+          _id: _rating_id,
+        },
+      },
+    },
+  )
+}
+
 export async function insertPost(
-  new_post: Pick<IPost, 'name' | 'image' | 'content' | 'excerpt'> & {
-    author: string[]
+  new_post: Pick<IPost, 'title' | 'image' | 'content' | 'excerpt'> & {
+    authors: string[]
     categories?: string[]
   },
 ) {
-  const timestamp = moment().unix()
-  let authors: ObjectId[]
-  let categories: ObjectId[] = []
+  await checkPermissionToUpdate()
 
-  try {
-    authors = new_post.author.map(a => new ObjectId(a))
-    if (new_post.categories) {
-      categories = new_post.categories.map(c => new ObjectId(c))
-    }
-  } catch {
-    throw new Error('Invalid author ID')
-  }
+  const timestamp = moment().unix()
+  const authors = validateObjectId(new_post.authors, 'Invalid author IDs')
+  const categories = validateObjectId(new_post.categories, 'Invalid category IDs')
 
   return (await db())
     .collection<
@@ -84,4 +163,40 @@ export async function insertPost(
       created_on: timestamp,
       updated_on: timestamp,
     })
+}
+
+export async function updatePost(
+  post_id: string,
+  updated_post: Partial<
+    Pick<IPost, 'title' | 'image' | 'content' | 'excerpt'> & {
+      authors: string[]
+      categories?: string[]
+    }
+  >,
+) {
+  await checkPermissionToUpdate()
+
+  const _id = validateObjectId([post_id], 'Invalid post ID')[0]
+  const authors = validateObjectId(updated_post.authors, 'Invalid author IDs')
+  const categories = validateObjectId(updated_post.categories, 'Invalid category IDs')
+
+  return (await db())
+    .collection<
+      Partial<
+        Omit<IPost, 'authors' | 'categories'> & { authors: ObjectId[]; categories: ObjectId[] }
+      >
+    >(DB_NAME)
+    .updateOne(
+      {
+        _id,
+      },
+      {
+        $set: {
+          ...updated_post,
+          authors,
+          categories,
+          updated_on: moment().unix(),
+        },
+      },
+    )
 }

@@ -1,18 +1,20 @@
 import type { ObjectId, WithId } from 'mongodb'
 
 export interface IPost {
-  image: string
-  name: string
+  title: string
+  image?: string
   content: string
   excerpt: string
   authors: WithId<IAuthor>[]
-  categories?: WithId<IPostCategory>[]
-  ratings?: {
+  categories: WithId<IPostCategory>[]
+  ratings?: WithId<{
     rating: number
-  }[]
-  comments?: {
+    created_on: number
+  }>[]
+  comments?: WithId<{
     comment: string
-  }[]
+    created_on: number
+  }>[]
   created_on: number
   updated_on: number
 }
@@ -36,9 +38,9 @@ export interface IWorkout {
   _id: string
   image?: string
   name: string
-  category: WithId<IWorkoutCategory>
+  categories: WithId<IWorkoutCategory>[]
   length: number
-  equipment: WithId<IWorkoutEquipment>[]
+  equipments: WithId<IWorkoutEquipment>[]
   intro: string
   video?: string
   warmup?: WithId<IExercise>[]
@@ -66,9 +68,9 @@ export interface IExercise {
 }
 
 export interface IUser {
-  _id: string
   email: string
   name: string
+  image?: string
   permissions: number
   created_on: number
   updated_on: number

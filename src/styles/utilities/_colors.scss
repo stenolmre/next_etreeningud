@@ -1,0 +1,27 @@
+@use '~/styles/_variables' as variables;
+
+@each $color in variables.$cl-map {
+  .cl-#{$color} {
+    color: var(--cl-#{$color}) !important;
+  }
+
+  .h-cl-#{$color} {
+    @media (hover: hover) {
+      &:hover {
+        color: var(--cl-#{$color}) !important;
+      }
+    }
+  }
+
+  .bg-#{$color} {
+    background-color: var(--cl-#{$color}) !important;
+  }
+
+  .h-bg-#{$color} {
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--cl-#{$color}) !important;
+      }
+    }
+  }
+}

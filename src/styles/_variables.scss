@@ -1,0 +1,29 @@
+@use 'sass:map';
+
+$spacing-map: (
+  200: 2rem,
+  100: 1rem,
+  50: 0.5rem,
+  25: 0.25rem,
+);
+
+$fs-map: (
+  200: 200%,
+  // 100: 100%,
+  50: 87.5%,
+  25: 75%,
+);
+
+$cl-map: (
+  'error',
+  'warning',
+  'transparent',
+  'currentColor',
+  'bg',
+  'bg-accent',
+  'bg-light',
+  'text',
+  'muted',
+  'border',
+  'accent'
+);

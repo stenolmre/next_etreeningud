@@ -1,0 +1,36 @@
+@forward 'reset';
+@forward 'utilities';
+
+@use '~/styles/_variables' as variables;
+
+:root {
+  color-scheme: dark light;
+
+  @each $spacing, $value in variables.$spacing-map {
+    --spacing-#{$spacing}: #{$value};
+  }
+
+  @each $size, $value in variables.$fs-map {
+    --fs-#{$size}: #{$value};
+  }
+
+  --cl-error: hsl(0, 100%, 50%);
+  --cl-warning: hsl(39, 100%, 50%);
+  --cl-transparent: transparent;
+  --cl-currentColor: currentColor;
+
+  --cl-bg: light-dark(hsl(0, 0%, 98%), hsl(0, 0%, 6%));
+  --cl-bg-accent: light-dark(hsl(0, 0%, 95%), hsl(0, 0%, 3%));
+  --cl-bg-light: light-dark(hsl(0, 0%, 95%), hsl(0, 0%, 8%));
+  --cl-text: light-dark(hsl(0, 0%, 6%), hsl(0, 0%, 92%));
+  --cl-muted: light-dark(hsl(0, 0%, 40%), hsl(0, 0%, 60%));
+  --cl-border: light-dark(hsl(36, 14%, 85%), hsl(0, 0%, 15%));
+
+  --cl-accent: light-dark(hsl(207, 100%, 45%), hsl(207, 100%, 50%));
+}
+
+body {
+  background-color: var(--cl-bg);
+  color: var(--cl-text);
+  font-family: var(--ff-sans);
+}

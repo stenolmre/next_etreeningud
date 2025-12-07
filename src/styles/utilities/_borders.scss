@@ -1,0 +1,50 @@
+@use '~/styles/_variables' as variables;
+
+$radiuses: (
+  pill: 100vw,
+  round: 50%,
+);
+
+@each $class, $radius in $radiuses {
+  .br-#{$class} {
+    border-radius: $radius !important;
+  }
+}
+
+.br {
+  border-radius: 3px !important;
+}
+
+@for $i from 1 through 2 {
+  @each $color in variables.$cl-map {
+    .b-#{$i}-#{$color} {
+      border: $i + px solid var(--cl-#{$color}) !important;
+    }
+
+    @media (hover: hover) {
+      .h-b-#{$i}-#{$color} {
+        &:hover {
+          border-color: var(--cl-#{$color}) !important;
+        }
+      }
+    }
+
+    @each $side in (top, right, bottom, left) {
+      .b-#{$side}-#{$i}-#{$color} {
+        border-#{$side}: $i + px solid var(--cl-#{$color}) !important;
+      }
+
+      @media (hover: hover) {
+        .h-b-#{$side}-#{$i}-#{$color} {
+          &:hover {
+            border-color: var(--cl-#{$color}) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.b-none {
+  border: none !important;
+}

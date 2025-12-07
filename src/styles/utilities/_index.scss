@@ -1,0 +1,75 @@
+@forward 'borders';
+@forward 'colors';
+@forward 'flex';
+@forward 'skeleton';
+@forward 'spacing';
+@forward 'text';
+
+$dimensions: (
+  w: width,
+  h: height,
+);
+
+@each $abbr, $dimension in $dimensions {
+  .fill-#{$abbr} {
+    #{$dimension}: 100% !important;
+  }
+
+  .contain-#{$abbr} {
+    #{$dimension}: max-content !important;
+  }
+
+  @media (max-width: 65em) {
+    .sm-fill-#{$abbr} {
+      #{$dimension}: 100% !important;
+    }
+
+    .sm-contain-#{$abbr} {
+      #{$dimension}: max-content !important;
+    }
+  }
+}
+
+.full-h {
+  height: 100dvh !important;
+}
+
+.full-w {
+  width: 100dvw !important;
+}
+
+.ar {
+  aspect-ratio: 1 / 1 !important;
+}
+
+.sm-hidden {
+  @media (max-width: 65em) {
+    display: none !important;
+  }
+}
+
+.lg-hidden {
+  @media (min-width: 65em) {
+    display: none !important;
+  }
+}
+
+@each $cursor in (pointer, not-allowed) {
+  .c-#{$cursor} {
+    cursor: $cursor !important;
+  }
+
+  @media (hover: hover) {
+    .h-c-#{$cursor} {
+      &:hover {
+        cursor: $cursor !important;
+      }
+    }
+  }
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

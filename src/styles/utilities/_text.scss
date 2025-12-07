@@ -1,0 +1,33 @@
+@use '~/styles/_variables.scss' as variables;
+
+@each $class, $size in variables.$fs-map {
+  .fs-#{$class} {
+    font-size: $size !important;
+  }
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+.tx-capitalize {
+  text-transform: capitalize !important;
+}
+
+.tx-linethrough {
+  text-decoration: line-through !important;
+}
+
+@each $align in (center, right) {
+  .tx-#{$align} {
+    text-align: $align !important;
+  }
+}
+
+.tx-underline {
+  text-decoration: underline !important;
+}
+
+.tx-d-unset {
+  text-decoration: none !important;
+}

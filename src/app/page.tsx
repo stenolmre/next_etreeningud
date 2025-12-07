@@ -1,20 +1,14 @@
-import { getSettings, getUsers, getWorkouts } from '~/server/actions'
-
-import * as posts from '~/server/actions/post/index'
-import * as authors from '~/server/actions/post/author'
-import * as categories from '~/server/actions/post/category'
+import { SignOutBtn } from './_btn'
 
 interface IPageProps {
   searchParams: Promise<{}>
 }
 
-export default async function Page({ searchParams }: IPageProps) {
-  const settings = await posts.getPosts()
-
+export default function Page({ searchParams }: IPageProps) {
   return (
     <>
       <h1>Welcome to eTreeningud</h1>
-      <pre>{JSON.stringify(settings, null, 2)}</pre>
+      <SignOutBtn />
     </>
   )
 }

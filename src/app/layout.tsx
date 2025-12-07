@@ -1,4 +1,4 @@
-import '~/styles/main.css'
+import '~/styles/main.scss'
 
 import { Geist } from 'next/font/google'
 
@@ -14,9 +14,7 @@ export const metadata: Metadata = {
   description: 'Veebipõhised treeningud igale maitsele',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={sans.variable}>
       <head>
