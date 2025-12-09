@@ -8,7 +8,7 @@ import type { JWT } from 'next-auth/jwt'
 import type { WithId } from 'mongodb'
 import type { IUser } from '~/server/db/schema'
 
-export async function authenticate(token: JWT): Promise<WithId<IUser>> {
+export async function authenticate(token: JWT): Promise<WithId<IUser> | null> {
   if (token.email == null) {
     return token.user
   }

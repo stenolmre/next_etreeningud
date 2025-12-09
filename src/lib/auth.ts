@@ -35,7 +35,10 @@ export const authOptions: NextAuthOptions = {
       // if user is stored in token, return it, if not and has email (login) then authenticate
       // also re-authenticate on 'update' trigger to get latest user data
       if (trigger === 'update' || (token.user == null && token.email != null)) {
-        token.user = await authenticate(token)
+        const user = await authenticate(token)
+        if (user) {
+          token.user = user
+        }
       }
       return token
     },

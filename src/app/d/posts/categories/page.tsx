@@ -9,7 +9,11 @@ export default async function PostCategoriesPage() {
     <>
       <h1>Blog Categories</h1>
 
-      <ul role="list">
+      <Link href="/d/posts/categories/create" className="fs-50 cl-muted">
+        + Add new blog category
+      </Link>
+
+      <ul role="list" className="mt-100">
         {categories.map(category => (
           <li key={category._id}>
             <Link href={`/d/posts/categories/${category._id}`}>{category.label}</Link>

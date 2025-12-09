@@ -157,7 +157,7 @@ export async function insertPost(
 
   const timestamp = moment().unix()
   const authors = validateObjectId(new_post.authors, 'Invalid author IDs')
-  const categories = validateObjectId(new_post.categories, 'Invalid category IDs')
+  const categories = validateObjectId(new_post.categories ?? [], 'Invalid category IDs')
 
   return (await db())
     .collection<
@@ -184,8 +184,8 @@ export async function updatePost(
   await checkPermissionToUpdate()
 
   const _id = validateObjectId([post_id], 'Invalid post ID')[0]
-  const authors = validateObjectId(updated_post.authors, 'Invalid author IDs')
-  const categories = validateObjectId(updated_post.categories, 'Invalid category IDs')
+  const authors = validateObjectId(updated_post.authors ?? [], 'Invalid author IDs')
+  const categories = validateObjectId(updated_post.categories ?? [], 'Invalid category IDs')
 
   return (await db())
     .collection<

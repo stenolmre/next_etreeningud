@@ -1,5 +1,9 @@
 import { MongoClient } from 'mongodb'
 
+declare global {
+  var _mongoClientPromise: Promise<MongoClient>
+}
+
 if (!process.env.MONGO_URI) {
   throw new Error('Please define the MONGO_URI environment variable inside .env.local')
 }

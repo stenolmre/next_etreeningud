@@ -8,6 +8,15 @@ export default async function PostAuthorPage({ params }: IPostCategoryPageProps)
   const { id } = await params
   const author = await getAuthor(id)
 
+  if (author == null) {
+    return (
+      <>
+        <h1>404</h1>
+        <p>Author not found with id: {id}</p>
+      </>
+    )
+  }
+
   return (
     <>
       <h1>Blog Author</h1>
