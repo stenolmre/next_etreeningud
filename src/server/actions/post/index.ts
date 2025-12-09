@@ -5,7 +5,7 @@ import { checkPermissionToUpdate } from '~/lib/permission'
 import { validateObjectId } from '~/lib/validate-object-id'
 import { db } from '~/server/db'
 
-import type { IPost } from '~/server/db/schema'
+import type { IPost, WithId } from '~/server/db/schema'
 
 const DB_NAME = 'posts'
 
@@ -28,6 +28,7 @@ const AGGREGATION = [
   },
   {
     $addFields: {
+      _id: { $toString: '$_id' },
       authors: '$__authors',
       categories: '$__categories',
     },
@@ -41,15 +42,17 @@ const AGGREGATION = [
 ]
 
 export async function getPosts() {
-  return (await db()).collection<IPost>(DB_NAME).aggregate<IPost>(AGGREGATION).toArray()
+  return (await db()).collection<IPost>(DB_NAME).aggregate<WithId<IPost>>(AGGREGATION).toArray()
 }
 
-export async function getPost(post_id: string) {
+export async function getPost(post_id: string): Promise<WithId<IPost> | undefined> {
   const _id = validateObjectId([post_id], 'Invalid post ID')[0]
 
-  return (await db())
+  const post = await (
+    await db()
+  )
     .collection<IPost>(DB_NAME)
-    .aggregate<IPost>([
+    .aggregate<WithId<IPost>>([
       {
         $match: {
           _id,
@@ -58,6 +61,10 @@ export async function getPost(post_id: string) {
       ...AGGREGATION,
     ])
     .next()
+
+  if (post) {
+    return post
+  }
 }
 
 export async function addCommentToPost(post_id: string, comment: string) {

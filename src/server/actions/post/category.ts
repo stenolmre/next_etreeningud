@@ -1,35 +1,35 @@
-import { ObjectId } from 'mongodb'
-
-import { checkPermissionToUpdate } from '~/lib/permission'
+import { validateObjectId } from '~/lib/validate-object-id'
 import { db } from '~/server/db'
 
-import type { IPostCategory } from '~/server/db/schema'
+import type { IPostCategory, WithId } from '~/server/db/schema'
 
 const DB_NAME = 'post_categories'
 
+const AGGREGATE = [
+  {
+    $addFields: {
+      _id: { $toString: '$_id' },
+    },
+  },
+]
+
 export async function getPostCategories() {
-  return (await db()).collection<IPostCategory>(DB_NAME).find().toArray()
+  return (await db()).collection(DB_NAME).aggregate<WithId<IPostCategory>>(AGGREGATE).toArray()
 }
 
-export async function insertPostCategory(new_post_category: IPostCategory) {
-  await checkPermissionToUpdate()
-  return (await db()).collection<IPostCategory>(DB_NAME).insertOne(new_post_category)
-}
+export async function getPostCategory(
+  post_category_id: string,
+): Promise<WithId<IPostCategory> | undefined> {
+  const _id = validateObjectId([post_category_id], 'Post category ID is invalid')[0]
 
-export async function updatePostCategory(
-  id: string,
-  updated_workout_category: Partial<IPostCategory>,
-) {
-  await checkPermissionToUpdate()
+  const category = await (
+    await db()
+  )
+    .collection(DB_NAME)
+    .aggregate<WithId<IPostCategory>>([{ $match: { _id } }, ...AGGREGATE])
+    .next()
 
-  let _id: ObjectId
-  try {
-    _id = new ObjectId(id)
-  } catch {
-    throw new Error('Invalid Workout category ID')
+  if (category) {
+    return category
   }
-
-  return (await db())
-    .collection<IPostCategory>(DB_NAME)
-    .updateOne({ _id }, { $set: updated_workout_category })
 }

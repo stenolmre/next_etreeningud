@@ -1,17 +1,21 @@
-import type { ObjectId, WithId } from 'mongodb'
+import type { ObjectId, WithId as MongooseWithId } from 'mongodb'
+
+export type WithId<T> = T & {
+  _id: string
+}
 
 export interface IPost {
   title: string
   image?: string
   content: string
   excerpt: string
-  authors: WithId<IAuthor>[]
-  categories: WithId<IPostCategory>[]
-  ratings?: WithId<{
+  authors: MongooseWithId<IAuthor>[]
+  categories: MongooseWithId<IPostCategory>[]
+  ratings?: MongooseWithId<{
     rating: number
     created_on: number
   }>[]
-  comments?: WithId<{
+  comments?: MongooseWithId<{
     comment: string
     created_on: number
   }>[]
@@ -20,7 +24,7 @@ export interface IPost {
 }
 
 export interface IPostCategory {
-  label: 'tervis' | 'inimesed' | 'toitumine' | 'treening' | 'elustiil'
+  label: string
 }
 
 export interface IAuthor {
@@ -28,7 +32,6 @@ export interface IAuthor {
   name: string
   bio: string
   social_links?: {
-    _id: string
     link: string
     icon: string
   }[]
@@ -38,14 +41,14 @@ export interface IWorkout {
   _id: string
   image?: string
   name: string
-  categories: WithId<IWorkoutCategory>[]
+  categories: MongooseWithId<IWorkoutCategory>[]
   length: number
-  equipments: WithId<IWorkoutEquipment>[]
+  equipments: MongooseWithId<IWorkoutEquipment>[]
   intro: string
   video?: string
-  warmup?: WithId<IExercise>[]
-  workout?: WithId<IExercise>[]
-  cooldown?: WithId<IExercise>[]
+  warmup?: MongooseWithId<IExercise>[]
+  workout?: MongooseWithId<IExercise>[]
+  cooldown?: MongooseWithId<IExercise>[]
   created_on: number
   updated_on: number
 }
