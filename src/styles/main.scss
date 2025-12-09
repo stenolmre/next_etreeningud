@@ -26,11 +26,19 @@
   --cl-muted: light-dark(hsl(0, 0%, 40%), hsl(0, 0%, 60%));
   --cl-border: light-dark(hsl(36, 14%, 85%), hsl(0, 0%, 15%));
 
-  --cl-accent: light-dark(hsl(207, 100%, 45%), hsl(207, 100%, 50%));
+  --cl-accent: hsl(72, 100%, 50%);
 }
 
 body {
   background-color: var(--cl-bg);
   color: var(--cl-text);
   font-family: var(--ff-sans);
+
+  #admin {
+    font-family: var(--ff-mono);
+
+    form {
+      max-width: 45em;
+    }
+  }
 }

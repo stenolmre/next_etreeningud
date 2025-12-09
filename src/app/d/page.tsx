@@ -1,16 +1,16 @@
-import { getUsers } from '~/server/actions'
+import { getSessionUser } from '~/server/session'
 
 interface IPageProps {
   searchParams: Promise<{}>
 }
 
 export default async function Page({ searchParams }: IPageProps) {
-  const settings = await getUsers()
+  const me = await getSessionUser()
 
   return (
     <>
-      <h1>admin // Welcome to eTreeningud</h1>
-      <pre>{JSON.stringify(settings, null, 2)}</pre>
+      <h1>Dashboard</h1>
+      <pre>{JSON.stringify(me, null, 2)}</pre>
     </>
   )
 }

@@ -45,7 +45,10 @@ h6 {
 }
 
 h1 {
-  font-size: 200%;
+  font-size: 400%;
+  font-family: var(--ff-jost);
+  line-height: 1.1;
+  font-weight: 900;
 }
 
 h2 {
@@ -76,9 +79,7 @@ input[type='text'],
 input[type='datetime-local'],
 textarea,
 select,
-button,
-a[role='button'],
-div[role='input'] {
+button {
   appearance: none;
   min-width: 0;
   padding-inline: var(--spacing-100);
@@ -111,8 +112,7 @@ textarea {
 }
 
 button,
-input[type='submit'],
-a[role='button'] {
+input[type='submit'] {
   height: 2.5rem;
   font-weight: 600;
 
@@ -123,15 +123,17 @@ a[role='button'] {
   }
 }
 
-a[role='button'] {
-  line-height: 2.25rem;
-}
-
 input[type='text'],
 input[type='datetime-local'],
 select {
   height: 2.25rem;
   padding-block: 0;
+}
+
+.form-group:has(*:required) label > small::after {
+  content: '*';
+  color: var(--cl-error);
+  margin-left: 2px;
 }
 
 i {
@@ -143,6 +145,13 @@ pre {
   white-space: pre-wrap;
   background-color: var(--cl-bg-accent);
   color: var(--cl-warning);
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
