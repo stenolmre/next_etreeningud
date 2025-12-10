@@ -28,9 +28,7 @@ export async function getPostCategories() {
   return (await db()).collection(DB_NAME).aggregate<WithId<IPostCategory>>(AGGREGATE).toArray()
 }
 
-export async function getPostCategory(
-  post_category_id: string,
-): Promise<WithId<IPostCategory> | undefined> {
+export async function getPostCategory(post_category_id: string) {
   try {
     validateObjectId([post_category_id], 'Post category ID is invalid')[0]
   } catch {

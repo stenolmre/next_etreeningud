@@ -1,5 +1,7 @@
 import { getAuthor } from '~/server/actions/post/author'
 
+import EditAuthor from '~/app/d/posts/authors/[id]/_components/edit-author'
+
 interface IPostCategoryPageProps {
   params: Promise<{ id: string }>
 }
@@ -20,8 +22,7 @@ export default async function PostAuthorPage({ params }: IPostCategoryPageProps)
   return (
     <>
       <h1>Blog Author</h1>
-
-      <pre>{JSON.stringify(author, null, 2)}</pre>
+      <EditAuthor author={author} />
     </>
   )
 }

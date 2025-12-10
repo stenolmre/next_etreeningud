@@ -1,5 +1,3 @@
-import { redirect } from 'next/navigation'
-
 import { getPostCategory } from '~/server/actions/post/category'
 
 import EditPostCategoryPage from '~/app/d/posts/categories/[id]/_components/edit-post-category'
