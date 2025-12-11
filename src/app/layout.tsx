@@ -1,6 +1,6 @@
 import '~/styles/main.scss'
 
-import { Geist, Geist_Mono, Jost } from 'next/font/google'
+import { Geist, Geist_Mono, Jost, Lilita_One } from 'next/font/google'
 
 import type { Metadata } from 'next'
 
@@ -20,6 +20,12 @@ const jost = Jost({
   weight: ['400', '500', '600', '700', '800', '900'],
 })
 
+const lilita = Lilita_One({
+  variable: '--ff-lilita',
+  subsets: ['latin'],
+  weight: ['400'],
+})
+
 export const metadata: Metadata = {
   title: 'eTreeningud',
   description: 'Veebipõhised treeningud igale maitsele',
@@ -27,7 +33,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${jost.variable}`}>
+    <html
+      lang="en"
+      className={`${sans.variable} ${mono.variable} ${jost.variable} ${lilita.variable}`}
+    >
       <head>
         <link
           href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
